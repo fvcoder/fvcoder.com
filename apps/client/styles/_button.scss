@@ -1,0 +1,40 @@
+.btn {
+  @apply border-transparent;
+  @apply text-sm;
+  @apply font-semibold;
+  @apply rounded;
+  @apply px-5;
+  @apply transition;
+  @apply border;
+  @apply inline-flex;
+  @apply items-center;
+  @apply justify-center;
+  @apply cursor-pointer;
+  @apply align-middle;
+  @apply relative;
+  @apply select-none;
+  @apply leading-6;
+  @apply focus:outline-none;
+  @apply focus:ring-1;
+  @apply focus:ring-offset-1;
+  @apply focus:ring-gray-700;
+}
+
+.btn--primary{
+  @apply focus:ring-offset-gray-100;
+  @apply bg-primary-500;
+  @apply hover:bg-primary-400;
+  @apply active:bg-primary-600;
+  @apply text-white;
+}
+
+.btn-outline--primary{
+  @apply focus:ring-offset-gray-100;
+  @apply active:text-primary-600;
+  @apply active:border-primary-600;
+  @apply hover:border-primary-400;
+  @apply hover:text-primary-400;
+  @apply bg-transparent;
+  @apply text-primary-500;
+}
+
