@@ -1,26 +1,78 @@
 import React from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import Img from 'next/image'
+import GithubIcon from './../icons/github.svg'
+import YoutubeIcon from './../icons/youtube.svg'
+import TwitterIcon from './../icons/twitter.svg'
+import NodeJsImg from './../img/nodejs.png'
+import ReactImg from './../img/react.png'
+import AngularImg from './../img/angular.png'
+import { NavbarPublic } from '../components/navbar'
 
 const Home: NextPage = () => {
+  const staks = [
+    { src: NodeJsImg, alt: 'Node Js' },
+    { src: ReactImg, alt: 'React' },
+    { src: AngularImg, alt: 'Angular' }
+  ]
   return (
-    <div>
+    <>
       <Head>
         <title>Thefersh.com</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <nav className="h-10 bg-win-200 shadow-md">
-          <div className="container mx-auto w-full h-full flex justify-between items-center">
-            <a className="text-sm font-semibold">Thefersh.com</a>
-            <div className="grid gap-2 grid-flow-col">
-              <a className="btn btn-outline--primary">Iniciar Sesion</a>
-              <a className="btn btn--primary">Iniciar Sesion</a>
-            </div>
+        <NavbarPublic />
+
+        <div className="mx-auto container h-80	bg-win-200 grid grid-cols-2 gap-4 px-10 py-10">
+          <div className="flex flex-col justify-center">
+            <h1 className="text-3xl">Hola, soy Fernando</h1>
+            <p>Soy un desarrollador web</p>
           </div>
-        </nav>
+          <div className="grid grid-cols-5 grid-flow-row content-center gap-4 select-none">
+            {staks.map((x, i) => (
+              <div
+                className="flex items-center col-span-1"
+                key={i}
+                style={{ gridColumnStart: i + 2 }}
+              >
+                <Img src={x.src} alt={x.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2 container mx-auto h-16">
+          <a
+            href="https://www.youtube.com/channel/UC_nMwrzCN1f0OkqTQ2l3z7Q"
+            target="_blank"
+            className="flex items-center justify-center h-full"
+            rel="noreferrer"
+          >
+            <Img src={YoutubeIcon} alt="Youtube" />
+            <span className="ml-2">The fersh</span>
+          </a>
+          <a
+            href="https://github.com/thefersh"
+            target="_blank"
+            className="flex items-center justify-center h-full"
+            rel="noreferrer"
+          >
+            <Img src={GithubIcon} alt="Github" />
+            <span className="ml-2">thefersh</span>
+          </a>
+          <a
+            href="https://twitter.com/thefersh24"
+            target="_blank"
+            className="flex items-center justify-center h-full"
+            rel="noreferrer"
+          >
+            <Img src={TwitterIcon} alt="Twitter" />
+            <span className="ml-2">thefersh24</span>
+          </a>
+        </div>
       </main>
-    </div>
+    </>
   )
 }
 

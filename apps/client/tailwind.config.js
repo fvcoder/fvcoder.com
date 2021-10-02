@@ -12,6 +12,7 @@ module.exports = {
         },
         win: {
           100: '#ffffff',
+          150: '#F3F2F1',
           200: '#f3f3f3'
         }
       }

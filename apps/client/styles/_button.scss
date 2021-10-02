@@ -8,18 +8,21 @@
   @apply border;
   @apply inline-flex;
   @apply items-center;
-  @apply justify-center;
   @apply cursor-pointer;
   @apply align-middle;
   @apply relative;
   @apply select-none;
   @apply leading-6;
-  @apply focus:outline-none;
   @apply focus:ring-1;
   @apply focus:ring-offset-1;
   @apply focus:ring-gray-700;
 }
+/** btn utils */
+.btn-center{
+  @apply justify-center;
+}
 
+/** btn variantes */
 .btn--primary{
   @apply focus:ring-offset-gray-100;
   @apply bg-primary-500;
@@ -36,5 +39,16 @@
   @apply hover:text-primary-400;
   @apply bg-transparent;
   @apply text-primary-500;
+}
+
+.btn-outline--nv-item {
+  @apply focus:ring-offset-gray-100;
+  @apply focus:border-gray-800;
+  @apply active:text-gray-900;
+  @apply active:border-gray-900;
+  @apply hover:border-gray-800;
+  @apply hover:text-gray-800;
+  @apply bg-transparent;
+  @apply text-gray-700;
 }
 
