@@ -24,9 +24,8 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <NavbarPublic />
-
-        <div className="mx-auto container h-80	bg-win-200 grid grid-cols-2 gap-4 px-10 py-10">
-          <div className="flex flex-col justify-center">
+        <div className="mx-auto container h-auto md:h-80 bg-win-200 grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-4 px-5 md:px-10 py-10">
+          <div className="flex flex-col justify-center text-center md:text-left">
             <h1 className="text-3xl">Hola, soy Fernando</h1>
             <p>Soy un desarrollador web</p>
           </div>
@@ -42,7 +41,7 @@ const Home: NextPage = () => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 container mx-auto h-16">
+        <div className="grid grid-flow-col gap-2 container mx-auto h-16">
           <a
             href="https://www.youtube.com/channel/UC_nMwrzCN1f0OkqTQ2l3z7Q"
             target="_blank"
@@ -50,7 +49,7 @@ const Home: NextPage = () => {
             rel="noreferrer"
           >
             <Img src={YoutubeIcon} alt="Youtube" />
-            <span className="ml-2">The fersh</span>
+            <span className="ml-2 hidden md:inline">The fersh</span>
           </a>
           <a
             href="https://github.com/thefersh"
@@ -59,7 +58,7 @@ const Home: NextPage = () => {
             rel="noreferrer"
           >
             <Img src={GithubIcon} alt="Github" />
-            <span className="ml-2">thefersh</span>
+            <span className="ml-2 hidden md:inline">thefersh</span>
           </a>
           <a
             href="https://twitter.com/thefersh24"
@@ -68,7 +67,7 @@ const Home: NextPage = () => {
             rel="noreferrer"
           >
             <Img src={TwitterIcon} alt="Twitter" />
-            <span className="ml-2">thefersh24</span>
+            <span className="ml-2 hidden md:inline">thefersh24</span>
           </a>
         </div>
       </main>
