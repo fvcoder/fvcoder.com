@@ -6,20 +6,28 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          400: '#585a96',
-          500: '#6264a7',
-          600: '#464775'
+          50: '#f9fafb',
+          100: '#eff0fb',
+          200: '#ddd5f7',
+          300: '#bfafec',
+          400: '#a984df',
+          500: '#915fd3',
+          600: '#7743bf',
+          700: '#59329b',
+          800: '#3d236d',
+          900: '#221640'
         },
-        win: {
-          100: '#ffffff',
-          150: '#F3F2F1',
-          200: '#f3f3f3'
+        gr: {
+          500: '#E5E9F2'
         }
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif']
       }
     }
   },
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [require('@tailwindcss/aspect-ratio')]
 }

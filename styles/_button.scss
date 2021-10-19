@@ -1,54 +1,31 @@
-.btn {
-  @apply border-transparent;
-  @apply text-sm;
-  @apply font-semibold;
-  @apply rounded;
-  @apply px-5;
-  @apply transition;
-  @apply border;
-  @apply inline-flex;
-  @apply items-center;
-  @apply cursor-pointer;
-  @apply align-middle;
-  @apply relative;
+@mixin btn-base {
+  @apply font-inter;
+  @apply rounded-md;
   @apply select-none;
+}
+
+// tamaño
+.btn {
+  @apply text-sm;
+  @apply py-2.5;
+  @apply px-5;
+  @apply leading-5;
+  @include btn-base;
+}
+
+.btn-lg {
+  @apply text-base;
+  @apply py-4;
+  @apply px-8;
   @apply leading-6;
-  @apply focus:ring-1;
-  @apply focus:ring-offset-1;
-  @apply focus:ring-gray-700;
-}
-/** btn utils */
-.btn-center{
-  @apply justify-center;
+  @include btn-base;
 }
 
-/** btn variantes */
-.btn--primary{
-  @apply focus:ring-offset-gray-100;
+
+// colores
+.btn-primary {
   @apply bg-primary-500;
-  @apply hover:bg-primary-400;
-  @apply active:bg-primary-600;
   @apply text-white;
+  @apply hover:bg-purple-600;
+  @apply active:bg-purple-700;
 }
-
-.btn-outline--primary{
-  @apply focus:ring-offset-gray-100;
-  @apply active:text-primary-600;
-  @apply active:border-primary-600;
-  @apply hover:border-primary-400;
-  @apply hover:text-primary-400;
-  @apply bg-transparent;
-  @apply text-primary-500;
-}
-
-.btn-outline--nv-item {
-  @apply focus:ring-offset-gray-100;
-  @apply focus:border-gray-800;
-  @apply active:text-gray-900;
-  @apply active:border-gray-900;
-  @apply hover:border-gray-800;
-  @apply hover:text-gray-800;
-  @apply bg-transparent;
-  @apply text-gray-700;
-}
-
