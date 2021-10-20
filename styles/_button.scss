@@ -5,6 +5,13 @@
 }
 
 // tamaño
+.btn-sm {
+  @apply text-sm;
+  @apply py-1.5;
+  @apply px-2.5;
+  @apply leading-5;
+  @include btn-base;
+}
 .btn {
   @apply text-sm;
   @apply py-2.5;

@@ -2,9 +2,14 @@ import React from 'react'
 import { NextPage } from 'next'
 import Img from 'next/image'
 import Head from 'next/head'
-import { Navbar } from '../components/navbar'
+import { Navbar, NavbarAuth } from '../components/navbar'
 import JSImg from './../assets/image/js.png'
-const Home: NextPage = () => {
+import { getSession, useSession } from 'next-auth/client'
+import { Session } from 'next-auth'
+
+type PageI<T> = { session: Session | null } & T
+
+const HomeNoAuth = () => {
   return (
     <>
       <Head>
@@ -43,6 +48,26 @@ const Home: NextPage = () => {
       </main>
     </>
   )
+}
+
+const HomeAuth = () => {
+  return (
+    <>
+      <NavbarAuth />
+      <div>main</div>
+    </>
+  )
+}
+
+const Home: NextPage<PageI<unknown>> = () => {
+  const [session] = useSession()
+  return !session?.user ? <HomeNoAuth /> : <HomeAuth />
+}
+
+Home.getInitialProps = async ctx => {
+  return {
+    session: await getSession(ctx)
+  }
 }
 
 export default Home

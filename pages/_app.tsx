@@ -2,9 +2,15 @@ import 'tailwindcss/tailwind.css'
 import './../styles/index.scss'
 import React from 'react'
 import { AppProps } from 'next/app'
+import { Provider } from 'next-auth/client'
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps }
+}: AppProps) {
+  return (
+    <Provider session={session}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }
-
-export default MyApp
