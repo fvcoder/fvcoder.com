@@ -53,8 +53,15 @@ const HomeNoAuth = () => {
 const HomeAuth = () => {
   return (
     <>
+      <Head>
+        <title>Inicio</title>
+      </Head>
       <NavbarAuth />
-      <div>main</div>
+      <main className="container mx-auto">
+        <p>podcast</p>
+        <p>videos recientes</p>
+        <p>estados de proyectos</p>
+      </main>
     </>
   )
 }

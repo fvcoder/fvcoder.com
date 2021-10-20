@@ -54,7 +54,7 @@ function ProfileBtn() {
         >
           <Menu.Items
             as="ul"
-            className="absolute right-0 w-56 mt-3 origin-top-right bg-white divide-y divide-gr-500 rounded-md shadow-md focus:outline-none border border-gr-500"
+            className="absolute right-0 w-full md:w-56 mt-3 origin-top-right bg-white divide-y divide-gr-500 rounded-md shadow-md focus:outline-none border border-gr-500"
           >
             {options.map((x, i) => (
               <Menu.Item key={`DroptodownProfile${i}`}>
