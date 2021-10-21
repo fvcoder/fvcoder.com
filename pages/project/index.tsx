@@ -5,10 +5,30 @@ import Prismic from '@prismicio/client'
 import { Document } from '@prismicio/client/types/documents'
 import Link from 'next/link'
 import { Navbar } from '../../components/navbar'
+import Head from 'next/head'
 
 const Project: NextPage<{ post: Document[] }> = ({ post }) => {
+  const title = 'Proyectos de Fernando Ticona | thefersh.com'
+  const description =
+    'Fernando Ticona: Estos son mis proyectos como desarrollador web'
+  const seoUrl = 'https://thefersh.com/project'
   return (
     <>
+      <Head>
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={seoUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content={seoUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+      </Head>
       <Navbar />
       <main>
         <section

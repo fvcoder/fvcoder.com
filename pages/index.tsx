@@ -9,10 +9,12 @@ import AngularImg from './../assets/image/angular.png'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import EyeIcon from '@heroicons/react/outline/EyeIcon'
-import Client from '../util/prismic'
-import { useGetStaticProps } from 'next-slicezone/hooks'
 
 const HomeNoAuth = () => {
+  const title = 'Fernando Ticona | thefersh.com'
+  const description =
+    'Desarrollador Frontend | React js | Angular | Sass | Node Js'
+  const seoUrl = 'https://thefersh.com/'
   const skills = [
     { img: ReactImg, name: 'React', path: '/skill/react' },
     { img: JSImg, name: 'Javascript', path: '/skill/javascript' },
@@ -21,8 +23,19 @@ const HomeNoAuth = () => {
   return (
     <>
       <Head>
-        <title>Thefersh.com</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={seoUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content={seoUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
       </Head>
       <main>
         <Navbar />
