@@ -54,7 +54,7 @@ function ProfileBtn() {
         >
           <Menu.Items
             as="ul"
-            className="absolute right-0 w-full md:w-56 mt-3 origin-top-right bg-white divide-y divide-gr-500 rounded-md shadow-md focus:outline-none border border-gr-500"
+            className="absolute right-0 w-screen md:w-56 mt-3 origin-top-right bg-white divide-y divide-gr-500 rounded-md shadow-md focus:outline-none border border-gr-500"
           >
             {options.map((x, i) => (
               <Menu.Item key={`DroptodownProfile${i}`}>
@@ -102,8 +102,8 @@ function ProfileBtn() {
 
 export function Navbar(): JSX.Element {
   const links = [
-    { name: 'Recompensas', path: '/' },
-    { name: 'Proyectos', path: '/' }
+    /* { name: 'Recompensas', path: '/' }, */
+    { name: 'Proyectos', path: '/project' }
   ]
   return (
     <>
@@ -130,10 +130,7 @@ export function Navbar(): JSX.Element {
             </div>
           </div>
           <div className="flex items-center">
-            <button
-              className="btn btn-primary inline-block"
-              onClick={() => signIn()}
-            >
+            <button className="btn btn-primary hidden" onClick={() => signIn()}>
               Iniciar Sesion
             </button>
           </div>
