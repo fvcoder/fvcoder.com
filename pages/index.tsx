@@ -43,7 +43,7 @@ const HomeNoAuth = () => {
           <div className="py-12 md:py-24 grid grid-rows-none	grid-cols-1 md:grid-cols-2 md:grid-rows-1">
             <div className="grid grid-flow-row grid-cols-1 gap-8">
               <h1
-                className="text-7xl font-inter font-bold"
+                className="text-6xl md:text-7xl font-inter font-bold"
                 style={{ lineHeight: '98px' }}
               >
                 Hola, soy Fernando
@@ -52,7 +52,7 @@ const HomeNoAuth = () => {
                 Soy un desarrollador web y creador de contenido
               </p>
               <div>
-                <button className="btn-lg btn-primary  md:hidden inline-block">
+                <button className="btn-lg btn-primary  md:hidden hidden">
                   Ver Recompensas
                 </button>
               </div>
@@ -71,9 +71,9 @@ const HomeNoAuth = () => {
           </div>
         </header>
         <section className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-0">
             <Link href="/project">
-              <a className="btn btn-primary inline-block col-start-2 text-center">
+              <a className="btn btn-primary inline-block md:col-start-2 text-center">
                 Ver Proyectos
               </a>
             </Link>
