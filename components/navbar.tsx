@@ -8,6 +8,7 @@ import CogIconOut from '@heroicons/react/outline/CogIcon'
 import CogIconSol from '@heroicons/react/solid/CogIcon'
 import LogoutIconOut from '@heroicons/react/outline/LogoutIcon'
 import LogoutIconSol from '@heroicons/react/solid/LogoutIcon'
+import Button from '@mui/material/Button'
 
 function ProfileBtn() {
   const [session, loading] = useSession()
@@ -100,9 +101,10 @@ function ProfileBtn() {
   )
 }
 
+/*
 export function Navbar(): JSX.Element {
   const links = [
-    /* { name: 'Recompensas', path: '/' }, */
+    { name: 'Recompensas', path: '/' },
     { name: 'Proyectos', path: '/project' }
   ]
   return (
@@ -137,6 +139,32 @@ export function Navbar(): JSX.Element {
         </div>
       </nav>
     </>
+  )
+}
+*/
+
+export function Navbar(): JSX.Element {
+  return (
+    <nav className="navbar">
+      <div className="navbar-section">
+        <Link href="/">
+          <a
+            role="img"
+            aria-label="Thefersh.com logo"
+            className="font-roboto text-sm font-bold inline-block select-none"
+          >
+            Thefersh.com
+          </a>
+        </Link>
+      </div>
+      <div className="navbar-section">
+        <Link href="/project">
+          <Button color="inherit" component="a">
+            Proyectos
+          </Button>
+        </Link>
+      </div>
+    </nav>
   )
 }
 

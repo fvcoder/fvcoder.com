@@ -5,6 +5,9 @@ import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 import Head from 'next/head'
 import TagManager from 'react-gtm-module'
+import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import theme from './../src/theme'
 
 export default function App({
   Component,
@@ -18,7 +21,10 @@ export default function App({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </Provider>
   )
 }

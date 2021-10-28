@@ -1,25 +1,18 @@
 import React from 'react'
 import { NextPage } from 'next'
-import Img from 'next/image'
 import Head from 'next/head'
 import { Navbar, NavbarAuth } from '../components/navbar'
-import JSImg from './../assets/image/js.png'
-import ReactImg from './../assets/image/react.png'
-import AngularImg from './../assets/image/angular.png'
+import { Footer } from '../components/footer'
 import { useSession } from 'next-auth/client'
-import Link from 'next/link'
 import EyeIcon from '@heroicons/react/outline/EyeIcon'
+import { ContentSection } from '../components/pages/index/content.p'
+import { Header } from '../components/pages/index/header.p'
 
 const HomeNoAuth = () => {
   const title = 'Fernando Ticona | thefersh.com'
   const description =
     'Desarrollador Frontend | React js | Angular | Sass | Node Js'
   const seoUrl = 'https://thefersh.com/'
-  const skills = [
-    { img: ReactImg, name: 'React', path: '/skill/react' },
-    { img: JSImg, name: 'Javascript', path: '/skill/javascript' },
-    { img: AngularImg, name: 'Angular', path: '/skill/angular' }
-  ]
   return (
     <>
       <Head>
@@ -39,46 +32,9 @@ const HomeNoAuth = () => {
       </Head>
       <main>
         <Navbar />
-        <header className="container mx-auto px-4 md:px-0">
-          <div className="py-12 md:py-24 grid grid-rows-none	grid-cols-1 md:grid-cols-2 md:grid-rows-1">
-            <div className="grid grid-flow-row grid-cols-1 gap-8">
-              <h1
-                className="text-6xl md:text-7xl font-inter font-bold"
-                style={{ lineHeight: '98px' }}
-              >
-                Hola, soy Fernando
-              </h1>
-              <p className="font-inter leading-8 text-lg font-normal">
-                Soy un desarrollador web y creador de contenido
-              </p>
-              <div>
-                <button className="btn-lg btn-primary  md:hidden hidden">
-                  Ver Recompensas
-                </button>
-              </div>
-            </div>
-            <div className="row-start-1 md:col-start-2 pb-4">
-              <div className="w-full h-full flex flex-wrap gap-4 justify-center items-center">
-                {skills.map((x, i) => (
-                  <Link href={'/'} key={`skilsimg${i}`}>
-                    <a className="w-12 h-12">
-                      <Img src={x.img} alt={x.name} width={48} height={48} />
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </header>
-        <section className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-0">
-            <Link href="/project">
-              <a className="btn btn-primary inline-block md:col-start-2 text-center">
-                Ver Proyectos
-              </a>
-            </Link>
-          </div>
-        </section>
+        <Header />
+        <ContentSection />
+        <Footer />
       </main>
     </>
   )
