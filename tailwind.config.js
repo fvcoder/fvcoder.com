@@ -18,11 +18,13 @@ module.exports = {
           900: '#221640'
         },
         gr: {
-          500: '#E5E9F2'
+          500: '#E5E9F2',
+          900: '#18191F'
         }
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif']
+        inter: ['Inter', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif']
       }
     }
   },

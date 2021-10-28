@@ -8,8 +8,12 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
+    "@mui/icons-material": "^5.0.5",
+    "@mui/material": "^5.0.6",
     "@prismicio/client": "^5.1.0",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/typography": "^0.4.1",
