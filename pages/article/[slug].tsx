@@ -50,6 +50,17 @@ const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
               )}
             </small>
             <parse.RichText render={post.data.body} />
+            {(post.data.resource as string).split(/\n/).map((x, i) => (
+              <a
+                href={x}
+                target="_blank"
+                className="block"
+                key={`link-${i}`}
+                rel="noreferrer"
+              >
+                {x}
+              </a>
+            ))}
             <div>
               {post.tags.map((x, i) => (
                 <span
