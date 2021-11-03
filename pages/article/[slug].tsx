@@ -7,6 +7,7 @@ import moment from 'moment'
 import * as parse from 'prismic-reactjs'
 import { Navbar } from '../../components/navbar'
 import Head from 'next/head'
+import { Footer } from '../../components/footer'
 
 const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
   post,
@@ -26,7 +27,7 @@ const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
           property="og:description"
           content={post.data.description[0].text}
         />
-        <meta property="og:image" content={post.data.image_cover.url} />
+        <meta property="og:image" content={post.data.image.url} />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={seoUrl} />
@@ -35,15 +36,12 @@ const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
           property="twitter:description"
           content={post.data.description[0].text}
         />
-        <meta property="twitter:image" content={post.data.image_cover.url} />
+        <meta property="twitter:image" content={post.data.image.url} />
       </Head>
       <Navbar />
       <article>
         <div className="container mx-auto">
-          <img
-            src={post.data.image_cover.url}
-            alt={post.data.image_cover.alt}
-          />
+          <img src={post.data.image.url} alt={post.data.image.alt} />
           <main className="prose mx-auto my-5 px-2 md:px-0">
             <h1>{post.data.title[0].text}</h1>
             <small>
@@ -65,13 +63,14 @@ const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
           </main>
         </div>
       </article>
+      <Footer />
     </>
   )
 }
 
 export async function getStaticPaths() {
   const { results } = await Client().query(
-    Prismic.Predicates.at('document.type', 'projects')
+    Prismic.Predicates.at('document.type', 'blog')
   )
   const paths = results.map(article => {
     return {
@@ -89,11 +88,11 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ctx => {
   try {
     const { slug } = ctx.params
-    const res = await Client().getByUID('projects', slug as string, {})
+    const res = await Client().getByUID('blog', slug as string, {})
     return {
       props: {
         post: res || null,
-        seoUrl: process.env.NEXTAUTH_URL + '/project/' + slug || ''
+        seoUrl: process.env.NEXTAUTH_URL + '/article/' + slug || ''
       }
     }
   } catch (e) {

@@ -1,9 +1,11 @@
 import React from 'react'
 import Img from 'next/image'
+import Link from 'next/link'
 import { Tooltip, Typography } from '@mui/material'
 import JSImg from './../../../assets/image/js.png'
 import ReactImg from './../../../assets/image/react.png'
 import AngularImg from './../../../assets/image/angular.png'
+import socialData from './../../../data/social.data'
 
 export function Header(): JSX.Element {
   const skills = [
@@ -11,27 +13,42 @@ export function Header(): JSX.Element {
     { img: JSImg, name: 'Javascript', path: '/skill/javascript' },
     { img: AngularImg, name: 'Angular', path: '/skill/angular' }
   ]
+
   return (
-    <header className="container mx-auto px-4 md:px-0">
-      <div className="py-12 md:py-24 grid grid-rows-none grid-cols-1 md:grid-cols-2 md:grid-rows-1">
-        <div className="grid grid-flow-row grid-cols-1 gap-8 text-center md:text-left">
-          <Typography variant="h2">Hola, soy Fernando</Typography>
-          <Typography variant="body1">
-            Soy un desarrollador web y creador de contenido
+    <div className="container mx-auto flex my-4">
+      <div className="w-3/4">articulos</div>
+      <div className="w-1/4">
+        <div>
+          <Typography variant="subtitle1" className="mb-3">
+            Habilidades
           </Typography>
-        </div>
-        <div className="row-start-1 md:col-start-2 pb-4">
-          <div className="w-full h-full flex flex-wrap gap-4 justify-center items-center">
+          <div className="flex gap-4">
             {skills.map((x, i) => (
-              <Tooltip key={`skilsimg${i}`} title={x.name}>
-                <a className="w-12 h-12 select-none">
-                  <Img src={x.img} alt={x.name} width={48} height={48} />
+              <Link href={x.path} key={`skillbtn-${i}`}>
+                <Tooltip title={x.name}>
+                  <a>
+                    <Img src={x.img} alt={x.name} width={30} height={30} />
+                  </a>
+                </Tooltip>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="mt-3">
+          <Typography variant="subtitle1" className="mb-3">
+            Redes Sociales
+          </Typography>
+          <div className="flex gap-4">
+            {socialData.map((x, i) => (
+              <Tooltip title={x.name} key={`social-link-${i}`}>
+                <a href={x.redirect} target="_blank" rel="noreferrer">
+                  <Img src={x.icon} alt={x.title} width={30} height={30} />
                 </a>
               </Tooltip>
             ))}
           </div>
         </div>
       </div>
-    </header>
+    </div>
   )
 }
