@@ -1,36 +1,9 @@
-import React from 'react'
 import Prismic from '@prismicio/client'
-import Link from 'next/link'
 import { ApiOptions } from '@prismicio/client/types/Api'
 
 // Constantes
 const apiEndpoint = `https://thefersh.cdn.prismic.io/api/v2`
-const accessToken = process.env.PRISMIC_TOKEN || ''
-/*
-const linkResolver = (doc) => {
-  if (doc.type === 'post') {
-    return `/blog/${doc.uid}`
-  }
-  return '/'
-}
-const hrefResolver = (doc) => {
-  if (doc.type === 'post') {
-    return '/blog/[uid]'
-  }
-  return '/'
-}
-
-
-export const customLink = (type, element, content, children, index) => (
-  <Link
-    key={index}
-    href={hrefResolver(element.data)}
-    as={linkResolver(element.data)}
-  >
-    <a>{content}</a>
-  </Link>
-)
-*/
+const accessToken = process.env.NEXT_PUBLIC_PRISMIC_TOKEN || ''
 
 // Client method to query documents from the Prismic repo
 export const Client = (req = null) =>

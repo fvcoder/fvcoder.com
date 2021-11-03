@@ -4,6 +4,15 @@ const nextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizeCss: true
+  },
+  redirects: () => {
+    return [
+      {
+        source: '/article',
+        destination: '/',
+        permanent: true
+      }
+    ]
   }
 }
 
