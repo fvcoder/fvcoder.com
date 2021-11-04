@@ -1,8 +1,7 @@
 import React from 'react'
-import { NextPage, GetStaticProps } from 'next'
+import { NextPage } from 'next'
 import Client from '../../util/prismic'
 import { Document } from '@prismicio/client/types/documents'
-import Prismic from '@prismicio/client'
 import moment from 'moment'
 import * as parse from 'prismic-reactjs'
 import { Navbar } from '../../components/navbar'
@@ -41,7 +40,11 @@ const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
       <Navbar />
       <article>
         <div className="container mx-auto">
-          <img src={post.data.image.url} alt={post.data.image.alt} />
+          <img
+            src={post.data.image.url}
+            alt={post.data.image.alt}
+            className="mx-auto"
+          />
           <main className="prose mx-auto my-5 px-2 md:px-0">
             <h1>{post.data.title[0].text}</h1>
             <small>
@@ -79,40 +82,18 @@ const PBlog: NextPage<{ post: Document; seoUrl: string }> = ({
   )
 }
 
-export async function getStaticPaths() {
-  const { results } = await Client().query(
-    Prismic.Predicates.at('document.type', 'blog')
-  )
-  const paths = results.map(article => {
-    return {
-      params: {
-        slug: article.uid
-      }
-    }
-  })
-  return {
-    paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ctx => {
+PBlog.getInitialProps = async ctx => {
   try {
-    const { slug } = ctx.params
+    const { slug } = ctx.query
     const res = await Client().getByUID('blog', slug as string, {})
     return {
-      props: {
-        post: res || null,
-        seoUrl: process.env.NEXTAUTH_URL + '/article/' + slug || ''
-      }
+      post: res || null,
+      seoUrl: process.env.NEXTAUTH_URL + '/article/' + slug || ''
     }
   } catch (e) {
-    console.log(e)
     return {
-      props: {
-        post: null,
-        seoUrl: ''
-      }
+      post: null,
+      seoUrl: ''
     }
   }
 }
