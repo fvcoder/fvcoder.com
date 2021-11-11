@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { Navbar } from '../components/navbar'
-import { Footer } from '../components/footer'
-import { Content } from '../components/pages/index/content.p'
-import Client from '../util/prismic'
+import { Navbar } from '../../components/navbar'
+import { Footer } from '../../components/footer'
+import { Content } from '../../components/pages/index/content.p'
+import Client from '../../util/prismic'
 import Prismic from '@prismicio/client'
 import { Document } from '@prismicio/client/types/documents'
 import { Stack, Pagination } from '@mui/material'
@@ -14,17 +14,19 @@ interface Blog {
   article: Document[]
   page: number
   totalPages: number
-  nextPage: string
-  prevPage: string
 }
 
-const Home: NextPage<Blog> = a => {
+const HomePage: NextPage<Blog> = a => {
   const router = useRouter()
   const [page, setPage] = useState(a.page || 1)
 
   const pageChange = (n: unknown, v: number) => {
     setPage(v)
-    router.push(`/page/${v}`)
+    if (v === 1) {
+      router.push(`/`)
+    } else {
+      router.push(`/page/${v}`)
+    }
   }
 
   const title = 'Fernando Ticona | thefersh.com'
@@ -57,15 +59,13 @@ const Home: NextPage<Blog> = a => {
       <main>
         <Navbar />
         <Content article={artcles}>
-          {a.totalPages > 1 ? (
-            <Stack spacing={2} sx={{ alignItems: 'center', margin: '1rem 0' }}>
-              <Pagination
-                count={a.totalPages}
-                page={page}
-                onChange={pageChange}
-              />
-            </Stack>
-          ) : null}
+          <Stack spacing={2} sx={{ alignItems: 'center', margin: '1rem 0' }}>
+            <Pagination
+              count={a.totalPages}
+              page={page}
+              onChange={pageChange}
+            />
+          </Stack>
         </Content>
         <Footer />
       </main>
@@ -73,32 +73,30 @@ const Home: NextPage<Blog> = a => {
   )
 }
 
-Home.getInitialProps = async ctx => {
+HomePage.getInitialProps = async ctx => {
   try {
     const art = await Client(ctx.req).query(
       Prismic.predicates.at('document.type', 'blog'),
       {
         orderings: '[document.first_publication_date desc]',
         pageSize: 7,
-        page: 1
+        page: Number.isNaN(Number(ctx.query.number))
+          ? 1
+          : Number(ctx.query.number)
       }
     )
     return {
       article: art.results,
       page: art.page,
-      totalPages: art.total_pages,
-      nextPage: art.next_page,
-      prevPage: art.prev_page
+      totalPages: art.total_pages
     }
   } catch (e) {
     return {
       article: [],
       page: 0,
-      totalPages: 0,
-      nextPage: '0',
-      prevPage: '0'
+      totalPages: 0
     }
   }
 }
 
-export default Home
+export default HomePage

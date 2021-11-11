@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import YoutubeImg from './../assets/image/brand/youtube.svg'
 import InstagramImg from './../assets/image/brand/instagram.svg'
+import TwitterImg from './../assets/image/brand/twitter.svg'
 
 interface socialMediaI {
   icon: any
@@ -21,6 +22,12 @@ const social: socialMediaI[] = [
     name: 'thefersh24',
     title: 'Instagram',
     redirect: 'https://www.instagram.com/thefersh24/'
+  },
+  {
+    icon: TwitterImg,
+    name: 'thefersh24',
+    title: 'Twitter',
+    redirect: 'https://www.twitter.com/thefersh24/'
   }
 ]
 
