@@ -8,27 +8,9 @@ import AngularImg from './../../../assets/image/angular.png'
 import socialData from './../../../data/social.data'
 import PropTypes, { InferProps } from 'prop-types'
 
-function ArticleItem() {
-  const title = 'Titulo del articulo en el cual se ve algo'
-  const descrption =
-    'una descripsion variada en la cual todo es texto, un poco largo'
-  return (
-    <Link href="/">
-      <a className="flex gap-4 rounded-md items-center p-3 select-none hover:bg-gray-100">
-        <Img src={JSImg} alt={'icon'} width={60} height={60} />
-        <div>
-          <Typography variant="subtitle1">{title}</Typography>
-          <Typography variant="body1" className="text-gray-500">
-            {descrption}
-          </Typography>
-        </div>
-      </a>
-    </Link>
-  )
-}
-
 export function Content({
-  article
+  article,
+  children
 }: InferProps<typeof Content.propTypes>): JSX.Element {
   const skills = [
     { img: ReactImg, name: 'React', path: '/skill/react' },
@@ -60,6 +42,7 @@ export function Content({
             </Link>
           ))}
         </div>
+        {children}
       </div>
       <aside className="w-full md:w-1/4 px-4 md:px-0">
         <div>
@@ -68,13 +51,11 @@ export function Content({
           </Typography>
           <div className="flex gap-4">
             {skills.map((x, i) => (
-              <Link href={x.path} key={`skillbtn-${i}`}>
-                <Tooltip title={x.name}>
-                  <a>
-                    <Img src={x.img} alt={x.name} width={30} height={30} />
-                  </a>
-                </Tooltip>
-              </Link>
+              <Tooltip title={x.name} key={`skillbtn-${i}`}>
+                <a>
+                  <Img src={x.img} alt={x.name} width={30} height={30} />
+                </a>
+              </Tooltip>
             ))}
           </div>
         </div>
@@ -105,5 +86,6 @@ Content.propTypes = {
       img: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  children: PropTypes.node
 }

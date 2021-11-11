@@ -27,6 +27,19 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css"
+            integrity="sha512-4chYZ6A4vvq/i1Aihe1dEkNNLEjy0zuZqTL65CncfJoKxxMPDwrEpD9jB9kJY+Fa35sA8YbAowsdFGHNf5re+g=="
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+          />
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"
+            integrity="sha512-2cbsQGdowNDPcKuoBd2bCcsJky87Mv0LEtD/nunJUgk6MOYTgVMGihS/xCEghNf04DPhNiJ4DZw5BxDd1uyOdw=="
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+          ></script>
         </Head>
         <body>
           <Main />
