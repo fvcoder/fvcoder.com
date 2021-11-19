@@ -137,7 +137,7 @@ PBlog.getInitialProps = async ctx => {
     const res = await Client().getByUID('blog', slug as string, {})
     return {
       post: res || null,
-      seoUrl: process.env.NEXTAUTH_URL + '/article/' + slug || ''
+      seoUrl: process.env.NEXT_PUBLIC_URL + '/article/' + slug || ''
     }
   } catch (e) {
     return {
