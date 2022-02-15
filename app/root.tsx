@@ -4,20 +4,44 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
-import styles from "./styles/app.css"
+import styles from "./styles/app.css";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  const description =
+    "Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva.";
+  const title = "Fernando Ticona | Desarrollador web Frontend";
+  return {
+    title,
+    description,
+    "twitter:card": "summary",
+    "twitter:creator": "@thefersh24",
+    "twitter:site": "@thefersh24",
+    "twitter:title": title,
+    "twitter:description": description,
+    "og:type": "website",
+    "og:title": title,
+    "og:description": description,
+  };
 };
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }]
+  return [
+    {
+      rel: "preconnect",
+      href: "https://fonts.googleapis.com",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;700&display=swap",
+    },
+    { rel: "stylesheet", href: styles },
+  ];
 }
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <html lang="en">
       <head>
