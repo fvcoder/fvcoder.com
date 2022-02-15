@@ -61,7 +61,7 @@ export default function Index() {
         </div>
         <div className="w-full lg:w-2/5 xl:w-1/4">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg">Articulos</h2>
+            <h2 className="text-lg">Proyectos</h2>
             <Link
               to="/project"
               className="text-sm hidden md:block hover:underline"
