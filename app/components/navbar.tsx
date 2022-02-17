@@ -13,7 +13,7 @@ export function Navbar(): JSX.Element {
           className="flex items-center gap-2 text-dark border border-red rounded-lg p-2.5"
           download={true}
         >
-          <span className="hidden md:block">Descargar</span>
+          <span className="hidden md:block">Descargar Cv</span>
           <CloudDownloadIcon className="w-5 h-auto" />
         </a>
       </div>

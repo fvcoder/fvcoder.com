@@ -4,3 +4,8 @@
 html, body {
   font-family: 'Mulish', sans-serif;
 }
+
+.share-social-network > svg {
+  width: 30px;
+  height: auto;
+}
