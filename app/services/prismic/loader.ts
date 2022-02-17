@@ -85,3 +85,21 @@ export async function BlogPostLoader(slug: string): Promise<PrismicDocument> {
     tags: d.tags,
   };
 }
+
+export async function ProjectLoader(limit = 9): Promise<PrismicDocumentMeta[]> {
+  const data = await client.getByType("projects", {
+    orderings: {
+      field: "document.first_publication_date",
+      direction: "desc",
+    },
+    pageSize: limit,
+  });
+  return data.results.map((x) => {
+    return {
+      uid: x.uid as string,
+      title: x.data.title[0].text as string,
+      image: x.data.image_cover.url as string,
+      lastPublicationDate: dateFormat(x.last_publication_date),
+    };
+  });
+}
