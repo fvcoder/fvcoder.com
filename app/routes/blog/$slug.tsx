@@ -1,4 +1,9 @@
-import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
+import {
+  LoaderFunction,
+  MetaFunction,
+  useLoaderData,
+  LinksFunction,
+} from "remix";
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
 import { BlogPostLoader, PrismicDocument } from "~/services/prismic";
@@ -12,6 +17,10 @@ interface LoaderDataI extends PrismicDocument {
 
 export const meta: MetaFunction = MetatagsBlog();
 
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: "https://indestructibletype.com/fonts/Jost.css" },
+];
+
 export const loader: LoaderFunction = async (req) => {
   const data = await BlogPostLoader(req.params.slug as string);
   return { ...data, url: req.request.url };
@@ -22,7 +31,10 @@ export default function BlogPost(): JSX.Element {
   return (
     <>
       <Navbar />
-      <main className="mb-12">
+      <main
+        className="mb-12"
+        style={{ fontFamily: "'Jost','Mulish', sans-serif" }}
+      >
         <header className="prose mx-auto px-4 mx:px-0 mb-5">
           <img
             src={d.image}
