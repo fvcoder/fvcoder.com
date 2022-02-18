@@ -7,7 +7,7 @@ import { MetatagsPage } from "~/utils/metatags";
 
 export const loader = async () => {
   try {
-    await BlogLoader(10);
+    return await BlogLoader(10);
   } catch {
     throw new Response("Not Found", {
       status: 404,

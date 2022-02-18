@@ -6,8 +6,7 @@ import { PrismicDocumentMeta, ProjectLoader } from "~/services/prismic";
 
 export const loader: LoaderFunction = async () => {
   try {
-    const data = await ProjectLoader();
-    return data;
+    return await ProjectLoader();
   } catch {
     throw new Response("Not Found", {
       status: 404,

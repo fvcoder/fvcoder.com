@@ -7,7 +7,7 @@ import { IndexLoader, IndexLoaderI } from "~/services/prismic";
 
 export const loader: LoaderFunction = async () => {
   try {
-    await IndexLoader();
+    return await IndexLoader();
   } catch {
     throw new Response("Not Found", {
       status: 404,
