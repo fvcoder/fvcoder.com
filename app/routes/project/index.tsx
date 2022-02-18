@@ -1,4 +1,5 @@
-import { Link, LoaderFunction, useLoaderData } from "remix";
+import { LoaderFunction, useLoaderData } from "remix";
+import { CardProject } from "~/components/card/project";
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
 import { PrismicDocumentMeta, ProjectLoader } from "~/services/prismic";
@@ -7,22 +8,6 @@ export const loader: LoaderFunction = async () => {
   const data = await ProjectLoader();
   return data;
 };
-
-function CardProject({
-  uid,
-  title,
-  image,
-}: Omit<PrismicDocumentMeta, "lastPublicationDate">): JSX.Element {
-  return (
-    <Link
-      to={`/project/${uid}`}
-      className="shadow bg-white rounded-b-lg border border-slate-200"
-    >
-      <img src={image} className="w-full h-auto" alt={`Portada de ${title}`} />
-      <p className="text-base p-2 truncate">{title}</p>
-    </Link>
-  );
-}
 
 export default function ProjectHome(): JSX.Element {
   const d = useLoaderData<PrismicDocumentMeta[]>();

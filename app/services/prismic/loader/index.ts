@@ -1,5 +1,6 @@
 import { client } from "../config";
 import { dateFormat } from "../utils";
+import { ProjectLoader } from "./project";
 import { IndexLoaderI } from "./types";
 
 export async function IndexLoader(limit = 5): Promise<IndexLoaderI> {
@@ -19,7 +20,7 @@ export async function IndexLoader(limit = 5): Promise<IndexLoaderI> {
         lastPublicationDate: dateFormat(x.last_publication_date),
       };
     }),
-    projects: [],
+    projects: await ProjectLoader(3),
   };
 }
 

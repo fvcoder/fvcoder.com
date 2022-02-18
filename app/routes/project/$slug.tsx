@@ -3,6 +3,7 @@ import {
   MetaFunction,
   useLoaderData,
   LinksFunction,
+  Link,
 } from "remix";
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
@@ -56,14 +57,14 @@ export default function BlogPost(): JSX.Element {
           <parse.RichText render={d.data.body} />
 
           {d.documents.map((x, i) => (
-            <a
-              href={`/project/${d.uid}/${x.uid}`}
+            <Link
+              to={`/project/${d.uid}/${x.uid}`}
               className="text-slate-500 bg-slate-200 w-full py-2 px-3 flex items-center gap-1 no-underline  hover:underline hover:text-slate-600"
               key={`project-document-${i + 1}`}
             >
               <DocumentIcon className="w-5 h-5" />
               <span className="flex-1 tru">{x.title}</span>
-            </a>
+            </Link>
           ))}
 
           <div>

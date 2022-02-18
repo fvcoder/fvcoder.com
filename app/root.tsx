@@ -37,6 +37,10 @@ export function links() {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;700&display=swap",
     },
+    {
+      rel: "stylesheet",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css",
+    },
     { rel: "stylesheet", href: styles },
   ];
 }
@@ -48,6 +52,12 @@ export default function App(): JSX.Element {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"
+          integrity="sha512-2cbsQGdowNDPcKuoBd2bCcsJky87Mv0LEtD/nunJUgk6MOYTgVMGihS/xCEghNf04DPhNiJ4DZw5BxDd1uyOdw=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        ></script>
         <Links />
       </head>
       <body>
