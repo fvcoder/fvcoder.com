@@ -5,8 +5,14 @@ import { Navbar } from "~/components/navbar";
 import { PrismicDocumentMeta, ProjectLoader } from "~/services/prismic";
 
 export const loader: LoaderFunction = async () => {
-  const data = await ProjectLoader();
-  return data;
+  try {
+    const data = await ProjectLoader();
+    return data;
+  } catch {
+    throw new Response("Not Found", {
+      status: 404,
+    });
+  }
 };
 
 export default function ProjectHome(): JSX.Element {

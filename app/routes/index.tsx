@@ -5,7 +5,15 @@ import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
 import { IndexLoader, IndexLoaderI } from "~/services/prismic";
 
-export const loader: LoaderFunction = async () => await IndexLoader();
+export const loader: LoaderFunction = async () => {
+  try {
+    await IndexLoader();
+  } catch {
+    throw new Response("Not Found", {
+      status: 404,
+    });
+  }
+};
 
 export default function Index() {
   const data = useLoaderData<IndexLoaderI>();

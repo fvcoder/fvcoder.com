@@ -5,7 +5,15 @@ import { Navbar } from "~/components/navbar";
 import { BlogLoader, PrismicDocumentMeta } from "~/services/prismic";
 import { MetatagsPage } from "~/utils/metatags";
 
-export const loader = async () => await BlogLoader(10);
+export const loader = async () => {
+  try {
+    await BlogLoader(10);
+  } catch {
+    throw new Response("Not Found", {
+      status: 404,
+    });
+  }
+};
 
 export const meta = MetatagsPage({
   title: "Blog de Fernando Ticona",

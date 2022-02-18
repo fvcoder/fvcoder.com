@@ -22,8 +22,14 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async (req) => {
-  const data = await BlogPostLoader(req.params.slug as string);
-  return { ...data, url: req.request.url };
+  try {
+    const data = await BlogPostLoader(req.params.slug as string);
+    return { ...data, url: req.request.url };
+  } catch {
+    throw new Response("Not Found", {
+      status: 404,
+    });
+  }
 };
 
 export default function BlogPost(): JSX.Element {
