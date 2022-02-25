@@ -41,7 +41,7 @@ export async function ProjectPostLoader(
   /**
    * get subDocumentsMetadata
    */
-  const sd = await client.getAllByType("projects");
+  const sd = await client.getAllByTag(slug);
   const document: PrismicDocument[] = sd
     .map((x) => {
       if (x.tags[0] === "readme") return null;
