@@ -10,6 +10,7 @@ import { BlogPostLoader, PrismicDocument } from "~/services/prismic";
 import * as parse from "prismic-reactjs";
 import { shareSocialNetworks } from "~/utils/socialNetwork";
 import { MetatagsBlog } from "~/utils/metatags";
+import { LinkExternal } from "~/utils/link";
 
 interface LoaderDataI extends PrismicDocument {
   url: string;
@@ -64,17 +65,14 @@ export default function BlogPost(): JSX.Element {
             ))}
           </div>
 
-          {(d.data.resource as string).split(/\n/).map((x, i) => (
-            <a
-              href={x}
-              target="_blank"
-              className="block"
-              key={`link-${i}`}
-              rel="noreferrer"
-            >
-              {x}
-            </a>
-          ))}
+          <div className="">
+            <h4>Recursos</h4>
+            <div className="grid gap-4 grid-cols-1">
+              {(d.data.resource as string).split(/\n/).map((x, i) => (
+                <LinkExternal href={x} key={`link-${i}`} />
+              ))}
+            </div>
+          </div>
           <div className="flex justify-between items-center mt-3">
             <p>Comparte</p>
             <div className="flex gap-3">

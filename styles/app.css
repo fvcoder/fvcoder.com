@@ -9,3 +9,8 @@ html, body {
   width: 30px;
   height: auto;
 }
+
+.link-external > .LowerContainer {
+  height: 200px;
+  overflow: hidden;
+}
