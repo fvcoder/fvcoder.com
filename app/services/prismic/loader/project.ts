@@ -12,7 +12,6 @@ export async function ProjectLoader(limit = 9): Promise<PrismicDocumentMeta[]> {
       field: "document.first_publication_date",
       direction: "desc",
     },
-    pageSize: limit,
   });
   const filter = data.results.map((x) => {
     if (x.tags[0] !== "readme") return null;
@@ -23,7 +22,8 @@ export async function ProjectLoader(limit = 9): Promise<PrismicDocumentMeta[]> {
       lastPublicationDate: dateFormat(x.last_publication_date),
     };
   });
-  return filter.filter((x) => x !== null) as PrismicDocumentMeta[];
+  const s = filter.filter((x) => x !== null) as PrismicDocumentMeta[];
+  return s.slice(s.length - limit < 0 ? 0 : s.length - limit, s.length);
 }
 
 export async function ProjectPostLoader(
