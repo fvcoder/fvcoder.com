@@ -64,7 +64,28 @@ export default function App(): JSX.Element {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+
+        {process.env.NODE_ENV === "development" ? (
+          <LiveReload />
+        ) : (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-V67XHX9Q5V"
+            ></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-V67XHX9Q5V');
+        `,
+              }}
+            ></script>
+          </>
+        )}
       </body>
     </html>
   );
