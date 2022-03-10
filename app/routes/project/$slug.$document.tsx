@@ -13,6 +13,7 @@ import {
 import * as parse from "prismic-reactjs";
 import { shareSocialNetworks } from "~/utils/socialNetwork";
 import { MetatagsBlog } from "~/utils/metatags";
+import { RenderBody } from "~/utils/renderBody";
 
 interface LoaderDataI extends PrismicDocumentProject {
   url: string;
@@ -58,7 +59,7 @@ export default function ProjectDocument(): JSX.Element {
           <p>{d.data.description[0].text}</p>
         </header>
         <article className="prose mx-auto px-4 mx:px-0">
-          <parse.RichText render={d.data.body} />
+          <RenderBody render={d.data.body} />
           <div className="flex justify-between items-center mt-3">
             <p>Comparte</p>
             <div className="flex gap-3">

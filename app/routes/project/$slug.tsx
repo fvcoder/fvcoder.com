@@ -12,6 +12,7 @@ import * as parse from "prismic-reactjs";
 import { shareSocialNetworks } from "~/utils/socialNetwork";
 import { MetatagsBlog } from "~/utils/metatags";
 import { DocumentIcon } from "@heroicons/react/solid";
+import { RenderBody } from "~/utils/renderBody";
 
 interface LoaderDataI extends PrismicDocumentProject {
   url: string;
@@ -54,7 +55,7 @@ export default function BlogPost(): JSX.Element {
           <p>{d.data.description[0].text}</p>
         </header>
         <article className="prose mx-auto px-4 mx:px-0">
-          <parse.RichText render={d.data.body} />
+          <RenderBody render={d.data.body} />
 
           {d.documents.map((x, i) => (
             <Link

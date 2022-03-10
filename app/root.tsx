@@ -8,6 +8,7 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "./styles/app.css";
+import highlightStyle from "highlight.js/styles/base16/google-dark.css";
 
 export const meta: MetaFunction = () => {
   const description =
@@ -42,6 +43,7 @@ export function links() {
       href: "https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css",
     },
     { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: highlightStyle },
   ];
 }
 

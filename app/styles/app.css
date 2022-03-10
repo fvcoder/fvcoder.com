@@ -1278,6 +1278,12 @@ html, body {
   overflow: hidden;
 }
 
+pre {
+  color: initial!important;
+  background: initial!important;
+  padding: 0!important;
+}
+
 .hover\:bg-slate-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));

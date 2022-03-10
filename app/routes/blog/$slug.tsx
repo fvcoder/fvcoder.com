@@ -7,10 +7,10 @@ import {
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
 import { BlogPostLoader, PrismicDocument } from "~/services/prismic";
-import * as parse from "prismic-reactjs";
 import { shareSocialNetworks } from "~/utils/socialNetwork";
 import { MetatagsBlog } from "~/utils/metatags";
 import { LinkExternal } from "~/utils/link";
+import { RenderBody } from "~/utils/renderBody";
 
 interface LoaderDataI extends PrismicDocument {
   url: string;
@@ -53,7 +53,7 @@ export default function BlogPost(): JSX.Element {
           <p>{d.data.description[0].text}</p>
         </header>
         <article className="prose mx-auto px-4 mx:px-0">
-          <parse.RichText render={d.data.body} />
+          <RenderBody render={d.data.body} />
           <div>
             {d.tags.map((x, i) => (
               <span
