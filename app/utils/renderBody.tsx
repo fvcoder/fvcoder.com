@@ -5,30 +5,20 @@ import {
   JSXMapSerializer,
 } from "@prismicio/react";
 import Highlight from "react-highlight";
-import hlc from "highlight.js";
+import { CodeByLangHelper } from "./helpers/codeByLang";
+import { LinkByCodeHelper } from "./helpers/linkByCode";
 
 const renderHelpers: JSXMapSerializer | JSXFunctionSerializer = {
+  image: ({ node }) => (
+    <img className="mx-auto" src={node.url} alt={node.alt || ""} />
+  ),
   preformatted: (p) => {
     const t = String(p.text);
-    if (t.startsWith("thefersh")) {
-      const re = /thefersh:(.*)\n/;
-      let language = "";
-      t.replace(re, function (match) {
-        language = match.replace(/thefersh:/, "").replace(/\n/, "");
-        return "";
-      });
-      const code = hlc.highlight(t.replace(/thefersh:(.*)\n/, ""), {
-        language,
-      }).value;
-
-      return (
-        <pre>
-          <code
-            className={"hljs language-" + language}
-            dangerouslySetInnerHTML={{ __html: code }}
-          />
-        </pre>
-      );
+    let e: JSX.Element | null = null;
+    e = CodeByLangHelper({ t });
+    e = LinkByCodeHelper({ t });
+    if (e) {
+      return e;
     }
     return <Highlight>{p.children}</Highlight>;
   },
