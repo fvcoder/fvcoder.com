@@ -14,13 +14,8 @@ const renderHelpers: JSXMapSerializer | JSXFunctionSerializer = {
   ),
   preformatted: (p) => {
     const t = String(p.text);
-    let e: JSX.Element | null = null;
-    e = CodeByLangHelper({ t });
-    e = LinkByCodeHelper({ t });
-    if (e) {
-      return e;
-    }
-    return <Highlight>{p.children}</Highlight>;
+    const e = CodeByLangHelper({ t }) || LinkByCodeHelper({ t });
+    return e || <Highlight>{p.children}</Highlight>;
   },
 };
 

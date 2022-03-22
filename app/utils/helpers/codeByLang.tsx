@@ -1,6 +1,7 @@
 import hlc from "highlight.js";
 
 export function CodeByLangHelper({ t }: { t: string }): JSX.Element | null {
+  let body: JSX.Element | null = null;
   if (t.startsWith("thefersh")) {
     const re = /thefersh:(.*)\n/;
     let language = "";
@@ -12,7 +13,7 @@ export function CodeByLangHelper({ t }: { t: string }): JSX.Element | null {
       language,
     }).value;
 
-    return (
+    body = (
       <pre>
         <code
           className={"hljs language-" + language}
@@ -22,5 +23,5 @@ export function CodeByLangHelper({ t }: { t: string }): JSX.Element | null {
     );
   }
 
-  return null;
+  return body;
 }
