@@ -57,7 +57,7 @@ export default function BlogPost(): JSX.Element {
           <div>
             {d.tags.map((x, i) => (
               <span
-                className="inline-block mr-2 select-none bg-slate-100 rounded-lg text-sm py-1 px-2 border border-slate-200"
+                className="inline-block mr-2 select-none bg-slate-100 rounded-lg text-sm py-1 px-2 border border-slate-200 mb-2"
                 key={`posttag${i}`}
               >
                 {x}
