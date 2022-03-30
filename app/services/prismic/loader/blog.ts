@@ -36,11 +36,19 @@ export async function BlogPostLoader(slug: string): Promise<PrismicDocument> {
       tags: [],
     };
   }
+
+  const lastPublicationDate =
+    new Date(d.last_publication_date) !== new Date(d.first_publication_date)
+      ? `${dateFormat(d.first_publication_date)}. Actualizado ${dateFormat(
+          d.last_publication_date
+        )}`
+      : dateFormat(d.first_publication_date);
+  //
   return {
     uid: d.uid as string,
     title: d.data.title[0].text as string,
     image: d.data.image.url as string,
-    lastPublicationDate: dateFormat(d.last_publication_date),
+    lastPublicationDate,
     data: d.data,
     exist: true,
     tags: d.tags,

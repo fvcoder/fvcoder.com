@@ -13,6 +13,7 @@ import { shareSocialNetworks } from "~/utils/socialNetwork";
 import { MetatagsBlog } from "~/utils/metatags";
 import { DocumentIcon } from "@heroicons/react/solid";
 import { RenderBody } from "~/utils/renderBody";
+import { LinkExternal } from "~/utils/link";
 
 interface LoaderDataI extends PrismicDocumentProject {
   url: string;
@@ -28,10 +29,8 @@ export const loader: LoaderFunction = async (req) => {
   try {
     const data = await ProjectPostLoader(req.params.slug as string);
     return { ...data, url: req.request.url };
-  } catch {
-    throw new Response("Not Found", {
-      status: 404,
-    });
+  } catch (e) {
+    console.error(e);
   }
 };
 
@@ -57,16 +56,17 @@ export default function BlogPost(): JSX.Element {
         <article className="prose mx-auto px-4 mx:px-0">
           <RenderBody render={d.data.body} />
 
-          {d.documents.map((x, i) => (
-            <Link
-              to={`/project/${d.uid}/${x.uid}`}
-              className="text-slate-500 bg-slate-200 w-full py-2 px-3 flex items-center gap-1 no-underline  hover:underline hover:text-slate-600"
-              key={`project-document-${i + 1}`}
-            >
-              <DocumentIcon className="w-5 h-5" />
-              <span className="flex-1 tru">{x.title}</span>
-            </Link>
-          ))}
+          <div className="grid gap-4 grid-cols-1">
+            {d.documents.map((x, i) => (
+              <LinkExternal
+                href={`${new URL(d.url).origin}/blog/${x.uid}`}
+                img={x.image}
+                title={x.title}
+                description={x.lastPublicationDate}
+                key={`project-document-${i + 1}`}
+              />
+            ))}
+          </div>
 
           <div>
             {d.tags.map((x, i) => (

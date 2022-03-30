@@ -29,40 +29,26 @@ export async function ProjectLoader(limit = 9): Promise<PrismicDocumentMeta[]> {
 export async function ProjectPostLoader(
   slug: string
 ): Promise<PrismicDocumentProject> {
-  const d = await client.getByUID("projects", slug);
+  const x = await client.getByUID("projects", slug);
 
-  if (!d || d.tags[0] !== "readme") {
-    throw new Response("Not Found", {
-      status: 404,
-    });
-  }
-  d.tags.splice(d.tags.findIndex((x) => x === "readme"));
+  const docs = await client.getAllByTag(slug);
 
-  /**
-   * get subDocumentsMetadata
-   */
-  const sd = await client.getAllByTag(slug);
-  const document: PrismicDocument[] = sd
-    .map((x) => {
-      if (x.tags[0] === "readme") return null;
-      return {
-        uid: x.uid as string,
-        title: x.data.title[0].text as string,
-        image: x.data.image_cover.url as string,
-        lastPublicationDate: dateFormat(d.last_publication_date),
-      };
-    })
-    .filter((x) => x !== null) as PrismicDocument[];
+  const documents = docs.map((y) => ({
+    image: y.data.image.url,
+    lastPublicationDate: dateFormat(y.last_publication_date),
+    title: y.data.title[0].text,
+    uid: y.uid,
+  })) as PrismicDocumentMeta[];
 
   return {
-    uid: d.uid as string,
-    title: d.data.title[0].text as string,
-    image: d.data.image_cover.url as string,
-    lastPublicationDate: dateFormat(d.last_publication_date),
-    data: d.data,
     exist: true,
-    tags: d.tags,
-    documents: document,
+    uid: x.uid as string,
+    title: x.data.title[0].text,
+    image: x.data.image_cover.url,
+    lastPublicationDate: dateFormat(x.last_publication_date),
+    data: x.data,
+    tags: [],
+    documents,
   };
 }
 

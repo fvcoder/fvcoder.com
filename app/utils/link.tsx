@@ -9,7 +9,19 @@ interface APIResponse {
   hostname: string | null;
 }
 
-export function LinkExternal({ href }: { href: string }): JSX.Element | null {
+interface LinkExternalProps {
+  href: string;
+  title?: string;
+  img?: string;
+  description?: string;
+}
+
+export const LinkExternal: React.FC<LinkExternalProps> = ({
+  href,
+  img,
+  title,
+  description,
+}) => {
   const proxyLink = "https://rlp-proxy.herokuapp.com/v2?url=";
 
   const _isMounted = useRef(true);
@@ -67,7 +79,7 @@ export function LinkExternal({ href }: { href: string }): JSX.Element | null {
       rel="noreferrer"
     >
       <div className="w-16 h-16 flex-none">
-        {metadata?.image ? (
+        {img || metadata?.image ? (
           imgError ? (
             <div className="w-full h-full flex items-center justify-center">
               <LinkIcon className="w-5 h-5" />
@@ -75,7 +87,7 @@ export function LinkExternal({ href }: { href: string }): JSX.Element | null {
           ) : (
             <img
               className="w-full h-full object-cover	m-0"
-              src={metadata?.image || ""}
+              src={img || metadata?.image || ""}
               onError={() => {
                 setImgError(true);
               }}
@@ -89,21 +101,21 @@ export function LinkExternal({ href }: { href: string }): JSX.Element | null {
         )}
       </div>
       <div className="no-underline min-w-0 grow">
-        <h4 className=" my-0 truncate">{metadata?.title}</h4>
+        <h4 className=" my-0 truncate">{title || metadata?.title}</h4>
         <p
           className="text-sm mb-0 text-slate-500 truncate"
           style={{ textDecoration: "none" }}
         >
-          {metadata?.description || href}
+          {description || metadata?.description || href}
         </p>
         <small
           className="text-xs mb-0 text-slate-500 truncate"
           style={{ textDecoration: "none" }}
         >
           {metadata?.siteName ? `${metadata?.siteName} |` : ""}{" "}
-          {metadata?.hostname}
+          {new URL(href).hostname}
         </small>
       </div>
     </a>
   );
-}
+};
