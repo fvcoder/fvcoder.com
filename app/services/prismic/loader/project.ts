@@ -31,7 +31,12 @@ export async function ProjectPostLoader(
 ): Promise<PrismicDocumentProject> {
   const x = await client.getByUID("projects", slug);
 
-  const docs = await client.getAllByTag(slug);
+  const docs = await client.getAllByTag(slug, {
+    orderings: {
+      field: "document.first_publication_date",
+      direction: "asc",
+    },
+  });
 
   const documents = docs.map((y) => ({
     image: y.data.image.url,
