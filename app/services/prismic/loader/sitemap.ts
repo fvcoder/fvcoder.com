@@ -50,13 +50,13 @@ export async function sitemap() {
       {
         url: {
           loc: urlBase,
-          lastmod: new Date().toDateString(),
+          lastmod: new Date().toISOString(),
         },
       },
       {
         url: {
           loc: `${urlBase}blog`,
-          lastmod: new Date().toDateString(),
+          lastmod: new Date().toISOString(),
         },
       },
       {
