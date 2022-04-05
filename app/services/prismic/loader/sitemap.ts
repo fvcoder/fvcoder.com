@@ -1,6 +1,11 @@
 import { client } from "../config";
+import day from "dayjs";
 
 const urlBase = "https://www.thefersh.com/";
+
+function SitemapDateHelper(d: string) {
+  return day(d).format("YYYY-MM-DDTHH:mm:ssZ");
+}
 
 export async function sitemapBlog() {
   const data = await client.getByType("blog", {
@@ -13,7 +18,7 @@ export async function sitemapBlog() {
     return {
       url: {
         loc: `${urlBase}blog/${x.uid}`,
-        lastmod: x.last_publication_date,
+        lastmod: SitemapDateHelper(x.last_publication_date),
       },
     };
   });
@@ -30,7 +35,7 @@ export async function sitemapProjects() {
     return {
       url: {
         loc: `${urlBase}project/${x.uid}`,
-        lastmod: x.last_publication_date,
+        lastmod: SitemapDateHelper(x.last_publication_date),
       },
     };
   });
@@ -50,13 +55,11 @@ export async function sitemap() {
       {
         url: {
           loc: urlBase,
-          lastmod: new Date().toISOString(),
         },
       },
       {
         url: {
           loc: `${urlBase}blog`,
-          lastmod: new Date().toISOString(),
         },
       },
       {
