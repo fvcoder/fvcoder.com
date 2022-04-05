@@ -9,12 +9,12 @@ import {
 export async function ProjectLoader(limit = 9): Promise<PrismicDocumentMeta[]> {
   const data = await client.getByType("projects", {
     orderings: {
-      field: "document.first_publication_date",
+      field: "document.last_publication_date",
       direction: "desc",
     },
+    pageSize: limit,
   });
   const filter = data.results.map((x) => {
-    if (x.tags[0] !== "readme") return null;
     return {
       uid: x.uid as string,
       title: x.data.title[0].text as string,
@@ -22,8 +22,7 @@ export async function ProjectLoader(limit = 9): Promise<PrismicDocumentMeta[]> {
       lastPublicationDate: dateFormat(x.last_publication_date),
     };
   });
-  const s = filter.filter((x) => x !== null) as PrismicDocumentMeta[];
-  return s.slice(s.length - limit < 0 ? 0 : s.length - limit, s.length);
+  return filter;
 }
 
 export async function ProjectPostLoader(
