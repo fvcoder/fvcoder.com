@@ -10,7 +10,7 @@ export function CardPost({
   return (
     <Link
       to={`/blog/${uid}`}
-      className="flex items-start md:items-center flex-col md:flex-row gap-4 py-2 hover:bg-slate-200"
+      className="flex items-start md:items-center flex-col md:flex-row gap-4 py-2 hover:bg-slate-200 -mx-4 px-2 md:-ml-4 md:pl-2 md:mr-0 md:pr-0 rounded-md"
     >
       <img
         src={image}

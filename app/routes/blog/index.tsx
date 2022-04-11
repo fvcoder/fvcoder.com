@@ -1,13 +1,30 @@
-import { useLoaderData } from "remix";
+import { LoaderFunction, useLoaderData } from "remix";
 import { CardPost } from "~/components/card/post";
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
+import { Pagination } from "~/components/pagination";
 import { BlogLoader, PrismicDocumentMeta } from "~/services/prismic";
 import { MetatagsPage } from "~/utils/metatags";
 
-export const loader = async () => {
+interface BlogHomeData {
+  data: PrismicDocumentMeta[];
+  page: number;
+}
+
+export const loader: LoaderFunction = async (ctx) => {
   try {
-    return await BlogLoader(10);
+    const urlQuery = new URL(ctx.request.url);
+    const page = urlQuery.searchParams.has("page")
+      ? Number.isNaN(urlQuery.searchParams.get("page"))
+        ? 1
+        : Number(urlQuery.searchParams.get("page"))
+      : 1;
+
+    console.log(page);
+    return {
+      page,
+      data: await BlogLoader(10),
+    };
   } catch {
     throw new Response("Not Found", {
       status: 404,
@@ -22,7 +39,7 @@ export const meta = MetatagsPage({
 });
 
 export default function BlogHome(): JSX.Element {
-  const data = useLoaderData<PrismicDocumentMeta[]>();
+  const { data, page } = useLoaderData<BlogHomeData>();
   return (
     <>
       <Navbar />
@@ -40,6 +57,7 @@ export default function BlogHome(): JSX.Element {
           />
         ))}
       </section>
+      <Pagination size={6} page={page} />
       <Footer />
     </>
   );

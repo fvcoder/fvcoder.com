@@ -3,6 +3,7 @@ import { CardPost } from "~/components/card/post";
 import { CardProject } from "~/components/card/project";
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
+import { Pagination } from "~/components/pagination";
 import { IndexLoader, IndexLoaderI } from "~/services/prismic";
 
 export const loader: LoaderFunction = async () => {
@@ -66,8 +67,10 @@ export default function Index() {
               key={`article-item-${i + 1}`}
             />
           ))}
+
+          <Pagination size={data.articlesPages} page={1} />
         </div>
-        <div className="w-full lg:w-2/5 xl:w-1/4">
+        <div className="w-full lg:w-2/5 xl:w-1/4 hidden md:block">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg">Proyectos</h2>
             <Link

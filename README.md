@@ -1,5 +1,6 @@
 # Welcome to Remix!
 
+[style base](https://flowbite.com/)
 - [Remix Docs](https://remix.run/docs)
 
 ## Deployment

@@ -11,7 +11,9 @@ export async function IndexLoader(limit = 5): Promise<IndexLoaderI> {
     },
     pageSize: limit,
   });
+
   return {
+    articlesPages: data.total_results_size / limit,
     articles: data.results.map((x) => {
       return {
         uid: x.uid as string,

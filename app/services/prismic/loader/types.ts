@@ -17,6 +17,7 @@ export interface PrismicDocumentProject extends PrismicDocument {
 }
 
 export interface IndexLoaderI {
+  articlesPages: number;
   articles: PrismicDocumentMeta[];
   projects: Omit<PrismicDocumentMeta, "lastPublicationDate">[];
 }
