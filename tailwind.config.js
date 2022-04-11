@@ -10,6 +10,7 @@ module.exports = {
         purple: "#8482F9",
       },
       fontFamily: {
+        lato: ["Lato", "sans-serif"],
         mulish: ["Mulish", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
       },
