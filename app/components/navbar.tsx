@@ -4,7 +4,7 @@ import IconDarkImg from "./../../public/logo-dark/android-icon-72x72.png";
 
 export function Navbar(): JSX.Element {
   return (
-    <nav className="h-auto w-full flex items-center justify-between px-4 py-2 bg-white dark:bg-slate-900">
+    <nav className="h-auto w-full flex items-center justify-between px-4 py-2 bg-white dark:bg-slate-900 dark:shadow-md">
       <Link to="/" className="select-none">
         <picture>
           <source

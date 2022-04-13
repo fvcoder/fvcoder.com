@@ -1,10 +1,18 @@
-import { Link, useLoaderData, LoaderFunction } from "remix";
-import { CardPost } from "~/components/card/post";
-import { CardProject } from "~/components/card/project";
-import { Footer } from "~/components/footer";
-import { Navbar } from "~/components/navbar";
-import { Pagination } from "~/components/pagination";
+import { useLoaderData, LoaderFunction } from "remix";
+import { Carrousel } from "~/components/carrousel";
 import { IndexLoader, IndexLoaderI } from "~/services/prismic";
+
+interface HomeHeaderProps {
+  data: IndexLoaderI;
+}
+
+function HomeHeader({ data }: HomeHeaderProps): JSX.Element {
+  return (
+    <header className="container mx-auto">
+      <Carrousel data={data.articles} />
+    </header>
+  );
+}
 
 export const loader: LoaderFunction = async () => {
   try {
@@ -18,5 +26,9 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const data = useLoaderData<IndexLoaderI>();
-  return <>hola </>;
+  return (
+    <>
+      <HomeHeader data={data} />
+    </>
+  );
 }
