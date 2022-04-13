@@ -134,9 +134,9 @@ export default function App(): JSX.Element {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="msapplication-TileColor" content="#000" />
+        <meta name="msapplication-TileColor" content="#0f172a" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-        <meta name="theme-color" content="#000" />
+        <meta name="theme-color" content="#0f172a" />
         <Links />
       </head>
       <body className="bg-white dark:bg-slate-900 text-black dark:text-white">

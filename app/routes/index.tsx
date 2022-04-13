@@ -1,22 +1,10 @@
 import { useLoaderData, LoaderFunction } from "remix";
 import { Carrousel } from "~/components/carrousel";
-import { IndexLoader, IndexLoaderI } from "~/services/prismic";
-
-interface HomeHeaderProps {
-  data: IndexLoaderI;
-}
-
-function HomeHeader({ data }: HomeHeaderProps): JSX.Element {
-  return (
-    <header className="container mx-auto">
-      <Carrousel data={data.articles} />
-    </header>
-  );
-}
+import { BlogLoader, BlogLoaderReturn } from "~/services/prismic/blog";
 
 export const loader: LoaderFunction = async () => {
   try {
-    return await IndexLoader();
+    return await BlogLoader();
   } catch {
     throw new Response("Not Found", {
       status: 404,
@@ -25,10 +13,12 @@ export const loader: LoaderFunction = async () => {
 };
 
 export default function Index() {
-  const data = useLoaderData<IndexLoaderI>();
+  const { data } = useLoaderData<BlogLoaderReturn>();
   return (
     <>
-      <HomeHeader data={data} />
+      <header className="container mx-auto">
+        <Carrousel data={data} />
+      </header>
     </>
   );
 }

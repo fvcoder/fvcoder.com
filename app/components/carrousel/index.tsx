@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { PrismicDocumentMeta } from "~/services/prismic";
 import { Link } from "remix";
 
@@ -34,6 +34,13 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
       <div className="overflow-hidden relative h-56 md:rounded-lg sm:h-64 xl:h-80 2xl:h-96">
         {data.map((x, i) => {
           if (i <= 3) {
+            const imgUrlSm = new URL(x.image);
+            const imgUrlMd = new URL(x.image);
+            const imgUrlLg = new URL(x.image);
+
+            imgUrlSm.searchParams.set("w", "300");
+            imgUrlMd.searchParams.set("w", "500");
+            imgUrlLg.searchParams.set("w", "1000");
             return (
               <div
                 key={`carrousel-item-slide-${i}`}
@@ -47,24 +54,29 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
                 data-carousel-item
               >
                 <img
+                  srcSet={`${imgUrlSm.href} 300w, ${imgUrlMd.href} 500w, ${imgUrlLg.href} 1000w`}
                   src={x.image}
-                  className="block absolute top-1/2 left-1/2 w-auto h-full -translate-x-1/2 -translate-y-1/2"
-                  alt={`portada de ${x.title}`}
+                  className="block absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
+                  alt={x.imageAlt}
                 />
                 <div className="absolute left-5 bottom-7 z-10 text-black">
                   <Link to={`/blog/${x.uid}`}>
                     <h3 className="text-xl">{x.title}</h3>
                   </Link>
                   <div>
-                    <p className="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 inline-block">
-                      tag
-                    </p>
-                    <p className="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 inline-block">
-                      tag
-                    </p>
-                    <p className="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 inline-block">
-                      tag
-                    </p>
+                    {x.tags.map((y, z) => {
+                      if (z <= 2) {
+                        return (
+                          <p
+                            className="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 inline-block"
+                            key={`carrousel-item-${i}-tag-${z}`}
+                          >
+                            {y}
+                          </p>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
                 </div>
               </div>
