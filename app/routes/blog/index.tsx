@@ -1,13 +1,12 @@
 import { LoaderFunction, useLoaderData } from "remix";
-import { CardPost } from "~/components/card/post";
+import { ArticleCard } from "~/components/card/article";
 import { Footer } from "~/components/footer";
 import { Navbar } from "~/components/navbar";
 import { Pagination } from "~/components/pagination";
-import { BlogLoader, PrismicDocumentMeta } from "~/services/prismic";
+import { BlogLoader, BlogLoaderReturn } from "~/services/prismic/blog";
 import { MetatagsPage } from "~/utils/metatags";
 
-interface BlogHomeData {
-  data: PrismicDocumentMeta[];
+interface BlogHomeData extends BlogLoaderReturn {
   page: number;
 }
 
@@ -19,11 +18,9 @@ export const loader: LoaderFunction = async (ctx) => {
         ? 1
         : Number(urlQuery.searchParams.get("page"))
       : 1;
-
-    console.log(page);
     return {
       page,
-      data: await BlogLoader(10),
+      ...(await BlogLoader(page)),
     };
   } catch {
     throw new Response("Not Found", {
@@ -39,26 +36,18 @@ export const meta = MetatagsPage({
 });
 
 export default function BlogHome(): JSX.Element {
-  const { data, page } = useLoaderData<BlogHomeData>();
+  const { data, page, pageSize } = useLoaderData<BlogHomeData>();
   return (
     <>
-      <Navbar />
       <header className="container mx-auto px-4 md:px-0 pt-6 pb-12">
         <h1 className="text-3xl">Blog de Fernando Ticona</h1>
       </header>
-      <section className="container mx-auto px-4 md:px-0">
+      <section className="container mx-auto px-4 md:px-0 grid gap-4 grid-cols-1 md:grid-cols-3">
         {data.map((x, i) => (
-          <CardPost
-            uid={x.uid}
-            title={x.title}
-            image={x.image}
-            lastPublicationDate={x.lastPublicationDate}
-            key={`article-item-${i + 1}`}
-          />
+          <ArticleCard key={`article-item-${i + 1}`} data={x} />
         ))}
       </section>
-      <Pagination size={6} page={page} />
-      <Footer />
+      <Pagination size={pageSize} page={page} />
     </>
   );
 }
