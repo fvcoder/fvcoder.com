@@ -1,7 +1,5 @@
 import { LoaderFunction, useLoaderData } from "remix";
 import { ArticleCard } from "~/components/card/article";
-import { Footer } from "~/components/footer";
-import { Navbar } from "~/components/navbar";
 import { Pagination } from "~/components/pagination";
 import { BlogLoader, BlogLoaderReturn } from "~/services/prismic/blog";
 import { MetatagsPage } from "~/utils/metatags";

@@ -53,7 +53,7 @@ export function links() {
 
 export default function App(): JSX.Element {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
