@@ -1,17 +1,10 @@
-import {
-  Link,
-  LoaderFunction,
-  MetaFunction,
-  useLoaderData,
-  LinksFunction,
-} from "remix";
-import { Footer } from "~/components/footer";
-import { Navbar } from "~/components/navbar";
-import { BlogPostLoader, PrismicDocument } from "~/services/prismic";
+import { Link, LoaderFunction, MetaFunction, useLoaderData } from "remix";
+import { PrismicDocument } from "~/services/prismic/loader/types";
 import { shareSocialNetworks } from "~/utils/socialNetwork";
 import { MetatagsBlog } from "~/utils/metatags";
 import { LinkExternal } from "~/utils/link";
 import { RenderBody } from "~/utils/renderBody";
+import { getBlogPostLoader } from "~/services/prismic/blog";
 
 interface LoaderDataI extends PrismicDocument {
   url: string;
@@ -19,13 +12,9 @@ interface LoaderDataI extends PrismicDocument {
 
 export const meta: MetaFunction = MetatagsBlog();
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: "https://indestructibletype.com/fonts/Jost.css" },
-];
-
 export const loader: LoaderFunction = async (req) => {
   try {
-    const data = await BlogPostLoader(req.params.slug as string);
+    const data = await getBlogPostLoader(req.params.slug as string);
     return { ...data, url: req.request.url };
   } catch {
     throw new Response("Not Found", {

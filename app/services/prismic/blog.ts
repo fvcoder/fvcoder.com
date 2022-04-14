@@ -1,5 +1,5 @@
 import { client } from "./config";
-import { PrismicDocumentMeta } from "./loader/types";
+import { PrismicDocument, PrismicDocumentMeta } from "./loader/types";
 import { dateFormat } from "./utils";
 
 export interface BlogLoaderReturn {
@@ -29,5 +29,41 @@ export async function BlogLoader(page = 1): Promise<BlogLoaderReturn> {
       };
     }),
     pageSize: data.total_pages,
+  };
+}
+
+/** obtener un articulo en especifico */
+export async function getBlogPostLoader(
+  slug: string
+): Promise<PrismicDocument> {
+  const d = await client.getByUID("blog", slug, {
+    pageSize: 1,
+  });
+
+  if (!d) {
+    return {
+      uid: "",
+      title: "",
+      image: "",
+      imageAlt: "",
+      lastPublicationDate: "",
+      data: "",
+      tags: [],
+    };
+  }
+
+  const lastPublicationDate =
+    new Date(d.last_publication_date) !== new Date(d.first_publication_date)
+      ? `Actualizado ${dateFormat(d.last_publication_date)}`
+      : dateFormat(d.first_publication_date);
+  //
+  return {
+    uid: d.uid as string,
+    title: d.data.title[0].text as string,
+    image: d.data.image.url as string,
+    imageAlt: d.data.image.alt as string,
+    lastPublicationDate,
+    data: d.data,
+    tags: d.tags,
   };
 }

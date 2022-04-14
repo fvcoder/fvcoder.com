@@ -9,8 +9,8 @@ export interface PrismicDocumentMeta {
   lastPublicationDate: string;
 }
 
-export interface PrismicDocument extends PrismicDocumentMeta {
-  exist: boolean;
+export interface PrismicDocument
+  extends Omit<PrismicDocumentMeta, "description"> {
   data: any;
   tags: string[];
 }
