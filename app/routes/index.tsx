@@ -1,6 +1,7 @@
 import { useLoaderData, LoaderFunction, MetaFunction } from "remix";
 import { ArticleCard } from "~/components/card/article";
 import { Carrousel } from "~/components/carrousel";
+import { Pagination } from "~/components/pagination";
 import { BlogLoader, BlogLoaderReturn } from "~/services/prismic/blog";
 import { MetatagsPage } from "~/utils/metatags";
 
@@ -21,13 +22,13 @@ export const meta: MetaFunction = MetatagsPage({
 });
 
 export default function Index() {
-  const { data } = useLoaderData<BlogLoaderReturn>();
+  const { data, pageSize } = useLoaderData<BlogLoaderReturn>();
   return (
     <>
       <header className="container mx-auto">
         <Carrousel data={data} />
       </header>
-      <section className="container mx-auto my-4 grid gap-4 grid-cols-1 md:grid-cols-6">
+      <section className="container mx-auto my-4 grid gap-4 grid-cols-1 md:grid-cols-6 px-4 md:px-0">
         {data.map((x, i) => {
           if (i <= 3) return null;
           return (
@@ -42,6 +43,9 @@ export default function Index() {
             </div>
           );
         })}
+        <div className="col-span-1 md:col-span-6">
+          <Pagination size={pageSize} page={1} />
+        </div>
       </section>
     </>
   );
