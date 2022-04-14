@@ -8,3 +8,4 @@ app/styles/app.css
 public/build
 api/_build
 .env
+/**/sw.js
