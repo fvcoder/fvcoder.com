@@ -1,12 +1,25 @@
 import { LoaderFunction, useLoaderData } from "remix";
-import { CardProject } from "~/components/card/project";
-import { Footer } from "~/components/footer";
-import { Navbar } from "~/components/navbar";
-import { PrismicDocumentMeta, ProjectLoader } from "~/services/prismic";
+import { ArticleCard } from "~/components/card/article";
+import { Pagination } from "~/components/pagination";
+import { BlogLoaderReturn } from "~/services/prismic/blog";
+import { ProjectLoader } from "~/services/prismic/projects";
 
-export const loader: LoaderFunction = async () => {
+interface ProjectHomeProps extends BlogLoaderReturn {
+  page: number;
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
   try {
-    return await ProjectLoader();
+    const urlQuery = new URL(request.url);
+    const page = urlQuery.searchParams.has("page")
+      ? Number.isNaN(urlQuery.searchParams.get("page"))
+        ? 1
+        : Number(urlQuery.searchParams.get("page"))
+      : 1;
+    return {
+      page,
+      ...(await ProjectLoader()),
+    };
   } catch {
     throw new Response("Not Found", {
       status: 404,
@@ -15,21 +28,20 @@ export const loader: LoaderFunction = async () => {
 };
 
 export default function ProjectHome(): JSX.Element {
-  const d = useLoaderData<PrismicDocumentMeta[]>();
+  const { page, pageSize, data } = useLoaderData<ProjectHomeProps>();
   return (
-    <>
-      <Navbar />
-      <main className="container mx-auto px-4 md:px-0 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {d.map((x, i) => (
-          <CardProject
-            uid={x.uid}
-            title={x.title}
-            image={x.image}
-            key={`project-${i + 1}`}
-          />
+    <div className="container mx-auto px-4 md:px-0">
+      <header className="my-4">
+        <h1 className="text-4xl capitalize">Proyectos</h1>
+      </header>
+      <main className="grid gap-4 grid-cols-1 md:grid-cols-3 ">
+        {data.map((x, i) => (
+          <ArticleCard key={`article-item-${i + 1}`} data={x} url="/project/" />
         ))}
+        <div className="col-span-1 md:col-span-3">
+          <Pagination page={page} size={pageSize} url={`/project`} />
+        </div>
       </main>
-      <Footer />
-    </>
+    </div>
   );
 }

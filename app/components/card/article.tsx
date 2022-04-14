@@ -4,9 +4,11 @@ import { PrismicDocumentMeta } from "~/services/prismic/loader/types";
 
 export interface ArticleCardProps {
   data: PrismicDocumentMeta;
+  url?: string;
 }
 
-export const ArticleCard: FC<ArticleCardProps> = ({ data }) => {
+export const ArticleCard: FC<ArticleCardProps> = ({ data, url }) => {
+  const urlBase = url || "/blog/";
   const {
     uid,
     image,
@@ -25,7 +27,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({ data }) => {
   imgUrlMd.searchParams.set("w", "500");
   imgUrlLg.searchParams.set("w", "1000");
   return (
-    <Link to={`/blog/${uid}`}>
+    <Link to={`${urlBase}${uid}`}>
       <img
         className=" rounded-lg"
         srcSet={`${imgUrlSm.href} 300w, ${imgUrlMd.href} 500w, ${imgUrlLg.href} 1000w`}
