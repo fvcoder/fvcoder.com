@@ -74,7 +74,7 @@ export const LinkExternal: React.FC<LinkExternalProps> = ({
   return (
     <a
       href={href}
-      className="flex items-center gap-4 border border-slate-300 p-2 rounded-lg"
+      className="flex items-center gap-4 border border-slate-300 dark:border-slate-800 p-2 rounded-lg"
       target="_blank"
       rel="noreferrer"
     >
@@ -101,15 +101,17 @@ export const LinkExternal: React.FC<LinkExternalProps> = ({
         )}
       </div>
       <div className="no-underline min-w-0 grow">
-        <h4 className=" my-0 truncate">{title || metadata?.title}</h4>
+        <h4 className=" my-0 truncate dark:text-white">
+          {title || metadata?.title}
+        </h4>
         <p
-          className="text-sm mb-0 text-slate-500 truncate"
+          className="text-sm mb-0 text-slate-500 truncate dark:text-white/80"
           style={{ textDecoration: "none" }}
         >
           {description || metadata?.description || href}
         </p>
         <small
-          className="text-xs mb-0 text-slate-500 truncate"
+          className="text-xs mb-0 text-slate-500 truncate dark:text-white/50 no-underline"
           style={{ textDecoration: "none" }}
         >
           {metadata?.siteName ? `${metadata?.siteName} |` : ""}{" "}
