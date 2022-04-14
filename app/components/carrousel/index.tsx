@@ -53,12 +53,14 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
                 aria-current={item === i ? "true" : "false"}
                 data-carousel-item
               >
-                <img
-                  srcSet={`${imgUrlSm.href} 300w, ${imgUrlMd.href} 500w, ${imgUrlLg.href} 1000w`}
-                  src={x.image}
-                  className="block absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
-                  alt={x.imageAlt}
-                />
+                <Link to={`/blog/${x.uid}`}>
+                  <img
+                    srcSet={`${imgUrlSm.href} 300w, ${imgUrlMd.href} 500w, ${imgUrlLg.href} 1000w`}
+                    src={x.image}
+                    className="block absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
+                    alt={x.imageAlt}
+                  />
+                </Link>
                 <div className="absolute left-5 bottom-7 z-10 text-black">
                   <Link to={`/blog/${x.uid}`}>
                     <h3 className="text-2xl">{x.title}</h3>
@@ -67,12 +69,13 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
                     {x.tags.map((y, z) => {
                       if (z <= 2) {
                         return (
-                          <p
+                          <Link
+                            to={`/tag/${y}`}
                             className="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 inline-block"
                             key={`carrousel-item-${i}-tag-${z}`}
                           >
                             {y}
-                          </p>
+                          </Link>
                         );
                       }
                       return null;
