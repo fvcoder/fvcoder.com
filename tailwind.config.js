@@ -10,8 +10,7 @@ module.exports = {
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
-        mulish: ["Mulish", "sans-serif"],
-        roboto: ["Roboto", "sans-serif"],
+        openSans: ["Open Sans", "sans-serif"],
       },
     },
   },

@@ -61,9 +61,9 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
                 />
                 <div className="absolute left-5 bottom-7 z-10 text-black">
                   <Link to={`/blog/${x.uid}`}>
-                    <h3 className="text-xl">{x.title}</h3>
+                    <h3 className="text-2xl">{x.title}</h3>
                   </Link>
-                  <div>
+                  <div className="mt-2">
                     {x.tags.map((y, z) => {
                       if (z <= 2) {
                         return (

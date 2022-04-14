@@ -13,7 +13,7 @@ export async function BlogLoader(page = 1): Promise<BlogLoaderReturn> {
       field: "document.last_publication_date",
       direction: "desc",
     },
-    pageSize: 10,
+    pageSize: 12,
     page: page,
   });
   return {
@@ -23,6 +23,7 @@ export async function BlogLoader(page = 1): Promise<BlogLoaderReturn> {
         title: x.data.title[0].text as string,
         image: x.data.image.url as string,
         imageAlt: x.data.image.alt as string,
+        description: x.data.description[0].text as string,
         tags: x.tags,
         lastPublicationDate: dateFormat(x.last_publication_date),
       };

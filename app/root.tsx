@@ -139,7 +139,7 @@ export default function App(): JSX.Element {
         <meta name="theme-color" content="#0f172a" />
         <Links />
       </head>
-      <body className="bg-white dark:bg-slate-900 text-black dark:text-white">
+      <body className="bg-white dark:bg-slate-900 text-black dark:text-white font-lato">
         <Navbar />
         <Outlet />
         <Footer />
