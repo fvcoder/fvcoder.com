@@ -5,7 +5,8 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "npm run build:css && remix build",
+    "build": "run-s build:css pwa build:remix",
+    "build:remix": "remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
     "dev": "run-p dev-*",
     "dev-remix": "node -r dotenv/config ./node_modules/@remix-run/dev/cli.js",
