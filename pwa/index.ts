@@ -45,4 +45,19 @@ registerRoute(
   })
 );
 
+// from thefersh.com
+registerRoute(
+  ({ url }) => {
+    return url.origin === "https://thefersh.com/";
+  },
+  new StaleWhileRevalidate({
+    cacheName: "assets",
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 25,
+      }),
+    ],
+  })
+);
+
 self.skipWaiting();
