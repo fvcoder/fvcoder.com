@@ -5,12 +5,16 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "npm run build:css && remix build",
+    "build": "run-s build:css pwa build:remix",
+    "build:remix": "remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
     "dev": "run-p dev-*",
     "dev-remix": "node -r dotenv/config ./node_modules/@remix-run/dev/cli.js",
     "dev-css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
-    "postinstall": "remix setup node"
+    "postinstall": "remix setup node",
+    "pwa": "run-s pwa:*",
+    "pwa:esbuild": "esbuild --outfile=pwa/sw.js --bundle pwa/index.ts",
+    "pwa:manifest": "workbox injectManifest workbox-config.js"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
@@ -43,6 +47,7 @@
     "@typescript-eslint/parser": "^5.11.0",
     "autoprefixer": "^10.4.2",
     "dotenv": "^16.0.0",
+    "esbuild": "^0.14.36",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -58,7 +63,14 @@
     "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
     "tailwindcss": "^3.0.19",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "workbox-cli": "^6.5.3",
+    "workbox-expiration": "^6.5.3",
+    "workbox-google-analytics": "^6.5.3",
+    "workbox-precaching": "^6.5.3",
+    "workbox-recipes": "^6.5.3",
+    "workbox-routing": "^6.5.3",
+    "workbox-strategies": "^6.5.3"
   },
   "engines": {
     "node": ">=14"
