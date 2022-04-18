@@ -4,14 +4,16 @@ import { Link } from "remix";
 
 interface CarrouselProps {
   data: PrismicDocumentMeta[];
+  slides?: number;
 }
 
-export const Carrousel: FC<CarrouselProps> = ({ data }) => {
+export const Carrousel: FC<CarrouselProps> = ({ data, slides }) => {
+  const slide = (slides || 4) - 1;
   const [item, setItem] = useState(0);
 
-  const activeClasses = "bg-white dark:bg-gray-800";
+  const activeClasses = "bg-blue-500";
   const inactiveClasses =
-    "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800";
+    "bg-black/50 dark:bg-gray-800/50 hover:bg-black dark:hover:bg-gray-800";
 
   function next() {
     if (item === 3) {
@@ -33,7 +35,7 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
     <div id="carousel-header" className="relative" data-carousel="static">
       <div className="overflow-hidden relative h-56 md:rounded-lg sm:h-64 xl:h-80 2xl:h-96">
         {data.map((x, i) => {
-          if (i <= 3) {
+          if (i <= slide) {
             const imgUrlSm = new URL(x.image);
             const imgUrlMd = new URL(x.image);
             const imgUrlLg = new URL(x.image);
@@ -57,14 +59,17 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
                   <img
                     srcSet={`${imgUrlSm.href} 300w, ${imgUrlMd.href} 500w, ${imgUrlLg.href} 1000w`}
                     src={x.image}
-                    className="block absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
+                    className="block absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 md:left-0 md:translate-x-0 md:w-2/4 md:rounded-lg"
                     alt={x.imageAlt}
                   />
                 </Link>
-                <div className="absolute left-5 bottom-7 z-10 text-black">
+                <div className="absolute left-5 bottom-7 z-10 text-black md:dark:text-white md:inset-0 md:w-2/4 md:ml-auto md:flex md:flex-col md:justify-center md:p-4">
                   <Link to={`/blog/${x.uid}`}>
                     <h3 className="text-2xl">{x.title}</h3>
                   </Link>
+                  <p className="my-2 text-black/50 dark:text-white/50 hidden md:block">
+                    {x.description}
+                  </p>
                   <div className="mt-2">
                     {x.tags.map((y, z) => {
                       if (z <= 2) {
@@ -90,7 +95,7 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
       </div>
       <div className="flex absolute bottom-2.5 left-1/2 z-30 space-x-3 -translate-x-1/2">
         {data.map((x, i) => {
-          if (i <= 3) {
+          if (i <= slide) {
             return (
               <button
                 key={`carrousel-button-slide-${i}`}
@@ -115,7 +120,7 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
         onClick={prev}
         data-carousel-prev
       >
-        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-black/30 dark:bg-gray-800/30 group-hover:bg-black/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
           <svg
             className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
             fill="none"
@@ -139,7 +144,7 @@ export const Carrousel: FC<CarrouselProps> = ({ data }) => {
         onClick={next}
         data-carousel-next
       >
-        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-black/30 dark:bg-gray-800/30 group-hover:bg-black/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
           <svg
             className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
             fill="none"

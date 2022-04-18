@@ -33,10 +33,7 @@ export default function Index() {
           if (i <= 3) return null;
           return (
             <div
-              className={
-                "col-span-1 " +
-                (i === 4 || i === 5 ? "md:col-span-3" : "md:col-span-2")
-              }
+              className="col-span-3 md:col-span-3 lg:col-span-2"
               key={`index-card-article-${i}`}
             >
               <ArticleCard data={x} />

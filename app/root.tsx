@@ -165,19 +165,19 @@ export default function App(): JSX.Element {
         `,
               }}
             ></script>
-          </>
-        )}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
                 window.addEventListener('load', () => {
                   if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/sw.js');
                   }
                 });
         `,
-          }}
-        ></script>
+              }}
+            ></script>
+          </>
+        )}
       </body>
     </html>
   );

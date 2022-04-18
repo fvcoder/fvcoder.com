@@ -1,10 +1,9 @@
-import { precacheAndRoute } from "workbox-precaching";
-import { registerRoute, setDefaultHandler } from "workbox-routing";
-import { StaleWhileRevalidate, NetworkOnly } from "workbox-strategies";
-import { offlineFallback } from "workbox-recipes";
+import { registerRoute } from "workbox-routing";
+import { StaleWhileRevalidate } from "workbox-strategies";
 import { ExpirationPlugin } from "workbox-expiration";
 
-declare const self: ServiceWorkerGlobalScope & {
+declare const self: {
+  __WB_MANIFEST: string[];
   skipWaiting: () => Promise<void>;
 };
 const filesPrecaching = self.__WB_MANIFEST;
