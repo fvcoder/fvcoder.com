@@ -4,7 +4,7 @@ module.exports = {
     './node_modules/flowbite/**/*.js',
     './node_modules/flowbite-react/**/*.js'
   ],
-  darkMode: "media",
+  darkMode: 'media',
   theme: {
     extend: {
       fontFamily: {
