@@ -1,5 +1,6 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import styles from './style/main.css'
+import { NavbarDefault } from "~/components/navbar";
 import {
   Links,
   LiveReload,
@@ -8,6 +9,7 @@ import {
   Scripts,
   ScrollRestoration
 } from '@remix-run/react'
+import { FooterDefault } from './components/footer';
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: styles }]
@@ -21,13 +23,15 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-white dark:bg-gray-800 font-sans">
+        <NavbarDefault />
         <Outlet />
+        <FooterDefault />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
