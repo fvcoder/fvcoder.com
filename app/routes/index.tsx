@@ -1,49 +1,32 @@
-import { useLoaderData, LoaderFunction, MetaFunction } from "remix";
-import { ArticleCard } from "~/components/card/article";
-import { Carrousel } from "~/components/carrousel";
-import { Pagination } from "~/components/pagination";
-import { BlogLoader, BlogLoaderReturn } from "~/services/prismic/blog";
-import { MetatagsPage } from "~/utils/metatags";
-
-export const loader: LoaderFunction = async () => {
-  try {
-    return await BlogLoader();
-  } catch {
-    throw new Response("Not Found", {
-      status: 404,
-    });
-  }
-};
-
-export const meta: MetaFunction = MetatagsPage({
-  title: "Blog de Fernando Ticona | Desarrollador web Frontend",
-  description:
-    "Hola, soy Fernando y escribo articulos acerca de lo que aprendo recientemente.",
-});
-
 export default function Index() {
-  const { data, pageSize } = useLoaderData<BlogLoaderReturn>();
   return (
-    <>
-      <header className="container mx-auto">
-        <Carrousel data={data} />
-      </header>
-      <section className="container mx-auto my-4 grid gap-4 grid-cols-1 md:grid-cols-6 px-4 md:px-0">
-        {data.map((x, i) => {
-          if (i <= 3) return null;
-          return (
-            <div
-              className="col-span-3 md:col-span-3 lg:col-span-2"
-              key={`index-card-article-${i}`}
-            >
-              <ArticleCard data={x} />
-            </div>
-          );
-        })}
-        <div className="col-span-1 md:col-span-6">
-          <Pagination size={pageSize} page={1} />
-        </div>
-      </section>
-    </>
+    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+      <h1>Welcome to Remix</h1>
+      <ul>
+        <li>
+          <a
+            target="_blank"
+            href="https://remix.run/tutorials/blog"
+            rel="noreferrer"
+          >
+            15m Quickstart Blog Tutorial
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="https://remix.run/tutorials/jokes"
+            rel="noreferrer"
+          >
+            Deep Dive Jokes App Tutorial
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
+            Remix Docs
+          </a>
+        </li>
+      </ul>
+    </div>
   );
 }
