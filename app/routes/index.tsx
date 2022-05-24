@@ -1,39 +1,8 @@
 import { Link } from '@remix-run/react'
 import { Card } from 'flowbite-react'
 import { ArrowRightIcon } from '@heroicons/react/solid'
-
-export function HeaderCard(): JSX.Element {
-  return (
-    <div className="aspect-w-5 aspect-h-4 h-full w-auto">
-      <img
-        src="https://picsum.photos/1000/500"
-        alt=""
-        className="w-full h-full object-cover rounded-lg"
-      />
-      <div className="bg-black/30 md:bg-transparent md:hover:bg-black/20 transition-colors flex flex-col justify-end p-4">
-        <h1 className="text-xl text-white truncate">title sdsedd dse d dsd </h1>
-        <p className="text-sm text-gray-300 truncate">12, mayo de 2022</p>
-      </div>
-    </div>
-  )
-}
-
-export function MainCard(): JSX.Element {
-  return (
-    <Card
-      imgAlt="Meaningful alt text for an image that is not purely decorative"
-      imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
-    >
-      <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
-      </h5>
-      <p className="text-sm text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
-      </p>
-    </Card>
-  )
-}
+import { MainCard } from '~/components/card/main.card'
+import { HeaderCard } from '~/components/card/header.card'
 
 export default function Index() {
   return (
