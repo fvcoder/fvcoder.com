@@ -1,13 +1,10 @@
-import { Navbar} from 'flowbite-react'
-import IconImg from "./../../public/android-icon-72x72.png";
-import IconDarkImg from "./../../public/logo-dark/android-icon-72x72.png";
+import { Navbar } from 'flowbite-react'
+import IconImg from './../../public/android-icon-72x72.png'
+import IconDarkImg from './../../public/logo-dark/android-icon-72x72.png'
 
 export function NavbarDefault(): JSX.Element {
   return (
-    <Navbar
-      fluid={true}
-      rounded={true}
-    >
+    <Navbar fluid={true} rounded={false}>
       <Navbar.Brand href="/">
         <picture>
           <source
@@ -24,7 +21,9 @@ export function NavbarDefault(): JSX.Element {
             alt="Fernando Ticona`s Icon"
           />
         </picture>
-        <span className="ml-2 hidden md:inline-block dark:text-slate-100">Fernando Ticona</span>
+        <span className="ml-2 inline-block dark:text-slate-100">
+          Fernando Ticona
+        </span>
       </Navbar.Brand>
     </Navbar>
   )
