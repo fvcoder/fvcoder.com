@@ -12,5 +12,8 @@ module.exports = {
       }
     }
   },
-  plugins: [require('flowbite/plugin')]
+  corePlugins: {
+    aspectRatio: false
+  },
+  plugins: [require('flowbite/plugin'), require('@tailwindcss/aspect-ratio')]
 }
