@@ -10,38 +10,7 @@ export default function BlogArticlePage(): JSX.Element {
       </header>
       <article className="prose dark:prose-invert py-6 mx-auto px-4 md:px-0">
         <h1>adas</h1>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
-        <p>asdfdad</p>
+        <small>12, mayo 1212</small>
       </article>
     </>
   )

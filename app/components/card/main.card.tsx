@@ -1,18 +1,26 @@
+import { Link } from '@remix-run/react'
 import { Card } from 'flowbite-react'
+import type { PrismicDocumentMeta } from '~/types/blog'
 
-export function MainCard(): JSX.Element {
+interface MainCardProps {
+  data: PrismicDocumentMeta
+}
+
+export function MainCard({ data }: MainCardProps): JSX.Element {
   return (
-    <Card
-      imgAlt="Meaningful alt text for an image that is not purely decorative"
-      imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
-    >
-      <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
-      </h5>
-      <p className="text-sm text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
-      </p>
-    </Card>
+    <Link to={`/blog/${data.uid}`} className="h-full w-full">
+      <Card
+        imgAlt={data.imageAlt}
+        imgSrc={data.image}
+        className="h-full hover:text-blue-500 active:text-blue-500 hover:border-blue-500 transition-colors"
+      >
+        <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white truncate">
+          {data.title}
+        </h5>
+        <p className="text-sm text-gray-700 dark:text-gray-400">
+          {data.description}
+        </p>
+      </Card>
+    </Link>
   )
 }

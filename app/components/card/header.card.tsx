@@ -1,15 +1,30 @@
-export function HeaderCard(): JSX.Element {
+import { Link } from '@remix-run/react'
+import type { PrismicDocumentMeta } from '~/types/blog'
+
+interface HeaderCardProps {
+  data: Pick<
+    PrismicDocumentMeta,
+    'title' | 'image' | 'imageAlt' | 'lastPublicationDate' | 'uid'
+  >
+}
+
+export function HeaderCard({ data }: HeaderCardProps): JSX.Element {
   return (
     <div className="aspect-w-5 aspect-h-4 h-full w-auto">
       <img
-        src="https://picsum.photos/1000/500"
-        alt=""
+        src={data.image}
+        alt={data.imageAlt}
         className="w-full h-full object-cover rounded-lg"
       />
-      <div className="bg-black/30 md:bg-transparent md:hover:bg-black/20 transition-colors flex flex-col justify-end p-4">
-        <h1 className="text-xl text-white truncate">title sdsedd dse d dsd </h1>
-        <p className="text-sm text-gray-300 truncate">12, mayo de 2022</p>
-      </div>
+      <Link
+        to={`/blog/${data.uid}`}
+        className="bg-black/30 md:hover:bg-black/20 transition-colors flex flex-col justify-end p-4"
+      >
+        <h1 className="text-xl text-white truncate">{data.title}</h1>
+        <p className="text-sm text-gray-300 truncate">
+          {data.lastPublicationDate}
+        </p>
+      </Link>
     </div>
   )
 }
