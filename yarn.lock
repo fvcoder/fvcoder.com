@@ -637,7 +637,7 @@
     "@prismicio/helpers" "^2.2.1"
     "@prismicio/types" "^0.1.27"
 
-"@prismicio/helpers@^2.2.1":
+"@prismicio/helpers@^2.2.1", "@prismicio/helpers@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.0.tgz#316cdfdf668efd379a8c2ccfc169e320da30a346"
   integrity sha512-/3YJ3F7bN56Pn9y2B4a3t0y4QD0zVPqaHf0Rzd5jCA7Bf0wi3oQ35KHGmP3DrYzz16aQNOZgQy/IO/80QsOYTg==
@@ -646,6 +646,14 @@
     "@prismicio/types" "^0.1.27"
     escape-html "^1.0.3"
     imgix-url-builder "^0.0.3"
+
+"@prismicio/react@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.3.0.tgz#3bfd4951143b41a2225083d309b9d8289190dd7a"
+  integrity sha512-bgFh/iZD4czoWakZkPc4Z0oDwur8OsxRcpVzsI0sQC8brscfS3ZbA8PK5NwBe5D2jCCzSJo8dnUnnckzAhEdWg==
+  dependencies:
+    "@prismicio/helpers" "^2.3.0"
+    "@prismicio/richtext" "^2.0.1"
 
 "@prismicio/richtext@^2.0.1":
   version "2.1.0"
@@ -1024,6 +1032,22 @@
   integrity sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==
   dependencies:
     "@types/react" "^17"
+
+"@types/react-highlight@^0.12.5":
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/@types/react-highlight/-/react-highlight-0.12.5.tgz#b2af7ca998247b0bc7859b674552df97b366c3b1"
+  integrity sha512-P8+mTxltxDdQ+99l+pjn40clziSbNrZy5d5zmvG+j3jKzokAhCoCZlIRmmnFgETTYubuqwKjvXSlvesBZcTfvQ==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*":
+  version "18.0.9"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.9.tgz#d6712a38bd6cd83469603e7359511126f122e878"
+  integrity sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
 
 "@types/react@^17", "@types/react@^17.0.45":
   version "17.0.45"
@@ -3661,6 +3685,16 @@ hast-util-whitespace@^2.0.0:
   resolved "https://registry.npmjs.org/hast-util-whitespace/-/hast-util-whitespace-2.0.0.tgz"
   integrity sha512-Pkw+xBHuV6xFeJprJe2BBEoDV+AvQySaz3pPDRUs5PNZEMQjpXJJueqrpcHIXxnWTcAGi/UOCgVShlkY6kLoqg==
 
+highlight.js@^10.5.0:
+  version "10.7.3"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
+  integrity sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
+
+highlight.js@^11.5.1:
+  version "11.5.1"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.5.1.tgz#027c24e4509e2f4dcd00b4a6dda542ce0a1f7aea"
+  integrity sha512-LKzHqnxr4CrD2YsNoIf/o5nJ09j4yi/GcH5BnYz9UnVpZdS4ucMgvP61TDty5xJcFGRjnH4DpujkS9bHT3hq0Q==
+
 history@^5.2.0, history@^5.3.0:
   version "5.3.0"
   resolved "https://registry.npmjs.org/history/-/history-5.3.0.tgz"
@@ -6024,6 +6058,13 @@ react-dom@^17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-highlight@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/react-highlight/-/react-highlight-0.14.0.tgz#5aefa5518baa580f96b68d48129d7a5d2dc0c9ef"
+  integrity sha512-kWE+KXOXidS7SABhVopOgMnowbI3RAfeGZbnrduLNlWrYAED8sycL9l/Fvw3w0PFpIIawB7mRDnyhDcM/cIIGA==
+  dependencies:
+    highlight.js "^10.5.0"
 
 react-icons@^4.3.1:
   version "4.3.1"

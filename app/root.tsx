@@ -1,6 +1,6 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import styles from './style/main.css'
-import { NavbarDefault } from "~/components/navbar";
+import { NavbarDefault } from '~/components/navbar'
 import {
   Links,
   LiveReload,
@@ -9,10 +9,14 @@ import {
   Scripts,
   ScrollRestoration
 } from '@remix-run/react'
-import { FooterDefault } from './components/footer';
+import { FooterDefault } from './components/footer'
+import highlightStyle from 'highlight.js/styles/base16/google-dark.css'
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }]
+  return [
+    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: highlightStyle }
+  ]
 }
 
 export const meta: MetaFunction = () => ({

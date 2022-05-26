@@ -2,3 +2,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.share-social-network > svg {
+  width: 30px;
+  height: auto;
+}
+
+.link-external > .LowerContainer {
+  height: 200px;
+  overflow: hidden;
+}
+
+
+pre {
+  color: initial!important;
+  background: initial!important;
+  padding: 0!important;
+}
