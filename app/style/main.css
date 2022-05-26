@@ -1206,6 +1206,12 @@ input:checked + .toggle-bg{
 .mb-0{
   margin-bottom: 0px;
 }
+.mr-2{
+  margin-right: 0.5rem;
+}
+.mt-3{
+  margin-top: 0.75rem;
+}
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -1223,9 +1229,6 @@ input:checked + .toggle-bg{
 }
 .mb-5{
   margin-bottom: 1.25rem;
-}
-.mr-2{
-  margin-right: 0.5rem;
 }
 .ml-1{
   margin-left: 0.25rem;
@@ -1250,9 +1253,6 @@ input:checked + .toggle-bg{
 }
 .-mb-px{
   margin-bottom: -1px;
-}
-.mt-3{
-  margin-top: 0.75rem;
 }
 .block{
   display: block;
@@ -1595,11 +1595,11 @@ input:checked + .toggle-bg{
 .gap-4{
   gap: 1rem;
 }
-.gap-1{
-  gap: 0.25rem;
-}
 .gap-3{
   gap: 0.75rem;
+}
+.gap-1{
+  gap: 0.25rem;
 }
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
@@ -2170,6 +2170,10 @@ input:checked + .toggle-bg{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -2197,10 +2201,6 @@ input:checked + .toggle-bg{
 .py-0{
   padding-top: 0px;
   padding-bottom: 0px;
-}
-.py-1{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 .px-3{
   padding-left: 0.75rem;
@@ -3260,9 +3260,9 @@ pre {
   .dark\:border-none{
     border-style: none;
   }
-  .dark\:border-slate-800{
+  .dark\:border-slate-700{
     --tw-border-opacity: 1;
-    border-color: rgb(30 41 59 / var(--tw-border-opacity));
+    border-color: rgb(51 65 85 / var(--tw-border-opacity));
   }
   .dark\:border-gray-600{
     --tw-border-opacity: 1;
@@ -3295,18 +3295,6 @@ pre {
     --tw-border-opacity: 1;
     border-color: rgb(249 128 128 / var(--tw-border-opacity));
   }
-  .dark\:border-slate-500{
-    --tw-border-opacity: 1;
-    border-color: rgb(100 116 139 / var(--tw-border-opacity));
-  }
-  .dark\:border-slate-600{
-    --tw-border-opacity: 1;
-    border-color: rgb(71 85 105 / var(--tw-border-opacity));
-  }
-  .dark\:border-slate-700{
-    --tw-border-opacity: 1;
-    border-color: rgb(51 65 85 / var(--tw-border-opacity));
-  }
   .dark\:bg-gray-800{
     --tw-bg-opacity: 1;
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -3314,6 +3302,9 @@ pre {
   .dark\:bg-gray-900{
     --tw-bg-opacity: 1;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  }
+  .dark\:bg-transparent{
+    background-color: transparent;
   }
   .dark\:bg-gray-700{
     --tw-bg-opacity: 1;
@@ -3357,9 +3348,6 @@ pre {
   .dark\:bg-pink-200{
     --tw-bg-opacity: 1;
     background-color: rgb(250 209 232 / var(--tw-bg-opacity));
-  }
-  .dark\:bg-transparent{
-    background-color: transparent;
   }
   .dark\:bg-green-600{
     --tw-bg-opacity: 1;
