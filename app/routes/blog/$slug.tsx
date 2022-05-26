@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async req => {
 export const meta: MetaFunction = MetatagBlog()
 
 export default function BlogArticlePage(): JSX.Element {
-  const { title, image, imageAlt, lastPublicationDate, data, tags } =
+  const { title, image, imageAlt, lastPublicationDate, data, tags, url } =
     useLoaderData<BlogArticleLoader>()
   return (
     <>
@@ -66,7 +66,7 @@ export default function BlogArticlePage(): JSX.Element {
           <div className="flex gap-3">
             {shareSocialNetworks.map((l, i) => (
               <a
-                href={l.format + data.url}
+                href={l.format + url}
                 title={`Comparte en ${l.name}`}
                 key={`share-${i}`}
                 className="bg-gray-100 dark:bg-transparent px-2 py-1 rounded-full share-social-network"
