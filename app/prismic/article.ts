@@ -2,10 +2,19 @@ import type { ArticleDocument } from '~/types/article'
 import { dateFormat } from '~/utils/format.date'
 import { client } from './prismic'
 
+export interface getArticleI {
+  slug: string
+  url?: URL
+}
+
 /** obtener un articulo en especifico */
-export async function getArticle(slug: string): Promise<ArticleDocument> {
+export async function getArticle({
+  slug,
+  url
+}: getArticleI): Promise<ArticleDocument> {
   const d = await client.getByUID('blog', slug, {
-    pageSize: 1
+    pageSize: 1,
+    ref: url?.searchParams.get('token') || undefined
   })
 
   if (!d) {

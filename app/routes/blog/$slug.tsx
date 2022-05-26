@@ -14,7 +14,10 @@ interface BlogArticleLoader extends ArticleDocument {
 
 export const loader: LoaderFunction = async req => {
   try {
-    const data = await getArticle(req.params.slug as string)
+    const data = await getArticle({
+      slug: req.params.slug as string,
+      url: new URL(req.request.url)
+    })
     return { ...data, url: req.request.url }
   } catch {
     throw new Response('Not Found', {
