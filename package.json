@@ -3,13 +3,16 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "cross-env NODE_ENV=production run-s build-remix build-css",
+    "build": "cross-env NODE_ENV=production run-s build-css  build-remix pwa",
     "build-remix": "remix build",
     "build-css": "postcss ./style/index.css -o ./app/style/main.css",
     "predev": "npm run build-css",
     "dev": "cross-env NODE_ENV=development run-p dev-*",
     "dev-remix": "remix dev",
-    "dev-css": "postcss ./style/index.css -o ./app/style/main.css -w"
+    "dev-css": "postcss ./style/index.css -o ./app/style/main.css -w",
+    "pwa": "run-s pwa:*",
+    "pwa:esbuild": "esbuild --outfile=pwa/sw.js --bundle pwa/index.ts",
+    "pwa:manifest": "workbox injectManifest workbox-config.js"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
@@ -41,6 +44,7 @@
     "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.9",
+    "esbuild": "^0.14.39",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
@@ -56,7 +60,13 @@
     "postcss-cli": "^9.1.0",
     "prettier": "^2.6.2",
     "tailwindcss": "^3.0.24",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "workbox-cli": "^6.5.3",
+    "workbox-expiration": "^6.5.3",
+    "workbox-google-analytics": "^6.5.3",
+    "workbox-recipes": "^6.5.3",
+    "workbox-routing": "^6.5.3",
+    "workbox-strategies": "^6.5.3"
   },
   "engines": {
     "node": ">=14"
