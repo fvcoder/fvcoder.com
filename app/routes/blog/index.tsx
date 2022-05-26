@@ -1,4 +1,4 @@
-import type { LoaderFunction } from '@remix-run/node'
+import type { LoaderFunction, MetaFunction } from '@remix-run/node'
 import { useLoaderData, useNavigate } from '@remix-run/react'
 import { Pagination } from 'flowbite-react'
 import { MainCard } from '~/components/card/main.card'
@@ -7,6 +7,12 @@ import { getBlogList } from '~/prismic/blog.list'
 
 interface BlogHomeData extends getBlogListR {
   page: number
+}
+
+export const meta: MetaFunction = ({ data }) => {
+  return {
+    title: `Blog de Fernando Ticona | Pagina ${data.page}`
+  }
 }
 
 export const loader: LoaderFunction = async ctx => {
