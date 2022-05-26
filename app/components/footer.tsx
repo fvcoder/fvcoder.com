@@ -1,7 +1,13 @@
-export function Footer(): JSX.Element {
+import { Footer } from "flowbite-react";
+
+export function FooterDefault(): JSX.Element {
   return (
-    <footer className="text-center py-4">
-      <p>thefersh.com &copy; 2022</p>
-    </footer>
-  );
+    <Footer>
+      <Footer.Copyright
+        href="/"
+        by="thefersh.com"
+        year={2022}
+      />
+    </Footer>
+  )
 }

@@ -1,51 +1,59 @@
-import { LoaderFunction, useLoaderData } from "remix";
-import { ArticleCard } from "~/components/card/article";
-import { Pagination } from "~/components/pagination";
-import { BlogLoader, BlogLoaderReturn } from "~/services/prismic/blog";
-import { MetatagsPage } from "~/utils/metatags";
+import type { LoaderFunction, MetaFunction } from '@remix-run/node'
+import { useLoaderData, useNavigate } from '@remix-run/react'
+import { Pagination } from 'flowbite-react'
+import { MainCard } from '~/components/card/main.card'
+import type { getBlogListR } from '~/prismic/blog.list'
+import { getBlogList } from '~/prismic/blog.list'
 
-interface BlogHomeData extends BlogLoaderReturn {
-  page: number;
+interface BlogHomeData extends getBlogListR {
+  page: number
 }
 
-export const loader: LoaderFunction = async (ctx) => {
+export const meta: MetaFunction = ({ data }) => {
+  return {
+    title: `Blog de Fernando Ticona | Pagina ${data.page}`
+  }
+}
+
+export const loader: LoaderFunction = async ctx => {
   try {
-    const urlQuery = new URL(ctx.request.url);
-    const page = urlQuery.searchParams.has("page")
-      ? Number.isNaN(urlQuery.searchParams.get("page"))
+    const urlQuery = new URL(ctx.request.url)
+    const page = urlQuery.searchParams.has('page')
+      ? Number.isNaN(urlQuery.searchParams.get('page'))
         ? 1
-        : Number(urlQuery.searchParams.get("page"))
-      : 1;
+        : Number(urlQuery.searchParams.get('page'))
+      : 1
     return {
       page,
-      ...(await BlogLoader(page)),
-    };
+      ...(await getBlogList(page))
+    }
   } catch {
-    throw new Response("Not Found", {
-      status: 404,
-    });
+    throw new Response('Not Found', {
+      status: 404
+    })
   }
-};
-
-export const meta = MetatagsPage({
-  title: "Blog de Fernando Ticona",
-  description:
-    "Explora algunos articulos de tecnologia, programacion, frontend",
-});
-
-export default function BlogHome(): JSX.Element {
-  const { data, page, pageSize } = useLoaderData<BlogHomeData>();
+}
+export default function BlogIndexPage(): JSX.Element {
+  const { data, page, pageSize } = useLoaderData<BlogHomeData>()
+  const navigate = useNavigate()
   return (
-    <>
-      <header className="container mx-auto px-4 md:px-0 pt-6 pb-12">
-        <h1 className="text-3xl">Blog de Fernando Ticona</h1>
-      </header>
-      <section className="container mx-auto px-4 md:px-0 grid gap-4 grid-cols-1 md:grid-cols-3">
+    <main className="py-6 container mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-0">
         {data.map((x, i) => (
-          <ArticleCard key={`article-item-${i + 1}`} data={x} />
+          <MainCard key={`main-card-${i}`} data={x} />
         ))}
-      </section>
-      <Pagination size={pageSize} page={page} />
-    </>
-  );
+      </div>
+      <div className="pt-6 text-center">
+        <Pagination
+          showIcons
+          layout="navigation"
+          currentPage={page}
+          totalPages={pageSize}
+          onPageChange={a => {
+            navigate(`/blog?page=${a}`)
+          }}
+        />
+      </div>
+    </main>
+  )
 }

@@ -1,61 +1,66 @@
-import { Link, LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import { PrismicDocument } from "~/services/prismic/loader/types";
-import { shareSocialNetworks } from "~/utils/socialNetwork";
-import { MetatagsBlog } from "~/utils/metatags";
-import { LinkExternal } from "~/utils/link";
-import { RenderBody } from "~/utils/renderBody";
-import { getBlogPostLoader } from "~/services/prismic/blog";
+import type { LoaderFunction, MetaFunction } from '@remix-run/node'
+import { Link, useLoaderData } from '@remix-run/react'
+import { Badge } from 'flowbite-react'
+import { RenderArticle } from '~/components/article'
+import { LinkCard } from '~/components/card/link.card'
+import { shareSocialNetworks } from '~/data/social.data'
+import { getArticle } from '~/prismic/article'
+import type { ArticleDocument } from '~/types/article'
+import { MetatagBlog } from '~/utils/meta.blog'
 
-interface LoaderDataI extends PrismicDocument {
-  url: string;
+interface BlogArticleLoader extends ArticleDocument {
+  url: string
 }
 
-export const meta: MetaFunction = MetatagsBlog();
-
-export const loader: LoaderFunction = async (req) => {
+export const loader: LoaderFunction = async req => {
   try {
-    const data = await getBlogPostLoader(req.params.slug as string);
-    return { ...data, url: req.request.url };
+    const data = await getArticle({
+      slug: req.params.slug as string,
+      url: new URL(req.request.url)
+    })
+    return { ...data, url: req.request.url }
   } catch {
-    throw new Response("Not Found", {
-      status: 404,
-    });
+    throw new Response('Not Found', {
+      status: 404
+    })
   }
-};
+}
 
-export default function BlogPost(): JSX.Element {
-  const d = useLoaderData<LoaderDataI>();
+export const meta: MetaFunction = MetatagBlog()
+
+export default function BlogArticlePage(): JSX.Element {
+  const { title, image, imageAlt, lastPublicationDate, data, tags, url } =
+    useLoaderData<BlogArticleLoader>()
   return (
-    <main className="mb-12 font-openSans">
-      <header className="prose mx-auto px-4 mx:px-0 mb-5 dark:prose-invert">
+    <>
+      <header className="w-full h-auto md:h-96">
         <img
-          src={d.image}
-          alt={`Portada de ${d.title}`}
-          className="w-full h-auto mb-4"
+          className="w-full h-full object-cover"
+          src={image}
+          alt={imageAlt}
         />
-        <h1 className="mb-2">{d.title}</h1>
-        <span className="text-dark text-sm">{d.lastPublicationDate}</span>
-        <p>{d.data.description[0].text}</p>
       </header>
-      <article className="prose mx-auto px-4 mx:px-0 dark:prose-invert">
-        <RenderBody render={d.data.body} />
-        <div>
-          {d.tags.map((x, i) => (
+      <article className="prose dark:prose-invert py-6 mx-auto px-4 md:px-0">
+        <h1>{title}</h1>
+        <small>{lastPublicationDate}</small>
+        <p>{data.description[0].text}</p>
+        <RenderArticle render={data.body} />
+        <div className="w-full">
+          {tags.map((x, i) => (
             <Link
               to={`/tag/${x}`}
-              className="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 inline-block no-underline"
-              key={`posttag${i}`}
+              key={`article-tag-${i}`}
+              className="inline-block mr-2"
             >
-              {x}
+              <Badge>{x}</Badge>
             </Link>
           ))}
         </div>
-
         <div>
           <h4>Recursos</h4>
           <div className="grid gap-4 grid-cols-1">
-            {(d.data.resource as string).split(/\n/).map((x, i) => (
-              <LinkExternal href={x} key={`link-${i}`} />
+            {(data.resource as string).split(/\n/).map((x, i) => (
+              <LinkCard href={x} key={`link-${i}`} />
             ))}
           </div>
         </div>
@@ -64,7 +69,7 @@ export default function BlogPost(): JSX.Element {
           <div className="flex gap-3">
             {shareSocialNetworks.map((l, i) => (
               <a
-                href={l.format + d.url}
+                href={l.format + url}
                 title={`Comparte en ${l.name}`}
                 key={`share-${i}`}
                 className="bg-gray-100 dark:bg-transparent px-2 py-1 rounded-full share-social-network"
@@ -77,6 +82,6 @@ export default function BlogPost(): JSX.Element {
           </div>
         </div>
       </article>
-    </main>
-  );
+    </>
+  )
 }

@@ -1,24 +1,23 @@
 module.exports = {
-  mode: "jit",
-  content: ["./app/**/*.{ts,tsx,jsx,js}", "./node_modules/flowbite/**/*.js"],
+  content: [
+    './app/**/*.{js,jsx,ts,tsx,html}',
+    './node_modules/flowbite/**/*.js',
+    './node_modules/flowbite-react/**/*.js'
+  ],
+  darkMode: 'media',
   theme: {
     extend: {
-      colors: {
-        lightRed: "#F98982",
-        red: "#F98282",
-        purple: "#8482F9",
-      },
       fontFamily: {
-        lato: ["Lato", "sans-serif"],
-        openSans: ["Open Sans", "sans-serif"],
-      },
-    },
+        sans: ['Inter', 'sans-serif']
+      }
+    }
   },
-  variants: {
-    extend: {},
+  corePlugins: {
+    aspectRatio: false
   },
   plugins: [
-    require("@tailwindcss/aspect-ratio"),
-    require("@tailwindcss/typography"),
-  ],
-};
+    require('flowbite/plugin'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography')
+  ]
+}

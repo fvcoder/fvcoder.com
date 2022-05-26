@@ -1,11 +1,11 @@
-import { Link } from "remix";
-import IconImg from "./../../public/android-icon-72x72.png";
-import IconDarkImg from "./../../public/logo-dark/android-icon-72x72.png";
+import { Navbar } from 'flowbite-react'
+import IconImg from './../../public/android-icon-72x72.png'
+import IconDarkImg from './../../public/logo-dark/android-icon-72x72.png'
 
-export function Navbar(): JSX.Element {
+export function NavbarDefault(): JSX.Element {
   return (
-    <nav className="h-auto w-full flex items-center justify-between px-4 py-2 bg-white dark:bg-slate-900 dark:shadow-md">
-      <Link to="/" className="select-none">
+    <Navbar fluid={true} rounded={false}>
+      <Navbar.Brand href="/">
         <picture>
           <source
             srcSet={IconDarkImg}
@@ -21,10 +21,10 @@ export function Navbar(): JSX.Element {
             alt="Fernando Ticona`s Icon"
           />
         </picture>
-        <span className="ml-2 hidden md:inline-block dark:text-slate-100">
+        <span className="ml-2 inline-block dark:text-slate-100">
           Fernando Ticona
         </span>
-      </Link>
-    </nav>
-  );
+      </Navbar.Brand>
+    </Navbar>
+  )
 }

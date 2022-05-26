@@ -1,51 +1,65 @@
-import { LoaderFunction, useLoaderData } from "remix";
-import { ArticleCard } from "~/components/card/article";
-import { Pagination } from "~/components/pagination";
-import { BlogLoaderReturn } from "~/services/prismic/blog";
-import { getBlogTagPage } from "~/services/prismic/tag";
+import type { LoaderFunction, MetaFunction } from '@remix-run/node'
+import { useLoaderData, useNavigate } from '@remix-run/react'
+import { Pagination } from 'flowbite-react'
+import { MainCard } from '~/components/card/main.card'
+import type { getBlogListR } from '~/prismic/blog.list'
+import { getBlogListByTag } from '~/prismic/blog.list'
 
-interface TagExplorerPageProps extends BlogLoaderReturn {
-  tagName: string;
-  page: number;
+interface BlogHomeData extends getBlogListR {
+  page: number
+  tagName: string
+}
+
+export const meta: MetaFunction = ({ data }) => {
+  return {
+    title: `${String(data.tagName).replace(
+      /-/g,
+      ' '
+    )} | Blog de Fernando Ticona | Pagina ${data.page}`
+  }
 }
 
 export const loader: LoaderFunction = async ({ params, request }) => {
   try {
-    const urlQuery = new URL(request.url);
-    const page = urlQuery.searchParams.has("page")
-      ? Number.isNaN(urlQuery.searchParams.get("page"))
+    const urlQuery = new URL(request.url)
+    const page = urlQuery.searchParams.has('page')
+      ? Number.isNaN(urlQuery.searchParams.get('page'))
         ? 1
-        : Number(urlQuery.searchParams.get("page"))
-      : 1;
+        : Number(urlQuery.searchParams.get('page'))
+      : 1
     return {
       page,
       tagName: String(params.tag),
-      ...(await getBlogTagPage(String(params.tag), page)),
-    };
+      ...(await getBlogListByTag(String(params.tag), page))
+    }
   } catch {
-    return new Response("not found", {
-      status: 404,
-    });
+    return new Response('not found', {
+      status: 404
+    })
   }
-};
+}
 
-export default function TagExplorerPage(): JSX.Element {
-  const { data, pageSize, tagName, page } =
-    useLoaderData<TagExplorerPageProps>();
-
+export default function TagIndexPage(): JSX.Element {
+  const { data, page, pageSize, tagName } = useLoaderData<BlogHomeData>()
+  const navigate = useNavigate()
   return (
-    <div className="container mx-auto px-4 md:px-0">
-      <header className="my-4">
-        <h1 className="text-4xl capitalize">{tagName}</h1>
-      </header>
-      <main className="grid gap-4 grid-cols-1 md:grid-cols-3 ">
+    <main className="py-6 container mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-0">
         {data.map((x, i) => (
-          <ArticleCard key={`article-item-${i + 1}`} data={x} />
+          <MainCard key={`main-card-${i}`} data={x} />
         ))}
-        <div className="col-span-1 md:col-span-3">
-          <Pagination page={page} size={pageSize} url={`/tag/${tagName}`} />
-        </div>
-      </main>
-    </div>
-  );
+      </div>
+      <div className="pt-6 text-center">
+        <Pagination
+          showIcons
+          layout="navigation"
+          currentPage={page}
+          totalPages={pageSize}
+          onPageChange={a => {
+            navigate(`/tag/${tagName}?page=${a}`)
+          }}
+        />
+      </div>
+    </main>
+  )
 }
