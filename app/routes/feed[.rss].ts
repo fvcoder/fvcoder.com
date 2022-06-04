@@ -3,21 +3,9 @@ import { toXML } from 'jstoxml'
 import { buildFeed, getFeedBlog } from '~/prismic/blog.feed'
 import xml from 'xml'
 
-export const loader: LoaderFunction = async () => {
-  /**
-  {
-      channel: {
-        title: 'ss',
-        description: 'asd',
-        generator: 'thefersh.com',
-        language: 'es-BO'
-      },
-      ...(await getFeedBlog())
-    },
-    {
-      header: '<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">'
-    }
-   */
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url)
+  console.log(url)
   const feedObject = {
     rss: [
       {
@@ -38,13 +26,22 @@ export const loader: LoaderFunction = async () => {
             }
           },
           {
-            title: 'YOUR-WEBSITE-TITLE'
+            link: url.origin
           },
           {
-            link: 'YOUR-WEBSITE/'
+            title: 'Fernando Ticona | Desarrollador web Frontend'
           },
-          { description: 'YOUR-WEBSITE-DESCRIPTION' },
-          { language: 'en-US' },
+          {
+            description:
+              'Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva.'
+          },
+          {
+            generator: 'thefersh -- thefersh.com'
+          },
+          {
+            lastBuildDate: new Date().toString()
+          },
+          { language: 'es-BO' },
           ...buildFeed(await getFeedBlog())
         ]
       }
