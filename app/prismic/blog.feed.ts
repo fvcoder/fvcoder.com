@@ -1,4 +1,3 @@
-import { SitemapDateHelper } from './blog.sitemap'
 import { client } from './prismic'
 
 const urlBase = 'https://www.thefersh.com/blog'
@@ -14,12 +13,12 @@ export async function getFeedBlog() {
     title: String(x.data.title[0].text),
     date: String(x.last_publication_date),
     slug: String(x.uid),
-    content: ''
+    description: String(x.data.description[0].text)
   }))
 }
 
 export function buildFeed(
-  posts: { title: string; date: string; slug: string; content: string }[]
+  posts: { title: string; date: string; slug: string; description: string }[]
 ) {
   const sortedPosts = posts.sort(function (first, second) {
     return new Date(second.date).getTime() - new Date(first.date).getTime()
@@ -32,16 +31,15 @@ export function buildFeed(
       const feedItem = {
         item: [
           { title: post.title },
+          { link: `${urlBase}/${post.slug}/` },
           {
             pubDate: new Date(post.date as string).toUTCString()
           },
           {
-            guid: [{ _attr: { isPermaLink: true } }, `${urlBase}/${post.slug}/`]
+            guid: `${urlBase}/${post.slug}/`
           },
           {
-            description: {
-              _cdata: post.content
-            }
+            description: post.description
           }
         ]
       }

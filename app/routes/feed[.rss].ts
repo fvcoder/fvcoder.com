@@ -5,7 +5,6 @@ import xml from 'xml'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url)
-  console.log(url)
   const feedObject = {
     rss: [
       {
@@ -39,7 +38,7 @@ export const loader: LoaderFunction = async ({ request }) => {
             generator: 'thefersh -- thefersh.com'
           },
           {
-            lastBuildDate: new Date().toString()
+            lastBuildDate: new Date().toUTCString()
           },
           { language: 'es-BO' },
           ...buildFeed(await getFeedBlog())
