@@ -3,7 +3,7 @@ import { client } from './prismic'
 
 const urlBase = 'https://www.thefersh.com/'
 
-function SitemapDateHelper(d: string) {
+export function SitemapDateHelper(d: string) {
   return day(d).format('YYYY-MM-DDTHH:mm:ssZ')
 }
 
