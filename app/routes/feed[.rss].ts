@@ -1,5 +1,4 @@
 import type { LoaderFunction } from '@remix-run/node'
-import { toXML } from 'jstoxml'
 import { buildFeed, getFeedBlog } from '~/prismic/blog.feed'
 import xml from 'xml'
 

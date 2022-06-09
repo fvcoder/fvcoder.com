@@ -1,5 +1,6 @@
 import { Link } from '@remix-run/react'
 import type { PrismicDocumentMeta } from '~/types/blog'
+import { Img } from '../img'
 
 interface HeaderCardProps {
   data: Pick<
@@ -11,7 +12,7 @@ interface HeaderCardProps {
 export function HeaderCard({ data }: HeaderCardProps): JSX.Element {
   return (
     <div className="aspect-w-5 aspect-h-4 h-full w-auto">
-      <img
+      <Img
         src={data.image}
         alt={data.imageAlt}
         className="w-full h-full object-cover rounded-lg"

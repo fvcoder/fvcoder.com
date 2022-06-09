@@ -3,6 +3,7 @@ import { Link, useLoaderData } from '@remix-run/react'
 import { Badge } from 'flowbite-react'
 import { RenderArticle } from '~/components/article'
 import { LinkCard } from '~/components/card/link.card'
+import { Img } from '~/components/img'
 import { shareSocialNetworks } from '~/data/social.data'
 import { getArticle } from '~/prismic/article'
 import type { ArticleDocument } from '~/types/article'
@@ -34,7 +35,7 @@ export default function BlogArticlePage(): JSX.Element {
   return (
     <>
       <header className="w-full h-auto md:h-96">
-        <img
+        <Img
           className="w-full h-full object-cover"
           src={image}
           alt={imageAlt}
