@@ -19,3 +19,11 @@ pre {
   background: initial!important;
   padding: 0!important;
 }
+
+
+/* imgage card */
+.hover-image-card:hover img, .hover-image-card:hover source {
+  @apply transition-all;
+  filter: brightness(0.8);
+
+}
