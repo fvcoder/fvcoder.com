@@ -5,6 +5,6 @@ export const globalStyles = globalCss({
     fontFamily: '$montserrat'
   },
   body: {
-    backgroundColor: '$gray2'
+    backgroundColor: '$gray3'
   }
 })

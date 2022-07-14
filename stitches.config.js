@@ -10,6 +10,12 @@ export const { styled, getCssText, globalCss, css } = createStitches({
       sans: '"Open Sans", sans-serif',
       montserrat: 'Montserrat, system-ui'
     },
+    fontSizes: {
+      h1: '1.5rem',
+      h2: '1.25rem',
+      h3: '1.125rem',
+      h4: '1rem'
+    },
     space: {
       1: '5px',
       2: '10px',
@@ -23,6 +29,9 @@ export const { styled, getCssText, globalCss, css } = createStitches({
     },
     sizes: {
       8: '65px'
+    },
+    radii: {
+      borderRatius: '12px'
     }
   },
   media: {
