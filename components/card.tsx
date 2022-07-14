@@ -90,8 +90,7 @@ const CardImg = styled('div', {
 })
 
 const CardTitle = styled('div', {
-  padding: '$3',
-  paddingTop: '0'
+  padding: '$3'
 })
 
 export function Card({
