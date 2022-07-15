@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { Link1Icon } from '@radix-ui/react-icons'
 import { useEffect, useRef, useState } from 'react'
-import Img from 'next/image'
 
 interface APIResponse {
   title: string | null
@@ -86,7 +86,7 @@ export const LinkCard: React.FC<LinkExternalProps> = ({
               <Link1Icon className="w-5 h-5" />
             </div>
           ) : (
-            <Img
+            <img
               className="w-full h-full object-cover	m-0"
               src={img || metadata?.image || ''}
               onError={() => {

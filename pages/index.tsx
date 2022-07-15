@@ -34,7 +34,7 @@ const Home: NextPage<getBlogListR> = ({ data }) => {
         {data.map((x, i) => (
           <Card data={x} index={i} key={`index-card-${i}`} />
         ))}
-        <Link href="/blog" passHref>
+        <Link href="/blog?page=2" passHref>
           <NextPageCard aria-label="Ver Archivo">
             <div>
               Ver archivo
