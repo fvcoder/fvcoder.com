@@ -6,16 +6,7 @@ import { getBlogList, getBlogListR } from '../prismic/blog.list'
 import { Card } from '../components/card'
 import { styled } from '../stitches.config'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
-
-const Main = styled('main', {
-  display: 'flex',
-  flexFlow: 'row wrap',
-  alignItems: 'stretch',
-  justifyContent: 'flex-start',
-  gap: '2rem',
-  paddingTop: '$2',
-  paddingBottom: '$2'
-})
+import { Main } from '../styles/main.style'
 
 const NextPageCard = styled('a', {
   background: '#fff',
