@@ -3,7 +3,7 @@ import { Container } from '../styles/container.style'
 import { Twitter, Github } from '@icons-pack/react-simple-icons'
 
 const FooterBox = styled('footer', Container, {
-  padding: '$3 0'
+  padding: '$3 $2'
 })
 const FooterInfo = styled('div', {
   display: 'flex',
