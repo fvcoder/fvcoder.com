@@ -7,6 +7,18 @@ const nextConfig = {
   },
   images: {
     domains: ['images.prismic.io']
+  },
+  rewrites: () => {
+    return [
+      {
+        source: '/feed.rrs',
+        destination: '/api/feed'
+      },
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap'
+      }
+    ]
   }
 }
 
