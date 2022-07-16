@@ -4,6 +4,7 @@ import { Pagination } from '../../components/pagination'
 import { getBlogListByTag, getBlogListR } from '../../prismic/blog.list'
 import { Container } from '../../styles/container.style'
 import { Main } from '../../styles/main.style'
+import Head from 'next/head'
 
 interface BlogHomeData extends getBlogListR {
   page: number
@@ -18,6 +19,12 @@ const TagExplorer: NextPage<BlogHomeData> = ({
 }) => {
   return (
     <Container>
+      <Head>
+        <title>{`${String(tagName).replace(
+          /-/g,
+          ' '
+        )} | Blog de Fernando Ticona | Pagina ${page}`}</title>
+      </Head>
       <Main>
         {data.map((x, i) => (
           <Card key={`main-card-${i}`} index={i + 1} data={x} />
