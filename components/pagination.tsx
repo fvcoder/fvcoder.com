@@ -5,6 +5,7 @@ import Link from 'next/link'
 interface PaginationProps {
   page: number
   pageSize: number
+  route?: string
 }
 
 const PaginationMain = styled('div', {
@@ -41,7 +42,11 @@ const Button = styled('button', {
   }
 })
 
-export function Pagination({ page, pageSize }: PaginationProps): JSX.Element {
+export function Pagination({
+  page,
+  pageSize,
+  route
+}: PaginationProps): JSX.Element {
   console.log(pageSize)
   return (
     <PaginationMain>
@@ -61,7 +66,7 @@ export function Pagination({ page, pageSize }: PaginationProps): JSX.Element {
         Pagina {page}
       </Button>
       {page !== pageSize && (
-        <Link href={`/blog?page=${page + 1}`} passHref>
+        <Link href={`${route || '/blog'}?page=${page + 1}`} passHref>
           <Button as="a" color="light" rounded="end">
             Siguiente
             <CaretRightIcon />
