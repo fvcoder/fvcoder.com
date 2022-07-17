@@ -25,8 +25,16 @@ const ViewBlogPage: NextPage<BlogArticleLoader> = ({
   return (
     <>
       <Head>
-        <title>{data.title}</title>
+        <title>{title}</title>
         <meta name="description" content={data.description[0].text} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={data.description[0].text} />
+        <meta name="twitter:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="og:type" content="article" />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={data.description[0].text} />
+        <meta name="og:image" content={image} />
       </Head>
       <header className="w-full h-96 relative">
         <Img
