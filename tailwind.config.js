@@ -1,23 +1,12 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,jsx,ts,tsx,html}',
-    './node_modules/flowbite/**/*.js',
-    './node_modules/flowbite-react/**/*.js'
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}'
   ],
-  darkMode: 'media',
+  darkMode: 'none',
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter', 'sans-serif']
-      }
-    }
+    extend: {}
   },
-  corePlugins: {
-    aspectRatio: false
-  },
-  plugins: [
-    require('flowbite/plugin'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography')
-  ]
+  plugins: [require('@tailwindcss/typography')]
 }
