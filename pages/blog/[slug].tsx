@@ -7,6 +7,7 @@ import { LinkCard } from '../../components/link.card'
 import { RenderArticle } from '../../components/article'
 import { getArticle } from '../../prismic/article'
 import { Badge } from '../../styles/badge.style'
+import Head from 'next/head'
 
 interface BlogArticleLoader extends ArticleDocument {
   url: string
@@ -23,6 +24,10 @@ const ViewBlogPage: NextPage<BlogArticleLoader> = ({
 }) => {
   return (
     <>
+      <Head>
+        <title>{data.title}</title>
+        <meta name="description" content={data.description[0].text} />
+      </Head>
       <header className="w-full h-96 relative">
         <Img
           className="w-full h-full object-cover"
