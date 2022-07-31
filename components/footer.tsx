@@ -1,6 +1,6 @@
 import { styled } from '../stitches.config'
 import { Container } from '../styles/container.style'
-import { Twitter, Github } from '@icons-pack/react-simple-icons'
+import { socialFooterLinks } from '../data/social.data'
 
 const FooterBox = styled('footer', Container, {
   padding: '$3 $2'
@@ -26,20 +26,16 @@ export function Footer(): JSX.Element {
       <FooterInfo>
         <small>thefersh.com &copy; 2022</small>
         <FooterSocial>
-          <a
-            href="https://twitter.com/thefersh24"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Twitter />
-          </a>
-          <a
-            href="https://github.com/thefersh/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Github />
-          </a>
+          {socialFooterLinks.map((x, i) => (
+            <a
+              href={x.href}
+              target="_blank"
+              rel="noreferrer"
+              key={`footer-link-${i}`}
+            >
+              <x.icon />
+            </a>
+          ))}
         </FooterSocial>
       </FooterInfo>
     </FooterBox>
