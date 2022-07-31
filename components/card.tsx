@@ -95,13 +95,15 @@ const CardTitle = styled('div', {
 
 export function Card({
   data,
-  index
+  index,
+  route
 }: {
   data: PrismicDocumentMeta
   index: number
+  route?: string
 }): JSX.Element {
   return (
-    <Link href={`/blog/${data.uid}`} passHref>
+    <Link href={`${route || '/blog'}/${data.uid}`} passHref>
       <CardBox
         aria-label={data.title}
         orientation={index === 0 ? 'horizontal' : 'vertical'}
