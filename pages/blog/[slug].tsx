@@ -94,15 +94,15 @@ const ViewBlogPage: NextPage<BlogArticleLoader> = ({
 export const getServerSideProps: GetServerSideProps<
   BlogArticleLoader
 > = async ({ req, params }) => {
+  const url = new URL(`${process.env.NEXT_PUBLIC_URL_BASE}${req.url}`)
   const data = await getArticle({
     slug: params?.slug as string,
-    url: new URL(`${process.env.NEXT_PUBLIC_URL_BASE}${req.url}`)
+    url
   })
-
   return {
     props: {
       ...data,
-      url: `${process.env.NEXT_PUBLIC_URL_BASE}${req.url}`
+      url: url.toString()
     }
   }
 }
