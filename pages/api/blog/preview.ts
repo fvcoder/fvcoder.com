@@ -1,10 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { client } from '../../../prismic/prismic'
 
-export const blogPreview = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+const blogPreview = async (req: NextApiRequest, res: NextApiResponse) => {
   const url = new URL(`${process.env.NEXT_PUBLIC_URL_BASE}${req.url}`)
 
   const redirectURL = await client.resolvePreviewURL({
@@ -22,3 +19,5 @@ export const blogPreview = async (
   })
   res.redirect(redirectURL)
 }
+
+export default blogPreview
