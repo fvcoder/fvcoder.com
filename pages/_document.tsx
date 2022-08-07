@@ -14,30 +14,6 @@ export default function Document(): JSX.Element {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#0f172a" />
         <meta charSet="utf-8" />
-        <meta
-          content="Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva."
-          name="description"
-        />
-        <meta content="summary" name="twitter:card" />
-        <meta content="@thefersh24" name="twitter:creator" />
-        <meta content="@thefersh24" name="twitter:site" />
-        <meta
-          content="Fernando Ticona | Desarrollador web Frontend"
-          name="twitter:title"
-        />
-        <meta
-          content="Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva."
-          name="twitter:description"
-        />
-        <meta content="website" property="og:type" />
-        <meta
-          content="Fernando Ticona | Desarrollador web Frontend"
-          property="og:title"
-        />
-        <meta
-          content="Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva."
-          property="og:description"
-        />
         <link
           rel="apple-touch-icon"
           type="image/png"

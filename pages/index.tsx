@@ -7,6 +7,7 @@ import { Card } from '../components/card'
 import { styled } from '../stitches.config'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 import { Main } from '../styles/main.style'
+import Head from 'next/head'
 
 const NextPageCard = styled('a', {
   background: '#fff',
@@ -29,6 +30,32 @@ const NextPageCard = styled('a', {
 const Home: NextPage<getBlogListR> = ({ data }) => {
   return (
     <Container css={{ padding: 'var(--space-2)' }}>
+      <Head>
+        <meta
+          content="Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva."
+          name="description"
+        />
+        <meta content="summary" name="twitter:card" />
+        <meta content="@thefersh24" name="twitter:creator" />
+        <meta content="@thefersh24" name="twitter:site" />
+        <meta
+          content="Fernando Ticona | Desarrollador web Frontend"
+          name="twitter:title"
+        />
+        <meta
+          content="Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva."
+          name="twitter:description"
+        />
+        <meta content="website" property="og:type" />
+        <meta
+          content="Fernando Ticona | Desarrollador web Frontend"
+          property="og:title"
+        />
+        <meta
+          content="Creo interfaces en paginas web, para que los usuarios puedan tener una experiencia agradable e intuitiva."
+          property="og:description"
+        />
+      </Head>
       <H1>Artículos Recientes</H1>
       <Main>
         {data.map((x, i) => (
