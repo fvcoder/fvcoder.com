@@ -102,7 +102,7 @@ export const getServerSideProps: GetServerSideProps<
   return {
     props: {
       ...data,
-      url: url.toString()
+      url: `${process.env.NEXT_PUBLIC_URL_BASE}${req.url}`
     }
   }
 }
