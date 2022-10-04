@@ -7,7 +7,6 @@ export interface PaginationProps {
 }
 
 export function Pagination({ page, pageSize, route }: PaginationProps): JSX.Element {
-  console.log(page)
   return (
     <div className="flex mb-10 justify-center">
         {page !== 1 && (

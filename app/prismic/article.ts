@@ -29,10 +29,7 @@ export async function getArticle({
     }
   }
 
-  const lastPublicationDate =
-    new Date(d.last_publication_date) !== new Date(d.first_publication_date)
-      ? `Actualizado ${dateFormat(d.last_publication_date)}`
-      : dateFormat(d.first_publication_date)
+  const lastPublicationDate = dateFormat(d.first_publication_date)
   //
   return {
     uid: d.uid as string,

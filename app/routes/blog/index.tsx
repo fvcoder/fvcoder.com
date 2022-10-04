@@ -54,7 +54,7 @@ export default function BlogPage(): JSX.Element {
                             {x.description}
                         </p>
 
-                        <p className="mt-3 text-sm text-blue-500">{x.lastPublicationDate  }</p>
+                        <p className="mt-3 text-sm text-blue-500">{x.lastPublicationDate}</p>
                     </div>
                 </div>
               ))}

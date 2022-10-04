@@ -8,9 +8,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import styles from "./tailwind.css";
+import highlightStyle from 'highlight.js/styles/github-dark.css'
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
+  { rel: "stylesheet", href: highlightStyle },
 ];
 
 export const meta: MetaFunction = () => ({
@@ -26,7 +28,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gray-100">
+      <body className="bg-gray-100  dark:bg-gray-900">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
