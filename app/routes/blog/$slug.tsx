@@ -11,32 +11,30 @@ import { shareSocialNetworks } from "~/data/shareSocialNetwork.data";
 export type BlogViewLoader = ArticleDocument & { url: string}
 
 export const meta: MetaFunction<BlogViewLoader> = ({ data }) => {
-  /*
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://sophielucidojohnson.medium.com/the-run-down-dream-house-231cf79e18ae">
-<meta property="twitter:title" content="The Run-Down Dream House. A fixer-upper that is worth so much… | by Sophie Lucido Johnson | Oct, 2022 | Medium">
-<meta property="twitter:description" content="I’ve been spending a lot of time with my house lately. It’s with me in my imagination a lot. Our roommates recently moved out, so we have twice as much space to manipulate. I have so many dreams…">
-<meta property="twitter:image" content="https://miro.medium.com/max/1200/1*3pq1Rtn5GtwdE3sC8aotkA.jpeg">
-  */
   return {
     title: data.title,
-    description: data.description,
+    titleMeta: {
+      name: "title",
+      content: data.title,
+    },
+    description: data.data.description[0].text,
     robots: "index,follow,max-image-preview:large",
     canonical: data.url,
     "og:type": "website",
     "og:site_name": "Fernando Ticona",
     "og:url": data.url,
     "og:title": data.title,
-    "og:description": data.description,
+    "og:description": data.data.description[0].text,
     "og:image": data.image,
     "twitter:card": "summary_large_image",
+    "twitter:site": "@thefersh24",
     "twitter:url": data.url,
     "twitter:title": data.title,
-    "twitter:description": data.description,
+    "twitter:description": data.data.description[0].text,
     "twitter:image": data.image,
     "theme-color": "#000000",
-    "article:author": new URL(data.url).origin
+    "article:author": new URL(data.url).origin,
+    "author": "Fernando Ticona"
   }
 }
 
