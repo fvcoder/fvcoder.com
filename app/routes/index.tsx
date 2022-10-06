@@ -1,17 +1,17 @@
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type { PrismicDocumentMeta } from "~/types/blog";
+import type { getProjectListRes } from "~/prismic/project.list";
+import type { getTestimonialListRes } from "~/prismic/testimonial.list";
 import { Navbar } from "~/feactures/navbar";
 import { BlogSection } from "~/components/section/blog";
 import { HeroSection } from "~/components/section/hero";
 import { ProjectSection } from "~/components/section/project";
 import { TestimonialSection } from "~/components/section/testimonial";
 import { Footer } from "~/feactures/footer";
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { getBlogList } from "~/prismic/blog.list";
-import type { PrismicDocumentMeta } from "~/types/blog";
 import { useLoaderData } from "@remix-run/react";
-import type { getProjectListRes } from "~/prismic/project.list";
 import { getProjectList } from "~/prismic/project.list";
-import type { getTestimonialListRes } from "~/prismic/testimonial.list";
 import { getTestimonialList } from "~/prismic/testimonial.list";
 import Image from 'public/ms-icon-310x310.png'
 

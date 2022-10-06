@@ -4,9 +4,10 @@ import type { getProjectListRes } from "~/prismic/project.list";
 
 export interface ProjectSectionProps {
   data: getProjectListRes['data']
+  notSeeALl?: boolean
 }
 
-export function ProjectSection({ data }: ProjectSectionProps): JSX.Element {
+export function ProjectSection({ data, notSeeALl }: ProjectSectionProps): JSX.Element {
   return (
     <section className="bg-white dark:bg-gray-900 py-8 px-4">
         <div className="container mx-auto">
@@ -29,7 +30,7 @@ export function ProjectSection({ data }: ProjectSectionProps): JSX.Element {
                   </div>
                 )
               })}
-              <Link to="/project" className="text-sm text-gray-500 dark:text-gray-300 py-4 block w-fit ml-auto hover:underline">See All -&gt;</Link>
+              {!notSeeALl && <Link to="/project" className="text-sm text-gray-500 dark:text-gray-300 py-4 block w-fit ml-auto hover:underline">See All -&gt;</Link>}
             </div>
         </div>
       </section>

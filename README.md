@@ -3,7 +3,6 @@
 ## Todo List
 - project
   - index
-    - crear una pagina con paginacion para los proyectos
     - seo
   - project view
     - crear pagina de visualizacion
