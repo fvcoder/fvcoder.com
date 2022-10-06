@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async ({request}) => {
   const blog = (await getBlogList(1)).data
   const project = (await getProjectList(1)).data
   const testimonial = (await getTestimonialList()).data
-  return json<IndexLoader>({ blog, project, testimonial, url: request.url })
+  return json<IndexLoader>({ blog, project, testimonial, url: request.url.split("?")[0] })
 }
 
 export const meta: MetaFunction<LoaderFunction> = ({ data: { url } }) => {
@@ -41,7 +41,6 @@ export const meta: MetaFunction<LoaderFunction> = ({ data: { url } }) => {
     },
     description: description,
     robots: "index,follow,max-image-preview:large",
-    canonical: url,
     "og:type": "website",
     "og:site_name": "Fernando Ticona",
     "og:url": url,

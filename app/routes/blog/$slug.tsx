@@ -19,7 +19,6 @@ export const meta: MetaFunction<BlogViewLoader> = ({ data }) => {
     },
     description: data.data.description[0].text,
     robots: "index,follow,max-image-preview:large",
-    canonical: data.url,
     "og:type": "website",
     "og:site_name": "Fernando Ticona",
     "og:url": data.url,
@@ -41,7 +40,7 @@ export const meta: MetaFunction<BlogViewLoader> = ({ data }) => {
 export const loader: LoaderFunction = async ({ request, params }) => {
   try {
     const a = await getArticle({ slug: String(params.slug), url: new URL(request.url)})
-    return json<BlogViewLoader>({...a, url: request.url })
+    return json<BlogViewLoader>({...a, url: request.url.split("?")[0] })
   } catch(e) {
     return new Response("Not found", { status: 404 })
   }
