@@ -48,7 +48,7 @@ export const meta: MetaFunction = ({ data: { url, page } }) => {
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url)
   const page = url.searchParams.has('page')
-    ? Number.isNaN(url.searchParams.get('page')) || typeof url.searchParams.get('page') == "string"
+    ? Number.isNaN(Number(url.searchParams.get('page')))
       ? 1
       : Number(url.searchParams.get('page'))
     : 1

@@ -2,8 +2,6 @@
 
 ## Todo List
 - blog
-  - index
-    - seo
   - tags
     - crear pagina de tags
     - mejorar ser
