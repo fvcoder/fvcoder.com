@@ -1,10 +1,6 @@
 # FvCoder.com
 
 ## Todo List
-- testimonial
-  - index
-    - crear pagina que muestre los testimonios con scroll infinito
-    - seo
 - blog
   - index
     - seo

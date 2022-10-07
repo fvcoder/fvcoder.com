@@ -14,7 +14,7 @@ export interface BlogPageLoader {
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url)
   const page = url.searchParams.has('page')
-    ? Number.isNaN(url.searchParams.get('page'))
+    ? Number.isNaN(url.searchParams.get('page')) || typeof url.searchParams.get('page') == "string"
       ? 1
       : Number(url.searchParams.get('page'))
     : 1
