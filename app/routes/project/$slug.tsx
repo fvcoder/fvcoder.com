@@ -1,16 +1,15 @@
+import type { ProjectDocument } from "~/types/project";
 import type { LoaderFunction } from "@remix-run/node";
-import type { ArticleDocument } from "~/types/article";
 import type { MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node"
-import { getArticle } from "~/prismic/article";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { RenderArticle } from "~/components/article";
-import { LinkCard } from "~/components/link.card";
 import { shareSocialNetworks } from "~/data/shareSocialNetwork.data";
+import { getProject } from "~/prismic/project.view";
 
-export type BlogViewLoader = ArticleDocument & { url: string}
+export type ProjectViewLoader = ProjectDocument & { url: string}
 
-export const meta: MetaFunction<BlogViewLoader> = ({ data }) => {
+export const meta: MetaFunction<ProjectViewLoader> = ({ data }) => {
   return {
     title: data.title,
     titleMeta: {
@@ -39,15 +38,16 @@ export const meta: MetaFunction<BlogViewLoader> = ({ data }) => {
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   try {
-    const a = await getArticle({ slug: String(params.slug), url: new URL(request.url)})
-    return json<BlogViewLoader>({...a, url: request.url.split("?")[0] })
+    const a = await getProject({ slug: String(params.slug), url: new URL(request.url)})
+    return json<ProjectViewLoader>({...a, url: request.url.split("?")[0] })
   } catch(e) {
     return new Response("Not found", { status: 404 })
   }
 }
 
-export default function BlogViewPage(): JSX.Element {
-  const { title, lastPublicationDate, image, imageAlt, data, tags, url } = useLoaderData<BlogViewLoader>()
+export default function ProjectViewPage(): JSX.Element {
+  const { title, lastPublicationDate, image, imageAlt, data, tags, url } = useLoaderData<ProjectViewLoader>()
+
   return (
     <div>
       <header className="block text-center prose dark:prose-invert my-6 mx-auto">
@@ -59,13 +59,7 @@ export default function BlogViewPage(): JSX.Element {
         <RenderArticle render={[...data.description, ...data.body]} />
         <div className="flex gap-2 flex-wrap">
           {tags.map((x, i) => (
-            <Link to={`/tag/${x}`} className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 text-sm transition-colors duration-300 rounded-lg no-underline" key={`article-tag-${i}`}>{x}</Link>
-            ))}
-        </div>
-        <h4>Recursos</h4>
-        <div className="grid gap-4 grid-cols-1">
-            {(data.resource as string).split(/\n/).map((x, i) => (
-              <LinkCard href={x} key={`link-${i}`} />
+            <div className="text-white bg-blue-500 px-4 py-2 text-sm transition-colors duration-300 rounded-lg no-underline select-none" key={`project-tag-${i}`}>{x}</div>
             ))}
         </div>
         <div className="flex justify-between items-center mt-3">

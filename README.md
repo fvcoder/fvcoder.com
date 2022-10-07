@@ -1,12 +1,6 @@
 # FvCoder.com
 
 ## Todo List
-- project
-  - index
-    - seo
-  - project view
-    - crear pagina de visualizacion
-    - mejorar seo
 - testimonial
   - index
     - crear pagina que muestre los testimonios con scroll infinito
