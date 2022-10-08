@@ -1,20 +1,21 @@
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import { json } from "@remix-run/node"
 import { Link, useLoaderData } from "@remix-run/react";
 import { Pagination } from "~/components/pagination";
 import type { getBlogListR } from "~/prismic/blog.list";
-import { getBlogList } from "~/prismic/blog.list";
+import { getBlogListByTag } from "~/prismic/blog.list";
 import Image from 'public/ms-icon-310x310.png'
 
-export type BlogPageLoader = {
+export type TagViewLoader = {
   list: getBlogListR['data']
   page: number
   totalPages: number
   url: string
+  tag: string
 }
 
-export const meta: MetaFunction = ({ data: { url, page } }) => {
-  const title = "Blog de Fernando Ticona | Pagina " + page
+export const meta: MetaFunction = ({ data: { url, page, tag } }) => {
+  const title = `Blog de Fernando Ticona - ${tag} | Pagina ${page}`
   const description = "Blog de Fernando Ticona Ticona @fvcoder"
   const image = new URL(url).origin + Image
   return {
@@ -43,33 +44,27 @@ export const meta: MetaFunction = ({ data: { url, page } }) => {
   }
 }
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async ({ request, params }) => {
   const url = new URL(request.url)
   const page = url.searchParams.has('page')
     ? Number.isNaN(Number(url.searchParams.get('page')))
       ? 1
       : Number(url.searchParams.get('page'))
     : 1
-
-  const blogs = await getBlogList(page)
-  return json<BlogPageLoader>({
-    list: blogs.data,
-    page,
-    url: request.url.split("?")[0],
-    totalPages: blogs.pageSize
-  })
+  const list = await getBlogListByTag(String(params.slug), page)
+  return json<TagViewLoader>({ list: list.data, page, totalPages: list.pageSize, url: request.url.split("?")[0], tag: String(params.slug) })
 }
 
-export default function BlogPage(): JSX.Element {
-  const { list, page, totalPages } = useLoaderData<BlogPageLoader>()
+export default function TagView(): JSX.Element {
+  const { list, page, totalPages, tag } = useLoaderData<TagViewLoader>()
   return (
     <>
       <section className=" dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
             <div className="text-center">
-                <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Acerca de este blog</h1>
+                <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">{tag}</h1>
                 <p className="max-w-lg mx-auto mt-4 text-gray-500">
-                  Es una recoleccion de mis aprendizajes, donde bajo un título voy publicando varios apuntes y mi experiencia como desarrollador Frontend
+                  Tag “{tag}”, pagina {page}
                 </p>
             </div>
 
@@ -94,7 +89,7 @@ export default function BlogPage(): JSX.Element {
             </div>
         </div>
     </section>
-    <Pagination page={page} pageSize={totalPages} />
+    <Pagination page={page} pageSize={totalPages} route={`/tag/${tag}`} />
   </>
-  );
+  )
 }

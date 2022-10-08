@@ -44,6 +44,7 @@ export async function getBlogListByTag(tag: string, page = 1) {
 
   return {
     data: items.results.map(x => {
+      if (x.type !== "blog") return null
       return {
         uid: x.uid as string,
         title: x.data.title[0].text as string,
@@ -53,7 +54,7 @@ export async function getBlogListByTag(tag: string, page = 1) {
         tags: x.tags,
         lastPublicationDate: dateFormat(x.last_publication_date)
       }
-    }),
+    }).filter(x => x !== null),
     pageSize: items.total_pages
   }
 }
