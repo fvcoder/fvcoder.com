@@ -20,7 +20,7 @@ export const loader: LoaderFunction = async({ params, request }) => {
 export const action: ActionFunction = async({ params, request }) => {
   const url = new URL(request.url)
   let d: prismicWebhook = await request.json()
-  // if (!d.secret || d.secret !== '7016db2c-dd4f-43bf-b99c-501625939fdd') res404()
+  if (!d.secret || d.secret !== process.env.PRISMIC_WEBHOOK_SECRET) res404()
 
   const doc = await client.getByID(d.documents[0])
   if (!doc) res404()
