@@ -9,10 +9,12 @@ export const loader: LoaderFunction = async ({ request }) => {
     documentID: String(url.searchParams.get('documentId')),
     previewToken: String(url.searchParams.get('token')),
     linkResolver: d => {
+      const params = `?preview=true&document=${d.id}&lang=${d.lang}&token=${String(url.searchParams.get('token'))}`
       if (d.type === 'blog') {
-        return `/blog/${d.uid}?preview=true&document=${d.id}&lang=${
-          d.lang
-        }&token=${String(url.searchParams.get('token'))}`
+        return `/blog/${d.uid}${params}`
+      }
+      if (d.type ===  'project') {
+        return `/project/${d.uid}${params}`
       }
       return '/'
     }
