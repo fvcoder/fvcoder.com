@@ -6,6 +6,7 @@ import { useLoaderData } from "@remix-run/react";
 import { RenderArticle } from "~/components/article";
 import { shareSocialNetworks } from "~/data/shareSocialNetwork.data";
 import { getProject } from "~/prismic/project.view";
+import { res404 } from "~/utils/response.404";
 
 export type ProjectViewLoader = ProjectDocument & { url: string}
 
@@ -41,7 +42,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
     const a = await getProject({ slug: String(params.slug), url: new URL(request.url)})
     return json<ProjectViewLoader>({...a, url: request.url.split("?")[0] })
   } catch(e) {
-    return new Response("Not found", { status: 404 })
+    return res404()
   }
 }
 
