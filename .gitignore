@@ -17,3 +17,4 @@ node_modules
 
 /app/tailwind.css
 api/_assets/*.css
+api
