@@ -14,8 +14,9 @@ export function BlogSection({ data }: BlogSectionProps): JSX.Element {
             <div className="py-6 mx-auto">
                 <div className="lg:flex lg:-mx-6">
                     <div className="lg:w-3/4 lg:px-6">
-                        <img className="object-cover object-center w-full h-80 xl:h-[28rem] rounded-xl" src={data[0].image} alt={data[0].imageAlt ?? data[0].title}/>
-
+                        <Link to={`/blog/${data[0].uid}`}>
+                          <img className="object-cover object-center w-full h-auto rounded-xl aspect-[2/1]" src={data[0].image} alt={data[0].imageAlt ?? data[0].title}/>
+                        </Link>
                         <div>
                             <p className="mt-6 text-sm text-blue-500 uppercase">{data[0].tags[0] ?? "Desconocido"}</p>
                             <Link to={`/blog/${data[0].uid}`}>
