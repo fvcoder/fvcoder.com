@@ -35,7 +35,7 @@ export function Navbar(): JSX.Element {
                 </div>
 
                 <div className="flex justify-center mt-6 lg:flex lg:mt-0 lg:-mx-2">
-                  {socialNetwork.map((x, i) => (
+                  {socialNetwork.slice(0, 3).map((x, i) => (
                     <a href={x.link} className="mx-2 text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label={x.name} target="_blank" key={`navbar-social-network-${i}`} rel="noreferrer">
                         <x.icon className="w-5 h-5 fill-current" title={x.name} />
                     </a>
