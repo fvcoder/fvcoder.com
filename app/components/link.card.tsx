@@ -5,6 +5,7 @@ interface APIResponse {
   title: string | null
   description: string | null
   image: string | null
+  icon: string | null
   siteName: string | null
   hostname: string | null
 }
@@ -22,12 +23,13 @@ export const LinkCard: React.FC<LinkExternalProps> = ({
   title,
   description
 }) => {
-  const proxyLink = 'https://rlp-proxy.herokuapp.com/v2?url='
+  const proxyLink = '/api/metadata?url='
 
   const _isMounted = useRef(true)
   const [imgError, setImgError] = useState(false)
   const [metadata, setMetadata] = useState<APIResponse | null>()
   const [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
     _isMounted.current = true
@@ -37,13 +39,11 @@ export const LinkCard: React.FC<LinkExternalProps> = ({
       .then(res => res.json())
       .then(res => {
         if (_isMounted.current) {
-          setMetadata(res.metadata as unknown as APIResponse)
+          setMetadata(res as unknown as APIResponse)
           setLoading(false)
         }
       })
       .catch((err: Error) => {
-        console.error(err)
-        console.error('No metadata could be found for the given URL.')
         if (_isMounted.current) {
           setMetadata(null)
           setLoading(false)
@@ -54,6 +54,7 @@ export const LinkCard: React.FC<LinkExternalProps> = ({
       _isMounted.current = false
     }
   }, [href])
+
 
   if (loading) {
     return (
@@ -87,7 +88,7 @@ export const LinkCard: React.FC<LinkExternalProps> = ({
           ) : (
             <img
               className="w-full h-full object-cover	m-0"
-              src={img || metadata?.image || ''}
+              src={img ?? metadata?.icon ?? metadata?.image ?? ''}
               onError={() => {
                 setImgError(true)
               }}
