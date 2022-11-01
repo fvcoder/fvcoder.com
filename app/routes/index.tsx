@@ -24,7 +24,7 @@ interface IndexLoader {
 
 export const loader: LoaderFunction = async ({request}) => {
   const blog = (await getBlogList(1)).data
-  const project = (await getProjectList(1)).data
+  const project = (await getProjectList(1)).data.slice(0, 4)
   const testimonial = (await getTestimonialList()).data
   return json<IndexLoader>({ blog, project, testimonial, url: request.url.split("?")[0] })
 }
