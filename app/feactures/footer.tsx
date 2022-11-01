@@ -3,7 +3,7 @@ import { socialNetwork } from "~/data/newtwork.data";
 
 export function Footer(): JSX.Element {
   return (
-    <footer className="flex flex-col items-center justify-between p-6 bg-white dark:bg-gray-900 sm:flex-row">
+    <footer className="flex flex-col items-center justify-between p-6 gap-4 bg-white dark:bg-gray-900 sm:flex-row sm:gap-0">
         <Logo />
         <p className="text-sm text-gray-600 dark:text-gray-300">© Copyright 2022. All Rights Reserved.</p>
 
