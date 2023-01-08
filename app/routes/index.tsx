@@ -1,3 +1,3 @@
-export default function Index() {
-	return <div>hola mundo</div>;
-}
+import { IndexPage } from "~/modules/app/page";
+
+export default IndexPage;

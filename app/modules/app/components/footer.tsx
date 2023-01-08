@@ -4,7 +4,7 @@ import { SiFacebook } from "react-icons/si";
 export function AppFooter() {
 	return (
 		<Footer container>
-			<div className="w-full">
+			<div className="container mx-auto">
 				<Footer.Divider />
 				<div className="w-full sm:flex sm:items-center sm:justify-between">
 					<Footer.Copyright href="#" by="Flowbite™" year={2022} />
