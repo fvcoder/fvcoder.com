@@ -1,5 +1,7 @@
 # Welcome to Remix!
 
+nota: sacar las api de https://my-repo.prismic.io/settings/apps/
+
 - [Remix Docs](https://remix.run/docs)
 
 ## Deployment

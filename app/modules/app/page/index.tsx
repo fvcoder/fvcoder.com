@@ -1,8 +1,10 @@
-import { Link } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { Button } from "flowbite-react";
 import { HiArrowRight, HiArrowSmRight } from "react-icons/hi";
 
 import HeroImg from "~/assets/hero.jpg";
+
+import type { IndexPageLoader } from "../loader";
 
 interface TitleSectionProps {
 	title: string;
@@ -19,6 +21,8 @@ function TitleSection({ title, subtitle }: TitleSectionProps) {
 }
 
 export function IndexPage() {
+	const { blog } = useLoaderData<IndexPageLoader>();
+
 	return (
 		<div className="container mx-auto px-4">
 			<header className="flex flex-col-reverse md:flex-row items-center pt-0 md:pt-12 pb-12">
@@ -80,32 +84,28 @@ export function IndexPage() {
 					subtitle="Simply evaluated my knowledge by teaching what I learn (Spanish only)"
 				/>
 				<div className="mb-6 lg:mb-16 grid gap-8 lg:grid-cols-2">
-					{Array.from({ length: 4 }).map((x, i) => (
+					{blog.post.map((x, i) => (
 						<article
 							className="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
 							key={`blog-home-${i}`}
 						>
 							<h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-								<a href="#" tabIndex={-1}>
-									How to quickly deploy a static website
-								</a>
+								<Link to={x.to} tabIndex={-1}>
+									{x.title}
+								</Link>
 							</h2>
 							<div className="mb-4 text-gray-500">
-								<span className="text-sm">14 days ago</span>
+								<span className="text-sm">{x.date}</span>
 							</div>
-							<p className="mb-5 font-light text-gray-500 dark:text-gray-400">
-								Static websites are now used to bootstrap lots of websites and are becoming the
-								basis for a variety of tools that even influence both web designers and developers
-								influence both web designers and developers.
-							</p>
+							<p className="mb-5 font-light text-gray-500 dark:text-gray-400">{x.description}</p>
 							<div className="flex justify-end items-center">
-								<a
-									href="#"
+								<Link
+									to={x.to}
 									className="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
 								>
 									Read more
 									<HiArrowRight className="ml-2 w-4 h-4" />
-								</a>
+								</Link>
 							</div>
 						</article>
 					))}
