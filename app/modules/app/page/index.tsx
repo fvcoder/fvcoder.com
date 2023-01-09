@@ -21,7 +21,7 @@ function TitleSection({ title, subtitle }: TitleSectionProps) {
 }
 
 export function IndexPage() {
-	const { blog } = useLoaderData<IndexPageLoader>();
+	const { blog, project } = useLoaderData<IndexPageLoader>();
 
 	return (
 		<div className="container mx-auto px-4">
@@ -48,30 +48,30 @@ export function IndexPage() {
 			<section>
 				<TitleSection title="🙌 My Projects" subtitle="I believe there is much to create" />
 				<div className="grid gap-4 mb-6 lg:mb-16 grid-cols-2 lg:grid-cols-4">
-					{Array.from({ length: 4 }).map((x, i) => (
+					{project.post.map((x, i) => (
 						<Link
-							to={`/project`}
+							to={x.to}
 							className="flex flex-col md:flex-row md:items-center rounded-lg shadow-sm border w-full"
 							key={`project-home-${i}`}
 						>
 							<div className="aspect-square md:h-28">
 								<img
 									className="w-full rounded-t-lg md:rounded-l-xl md:rounded-r-none object-cover h-full"
-									src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-									alt="Bonnie Avatar"
+									src={x.img}
+									alt={x.imgAlt}
 								/>
 							</div>
-							<div className="px-4 md:flex-1">
+							<div className="px-4 min-w-0 md:flex-1">
 								<h3 className="text-center py-4 md:py-0  md:text-left text-lg text-gray-900">
-									<p>Bonnie Green</p>
+									<p className="truncate">{x.title}</p>
 								</h3>
-								<p className="hidden xl:block mt-3 font-light text-gray-500">20 diciempre,1221</p>
+								<p className="hidden xl:block mt-3 font-light text-gray-500">{x.date}</p>
 							</div>
 						</Link>
 					))}
 				</div>
 				<div className="mb-6 lg:mb-16 flex justify-center">
-					<Link to="/blog" tabIndex={-1}>
+					<Link to="/project" tabIndex={-1}>
 						<Button size="sm" color="gray">
 							See All <HiArrowSmRight className="ml-1" />
 						</Button>
