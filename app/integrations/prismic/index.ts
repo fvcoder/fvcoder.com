@@ -5,7 +5,7 @@ import type { AllDocumentTypes } from "./types";
 const endpoint: string = prismic.getRepositoryEndpoint("thefersh");
 
 const client = prismic.createClient<AllDocumentTypes>(endpoint, {
-	accessToken: String(process.env.NEXT_PUBLIC_PRISMIC_TOKEN),
+	accessToken: String(process.env.PRISMIC_TOKEN),
 });
 
 export { client };

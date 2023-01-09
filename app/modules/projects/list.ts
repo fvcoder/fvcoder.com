@@ -6,11 +6,13 @@ import type { projectPage } from "./types";
 export interface projectGetPageProps {
 	page?: number;
 	pageSize?: number;
+	preview?: boolean;
 }
 
 export async function projectGetPage({
 	page,
 	pageSize,
+	preview,
 }: projectGetPageProps): Promise<projectPage> {
 	const res = await client.getByType("project", {
 		orderings: {
@@ -28,8 +30,8 @@ export async function projectGetPage({
 			to: `/project/${x.uid}`,
 			title: x.data.title[0]?.text ?? "",
 			date: dateFotmat(x.last_publication_date),
-			img: x.data.logo.url ?? "",
-			imgAlt: x.data.logo.alt ?? "",
+			img: (preview ? x.data.cover.url : x.data.logo.url) ?? "",
+			imgAlt: (preview ? x.data.cover.alt : x.data.logo.alt) ?? "",
 		})),
 	};
 }
