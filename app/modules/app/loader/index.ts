@@ -12,11 +12,13 @@ export interface IndexPageLoader {
 	blog: blogPage;
 	project: projectPage;
 	testimonial: testimonialPage;
+	url: string;
 }
-export const indexPageLoader: LoaderFunction = async () => {
+export const indexPageLoader: LoaderFunction = async ({ request }) => {
 	return json<IndexPageLoader>({
 		blog: await blogGetPage({ page: 1, pageSize: 4 }),
 		project: await projectGetPage({ page: 1, pageSize: 4 }),
 		testimonial: await testimonialGetPage({ page: 1, pageSize: 3 }),
+		url: request.url,
 	});
 };
