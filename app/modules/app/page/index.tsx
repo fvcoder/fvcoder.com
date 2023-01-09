@@ -21,7 +21,7 @@ function TitleSection({ title, subtitle }: TitleSectionProps) {
 }
 
 export function IndexPage() {
-	const { blog, project } = useLoaderData<IndexPageLoader>();
+	const { blog, project, testimonial } = useLoaderData<IndexPageLoader>();
 
 	return (
 		<div className="container mx-auto px-4">
@@ -121,30 +121,26 @@ export function IndexPage() {
 			<section>
 				<TitleSection title="🤠 Testimonials" subtitle="Thanks to all" />
 				<div className="mb-6 lg:mb-16 grid gap-4 grid-cols-2 md:grid-cols-3">
-					{Array.from({ length: 3 }).map((x, i) => (
-						<figure className="p-6 bg-gray-50 rounded" key={`testimonial-home-${i}`}>
+					{testimonial.post.map((x, i) => (
+						<figure
+							className="p-6 bg-gray-50 rounded flex flex-col justify-center"
+							key={`testimonial-home-${i}`}
+						>
 							<blockquote className="text-gray-500 text-sm">
-								<p className="my-4">
-									"This is a very complex and beautiful set of elements. Under the hood it comes
-									with the best things from 2 different worlds: Figma and Tailwind.”
-								</p>
+								<p className="my-4">"{x.review}”</p>
 							</blockquote>
 							<figcaption className="flex items-center gap-3">
-								<img
-									className="rounded-full w-10 h-10"
-									src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-									alt="profile picture"
-								/>
+								<img className="rounded-full w-10 h-10" src={x.avatar} alt={x.username} />
 								<div className="gbmdcaJwBL9cdQN8mrlh _A6LflweZRUwrcL6M2Tk a0Ed69aMSu0vgf4oysz0">
-									<div>Bonnie Green</div>
-									<div className="text-gray-500 text-sm">CTO at Open AI</div>
+									<div>{x.username}</div>
+									<div className="text-gray-500 text-sm">{x.role}</div>
 								</div>
 							</figcaption>
 						</figure>
 					))}
 				</div>
 				<div className="mb-6 lg:mb-16 flex justify-center">
-					<Link to="/blog" tabIndex={-1}>
+					<Link to="/testimonial" tabIndex={-1}>
 						<Button size="sm" color="gray">
 							See All <HiArrowSmRight className="ml-1" />
 						</Button>

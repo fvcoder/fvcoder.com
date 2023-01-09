@@ -3,12 +3,15 @@ import { dateFotmat } from "~/util";
 
 import type { projectPage } from "./types";
 
-export interface blogGetPageProps {
+export interface projectGetPageProps {
 	page?: number;
 	pageSize?: number;
 }
 
-export async function projectGetPage({ page, pageSize }: blogGetPageProps): Promise<projectPage> {
+export async function projectGetPage({
+	page,
+	pageSize,
+}: projectGetPageProps): Promise<projectPage> {
 	const res = await client.getByType("project", {
 		orderings: {
 			field: "document.last_publication_date",
