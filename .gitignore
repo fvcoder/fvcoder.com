@@ -9,11 +9,5 @@ node_modules
 /public/build
 /api/index.js
 /api/index.js.map
-
-/.cache
-/build
-/public/build
-.env
-
-/app/tailwind.css
 /api
+/app/styles/tailwind.css

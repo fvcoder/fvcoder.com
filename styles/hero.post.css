@@ -1,0 +1,23 @@
+/*
+@keyframes hero-post-in-anim {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes hero-post-out-anim {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.hero-post:hover > div {
+  animation: hero-post-in-anim .3s;
+}
+.hero-post:not(:hover) > div {
+  animation: hero-post-out-anim .3s;
+}
+
+*/
+.hero-post:hover > div {
+  opacity: 0;
+  visibility: hidden;
+}

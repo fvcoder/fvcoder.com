@@ -1,86 +1,38 @@
-import type { ProjectDocument } from "~/types/project";
-import type { LoaderFunction } from "@remix-run/node";
 import type { MetaFunction } from "@remix-run/node";
-import { json } from "@remix-run/node"
-import { useLoaderData } from "@remix-run/react";
-import { RenderArticle } from "~/components/article";
-import { shareSocialNetworks } from "~/data/shareSocialNetwork.data";
-import { getProject } from "~/prismic/project.view";
-import { res404 } from "~/utils/response.404";
 
-export type ProjectViewLoader = ProjectDocument & { url: string}
+import type { projectPostL } from "~/modules/projects";
+import { projectPostLoader, ProjectPostPage } from "~/modules/projects";
 
-export const meta: MetaFunction<ProjectViewLoader> = ({ data }) => {
-  return {
-    title: data.title,
-    titleMeta: {
-      name: "title",
-      content: data.title,
-    },
-    description: data.data.description[0].text,
-    robots: "index,follow,max-image-preview:large",
-    "og:type": "website",
-    "og:site_name": "Fernando Ticona",
-    "og:url": data.url,
-    "og:title": data.title,
-    "og:description": data.data.description[0].text,
-    "og:image": data.image,
-    "twitter:card": "summary_large_image",
-    "twitter:site": "@thefersh24",
-    "twitter:url": data.url,
-    "twitter:title": data.title,
-    "twitter:description": data.data.description[0].text,
-    "twitter:image": data.image,
-    "theme-color": "#000000",
-    "article:author": new URL(data.url).origin,
-    "author": "Fernando Ticona"
-  }
-}
+export const loader = projectPostLoader;
 
-export const loader: LoaderFunction = async ({ request, params }) => {
-  try {
-    const a = await getProject({ slug: String(params.slug), url: new URL(request.url)})
-    return json<ProjectViewLoader>({...a, url: request.url.split("?")[0] })
-  } catch(e) {
-    return res404()
-  }
-}
+export const meta: MetaFunction = ({ data }: { data: projectPostL }) => {
+	const description =
+		data.data.description[0]?.type === "paragraph" ? data.data.description[0].text : "";
 
-export default function ProjectViewPage(): JSX.Element {
-  const { title, lastPublicationDate, image, imageAlt, data, tags, url } = useLoaderData<ProjectViewLoader>()
+	return {
+		title: data.title,
+		titleMeta: {
+			name: "title",
+			content: data.title,
+		},
+		description,
+		robots: "index,follow,max-image-preview:large",
+		"og:type": "website",
+		"og:site_name": "Fernando Ticona",
+		"og:url": data.url,
+		"og:title": data.title,
+		"og:description": description,
+		"og:image": data.img,
+		"twitter:card": "summary_large_image",
+		"twitter:site": "@thefersh24",
+		"twitter:url": data.url,
+		"twitter:title": data.title,
+		"twitter:description": description,
+		"twitter:image": data.img,
+		"theme-color": "#000000",
+		"article:author": new URL(data.url).origin,
+		author: "Fernando Ticona",
+	};
+};
 
-  return (
-    <div>
-      <header className="block text-center prose dark:prose-invert my-6 mx-auto">
-        <h1 className="px-4">{title}</h1>
-        <small className="text-blue-500 px-4">{lastPublicationDate}</small>
-        <img src={image} alt={imageAlt ?? title} className="block w-full aspect-video object-cover sm:rounded-md shadow" />
-      </header>
-      <article className="prose dark:prose-invert mx-auto px-4 mb-6">
-        <RenderArticle render={[...data.description, ...data.body]} />
-        <div className="flex gap-2 flex-wrap">
-          {tags.map((x, i) => (
-            <div className="text-white bg-blue-500 px-4 py-2 text-sm transition-colors duration-300 rounded-lg no-underline select-none" key={`project-tag-${i}`}>{x}</div>
-            ))}
-        </div>
-        <div className="flex justify-between items-center mt-3">
-          <p>Comparte</p>
-          <div className="flex gap-3">
-            {shareSocialNetworks.map((l, i) => (
-              <a
-                href={l.format + url}
-                title={`Comparte en ${l.name}`}
-                key={`share-${i}`}
-                className="bg-gray-100 dark:bg-transparent px-2 py-1 rounded-full share-social-network"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <l.icon color={l.color} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </article>
-    </div>
-  )
-}
+export default ProjectPostPage;

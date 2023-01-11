@@ -1,18 +1,7 @@
+@import "./project.grid.css";
+@import "./hero.post.css";
+@import "./pre.element.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-pre {
-  color: initial!important;
-  background: initial!important;
-  padding: 0!important;
-}
-.share-social-network > svg {
-  width: 30px;
-  height: auto;
-}
-
-.link-external > .LowerContainer {
-  height: 200px;
-  overflow: hidden;
-}

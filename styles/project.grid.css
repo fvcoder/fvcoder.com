@@ -1,0 +1,45 @@
+.grid-gallery {
+  @apply container mx-auto px-4 grid gap-4 grid-cols-1 md:grid-cols-4 lg:grid-cols-6;
+  grid-auto-rows: 300px;
+}
+.grid-gallery img {
+  @apply w-full h-full object-cover rounded-md;
+}
+
+.grid-gallery__item:nth-child(12n+1) {
+  @apply md:col-span-2;
+}
+.grid-gallery__item:nth-child(12n+2) {
+  @apply md:col-span-1;
+}
+.grid-gallery__item:nth-child(12n+3) {
+  @apply md:col-span-1;
+}
+.grid-gallery__item:nth-child(12n+4) {
+  @apply md:col-span-1 lg:col-span-2 lg:row-span-2;
+}
+.grid-gallery__item:nth-child(12n+5) {
+  @apply md:col-span-1 lg:col-span-2;
+}
+.grid-gallery__item:nth-child(12n+6) {
+  @apply md:col-span-2;
+}
+.grid-gallery__item:nth-child(12n+7) {
+  @apply md:col-span-2 lg:row-span-2;
+}
+.grid-gallery__item:nth-child(12n+8) {
+  @apply md:col-span-1 lg:col-span-2;
+}
+.grid-gallery__item:nth-child(12n+9) {
+  @apply md:col-span-1;
+}
+.grid-gallery__item:nth-child(12n+10) {
+  @apply md:col-span-1 lg:col-span-1;
+}
+.grid-gallery__item:nth-child(12n+11) {
+  @apply md:col-span-1 lg:col-span-2;
+}
+.grid-gallery__item:nth-child(12n+12) {
+  @apply md:col-span-2 lg:col-span-2;
+}
+
