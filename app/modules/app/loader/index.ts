@@ -1,7 +1,7 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 
-import { blogGetPage } from "~/modules/blog/list";
+import { blogGetPage } from "~/modules/blog/method/list";
 import type { blogPage } from "~/modules/blog/types";
 import { projectGetPage } from "~/modules/projects";
 import type { projectPage } from "~/modules/projects/types";

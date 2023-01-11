@@ -1,6 +1,7 @@
 # Welcome to Remix!
 
 nota: sacar las api de https://my-repo.prismic.io/settings/apps/
+nota2: consejos para un buen portfolio https://kinsta.com/es/blog/portafolio-online/
 
 - [Remix Docs](https://remix.run/docs)
 

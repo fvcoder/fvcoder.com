@@ -1,3 +1,5 @@
+import type { BlogDocument } from "~/integrations/prismic/types";
+
 export interface blogInfo {
 	to: string;
 	title: string;
@@ -5,6 +7,11 @@ export interface blogInfo {
 	img: string;
 	imgAlt: string;
 	description: string;
+}
+
+export interface blogPost extends Omit<blogInfo, "to"> {
+	data: BlogDocument["data"];
+	related: blogInfo[];
 }
 
 export interface blogPage {

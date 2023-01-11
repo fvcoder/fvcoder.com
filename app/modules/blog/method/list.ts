@@ -1,7 +1,7 @@
 import { client } from "~/integrations/prismic";
 import { dateFotmat } from "~/util";
 
-import type { blogPage } from "./types";
+import type { blogPage } from "../types";
 
 export interface blogGetPageProps {
 	page?: number;
