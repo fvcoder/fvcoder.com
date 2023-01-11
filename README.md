@@ -1,7 +1,22 @@
-# Welcome to Remix!
+# fvcoder.com
+fvcoder.com is a collection of resources that demonstrates the different skills a person possesses in the roles they want.
 
+## Containing?
+It focuses mainly on the blog, showing:
+- Blog
+- Projects
+- Testimonials
+
+[docs ->](./docs/index.md)
+
+![fvcoder.com](./docs/assets/fvcoder.com_.png)
+
+
+consejos ...
 nota: sacar las api de https://my-repo.prismic.io/settings/apps/
 nota2: consejos para un buen portfolio https://kinsta.com/es/blog/portafolio-online/
+
+other docs ...
 
 - [Remix Docs](https://remix.run/docs)
 
