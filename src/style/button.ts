@@ -1,6 +1,6 @@
 import classNames from "classnames"
 
-const buttonBase = "flex items-center justify-center border rounded font-inter outline-none focus:ring-2 focus:ring-blue-300 transition"
+const buttonBase = "select-none flex items-center justify-center border rounded font-inter outline-none focus:ring-2 focus:ring-blue-300 transition"
 
 const buttonSizeNormal = "py-1 px-3.5 font-[500] leading-6"
 const buttonSizeSmall = "py-0.5 px-3 font-[500] leading-6 text-sm"

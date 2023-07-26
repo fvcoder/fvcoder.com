@@ -17,7 +17,7 @@ export function Navbar() {
             </a>
             <Root>
                 <Trigger asChild>
-                    <button className="md:hidden p-3">
+                    <button className="md:hidden p-3" aria-label="Toggle navigation">
                         <HamburgerMenuIcon className="w-6 h-6 text-[#050505] "/>
                     </button>
                 </Trigger>
