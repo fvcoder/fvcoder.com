@@ -1,0 +1,14 @@
+{
+    "name": "obs",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "nodemon ./src/index.mjs",
+        "start": "node ./src/index.mjs"
+    },
+    "dependencies": {
+        "johnny-five": "^2.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
+}
