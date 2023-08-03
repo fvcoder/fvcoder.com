@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { buttonDefault } from "../../style/button";
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { Button } from "@tremor/react"
 import Card1 from "./../../assets/img/card_1.webp"
 import Card2 from "./../../assets/img/card_2.webp"
 import Card3 from "./../../assets/img/card_3.webp"
@@ -38,11 +38,8 @@ export function HomePage() {
                         <span className="select-none bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Yarn</span>
                     </div>
                     <div className="flex items-center gap-2 justify-center py-4">
-                        <a href="https://github.com/fvcoder" className={buttonDefault}>
-                            <GitHubLogoIcon />
-                            <span className="ml-2">Github</span>
-                        </a>
-                        <a href="malito:contact@fvcoder.com" className={buttonDefault}>Contactame</a>
+                        <Button variant="primary" icon={GitHubLogoIcon} onClick={() => window.location.href = "https://github.com/fvcoder" }>Github</Button>
+                        <Button variant="secondary" onClick={() => window.location.href = "mailto:contact@fvcoder.com" }>Contactame</Button>
                     </div>
                     <div className="grid grid-cols-3 gap-4 pb-10">
                         {cardGrid.map((x, i) => (

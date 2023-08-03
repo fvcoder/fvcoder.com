@@ -6,7 +6,6 @@ import { buttonLink } from "../../style/button"
 export function Navbar() {
     const links = [
         { label: "Blog", href: "https://blog.fvcoder.com" },
-        { label: "Cursos", href: "/learn" },
         { label: "Acerca de", href: "https://blog.fvcoder.com/quien-es-fernando-ticona-fvcoder/" },
     ]
     return (
