@@ -1,11 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { AuthService } from './app/auth.service';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto, existEmailRes } from './types/auth';
 
 @ApiTags('Auth')
@@ -22,15 +17,16 @@ export class AuthController {
     type: existEmailRes,
   })
   async existsEmail(@Param('email') email: string) {
-    const user = await this.authService.findByEmail(email);
-
-    console.log(user);
     return {
-      exist: !!user,
+      exist: !!(await this.authService.findByEmail(email)),
     };
   }
 
   @Post()
+  @HttpCode(201)
+  @ApiOperation({
+    summary: 'Crea un nuevo usuario',
+  })
   async createUser(@Body() body: CreateUserDto) {
     const data = await this.authService.createUserLocal(body);
     return {
@@ -38,5 +34,13 @@ export class AuthController {
       message: 'User created',
       data,
     };
+  }
+
+  @Post('login')
+  @ApiOperation({
+    summary: 'Login de usuarios',
+  })
+  async login(@Body() body: CreateUserDto) {
+    return { body };
   }
 }

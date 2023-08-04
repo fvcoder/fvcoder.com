@@ -1,63 +1,50 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../domain/user.model';
+import { User } from 'src/user/domain/user.model';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from '../types/auth';
-import { randomUUID } from 'node:crypto';
-import { Auth, AuthProvider } from '../domain/auth.model';
-import { genSalt, hash } from 'bcryptjs';
+import { compare } from 'bcryptjs';
+import { AuthProvider } from '../domain/auth.model';
+
+interface LocalCredential {
+  email: string;
+  password: string;
+}
 
 @Injectable()
 export class AuthService {
   constructor(
+    private readonly jwtService: JwtService,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    @InjectRepository(Auth)
-    private readonly authRepository: Repository<Auth>,
   ) {}
 
-  async findByEmail(email: string) {
+  async validateLocal({ email, password }: LocalCredential): Promise<any> {
     const user = await this.userRepository.findOne({
-      where: {
-        email,
-      },
-      relations: {
-        auth: true,
-      },
+      where: { email },
+      relations: { auth: true },
     });
 
-    return user;
+    if (user && user.auth.find((x) => x.provider === AuthProvider.LOCAL)) {
+      const passwordCompare = await compare(
+        password,
+        user.auth.find((x) => x.provider === AuthProvider.LOCAL).metadata
+          .password,
+      );
+
+      if (passwordCompare) {
+        return {
+          id: user.id,
+        };
+      }
+    }
+    return null;
   }
 
-  async createUserLocal({ data }: Pick<CreateUserDto, 'data'>) {
-    if (!data.email || !data.password) {
-      throw new BadRequestException('Email and password are required');
-    }
-    const { password, ...raw } = data;
-
-    const exist = !!(await this.findByEmail(data.email));
-
-    if (exist) {
-      throw new BadRequestException('Email already exists');
-    }
-
-    const id = randomUUID();
-
-    const user = new User();
-    user.id = id;
-    user.email = data.email;
-    user.username = data.username ?? `user${randomUUID().replace(/-/g, '')}`;
-
-    const auth = new Auth();
-    auth.provider = AuthProvider.LOCAL;
-    auth.providerId = id;
-    auth.metadata = {
-      password: await hash(password, await genSalt(10)),
+  async login(user: any) {
+    const payload = { user: user.id };
+    return {
+      token: this.jwtService.sign(payload),
     };
-
-    user.auth = [auth];
-    auth.raw = raw;
-
-    return await this.userRepository.save(user);
   }
 }

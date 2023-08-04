@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user';
 
 @Module({
   imports: [
@@ -14,7 +15,10 @@ import { ConfigModule } from '@nestjs/config';
         entities: [__dirname + '/**/*.model{.ts,.js}'],
       }),
     }),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    UserModule,
     AuthModule,
   ],
   controllers: [],

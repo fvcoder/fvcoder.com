@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   JoinColumn,
 } from 'typeorm';
-import { User } from '../../user/domain/user.model';
+import { User } from './user.model';
 
 export enum AuthProvider {
   LOCAL = 'local',
