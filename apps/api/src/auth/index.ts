@@ -10,13 +10,14 @@ import { UserModule } from './../user';
 import { User } from 'src/user/domain/user.model';
 import { LocalStrategy } from './app/local.strategy';
 import { JwtStrategy } from './app/jwt.strategy';
+import { Session } from './domain/session.model';
 
 @Module({
   imports: [
     PassportModule.register({
       defaultStrategy: 'jwt',
     }),
-    TypeOrmModule.forFeature([Auth, User]),
+    TypeOrmModule.forFeature([Auth, Session, User]),
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: () => ({

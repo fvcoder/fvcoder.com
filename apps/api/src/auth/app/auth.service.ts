@@ -5,6 +5,9 @@ import { User } from 'src/user/domain/user.model';
 import { Repository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { AuthProvider } from '../domain/auth.model';
+import { Session } from '../domain/session.model';
+import * as dayjs from 'dayjs';
+import { sign } from 'jsonwebtoken';
 
 interface LocalCredential {
   email: string;
@@ -17,6 +20,8 @@ export class AuthService {
     private readonly jwtService: JwtService,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    @InjectRepository(Session)
+    private readonly sessionRepository: Repository<Session>,
   ) {}
 
   async validateLocal({ email, password }: LocalCredential): Promise<any> {
@@ -42,9 +47,30 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const payload = { user: user.id };
+    const token = this.jwtService.sign({ user: user.id });
+    const session = new Session();
+    session.userId = user.id;
+    session.token = token;
+    session.refreshToken = sign(
+      { user: user.id },
+      process.env.REFRESH_TOKEN_SECRET ?? 'refresh',
+    );
+    session.expireAt = dayjs().add(7, 'days').toDate();
+    const currentSession = await this.sessionRepository.save(session);
     return {
-      token: this.jwtService.sign(payload),
+      token: currentSession.token,
+      refresh: currentSession.refreshToken,
+      expireAt: currentSession.expireAt.toISOString(),
     };
+  }
+
+  async verifyToken(token: string) {
+    const session = await this.sessionRepository.findOne({
+      where: {
+        token,
+      },
+    });
+
+    return !!session;
   }
 }

@@ -11,6 +11,7 @@ async function bootstrap() {
     .setTitle('fvcoder.com Api')
     .setDescription('Maneja los servicios de fvcoder.com')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

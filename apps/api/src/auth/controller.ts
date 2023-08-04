@@ -1,5 +1,5 @@
 import { Controller, Post, Delete, Put, UseGuards, Req } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './app/auth.service';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
@@ -20,7 +20,7 @@ export class AuthController {
   @Post()
   @Public()
   @ApiBody({ type: LoginLocalCredentials })
-  @ApiOperation({ summary: 'TODO Inicia Sesion' })
+  @ApiOperation({ summary: 'Inicia Sesion' })
   @UseGuards(AuthGuard('local'))
   async loginUser(@Req() req: Request) {
     const data = await this.authService.login(req.user);
@@ -31,6 +31,8 @@ export class AuthController {
   }
 
   @Put()
+  @Public()
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'TODO Refresca la sesion' })
   refreshToken() {
     return {
