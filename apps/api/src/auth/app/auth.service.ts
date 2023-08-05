@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/user/domain/user.model';
@@ -8,6 +8,7 @@ import { AuthProvider } from '../domain/auth.model';
 import { Session } from '../domain/session.model';
 import * as dayjs from 'dayjs';
 import { sign } from 'jsonwebtoken';
+import { RefreshToken } from '../types/auth';
 
 interface LocalCredential {
   email: string;
@@ -72,5 +73,33 @@ export class AuthService {
     });
 
     return !!session;
+  }
+
+  async refershToken({ token, refreshToken }: RefreshToken) {
+    const { user } = await this.jwtService.verifyAsync(token);
+
+    const session = await this.sessionRepository.findOne({
+      where: {
+        userId: user,
+        token,
+        refreshToken,
+      },
+    });
+    if (!session) {
+      throw new UnauthorizedException('Token invalid');
+    }
+    const refersh = await this.login({ id: user }).catch(console.log);
+
+    await this.sessionRepository.remove(session);
+    return refersh;
+  }
+
+  async logout(token: string) {
+    const session = await this.sessionRepository.findOne({
+      where: {
+        token,
+      },
+    });
+    return await this.sessionRepository.remove(session);
   }
 }
