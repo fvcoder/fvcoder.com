@@ -1,10 +1,20 @@
-import { Controller, Get, Post, Patch, Delete } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AccessTokenGuard } from 'src/common/guards/refershToken.guard';
 
 @ApiTags('User')
 @Controller({ path: 'user', version: '1' })
 export class UserController {
   @Get()
+  @UseGuards(AccessTokenGuard)
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'TODO: Obtiene la informacion del usuario' })
   getCurrentUserData() {
     return {

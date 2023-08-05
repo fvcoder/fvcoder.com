@@ -5,32 +5,27 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Auth } from './domain/auth.model';
 import { AuthController } from './controller';
 import { AuthService } from './app/auth.service';
-import { ConfigService } from '@nestjs/config';
-import { UserModule } from './../user';
 import { User } from 'src/user/domain/user.model';
-import { LocalStrategy } from './app/local.strategy';
-import { JwtStrategy } from './app/jwt.strategy';
+import { LocalStrategy } from './app/strategy/local.strategy';
+import { JwtStrategy } from './app/strategy/jwt.strategy';
+import { RefreshTokenStrategy } from './app/strategy/jwt-refresh.strategy';
 import { Session } from './domain/session.model';
+import { SessionService } from './app/sesion.service';
 
 @Module({
   imports: [
-    PassportModule.register({
-      defaultStrategy: 'jwt',
-    }),
+    PassportModule,
+    JwtModule.register({}),
     TypeOrmModule.forFeature([Auth, Session, User]),
-    JwtModule.registerAsync({
-      inject: [ConfigService],
-      useFactory: () => ({
-        secret: process.env.JWT_SECRET ?? 'secret',
-        signOptions: {
-          expiresIn: '7d',
-        },
-      }),
-    }),
-    UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
-  exports: [AuthService],
+  providers: [
+    AuthService,
+    SessionService,
+    LocalStrategy,
+    JwtStrategy,
+    RefreshTokenStrategy,
+  ],
+  exports: [AuthService, SessionService],
 })
 export class AuthModule {}

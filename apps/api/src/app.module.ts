@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { AuthModule } from './auth';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
@@ -6,6 +6,9 @@ import { UserModule } from './user';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: () => ({
@@ -15,13 +18,8 @@ import { UserModule } from './user';
         entities: [__dirname + '/**/*.model{.ts,.js}'],
       }),
     }),
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    UserModule,
     AuthModule,
+    UserModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

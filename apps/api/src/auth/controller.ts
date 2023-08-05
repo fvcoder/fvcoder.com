@@ -5,25 +5,23 @@ import {
   Put,
   UseGuards,
   Req,
-  Body,
   UnauthorizedException,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './app/auth.service';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
-import { JwtAuthGuard } from './app/jwt.guard';
-import { Public } from './app/isPublic.decorator';
-import { Logauth, LoginLocalCredentials, RefreshToken } from './types/auth';
+import { LoginLocalCredentials } from './types/auth';
+import { SessionService } from './app/sesion.service';
+import { RefreshTokenGuard } from 'src/common/guards/token.guard';
+import { AccessTokenGuard } from 'src/common/guards/refershToken.guard';
 
 @ApiTags('Auth')
-@UseGuards(JwtAuthGuard)
 @Controller({ path: 'auth', version: '1' })
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly sessionService: SessionService) {}
 
   @Post()
-  @Public()
   @ApiBody({
     type: LoginLocalCredentials,
     examples: {
@@ -38,7 +36,10 @@ export class AuthController {
   @ApiOperation({ summary: 'Inicia Sesion' })
   @UseGuards(AuthGuard('local'))
   async loginUser(@Req() req: Request) {
-    const data = await this.authService.login(req.user);
+    if (!req.user || !req.user['id']) {
+      throw new UnauthorizedException();
+    }
+    const data = await this.sessionService.create({ id: req.user['id'] });
     return {
       statusCode: 200,
       data,
@@ -46,48 +47,34 @@ export class AuthController {
   }
 
   @Put()
-  @Public()
-  @ApiBody({
-    type: RefreshToken,
-    examples: {
-      refersh: {
-        value: {
-          token: 'eyJhbGciOi...',
-          refreshToken: 'eyJhbGciOi...',
-        },
-      },
-    },
-  })
+  @UseGuards(RefreshTokenGuard)
   @ApiOperation({ summary: 'Refresca la sesion' })
-  async refreshToken(@Body() body: RefreshToken) {
-    if (!body.token || !body.refreshToken) {
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Refresca la sesion' })
+  async refreshToken(@Req() req: Request) {
+    if (!req.user || !req.user['id'] || !req.user['refreshToken']) {
       throw new UnauthorizedException();
     }
 
+    const data = await this.sessionService.update(
+      req.user['id'],
+      req.user['refreshToken'],
+    );
     return {
       statusCode: 200,
-      data: await this.authService.refershToken(body),
+      data,
     };
   }
 
   @Delete()
-  @Public()
   @ApiOperation({ summary: 'Elimina la sesion' })
-  @ApiBody({
-    type: Logauth,
-    examples: {
-      logout: {
-        value: {
-          token: 'eyJhbGciOi...',
-        },
-      },
-    },
-  })
-  async logout(@Body() body: Logauth) {
-    if (!body.token) {
+  @ApiBearerAuth()
+  @UseGuards(AccessTokenGuard)
+  async logout(@Req() req: Request) {
+    if (!req.user || !req.user['id'] || !req.user['token']) {
       throw new UnauthorizedException();
     }
-    await this.authService.logout(body.token);
+    await this.sessionService.delete(req.user['id'], req.user['token']);
     return {
       statusCode: 200,
       message: 'Ok',
