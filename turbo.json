@@ -5,6 +5,7 @@
         "outputs": ["dist/**"]
       },
       "dev": {},
-      "start": {}
+      "start": {},
+      "lint": {}
     }
   }
