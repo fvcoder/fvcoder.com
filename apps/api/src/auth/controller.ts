@@ -12,8 +12,8 @@ import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { LoginLocalCredentials } from './types/auth';
 import { SessionService } from './app/sesion.service';
-import { RefreshTokenGuard } from 'src/common/guards/token.guard';
-import { AccessTokenGuard } from 'src/common/guards/refershToken.guard';
+import { RefreshTokenGuard } from './../common/guards/token.guard';
+import { AccessTokenGuard } from './../common/guards/refershToken.guard';
 
 @ApiTags('Auth')
 @Controller({ path: 'auth', version: '1' })
