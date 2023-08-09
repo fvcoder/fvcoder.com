@@ -1,14 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/user/domain/user.model';
 import { Repository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { AuthProvider } from '../domain/auth.model';
-import { Session } from '../domain/session.model';
-import * as dayjs from 'dayjs';
-import { sign } from 'jsonwebtoken';
-import { RefreshToken } from '../types/auth';
 
 interface LocalCredential {
   email: string;

@@ -8,7 +8,6 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthService } from './app/auth.service';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { LoginLocalCredentials } from './types/auth';

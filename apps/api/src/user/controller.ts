@@ -7,11 +7,13 @@ import {
   UseGuards,
   Req,
   UnauthorizedException,
+  Body,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AccessTokenGuard } from 'src/common/guards/refershToken.guard';
 import { Request } from 'express';
 import { UserService } from './app/user.service';
+import { CreateUserDto } from './types/user';
 
 @ApiTags('User')
 @Controller({ path: 'user', version: '1' })
@@ -50,11 +52,11 @@ export class UserController {
 
   @Post()
   @ApiOperation({ summary: 'TODO: Crea un nuevo usuario' })
-  createNewUser() {
+  @ApiBody({ type: CreateUserDto })
+  async createNewUser(@Body() user: CreateUserDto) {
     return {
       statusCode: 200,
-      message: 'Hello World',
-      data: 'user',
+      data: await this.userService.createUser(user),
     };
   }
 
