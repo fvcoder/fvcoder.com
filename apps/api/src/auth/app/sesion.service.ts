@@ -1,10 +1,8 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Session } from '../domain/session.model';
-import { Repository } from 'typeorm';
 import * as dayjs from 'dayjs';
+import { PrismaService } from '../../prisma';
 
 interface CreateSession {
   id: string;
@@ -15,8 +13,7 @@ export class SessionService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
-    @InjectRepository(Session)
-    private readonly sessionRepository: Repository<Session>,
+    private readonly prisma: PrismaService,
   ) {}
 
   /**
@@ -43,13 +40,14 @@ export class SessionService {
       ) as Promise<string>,
     ]);
 
-    const session = new Session();
-    session.userId = id;
-    session.token = token;
-    session.refreshToken = refershToken;
-    session.expireAt = dayjs().add(7, 'days').toDate();
-
-    await this.sessionRepository.save(session);
+    await this.prisma.session.create({
+      data: {
+        userId: id,
+        token,
+        refreshToken: refershToken,
+        expireAt: dayjs().add(7, 'days').toDate(),
+      },
+    });
 
     return {
       token,
@@ -58,7 +56,7 @@ export class SessionService {
   }
 
   async update(userId: string, refreshToken: string) {
-    const oldSession = await this.sessionRepository.findOne({
+    const oldSession = await this.prisma.session.findFirst({
       where: {
         userId,
         refreshToken,
@@ -70,13 +68,17 @@ export class SessionService {
     }
 
     const newSession = await this.create({ id: oldSession.id });
-    await this.sessionRepository.remove(oldSession);
+    await this.prisma.session.delete({
+      where: {
+        id: oldSession.id,
+      },
+    });
 
     return newSession;
   }
 
   async delete(userId: string, token: string) {
-    const currentSession = await this.sessionRepository.findOne({
+    const currentSession = await this.prisma.session.findFirst({
       where: {
         userId,
         token,
@@ -87,7 +89,11 @@ export class SessionService {
       return Promise.resolve();
     }
 
-    await this.sessionRepository.remove(currentSession);
+    await this.prisma.session.delete({
+      where: {
+        id: currentSession.id,
+      },
+    });
     return Promise.resolve();
   }
 }

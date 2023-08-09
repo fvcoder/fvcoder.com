@@ -8,6 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableVersioning({ type: VersioningType.URI });
   app.useGlobalPipes(new ValidationPipe());
+  app.enableShutdownHooks();
   const config = new DocumentBuilder()
     .setTitle('fvcoder.com Api')
     .setDescription('Maneja los servicios de fvcoder.com')

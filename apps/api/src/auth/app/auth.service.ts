@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../../user/domain/user.model';
-import { Repository } from 'typeorm';
 import { compare } from 'bcryptjs';
-import { AuthProvider } from '../domain/auth.model';
+import { PrismaService } from '../../prisma';
+import { AuthProvider } from '../types/auth';
 
 interface LocalCredential {
   email: string;
@@ -12,24 +10,21 @@ interface LocalCredential {
 
 @Injectable()
 export class AuthService {
-  constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async validateLocal({ email, password }: LocalCredential): Promise<any> {
-    const user = await this.userRepository.findOne({
-      where: { email },
-      relations: { auth: true },
+    const user = await this.prisma.user.findFirst({
+      where: { email, active: true },
+      include: { auth: true },
     });
 
     if (user && user.auth.find((x) => x.provider === AuthProvider.LOCAL)) {
+      const metadata = user.auth.find((x) => x.provider === AuthProvider.LOCAL)
+        .metadata as Record<string, any>;
       const passwordCompare = await compare(
         password,
-        user.auth.find((x) => x.provider === AuthProvider.LOCAL).metadata
-          .password,
+        metadata.password as string,
       );
-
       if (passwordCompare) {
         return {
           id: user.id,

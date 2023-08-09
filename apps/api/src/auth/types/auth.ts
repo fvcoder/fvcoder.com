@@ -11,3 +11,7 @@ export class RefreshToken {
 export class Logauth {
   token: string;
 }
+
+export enum AuthProvider {
+  LOCAL = 'local',
+}

@@ -1,25 +1,18 @@
-import { Module } from '@nestjs/common';
-import { AuthModule } from './auth';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user';
+import { PrismaModule } from './prisma';
+import { AuthModule } from './auth';
 
+@Global()
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: () => ({
-        type: 'postgres',
-        url: process.env.POSTGRES_URL + '?sslmode=require',
-        synchronize: true,
-        entities: [__dirname + '/**/*.model{.ts,.js}'],
-      }),
-    }),
-    AuthModule,
+    PrismaModule,
     UserModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
