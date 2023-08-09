@@ -13,7 +13,7 @@ import { UserModule } from './user';
       imports: [ConfigModule],
       useFactory: () => ({
         type: 'postgres',
-        url: process.env.POSTGRES_URL,
+        url: process.env.POSTGRES_URL + '?sslmode=require',
         synchronize: true,
         entities: [__dirname + '/**/*.model{.ts,.js}'],
       }),
