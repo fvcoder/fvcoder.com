@@ -3,10 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../domain/user.model';
 import { CreateUserDto } from '../types/user';
-import { Auth, AuthProvider } from 'src/auth/domain/auth.model';
+import { Auth, AuthProvider } from '../../auth/domain/auth.model';
 import { randomUUID } from 'node:crypto';
 import { hash, genSaltSync } from 'bcryptjs';
-import { SessionService } from 'src/auth/app/sesion.service';
+import { SessionService } from '../../auth/app/sesion.service';
 
 @Injectable()
 export class UserService {

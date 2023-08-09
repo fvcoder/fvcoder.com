@@ -10,7 +10,7 @@ import {
   Body,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AccessTokenGuard } from 'src/common/guards/refershToken.guard';
+import { AccessTokenGuard } from '../common/guards/refershToken.guard';
 import { Request } from 'express';
 import { UserService } from './app/user.service';
 import { CreateUserDto } from './types/user';
