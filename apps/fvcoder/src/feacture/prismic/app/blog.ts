@@ -31,6 +31,22 @@ export async function getBlogList({
   return d;
 }
 
+export async function getBlogUrl(): Promise<string[]> {
+  const d = await prismic.getByType("blog", {
+    lang: 'es-BO',
+    orderings: {
+      field: "document.last_publication_date",
+      direction: "desc",
+    },
+    pageSize: 100,
+  });
+  
+  return [
+    `${import.meta.env.URL_BASE}/blog`,
+    ...d.results.map(x => `${import.meta.env.URL_BASE}/blog/${x.uid}`)
+  ];
+}
+
 export async function getBlogBySlug({ slug }: querySlug): Promise<BlogDocument<string>> {
   const a = await prismic.getByUID("blog", slug, {
     fetch: "author.author_name",
