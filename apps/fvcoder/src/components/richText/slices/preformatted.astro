@@ -1,0 +1,24 @@
+---
+import hlc from "highlight.js";
+import type { RTPreformattedNode } from "@prismicio/types"
+
+interface Props {
+    content: RTPreformattedNode
+}
+const { content } = Astro.props
+let textRaw = content.text
+let language = 'text'
+
+if (content.text.startsWith('languaje')) {
+    const firstLine = content.text.split('\n')[0]
+    language = firstLine.replace('languaje:', '')
+    textRaw = content.text.replace(`${firstLine}\n`, '')
+}
+
+const html = hlc.highlight(textRaw, { language }).value
+---
+<div class="not-prose">
+    <pre class="">
+        <code class={`hljs language-${language} rounded-xl`} set:html={html} />
+    </pre>
+</div>

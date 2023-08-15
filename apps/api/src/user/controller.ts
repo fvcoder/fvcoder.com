@@ -2,8 +2,6 @@ import {
   Controller,
   Get,
   Post,
-  Patch,
-  Delete,
   UseGuards,
   Req,
   UnauthorizedException,
@@ -49,7 +47,6 @@ export class UserController {
       },
     };
   }
-
   @Post()
   @ApiOperation({ summary: 'Crea un nuevo usuario' })
   @ApiBody({ type: CreateUserDto })
@@ -60,6 +57,7 @@ export class UserController {
     };
   }
 
+  /*
   @Patch()
   @ApiOperation({ summary: 'TODO: Actualiza la informacion del usuario' })
   updateUserData() {
@@ -79,4 +77,5 @@ export class UserController {
       data: 'user',
     };
   }
+  */
 }

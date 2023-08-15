@@ -1,0 +1,21 @@
+---
+import type { RTNode } from '@prismicio/types';
+import HTML from './utils/html.astro'
+import PreformattedSlice from './slices/preformatted.astro'
+import { ImageSlice } from './slices/image'
+import { EmbedSlice } from './slices/embed';
+
+interface Props{
+    content: RTNode[]
+}
+const { content } = Astro.props;
+---
+
+{content.map(slice => {
+    switch (slice.type) {
+        case 'preformatted': return <PreformattedSlice content={slice} />
+        case 'image': return <ImageSlice client:visible {...slice} />
+        case 'embed': return <EmbedSlice client:visible {...slice} />
+        default: return <HTML content={slice} />
+    }
+})}

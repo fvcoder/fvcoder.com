@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
-import { Button } from "@tremor/react"
+import { Button, Tooltip } from "@nextui-org/react"
 import Card1 from "./../../assets/img/card_1.webp"
 import Card2 from "./../../assets/img/card_2.webp"
 import Card3 from "./../../assets/img/card_3.webp"
@@ -10,13 +10,13 @@ import Card6 from "./../../assets/img/card_6.webp"
 import Card7 from "./../../assets/img/card_7.webp"
 
 const cardGrid = [
-    { href: "/", img: Card1 },
-    { href: "/", img: Card2 },
-    { href: "/", img: Card3 },
-    { href: "https://blog.fvcoder.com/tag/framework/", img: Card4 },
-    { href: "https://blog.fvcoder.com/tag/javascript/", img: Card5 },
-    { href: "https://blog.fvcoder.com/tag/node-js/", img: Card6 },
-    { href: "https://blog.fvcoder.com/tag/backend", img: Card7 },
+    { href: "/blog/figma", alt: "¿Por que uso Figma?", img: Card1 },
+    { href: "/blog/notion", alt: "Notion, el mejor sistema que uso para organizar mis proyectos", img: Card2 },
+    { href: "/blog/discord", alt: "Discord, el mejor sistema de mensajería", img: Card3 },
+    { href: "https://blog.fvcoder.com/tag/framework/", alt: "Proyectos con framework frontend ", img: Card4 },
+    { href: "https://blog.fvcoder.com/tag/javascript/", alt: "Proyectos con JavaScript", img: Card5 },
+    { href: "https://blog.fvcoder.com/tag/node-js/", alt: "Proyectos con Node js", img: Card6 },
+    { href: "https://blog.fvcoder.com/tag/backend", alt: "Proyectos con tecnologias backend", img: Card7 },
 ]
 
 export function HomePage() {
@@ -38,23 +38,24 @@ export function HomePage() {
                         <span className="select-none bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Yarn</span>
                     </div>
                     <div className="flex items-center gap-2 justify-center py-4">
-                        <Button variant="primary" icon={GitHubLogoIcon} onClick={() => window.location.href = "https://github.com/fvcoder" }>Github</Button>
-                        <Button variant="secondary" onClick={() => window.location.href = "mailto:contact@fvcoder.com" }>Contactame</Button>
+                        <Button startContent={<GitHubLogoIcon />} variant="solid" color="primary" onClick={() => window.location.href = "https://github.com/fvcoder" }>Github</Button>
+                        <Button variant="bordered" onClick={() => window.location.href = "mailto:contact@fvcoder.com" }>Contactame</Button>
                     </div>
                     <div className="grid grid-cols-3 gap-4 pb-10">
                         {cardGrid.map((x, i) => (
-                            <a
-                                href={x.href}
-                                key={i}
-                                className={
-                                    classNames("rounded-xl shadow bg-neutral-100", {
-                                        "col-span-1 aspect-square": !(i === 3 || i === 6),
-                                        "col-span-2 h-full": i === 3 || i === 6
-                                    })
-                                }
-                            >
-                                <img src={x.img} alt="" />
-                            </a>
+                            <Tooltip content={x.alt} key={`image-${i}`}>
+                                <a
+                                    href={x.href}
+                                    className={
+                                        classNames("rounded-xl shadow bg-neutral-100", {
+                                            "col-span-1 aspect-square": !(i === 3 || i === 6),
+                                            "col-span-2 h-full": i === 3 || i === 6
+                                        })
+                                    }
+                                >
+                                    <img src={x.img} alt={x.alt} />
+                                </a>
+                            </Tooltip>
                         ))}
                     </div>
                 </div>

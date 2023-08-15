@@ -1,0 +1,13 @@
+---
+import { asHTML } from '@prismicio/helpers';
+import { RTNode } from '@prismicio/types'
+
+interface Props {
+    content: RTNode
+}
+
+const { content } = Astro.props;
+
+const html = asHTML([content]);
+---
+<div set:html={html} />
