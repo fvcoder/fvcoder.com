@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "blog",
-        "env"
+        "env",
+        "landing page"
     ]
 }

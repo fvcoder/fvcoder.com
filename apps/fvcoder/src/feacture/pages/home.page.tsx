@@ -38,8 +38,8 @@ export function HomePage() {
                         <span className="select-none bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Yarn</span>
                     </div>
                     <div className="flex items-center gap-2 justify-center py-4">
-                        <Button startContent={<GitHubLogoIcon />} variant="solid" color="primary" onClick={() => window.location.href = "https://github.com/fvcoder" }>Github</Button>
-                        <Button variant="bordered" onClick={() => window.location.href = "mailto:contact@fvcoder.com" }>Contactame</Button>
+                        <Button as="a" href="https://github.com/fvcoder" className="home-btn-gh" startContent={<GitHubLogoIcon />} variant="solid" color="primary">Github</Button>
+                        <Button as="a" href="mailto:contact@fvcoder.com" className="home-btn-ct" variant="bordered">Contactame</Button>
                     </div>
                     <div className="grid grid-cols-3 gap-4 pb-10">
                         {cardGrid.map((x, i) => (

@@ -13,20 +13,20 @@ export function Navbar() {
         <NavbarRoot onMenuOpenChange={(open) => setIsMenuOpen(Boolean(open))}>
           <NavbarContent>
             <NavbarBrand>
-                <a href="/" className="flex items-center gap-2">
+                <a href="/" className="flex items-center gap-2" aria-label="fvcoder logo">
                     <img src="/favicon-96x96.png" alt="fvcoder icon png" width={35} height={35} />
                     <span className="font-inter text-base font-normal">fvcoder</span>
                 </a>
             </NavbarBrand>
             <NavbarMenuToggle
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="sm:hidden"
+              className="nv-menu sm:hidden"
             />
           </NavbarContent>
     
-          <NavbarContent className="hidden sm:flex gap-4" justify="end">
+          <NavbarContent className="nv-menu hidden sm:flex gap-4" justify="end">
             {links.map((x, i) => (
-                <NavbarItem key={`navbar-item-${i}`}>
+                <NavbarItem key={`navbar-item-${i}`} className={`nv-link-${i+1}`}>
                     <Link color="foreground" href={x.href}>
                         {x.label}
                     </Link>
