@@ -8,7 +8,8 @@
     "build": "prismic-ts-codegen && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "codegen": "prismic-ts-codegen"
+    "codegen": "prismic-ts-codegen",
+    "test:open": "cypress open"
   },
   "dependencies": {
     "@astrojs/react": "^2.2.1",
@@ -38,6 +39,7 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "cypress": "^12.17.4",
     "prismic-ts-codegen": "^0.1.17"
   }
 }
