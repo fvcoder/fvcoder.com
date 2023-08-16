@@ -4,6 +4,7 @@ import Render from "./../../components/richText/render.astro";
 import { asText } from "@prismicio/client"
 import { getBlogBySlug } from "../../feacture/prismic";
 import { ArrowLeftIcon } from "@radix-ui/react-icons"
+import GoogleAdSense from "./../../feacture/google/adsense.astro"
 
 const post = await getBlogBySlug({ slug: Astro.params.slug as string })
 
@@ -46,6 +47,5 @@ const formattedPublishDate = new Date(post.last_publication_date).toLocaleDateSt
             </span>
         </a>
     </div>
-    <footer>
-    </footer>
+    <GoogleAdSense />
 </ArticleLayout>

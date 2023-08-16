@@ -6,6 +6,8 @@ import { Navbar } from "../../components/navbar";
 import { SEO } from "astro-seo";
 import { getBlogList } from "../../feacture/prismic"
 import { CardPost } from "../../components/card";
+import GoogleAdSense from "./../../feacture/google/adsense.astro"
+import GoogleAnalytics from "./../../feacture/google/analytics.astro"
 
 const data = await getBlogList({ page: 1, pageSize: 12 });
 
@@ -70,6 +72,8 @@ const url = `${Astro.url.origin}${Astro.url.pathname}`
 					})}
     	        </main>
 		</div>
+		<GoogleAdSense />
+		<GoogleAnalytics />
 	</body>
 </html>
  

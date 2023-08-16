@@ -6,6 +6,7 @@ import { Navbar } from "../../components/navbar";
 import { SEO } from "astro-seo";
 import { getProjectList } from "../../feacture/prismic"
 import { ProjectPost } from "../../components/card/project.post";
+import GoogleAnalytics from "./../../feacture/google/analytics.astro"
 
 const data = await getProjectList({ page: 1, pageSize: 12 });
 
@@ -69,6 +70,7 @@ const url = `${Astro.url.origin}${Astro.url.pathname}`
 					})}
     	        </main>
 		</div>
+		<GoogleAnalytics />
 	</body>
 </html>
  

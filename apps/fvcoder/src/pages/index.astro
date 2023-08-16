@@ -5,6 +5,7 @@ import "@fontsource/inter/400.css"
 import { HomePage } from "../feacture/pages/home.page"
 import { Navbar } from "../components/navbar";
 import { SEO } from "astro-seo";
+import GoogleAnalytics from "./../feacture/google/analytics.astro"
 
 export const prerender = true;
 ---
@@ -43,6 +44,7 @@ export const prerender = true;
 	<body class="bg-slate-50">
 		<Navbar client:load />
 		<HomePage client:load  />
+		<GoogleAnalytics />
 	</body>
 </html>
  
