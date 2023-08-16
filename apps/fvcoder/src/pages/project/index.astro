@@ -4,17 +4,16 @@ import "@fontsource/inter/500.css"
 import "@fontsource/inter/400.css"
 import { Navbar } from "../../components/navbar";
 import { SEO } from "astro-seo";
-import { getBlogList } from "../../feacture/prismic"
-import { CardPost } from "../../components/card";
+import { getProjectList } from "../../feacture/prismic"
+import { ProjectPost } from "../../components/card/project.post";
 
-const data = await getBlogList({ page: 1, pageSize: 12 });
+const data = await getProjectList({ page: 1, pageSize: 12 });
 
-const title = "Bitácora de un Full-Stack Dev Junior por Fernando Ticona | Blog"
-const description = "¡Explora el Mundo del Desarrollo Web con Fernando Ticona! Únete a mí en mi viaje como Full-Stack Dev Junior mientras comparto mis experiencias, conocimientos y proyectos en el emocionante mundo del desarrollo frontend y backend. Sumérgete en artículos, tutoriales y reflexiones que te guiarán a través de mis aprendizajes. ¡Conéctate y descubre nuevas oportunidades en el universo del código!"
+const title = "Explora mis Creaciones: Proyectos de Fernando Ticona, Full-Stack Dev Junior"
+const description = "Sumérgete en el fascinante mundo de mis creaciones como Full-Stack Dev Junior. Desde aplicaciones web dinámicas hasta soluciones backend innovadoras, descubre una variedad de proyectos que reflejan mi pasión por el desarrollo web. Explora cómo aplico mis habilidades para dar vida a ideas digitales emocionantes."
 const url = `${Astro.url.origin}${Astro.url.pathname}`
 
 ---
-
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
@@ -51,19 +50,19 @@ const url = `${Astro.url.origin}${Astro.url.pathname}`
 		<div class="max-w-sm md:max-w-4xl mx-auto px-4 py-4">
 			<header class="py-4">
                 <h2>
-                    <h1 class="text-large font-bold">Últimas Articulos de fvcoder</h1>
+                    <h1 class="text-large font-bold">Proyectos de Fernando Ticona, Full-Stack Dev</h1>
                 </h2>
             </header>
 				<main class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
 					{data.results.map((post, i) => {
 						return (
-							<a href={`/blog/${post.uid}`}>
-								<CardPost
+							<a href={`/project/${post.uid}`}>
+								<ProjectPost
 									client:visible
 									image={post.data.image.url ?? ""}
 									imageAlt={post.data.image.alt ?? ""}
 									title={post.data.title[0]?.text}
-									tag={(post.tags[0] ?? "").replace(/-/g, " ") }
+									tag={post.tags}
 								/>
 							</a>
 						)

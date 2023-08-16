@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
-import { getBlogUrl } from '../../feacture/prismic';
+import { getProjectUrl } from '../../feacture/prismic';
 
 export const get: APIRoute = async () => {
-  const dta = await getBlogUrl()
+  const dta = await getProjectUrl()
 
   return new Response(dta.join('\n'), {
     status: 200,

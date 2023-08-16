@@ -124,7 +124,67 @@ interface BlogDocumentData {
  */
 export type BlogDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
-export type AllDocumentTypes = AboutDocument | BlogDocument;
+/**
+ * Content for projects documents
+ */
+interface ProjectsDocumentData {
+	/**
+	 * title field in *projects*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.TitleField;
+	
+	/**
+	 * description field in *projects*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects.description
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * image field in *projects*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+	
+	/**
+	 * body field in *projects*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects.body
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	body: prismic.RichTextField;
+}
+
+/**
+ * projects document from Prismic
+ *
+ * - **API ID**: `projects`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ProjectsDocumentData>, "projects", Lang>;
+
+export type AllDocumentTypes = AboutDocument | BlogDocument | ProjectsDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -137,6 +197,8 @@ declare module "@prismicio/client" {
 			AboutDocumentData,
 			BlogDocument,
 			BlogDocumentData,
+			ProjectsDocument,
+			ProjectsDocumentData,
 			AllDocumentTypes
 		}
 	}

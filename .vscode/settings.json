@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "blog",
         "env",
-        "landing page"
+        "landing page",
+        "projects"
     ]
 }
