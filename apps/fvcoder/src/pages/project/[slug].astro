@@ -35,9 +35,11 @@ const formattedPublishDate = new Date(post.last_publication_date).toLocaleDateSt
             <time datetime={formattedPublishDate}>{formattedPublishDate}</time>
         </span>
         <Render content={data.title} />
-        <div>
+        <div class="flex items-center justify-center gap-2 flex-wrap">
             {post.tags.map((x, i) => (
-                <BadgeBySkill text={x} />
+                <a href={`/tag/${x}`} class="no-underline">
+                    <BadgeBySkill text={x} />
+                </a>
             ))}
         </div>
     </header>

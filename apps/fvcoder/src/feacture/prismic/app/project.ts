@@ -1,4 +1,5 @@
 import type { Query } from "@prismicio/types";
+import { filter } from "@prismicio/client"
 
 import { prismic } from "../dom/connect";
 import type { ProjectsDocument } from "../types/schema";
@@ -29,6 +30,24 @@ export async function getProjectList({
   });
 
   return d;
+}
+
+export async function getProjectByTag(tag: string) {
+  const d = await prismic.getByTag(tag, {
+    lang: 'es-BO',
+    orderings: {
+      field: "document.last_publication_date",
+      direction: "desc",
+    },
+    pageSize: 13,
+    page: 1,
+    fetchLinks: ["author"],
+    filters: [
+      filter.at('document.type', 'projects')
+    ]
+  })
+  
+  return d
 }
 
 export async function getProjectUrl(): Promise<string[]> {

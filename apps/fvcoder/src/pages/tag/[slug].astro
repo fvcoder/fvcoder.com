@@ -1,0 +1,81 @@
+---
+import "@fontsource/inter/700.css"
+import "@fontsource/inter/500.css"
+import "@fontsource/inter/400.css"
+import { Navbar } from "../../components/navbar";
+import { SEO } from "astro-seo";
+import { getProjectByTag } from "../../feacture/prismic"
+import { ProjectPost } from "../../components/card/project.post";
+import GoogleAnalytics from "./../../feacture/google/analytics.astro"
+
+function capitalize(str = "") {
+    return str.split(' ').map((char) => {
+        return char[0].toUpperCase() + char.slice(1, char.length)
+    }).join(' ');
+}
+const data = await getProjectByTag((Astro.params.slug ?? "").toLocaleLowerCase());
+
+const tag = capitalize((Astro.params.slug ?? "").replace(/-/, " "));
+
+const title = `Proyectos de Programación de Fernando Ticona (@fvcoder) Etiquetados como ${tag}`
+const description = `Explora los proyectos de programación de Fernando Ticona (@fvcoder) organizados bajo la etiqueta ${tag}. Descubre una variedad de creaciones que abarcan desde desarrollo web hasta aplicaciones innovadoras. Encuentra inspiración, aprendizaje y soluciones tecnológicas a medida que navegas a través de esta exhibición de creatividad y habilidades en el mundo de la programación.`
+const url = `${Astro.url.origin}${Astro.url.pathname}`
+
+---
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<meta name="viewport" content="width=device-width" />
+		<SEO
+			title={title}
+			description={description}
+			canonical={url}
+			charset="utf-8"
+			openGraph={{
+				basic: {
+					title,
+					type: "website",
+					image: "https://fvcoder.com/hi.png",
+					url,
+				}
+			}}
+			twitter={{
+				card: "summary_large_image",
+				image: "https://fvcoder.com/hi.png",
+				creator: "@fvcoder1",
+				title,
+				description,
+				imageAlt: "Fernando Ticona | Full-Stack Dev Junior",
+			}}
+		/>
+	</head>
+	<body class="bg-slate-50">
+        <Navbar client:load />
+		<div class="max-w-sm md:max-w-4xl mx-auto px-4 py-4">
+			<header class="py-4">
+                <h1 class="text-large font-bold">{title}</h1>
+            </header>
+				<main class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+					{data.results.map((post, i) => {
+						return (
+							<a href={`/project/${post.uid}`}>
+								<ProjectPost
+									client:visible
+									image={post.data.image.url ?? ""}
+									imageAlt={post.data.image.alt ?? ""}
+									title={post.data.title[0]?.text}
+									tag={post.tags}
+								/>
+							</a>
+						)
+					})}
+    	        </main>
+		</div>
+		<GoogleAnalytics />
+	</body>
+</html>
+ 

@@ -14,7 +14,7 @@ export function ProjectPost({ tag, title, image, imageAlt }: Partial<ProjectPost
 		    <CardHeader className="px-4 flex-col items-start" >
 			    <h2 className="font-bold line-clamp-1 text-lg">{title}</h2>
                 <div className="flex flex-wrap gap-2 py-2">
-                    {tag && tag.map((x, i) => (
+                    {tag && tag.slice(0, 3).map((x, i) => (
                         <BadgeBySkill text={x} key={`tag-${i}-${title}`} />
                     ))}
                 </div>

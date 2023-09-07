@@ -13,10 +13,10 @@ const cardGrid = [
     { href: "/blog/figma", alt: "¿Por que uso Figma?", img: Card1 },
     { href: "/blog/notion", alt: "Notion, el mejor sistema que uso para organizar mis proyectos", img: Card2 },
     { href: "/blog/discord", alt: "Discord, el mejor sistema de mensajería", img: Card3 },
-    { href: "https://blog.fvcoder.com/tag/framework/", alt: "Proyectos con framework frontend ", img: Card4 },
-    { href: "https://blog.fvcoder.com/tag/javascript/", alt: "Proyectos con JavaScript", img: Card5 },
-    { href: "https://blog.fvcoder.com/tag/node-js/", alt: "Proyectos con Node js", img: Card6 },
-    { href: "https://blog.fvcoder.com/tag/backend", alt: "Proyectos con tecnologias backend", img: Card7 },
+    { href: "/tag/framework/", alt: "Proyectos con framework frontend ", img: Card4 },
+    { href: "/tag/javascript/", alt: "Proyectos con JavaScript", img: Card5 },
+    { href: "/tag/node-js/", alt: "Proyectos con Node js", img: Card6 },
+    { href: "/tag/backend", alt: "Proyectos con tecnologias backend", img: Card7 },
 ]
 
 export function HomePage() {
