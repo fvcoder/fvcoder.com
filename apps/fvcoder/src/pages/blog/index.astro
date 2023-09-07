@@ -8,6 +8,7 @@ import { getBlogList } from "../../feacture/prismic"
 import { CardPost } from "../../components/card";
 import GoogleAdSense from "./../../feacture/google/adsense.astro"
 import GoogleAnalytics from "./../../feacture/google/analytics.astro"
+import { Footer } from "../../components/footer";
 
 const data = await getBlogList({ page: 1, pageSize: 12 });
 
@@ -74,6 +75,7 @@ const url = `${Astro.url.origin}${Astro.url.pathname}`
 		</div>
 		<GoogleAdSense />
 		<GoogleAnalytics />
+		<Footer />
 	</body>
 </html>
  
