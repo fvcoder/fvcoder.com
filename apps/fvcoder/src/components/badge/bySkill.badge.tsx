@@ -23,6 +23,10 @@ const skill: Record<string, string> = {
     tailwind: style.sky,
     prismic: style.yellow,
     nodejs: style.green,
+    typescript: style.blue,
+    javascript: style.yellow,
+    backend: style.blue,
+    framework: style.sky,
 }
 
 export function BadgeBySkill({ text }: { text: string }) {
