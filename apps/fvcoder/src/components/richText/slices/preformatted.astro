@@ -1,6 +1,7 @@
 ---
 import hlc from "highlight.js";
 import type { RTPreformattedNode } from "@prismicio/types"
+import CardPlatzi from "./preformatted/platzi.astro"
 
 interface Props {
     content: RTPreformattedNode
@@ -8,6 +9,13 @@ interface Props {
 const { content } = Astro.props
 let textRaw = content.text
 let language = 'text'
+let enabledCard = false
+let card = ''
+
+if (content.text.startsWith('promo:')) {
+    enabledCard = true
+    card = content.text.split('\n')[0].replace('promo:', '')
+}
 
 if (content.text.startsWith('languaje')) {
     const firstLine = content.text.split('\n')[0]
@@ -17,8 +25,16 @@ if (content.text.startsWith('languaje')) {
 
 const html = hlc.highlight(textRaw, { language }).value
 ---
-<div class="not-prose">
-    <pre class="">
-        <code class={`hljs language-${language} rounded-xl`} set:html={html} />
-    </pre>
-</div>
+{enabledCard === false && (
+    <div class="not-prose">
+        <pre class="">
+            <code class={`hljs language-${language} rounded-xl`} set:html={html} />
+        </pre>
+    </div>
+)}
+
+{enabledCard && card !== '' && (
+    <div class="mb-4">
+        {card === "platzi" && <CardPlatzi />}
+    </div>
+)}
