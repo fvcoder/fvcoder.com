@@ -2,13 +2,14 @@
 import ArticleLayout from "./../../layout/article.astro";
 import { getCertificatesList } from "./../../feacture/prismic"
 import { asText } from "@prismicio/helpers"
+const title = "Certificaciones de Fernando Ticona (@fvcoder): Un Vistazo a su Trayectoria"
 
 const data = await getCertificatesList({});
 ---
-<ArticleLayout title="Certificados" description="Certificados" image="https://fvcoder.com/hi.png" disableProse={true}>
+<ArticleLayout title={title} description="Explore la experiencia certificada de Fernando Ticona (@fvcoder) en tecnología y desarrollo web a través de una impresionante variedad de certificados." image="https://fvcoder.com/hi.png" disableProse={true}>
     <div class="max-w-sm md:max-w-4xl mx-auto px-4 py-4">
         <header>
-            header title
+            {title}
         </header>
         <main class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
             {data.results.map(x => (
