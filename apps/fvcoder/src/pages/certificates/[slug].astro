@@ -1,0 +1,31 @@
+---
+import ArticleLayout from "./../../layout/article.astro";
+import { getCertificatesBySlug } from "./../../feacture/prismic"
+import { asText } from "@prismicio/helpers"
+
+const data = await getCertificatesBySlug({ slug: Astro.params.slug as string });
+---
+<ArticleLayout title={asText(data.data.title)} description={asText(data.data.description)} image={data.data.image.url ?? ""} disableProse={true}>
+    <div class="max-w-sm md:max-w-4xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+        <header>
+            <h1 class="text-lg md:text-xl lg:text-2xl font-bold tracking-tighter leading-none">{asText(data.data.title)}</h1>
+            <div>
+                <div class="mt-6 mb-2 text-sm">
+                    Otorgado a:
+                </div>
+                <a href="https://github.com/fvcoder">
+                    <div class="inline-flex items-center gap-1">
+                        <img src="https://github.com/fvcoder.png" alt={`fvcoder icon`} width="35" class="rounded-full border">
+                        <div>
+                            <h3 class="font-semibold leading-none">Fernando Ticona</h3>
+                            <small class="text-sm text-gray-500">@fvcoder</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </header>
+        <main>
+            <img src={data.data.image.url} alt={data.data.image.alt} transition:name=`cert-img-${data.uid}`>
+        </main>
+    </div>
+</ArticleLayout>

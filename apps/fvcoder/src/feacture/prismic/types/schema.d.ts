@@ -125,6 +125,78 @@ interface BlogDocumentData {
 export type BlogDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
 /**
+ * Content for certificates documents
+ */
+interface CertificatesDocumentData {
+	/**
+	 * title field in *certificates*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: certificates.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.TitleField;
+	
+	/**
+	 * description field in *certificates*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: certificates.description
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * isTitle field in *certificates*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: certificates.istitle
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	istitle: prismic.BooleanField;
+	
+	/**
+	 * date field in *certificates*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: certificates.date
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#date
+	 */
+	date: prismic.DateField;
+	
+	/**
+	 * image field in *certificates*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: certificates.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * certificates document from Prismic
+ *
+ * - **API ID**: `certificates`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CertificatesDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<CertificatesDocumentData>, "certificates", Lang>;
+
+/**
  * Content for projects documents
  */
 interface ProjectsDocumentData {
@@ -184,7 +256,7 @@ interface ProjectsDocumentData {
  */
 export type ProjectsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ProjectsDocumentData>, "projects", Lang>;
 
-export type AllDocumentTypes = AboutDocument | BlogDocument | ProjectsDocument;
+export type AllDocumentTypes = AboutDocument | BlogDocument | CertificatesDocument | ProjectsDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -197,6 +269,8 @@ declare module "@prismicio/client" {
 			AboutDocumentData,
 			BlogDocument,
 			BlogDocumentData,
+			CertificatesDocument,
+			CertificatesDocumentData,
 			ProjectsDocument,
 			ProjectsDocumentData,
 			AllDocumentTypes

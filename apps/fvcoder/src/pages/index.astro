@@ -7,6 +7,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { SEO } from "astro-seo";
 import GoogleAnalytics from "./../feacture/google/analytics.astro"
+import { ViewTransitions } from "astro:transitions";
 
 export const prerender = true;
 ---
@@ -19,6 +20,7 @@ export const prerender = true;
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<meta name="viewport" content="width=device-width" />
+		<ViewTransitions />
 		<SEO
 			title="Fernando Ticona | Full-Stack Dev Junior"
 			description="¡Bienvenido a mi perfil! Soy Fernando Ticona, un Full-Stack Dev Junior apasionado por el desarrollo web. Explora mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contáctame para oportunidades emocionantes en el mundo del desarrollo frontend y backend!"

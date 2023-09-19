@@ -53,7 +53,7 @@ export function HomePage() {
                                         })
                                     }
                                 >
-                                    <img src={x.img} alt={x.alt} />
+                                    <img src={x.img.src} alt={x.alt} />
                                 </a>
                             </Tooltip>
                         ))}

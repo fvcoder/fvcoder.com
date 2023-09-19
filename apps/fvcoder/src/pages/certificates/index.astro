@@ -1,0 +1,21 @@
+---
+import ArticleLayout from "./../../layout/article.astro";
+import { getCertificatesList } from "./../../feacture/prismic"
+import { asText } from "@prismicio/helpers"
+
+const data = await getCertificatesList({});
+---
+<ArticleLayout title="Certificados" description="Certificados" image="https://fvcoder.com/hi.png" disableProse={true}>
+    <div class="max-w-sm md:max-w-4xl mx-auto px-4 py-4">
+        <header>
+            header title
+        </header>
+        <main class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {data.results.map(x => (
+                <a href={`/certificates/${x.uid}`} title={asText(x.data.title)}>
+                    <img src={x.data.image.url} alt={x.data.image.alt} transition:name={`cert-img-${x.uid}`}>
+                </a>
+            ))}
+        </main>
+    </div>
+</ArticleLayout>

@@ -7,6 +7,7 @@ export function Navbar() {
     const links = [
         { label: "Proyectos", href: "/project" },
         { label: "Blog", href: "/blog" },
+        { label: "Certificados", href: "/certificates" },
         { label: "Acerca de", href: "/about" },
     ]
 
