@@ -4,9 +4,11 @@ import { cn } from '@nextui-org/react';
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 
+import { Navbar } from '@/components/navbar';
+
 import { Providers } from './providers';
 
-const pageOnlyDarkMode = [/\//, /\/about/];
+const pageOnlyDarkMode = ['/', /\/about/];
 
 export function generateMetadata(): Metadata {
   return {
@@ -45,7 +47,13 @@ export default function RootLayout({
   const pathName = headers().get('X-Url') ?? '/';
 
   pageOnlyDarkMode.some((x) => {
-    if (x.test(pathName)) {
+    if (typeof x === 'string') {
+      if (x === pathName) {
+        isDark = true;
+
+        return false;
+      }
+    } else if (x.test(pathName)) {
       isDark = true;
 
       return false;
@@ -57,7 +65,16 @@ export default function RootLayout({
   return (
     <html lang="es" className={cn({ dark: isDark })}>
       <body className="relative">
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+
+          <div
+            className="hidden dark:block absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-neutral-100 dark:bg-neutral-950
+      			bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+      			dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+          ></div>
+          {children}
+        </Providers>
       </body>
     </html>
   );

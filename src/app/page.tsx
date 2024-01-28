@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 
@@ -8,19 +9,17 @@ import { MailIcon } from '@/assets/icons/mail';
 import { PersonIcon } from '@/assets/icons/person';
 import { BadgePill } from '@/components/badge.pill';
 import { Footer } from '@/components/footer';
-import { Navbar } from '@/components/navbar';
 import { TimeLine } from '@/components/timeline';
 import { EXPERIENCIE } from '@/data/experience';
 
 export default function Home() {
   return (
-    <div className="relative min-h-[100vh] dark">
+    <div className="relative min-h-[100vh]">
       <div
         className="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-neutral-100 dark:bg-neutral-950
       			bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
       			dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
       ></div>
-      <Navbar />
 
       <main className="w-full max-w-3xl px-4 mx-auto">
         <section className="py-44 pb-32" id="contacto">
@@ -84,7 +83,7 @@ export default function Home() {
             Sobre mi
           </h2>
           <article className="flex flex-col md:flex-row gap-8 justify-center items-center">
-            <div className="[&>p]:mb-4 [&>p>strong]:text-yellow-400 [&>p>strong]:font-semibold text-pretty order-2 md:order-1">
+            <div className="[&>p]:mb-4 [&>p>strong]:text-yellow-600 [&>p>strong]:dark:text-yellow-400 [&>p>strong]:font-semibold text-pretty order-2 md:order-1">
               <p>
                 Me llamo Fernando Ticona pero soy conocido por fvcoder. Empecé
                 en la programación a causa de la música como hobby, tenía 17

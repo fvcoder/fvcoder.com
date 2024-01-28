@@ -23,10 +23,7 @@ export function Footer() {
             </a>
           </li>
           <li>
-            <a
-              href="https://github.com/fvcoder/"
-              className="flex items-center text-white"
-            >
+            <a href="https://github.com/fvcoder/" className="flex items-center">
               <GithubIconBrand width={18} height={18} />
             </a>
           </li>
