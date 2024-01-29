@@ -1,4 +1,6 @@
 'use client';
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
+import { LoginLink } from '@kinde-oss/kinde-auth-nextjs/components';
 import {
   Button,
   Link as LinkUi,
@@ -9,15 +11,19 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Spinner,
 } from '@nextui-org/react';
 import Link from 'next/link';
 import { useState } from 'react';
 
 import { useAppSelector } from '@/redux';
 
+import { UserActions } from './user.navbar';
+
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbar = useAppSelector((x) => x.navbar);
+  const { isAuthenticated, isLoading } = useKindeBrowserClient();
 
   return (
     <NavbarUi onMenuOpenChange={setIsMenuOpen} {...navbar.style}>
@@ -44,9 +50,17 @@ export function Navbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat" size="sm">
-            Iniciar Sesion
-          </Button>
+          {isLoading ? (
+            <Spinner size="sm" />
+          ) : isAuthenticated ? (
+            <UserActions />
+          ) : (
+            <LoginLink>
+              <Button color="primary" href="#" variant="flat" size="sm">
+                Iniciar Sesion
+              </Button>
+            </LoginLink>
+          )}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>

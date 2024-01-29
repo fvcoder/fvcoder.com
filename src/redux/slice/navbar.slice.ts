@@ -5,15 +5,15 @@ import { NavbarContext } from '@/types/context/navbar';
 const initialState: NavbarContext = {
   content: [
     {
-      label: 'Experiencia',
-      url: '/experience',
+      label: 'Cursos',
+      url: '/course',
     },
     {
       label: 'Blog',
       url: '/blog',
     },
     {
-      label: 'Sobre mi',
+      label: 'Acerca de',
       url: '/#sobre-mi',
     },
     {
