@@ -26,7 +26,11 @@ export function Navbar() {
   const { isAuthenticated, isLoading } = useKindeBrowserClient();
 
   return (
-    <NavbarUi onMenuOpenChange={setIsMenuOpen} {...navbar.style}>
+    <NavbarUi
+      onMenuOpenChange={setIsMenuOpen}
+      {...navbar.style}
+      id="navbar-root"
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
