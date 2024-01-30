@@ -1,4 +1,5 @@
 import { Button, ButtonGroup, User } from '@nextui-org/react';
+import Link from 'next/link';
 
 import { ChevronLeftIcon } from '@/assets/icons/chevronLeft';
 import { ThumpUpIcon } from '@/assets/icons/thumbUp';
@@ -21,28 +22,30 @@ export default function LessonPage() {
           </div>
           <ButtonGroup>
             <Button
+              isIconOnly
               variant="solid"
               size="sm"
               startContent={<ChevronLeftIcon width={15} />}
-              isIconOnly
             />
             <Button
+              isIconOnly
               variant="solid"
               size="sm"
               startContent={
                 <ChevronLeftIcon width={15} className="rotate-180" />
               }
-              isIconOnly
             />
           </ButtonGroup>
         </div>
         <div className="flex justify-between items-center">
           <div>
-            <User
-              name="Fernando Ticona"
-              description="@fvcoder"
-              avatarProps={{ src: 'https://github.com/fvcoder.png' }}
-            />
+            <Link href={'/'}>
+              <User
+                name="Fernando Ticona"
+                description="@fvcoder"
+                avatarProps={{ src: 'https://github.com/fvcoder.png' }}
+              />
+            </Link>
           </div>
           <div>
             <ButtonGroup size="sm">
