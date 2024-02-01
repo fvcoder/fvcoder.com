@@ -37,3 +37,4 @@ next-env.d.ts
 
 
 .eslintrc.cjs
+src/prismic/types/schema.d.ts
