@@ -1,1 +1,0 @@
-export { BadgeBySkill } from "./bySkill.badge"
