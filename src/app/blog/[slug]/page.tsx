@@ -27,7 +27,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
   });
 
   return (
-    <div className="px-4 mx-auto prose mx-auto py-10 px-4">
+    <div className="px-4 mx-auto prose py-10">
       <header className="text-center pb-4">
         <span className="block mb-4">
           <time dateTime={formattedPublishDate}>{formattedPublishDate}</time>
