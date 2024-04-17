@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 import { BackpackIcon } from '@/assets/icons/backpack';
 import { GithubIconBrand } from '@/assets/icons/brand/github';
-import { LinkedinIconBrand } from '@/assets/icons/brand/linkedin';
+import { LinkedInIconBrand } from '@/assets/icons/brand/LinkedIn';
 import { MailIcon } from '@/assets/icons/mail';
 import { PersonIcon } from '@/assets/icons/person';
 import { BadgePill } from '@/components/badge.pill';
 import { Footer } from '@/components/footer';
 import { TimeLine } from '@/components/timeline';
-import { EXPERIENCIE } from '@/data/experience';
-import { getMetadata } from '@/feactures/core/utils/metadata';
+import { EXPERIENCE } from '@/data/experience';
+import { getMetadata } from '@/features/core/utils/metadata';
 
 export function generateMetadata() {
   return getMetadata({});
@@ -58,7 +58,7 @@ export default function Home() {
 
           <nav className="flex gap-4 mt-8 flex-wrap">
             <Button as="a" href="https://linkedin.com/in/fvcoder">
-              <LinkedinIconBrand className="size-4 md:size-6" />
+              <LinkedInIconBrand className="size-4 md:size-6" />
               LinkedIn
             </Button>
             <Button as="a" href="https://github.com/fvcoder">
@@ -76,7 +76,7 @@ export default function Home() {
             <BackpackIcon className="size-7" />
             Experiencia laboral
           </h2>
-          <TimeLine timeline={EXPERIENCIE.slice(0, 3)} />
+          <TimeLine timeline={EXPERIENCE.slice(0, 3)} />
           <Button as={Link} href="/experience">
             Ver más ...
           </Button>

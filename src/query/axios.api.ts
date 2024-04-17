@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import axios from 'axios';
 
-import { geApiUrl, getLoprodaProjectId } from '@/utils/enviroment';
+import { geApiUrl, getLoprodaProjectId } from '@/utils/environment';
 
 const api = axios.create({
   baseURL: geApiUrl(),

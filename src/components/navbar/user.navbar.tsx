@@ -21,7 +21,7 @@ interface UserMenu {
 const userMenu: UserMenu[] = [
   { label: 'profile' },
   {
-    label: 'Cerrar Sesion',
+    label: 'Cerrar Sesión',
     action: () => {
       void signOut();
     },

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { BackpackIcon } from '@/assets/icons/backpack';
 import { Footer } from '@/components/footer';
 import { TimeLine } from '@/components/timeline';
-import { EXPERIENCIE } from '@/data/experience';
+import { EXPERIENCE } from '@/data/experience';
 
 export const metadata: Metadata = {
   title: 'Experiencia laboral de Fernando Ticona @fvcoder',
@@ -19,7 +19,7 @@ export default function ExperiencePage() {
           <BackpackIcon className="size-7" />
           Experiencia laboral de fvcoder
         </h1>
-        <TimeLine timeline={EXPERIENCIE} />
+        <TimeLine timeline={EXPERIENCE} />
       </main>
       <Footer />
     </div>

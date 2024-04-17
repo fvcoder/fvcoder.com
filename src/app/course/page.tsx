@@ -61,7 +61,7 @@ export default function CourseListPage() {
     <div className="w-full max-w-3xl px-4 mx-auto">
       <header className="px-5 pt-10 md:pt-20 pb-10 min-h-40 bg-gradient-to-tr from-blue-500 to-sky-400 rounded-xl flex flex-col items-start md:items-center justify-center">
         <h1 className="text-white text-3xl font-bold">
-          Cursos de Programacion Web
+          Cursos de Programación Web
         </h1>
         <p className="text-zinc-100 mt-2">
           Aprende a programar, o refuerza tu conocimiento
@@ -87,7 +87,7 @@ export default function CourseListPage() {
           {tags.length === 0 &&
             Array.from({ length: 4 }).map((_, i) => (
               <Skeleton
-                key={`tags-loadding-${i}`}
+                key={`tags-loading-${i}`}
                 className="h-8 aspect-[3/1] rounded-xl"
               />
             ))}
@@ -129,7 +129,7 @@ export default function CourseListPage() {
 
           {course.isLoading &&
             Array.from({ length: 4 }).map((_, i) => (
-              <div key={`course-loadding-${i}`}>
+              <div key={`course-loading-${i}`}>
                 <Skeleton className="aspect-square rounded-xl" />
               </div>
             ))}

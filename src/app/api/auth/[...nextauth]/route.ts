@@ -6,8 +6,8 @@
 import NextAuth from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 
-import { prisma } from '@/feactures/core/lib/prisma.server';
-import { generateUid } from '@/feactures/core/utils/generateUid';
+import { prisma } from '@/features/core/lib/prisma.server';
+import { generateUid } from '@/features/core/utils/generateUid';
 
 const authOptions = {
   providers: [

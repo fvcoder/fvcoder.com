@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { GithubIconBrand } from '@/assets/icons/brand/github';
-import { LinkedinIconBrand } from '@/assets/icons/brand/linkedin';
+import { LinkedInIconBrand } from '@/assets/icons/brand/LinkedIn';
 
 export function Footer() {
   return (
@@ -19,7 +19,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/fvcoder/"
               className="flex items-center me-4 md:me-6"
             >
-              <LinkedinIconBrand width={18} height={18} />
+              <LinkedInIconBrand width={18} height={18} />
             </a>
           </li>
           <li>

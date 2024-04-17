@@ -1,12 +1,12 @@
 import { CardPost } from '@/components/card/card.post';
 import { Footer } from '@/components/footer';
-import { getMetadata } from '@/feactures/core/utils/metadata';
+import { getMetadata } from '@/features/core/utils/metadata';
 import { getBlogList } from '@/prismic';
 
 export const metadata = getMetadata({
   title: 'Blog de Fernando Ticona | fvcoder',
   description:
-    'Mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contáctame para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
+    'Mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contácteme para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
 });
 
 export default async function BlogPage() {
@@ -16,7 +16,7 @@ export default async function BlogPage() {
     <div className="max-w-3xl px-4 mx-auto">
       <header className="px-5 py-10 md:py-20 min-h-40 bg-gradient-to-tr from-blue-500 to-sky-400 rounded-xl flex flex-col items-start md:items-center justify-center">
         <h1 className="text-white text-2xl md:text-3xl font-bold">
-          Últimas Articulos de fvcoder
+          Últimas Artículos de fvcoder
         </h1>
       </header>
       <main className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">

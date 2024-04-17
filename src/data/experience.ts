@@ -1,6 +1,6 @@
 import { TimeLineItemProps } from '@/components/timeline';
 
-export const EXPERIENCIE: TimeLineItemProps[] = [
+export const EXPERIENCE: TimeLineItemProps[] = [
   {
     date: 'Actualmente...',
     title: 'Programador Backend − Xiara Studios',

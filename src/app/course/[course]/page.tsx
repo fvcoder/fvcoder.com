@@ -39,7 +39,7 @@ function VideoLink(props: CardProps) {
   );
 }
 
-export default function CourseDetallPage() {
+export default function CourseDetailPage() {
   const router = useRouter();
 
   return (
@@ -51,7 +51,7 @@ export default function CourseDetallPage() {
         }}
       >
         <h1 className="text-white text-xl md:text-3xl font-bold z-[1]">
-          Curso de introduccion a la programacion
+          Curso de introducción a la programación
         </h1>
         <div className="mt-4 z-[1]">
           <Button variant="solid">Iniciar</Button>

@@ -60,12 +60,7 @@ export default function LessonPage() {
       </header>
       <main>
         <article className="prose dark:prose-invert mx-auto my-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-            suscipit dicta aperiam similique assumenda aspernatur expedita ex,
-            fugiat quos corporis culpa atque dignissimos beatae cumque quia
-            iste. Dolores, sequi quis.
-          </p>
+          <p>Texto Ejemplo</p>
         </article>
       </main>
       <Footer />

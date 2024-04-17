@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowLeftIcon } from '@/assets/icons/arrowLeft';
 import { Footer } from '@/components/footer';
 import { RenderRichText } from '@/components/richText';
-import { getMetadata } from '@/feactures/core/utils/metadata';
+import { getMetadata } from '@/features/core/utils/metadata';
 import { getBlogBySlug } from '@/prismic';
 import { PageProps } from '@/types/next.page';
 
@@ -60,7 +60,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
           className="flex gap-2 items-center no-underline hover:underline text-blue-500"
         >
           <ArrowLeftIcon width={16} height={16} />
-          <span>Ver mas Articulos</span>
+          <span>Ver mas Artículos</span>
         </Link>
       </div>
       <Footer />

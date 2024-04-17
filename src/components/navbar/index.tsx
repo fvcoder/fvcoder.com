@@ -67,7 +67,7 @@ export function Navbar() {
                 signIn('github').catch(() => {});
               }}
             >
-              Iniciar Sesion
+              Iniciar Sesión
             </Button>
           )}
         </NavbarItem>

@@ -6,7 +6,7 @@ export function getMetadata(metadata: Metadata): Metadata {
       metadataBase: new URL('https://www.fvcoder.com'),
       title: 'Fernando Ticona | Full-Stack Developer | fvcoder',
       description:
-        'Soy Fernando Ticona, un Full-Stack Dev Junior apasionado por el desarrollo web. Explora mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contáctame para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
+        'Soy Fernando Ticona, un Full-Stack Dev Junior apasionado por el desarrollo web. Explora mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contácteme para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
       icons: [
         {
           rel: 'apple-touch-icon',
