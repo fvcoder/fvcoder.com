@@ -61,7 +61,7 @@ export default function Home() {
               <GithubIconBrand className="size-4 md:size-6" />
               GitHub
             </Button>
-            <Button as="a" href="mailto:contact@fvcoder.com">
+            <Button as="a" href="mailto:fvcoder1@gmail.com">
               <MailIcon className="size-4 md:size-6" />
               contact@fvcoder.com
             </Button>
