@@ -26,10 +26,6 @@ export function getMetadata(metadata: Metadata): Metadata {
           url: 'https://cdn.fvcoder.com/icon/2024-04/favicon-16x16.png',
         },
         {
-          rel: 'manifest',
-          url: 'https://cdn.fvcoder.com/icon/2024-04/site.webmanifest',
-        },
-        {
           rel: 'mask-icon',
           url: 'https://cdn.fvcoder.com/icon/2024-04/safari-pinned-tab.svg',
           color: '#5bbad5',
