@@ -1,4 +1,3 @@
-'use client';
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 
@@ -11,6 +10,11 @@ import { BadgePill } from '@/components/badge.pill';
 import { Footer } from '@/components/footer';
 import { TimeLine } from '@/components/timeline';
 import { EXPERIENCIE } from '@/data/experience';
+import { getMetadata } from '@/feactures/core/utils/metadata';
+
+export function generateMetadata() {
+  return getMetadata({});
+}
 
 export default function Home() {
   return (
