@@ -2,13 +2,20 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { SessionProvider, SessionProviderProps } from 'next-auth/react';
 import { useState } from 'react';
 import { Provider } from 'react-redux';
 
 import { store } from '@/redux';
 import { reportAccessibility } from '@/utils/reportAccessibility';
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session: SessionProviderProps['session'];
+}) {
   reportAccessibility();
   const [queryClient] = useState(
     () =>
@@ -24,10 +31,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <NextUIProvider>
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>{children}</Provider>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+      <SessionProvider session={session}>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>{children}</Provider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </SessionProvider>
     </NextUIProvider>
   );
 }

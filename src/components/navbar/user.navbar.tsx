@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 'use client';
-import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 import {
   Avatar,
   Dropdown,
@@ -8,14 +9,30 @@ import {
   DropdownTrigger,
 } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
+import { Session } from 'next-auth';
+import { signOut } from 'next-auth/react';
 
-const userMenu = [
+interface UserMenu {
+  label: string;
+  path?: string;
+  action?: () => void;
+}
+
+const userMenu: UserMenu[] = [
   { label: 'profile' },
-  { label: 'Cerrar Sesion', path: '/api/auth/logout' },
+  {
+    label: 'Cerrar Sesion',
+    action: () => {
+      void signOut();
+    },
+  },
 ];
 
-export function UserActions() {
-  const { user } = useKindeBrowserClient();
+interface UserActionsProps {
+  session: Session;
+}
+
+export function UserActions(props: UserActionsProps) {
   const router = useRouter();
 
   return (
@@ -23,8 +40,9 @@ export function UserActions() {
       <DropdownTrigger>
         <Avatar
           size="sm"
-          src={user ? user.picture ?? undefined : undefined}
-          alt={`${user?.family_name} picture`}
+          src={props.session.user?.image ?? undefined}
+          name={props.session.user?.name ?? undefined}
+          alt={`${props.session.user?.name} picture`}
         />
       </DropdownTrigger>
       <DropdownMenu
@@ -33,7 +51,12 @@ export function UserActions() {
         onAction={(s) => {
           const item = userMenu.find((x) => s.toString() === x.label);
           if (item) {
-            router.push(item.path ?? '/');
+            if (item.path) {
+              router.push(item.path);
+            }
+            if (item.action) {
+              item.action();
+            }
           }
         }}
       >
@@ -41,7 +64,7 @@ export function UserActions() {
           x.label === 'profile' ? (
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Registrado como</p>
-              <p className="font-semibold">{user?.email}</p>
+              <p className="font-semibold">{props.session.user?.email}</p>
             </DropdownItem>
           ) : (
             <DropdownItem key={x.label}>{x.label}</DropdownItem>

@@ -27,9 +27,11 @@
     "framer-motion": "^11.0.3",
     "highlight.js": "11.9.0",
     "next": "14.1.0",
+    "next-auth": "4.24.7",
     "react": "^18",
     "react-dom": "^18",
-    "react-redux": "9.1.0"
+    "react-redux": "9.1.0",
+    "ulid": "2.3.0"
   },
   "devDependencies": {
     "@axe-core/react": "^4.8.4",

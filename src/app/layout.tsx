@@ -3,6 +3,7 @@ import './globals.css';
 import { cn } from '@nextui-org/react';
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
+import { getServerSession } from 'next-auth/next';
 
 import { Navbar } from '@/components/navbar';
 
@@ -38,11 +39,12 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
   let isDark = false;
   const pathName = headers().get('X-Url') ?? '/';
 
@@ -65,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={cn({ dark: isDark })}>
       <body className="relative">
-        <Providers>
+        <Providers session={session}>
           <Navbar />
 
           <div

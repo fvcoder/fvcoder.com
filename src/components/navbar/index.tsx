@@ -1,6 +1,4 @@
 'use client';
-import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
-import { LoginLink } from '@kinde-oss/kinde-auth-nextjs/components';
 import {
   Button,
   Link as LinkUi,
@@ -14,6 +12,7 @@ import {
   Spinner,
 } from '@nextui-org/react';
 import Link from 'next/link';
+import { signIn, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
 import { useAppSelector } from '@/redux';
@@ -22,8 +21,8 @@ import { UserActions } from './user.navbar';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const session = useSession();
   const navbar = useAppSelector((x) => x.navbar);
-  const { isAuthenticated, isLoading } = useKindeBrowserClient();
 
   return (
     <NavbarUi
@@ -54,16 +53,22 @@ export function Navbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          {isLoading ? (
+          {session.status === 'loading' ? (
             <Spinner size="sm" />
-          ) : isAuthenticated ? (
-            <UserActions />
+          ) : session.status === 'authenticated' ? (
+            <UserActions session={session.data} />
           ) : (
-            <LoginLink>
-              <Button color="primary" href="#" variant="flat" size="sm">
-                Iniciar Sesion
-              </Button>
-            </LoginLink>
+            <Button
+              color="primary"
+              href="#"
+              variant="flat"
+              size="sm"
+              onPress={() => {
+                signIn('github').catch(() => {});
+              }}
+            >
+              Iniciar Sesion
+            </Button>
           )}
         </NavbarItem>
       </NavbarContent>
