@@ -1,6 +1,13 @@
 import { CardPost } from '@/components/card/card.post';
 import { Footer } from '@/components/footer';
+import { getMetadata } from '@/feactures/core/utils/metadata';
 import { getBlogList } from '@/prismic';
+
+export const metadata = getMetadata({
+  title: 'Blog de Fernando Ticona | fvcoder',
+  description:
+    'Mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contáctame para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
+});
 
 export default async function BlogPage() {
   const data = await getBlogList({ page: 1, pageSize: 12 });
