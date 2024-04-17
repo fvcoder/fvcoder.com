@@ -14,11 +14,13 @@ export async function generateMetadata({ params }: PageProps) {
 
   return getMetadata({
     title: `${asText(post.data.title)} | Blog de Fernando Ticona | fvcoder`,
+    description: asText(post.data.description),
     openGraph: {
       images: post.data.image.url ?? '',
     },
-    description:
-      'Mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contáctame para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
+    twitter: {
+      images: post.data.image.url ?? '',
+    },
   });
 }
 
