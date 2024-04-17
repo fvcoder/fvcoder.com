@@ -3,14 +3,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 
 import { prisma } from '@/feactures/core/lib/prisma.server';
 import { generateUid } from '@/feactures/core/utils/generateUid';
 
-export const authOptions: NextAuthOptions = {
+const authOptions = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
