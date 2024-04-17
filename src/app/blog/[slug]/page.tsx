@@ -1,11 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
+import { asText } from '@prismicio/helpers';
 import Link from 'next/link';
 
 import { ArrowLeftIcon } from '@/assets/icons/arrowLeft';
 import { Footer } from '@/components/footer';
 import { RenderRichText } from '@/components/richText';
+import { getMetadata } from '@/feactures/core/utils/metadata';
 import { getBlogBySlug } from '@/prismic';
 import { PageProps } from '@/types/next.page';
+
+export async function generateMetadata({ params }: PageProps) {
+  const post = await getBlogBySlug({ slug: params.slug });
+
+  return getMetadata({
+    title: `${asText(post.data.title)} | Blog de Fernando Ticona | fvcoder`,
+    openGraph: {
+      images: post.data.image.url ?? '',
+    },
+    description:
+      'Mi experiencia, habilidades y proyectos destacados en fvcoder.com. ¡Contáctame para oportunidades emocionantes en el mundo del desarrollo frontend y backend!',
+  });
+}
 
 export default async function BlogArticlePage({ params }: PageProps) {
   const post = await getBlogBySlug({ slug: params.slug });
