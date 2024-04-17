@@ -16,6 +16,7 @@ const config = {
       'error',
       {
         singleQuote: true,
+        endOfLine: 'auto',
       },
     ],
   },
