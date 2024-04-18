@@ -15,19 +15,34 @@ import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
-import { useAppSelector } from '@/redux';
-
 import { UserActions } from './user.navbar';
+
+const content = [
+  {
+    label: 'Blog',
+    url: '/blog',
+  },
+  {
+    label: 'Acerca de',
+    url: '/#sobre-mi',
+  },
+  {
+    label: 'Contacto',
+    url: '/#contacto',
+  },
+];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const session = useSession();
-  const navbar = useAppSelector((x) => x.navbar);
 
   return (
     <NavbarUi
       onMenuOpenChange={setIsMenuOpen}
-      {...navbar.style}
+      isBlurred={false}
+      position="static"
+      maxWidth="md"
+      className="bg-transparent"
       id="navbar-root"
     >
       <NavbarContent>
@@ -43,7 +58,7 @@ export function Navbar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {navbar.content.slice(0, 3).map((item, index) => (
+        {content.slice(0, 3).map((item, index) => (
           <NavbarItem key={`${item.url}-${index}`}>
             <LinkUi as={Link} color="foreground" href={item.url}>
               {item.label}
@@ -73,7 +88,7 @@ export function Navbar() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {navbar.content.map((item, index) => (
+        {content.map((item, index) => (
           <NavbarMenuItem key={`${item.url}-menu-${index}`}>
             <LinkUi
               as={Link}
