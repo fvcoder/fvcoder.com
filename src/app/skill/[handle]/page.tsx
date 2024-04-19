@@ -4,6 +4,7 @@ import { Button, Card, CardBody, Image, Pagination } from '@nextui-org/react';
 import Link from 'next/link';
 
 import { Footer } from '@/components/footer';
+import { ContactButtons } from '@/features/core/components/contact.buttons';
 import { Container } from '@/features/core/components/container';
 
 export default function SkillExplorePage() {
@@ -33,9 +34,12 @@ export default function SkillExplorePage() {
               JavaScript
             </Button>
           </div>
-          <span className="text-balance font-semibold text-5xl leading-snug">
+          <h1 className="text-balance font-semibold text-5xl leading-snug">
             Proyectos realizados con JavaScript por Fernando Ticona
-          </span>
+          </h1>
+          <div>
+            <ContactButtons />
+          </div>
         </div>
       </header>
       <main>
