@@ -217,7 +217,7 @@ export default function ProjectHomePage() {
             </Button>
             <Button as="a" href="mailto:fvcoder1@gmail.com">
               <MailIcon className="size-4 md:size-6" />
-              contact@fvcoder.com
+              fvcoder1@gmail.com
             </Button>
           </nav>
         </div>
