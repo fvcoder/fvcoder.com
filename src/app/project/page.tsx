@@ -8,6 +8,7 @@ import {
   Image,
   Pagination,
 } from '@nextui-org/react';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { GithubIconBrand } from '@/assets/icons/brand/github';
@@ -182,7 +183,7 @@ const skills = [
 ];
 
 export default function ProjectHomePage() {
-  const [selected, setSelected] = useState(true);
+  const [selected, setSelected] = useState(false);
 
   return (
     <Container>
@@ -227,6 +228,8 @@ export default function ProjectHomePage() {
           <div className="relative min-w-0 flex-1 flex gap-2 overflow-x-hidden flex-wrap-reverse	 justify-center">
             {skills.map((x, i) => (
               <Button
+                as={Link}
+                href={`/skill/${x.handle}`}
                 size="sm"
                 variant="bordered"
                 className={cn('flex rounded-full pl-2', { 'pr-2': selected })}
