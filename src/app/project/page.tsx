@@ -1,11 +1,19 @@
 'use client';
 import { Icon } from '@iconify-icon/react';
-import { Button, cn, Image } from '@nextui-org/react';
+import {
+  Button,
+  Card,
+  CardBody,
+  cn,
+  Image,
+  Pagination,
+} from '@nextui-org/react';
 import { useState } from 'react';
 
 import { GithubIconBrand } from '@/assets/icons/brand/github';
 import { LinkedInIconBrand } from '@/assets/icons/brand/LinkedIn';
 import { MailIcon } from '@/assets/icons/mail';
+import { Footer } from '@/components/footer';
 import { Container } from '@/features/core/components/container';
 
 const skills = [
@@ -216,13 +224,12 @@ export default function ProjectHomePage() {
       </header>
       <main>
         <section className="flex items-center gap-2 w-full">
-          <div className="relative min-w-0 flex-1 flex gap-2 overflow-x-hidden flex-wrap justify-center">
-            <div className="absolute [content:''] right-0 bottom-0 top-0 w-8 z-10 bg-gradient-to-l from-foreground-50 to-transparent pointer-events-none" />
+          <div className="relative min-w-0 flex-1 flex gap-2 overflow-x-hidden flex-wrap-reverse	 justify-center">
             {skills.map((x, i) => (
               <Button
                 size="sm"
                 variant="bordered"
-                className={cn('rounded-full pl-2', { 'pr-2': selected })}
+                className={cn('flex rounded-full pl-2', { 'pr-2': selected })}
                 style={{
                   color: selected ? x.colorSelect : x.color,
                   borderColor: x.border,
@@ -246,7 +253,21 @@ export default function ProjectHomePage() {
             ))}
           </div>
         </section>
+        <section className="mt-10 mb-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <Card shadow="sm" key={`project-${i}`} isPressable>
+              <Image src="https://cdn.pixabay.com/photo/2022/09/02/19/55/crystal-7428278_1280.jpg" />
+              <CardBody>
+                <h3>project name ${i}</h3>
+              </CardBody>
+            </Card>
+          ))}
+        </section>
+        <div className="flex justify-center mb-10">
+          <Pagination total={10} initialPage={1} />
+        </div>
       </main>
+      <Footer />
     </Container>
   );
 }
