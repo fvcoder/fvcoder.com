@@ -27,6 +27,7 @@ model skills {
   color       String
   colorSelect String
   project     project[]
+  authority   Int       @default(0)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -41,6 +42,7 @@ model project {
   color       String
   colorSelect String
   skills      skills[]
+  authority   Int       @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
