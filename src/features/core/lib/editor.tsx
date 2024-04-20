@@ -7,6 +7,7 @@ import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
 import Quote from '@editorjs/quote';
 import Warning from '@editorjs/warning';
+import CodeTool from '@rxpm/editor-js-code';
 import { useEffect, useRef } from 'react';
 
 interface EditorProps {
@@ -55,6 +56,22 @@ export default function Editor(props: EditorProps) {
             inlineToolbar: true,
           },
           embed: Embed,
+          code: {
+            class: CodeTool,
+            config: {
+              modes: {
+                text: 'Texto',
+                js: 'JavaScript',
+                ts: 'TypeScript',
+                py: 'Python',
+                go: 'Go',
+                cpp: 'C++',
+                cs: 'C#',
+                md: 'Markdown',
+              },
+              defaultMode: 'go',
+            },
+          },
         },
         async onChange(api) {
           const data = await api.saver.save();

@@ -4,6 +4,7 @@ import { OutputData } from '@editorjs/editorjs';
 import { Checkbox, Image } from '@nextui-org/react';
 import { Fragment } from 'react';
 
+import { CodeRender } from './render/code';
 import { EmbedRender } from './render/embed';
 
 interface EditorRenderProps {
@@ -83,6 +84,14 @@ export function EditorRender(props: EditorRenderProps) {
                   ),
                 )}
               </div>
+            );
+          case 'code':
+            return (
+              <CodeRender
+                key={block.id}
+                mode={block.data.mode}
+                code={block.data.code}
+              />
             );
           case 'embed':
             return <EmbedRender key={block.id} {...block.data} />;

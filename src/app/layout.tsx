@@ -1,4 +1,5 @@
 import './globals.css';
+import 'highlight.js/styles/github-dark.min.css';
 
 import { cn } from '@nextui-org/react';
 import type { Metadata } from 'next';

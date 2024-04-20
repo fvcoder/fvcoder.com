@@ -39,3 +39,8 @@ declare module '@editorjs/embed' {
 
   export = embed;
 }
+declare module '@rxpm/editor-js-code' {
+  import code from '@rxpm/editor-js-code';
+
+  export = code;
+}
