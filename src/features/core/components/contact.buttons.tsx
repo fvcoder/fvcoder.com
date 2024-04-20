@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/react';
 
 import { GithubIconBrand } from '@/assets/icons/brand/github';
-import { LinkedInIconBrand } from '@/assets/icons/brand/linkedIn';
+import { LinkedInIconBrand } from '@/assets/icons/brand/linkedin';
 import { MailIcon } from '@/assets/icons/mail';
 
 export function ContactButtons() {

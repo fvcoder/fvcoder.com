@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { GithubIconBrand } from '@/assets/icons/brand/github';
-import { LinkedInIconBrand } from '@/assets/icons/brand/linkedIn';
+import { LinkedInIconBrand } from '@/assets/icons/brand/linkedin';
 
 export function Footer() {
   return (
