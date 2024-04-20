@@ -9,3 +9,9 @@ declare module '@editorjs/header' {
 
   export = header;
 }
+
+declare module '@editorjs/quote' {
+  import quote from '@editorjs/quote';
+
+  export = quote;
+}

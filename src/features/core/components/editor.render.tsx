@@ -23,6 +23,12 @@ export function EditorRender(props: EditorRenderProps) {
               `h${block.data.level}` as keyof JSX.IntrinsicElements;
 
             return <Component key={block.id}>{block.data.text}</Component>;
+          case 'quote':
+            return (
+              <blockquote key={block.id} data-caption={block.data.caption}>
+                {block.data.text}
+              </blockquote>
+            );
           default:
             return null;
         }

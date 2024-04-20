@@ -2,6 +2,7 @@
 import EditorJS, { OutputData } from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
+import Quote from '@editorjs/quote';
 import { useEffect, useRef } from 'react';
 
 interface EditorProps {
@@ -34,6 +35,7 @@ export default function Editor(props: EditorProps) {
               defaultLevel: 2,
             },
           },
+          quote: Quote,
         },
         async onChange(api) {
           const data = await api.saver.save();
