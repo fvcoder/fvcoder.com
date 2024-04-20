@@ -27,3 +27,9 @@ declare module '@editorjs/delimiter' {
 
   export = delimiter;
 }
+
+declare module '@editorjs/checklist' {
+  import checklist from '@editorjs/checklist';
+
+  export = checklist;
+}

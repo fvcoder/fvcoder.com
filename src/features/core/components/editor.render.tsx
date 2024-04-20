@@ -1,7 +1,7 @@
 'use client';
 /* eslint-disable no-case-declarations */
 import { OutputData } from '@editorjs/editorjs';
-import { Image } from '@nextui-org/react';
+import { Checkbox, Image } from '@nextui-org/react';
 import { Fragment } from 'react';
 
 interface EditorRenderProps {
@@ -64,6 +64,24 @@ export function EditorRender(props: EditorRenderProps) {
             );
           case 'delimiter':
             return <hr key={block.id} />;
+          case 'checklist':
+            return (
+              <div key={block.id}>
+                {block.data.items.map(
+                  (item: { text: string; checked: boolean }, i: number) => (
+                    <div key={`${block.id}-${i}`} className="not-prose">
+                      <Checkbox
+                        readOnly
+                        isSelected={item.checked}
+                        defaultSelected={item.checked}
+                      >
+                        <span dangerouslySetInnerHTML={{ __html: item.text }} />
+                      </Checkbox>
+                    </div>
+                  ),
+                )}
+              </div>
+            );
           default:
             return null;
         }

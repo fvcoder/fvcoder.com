@@ -1,4 +1,5 @@
 'use client';
+import Checklist from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
 import EditorJS, { OutputData } from '@editorjs/editorjs';
 import Header from '@editorjs/header';
@@ -48,6 +49,10 @@ export default function Editor(props: EditorProps) {
             },
           },
           delimiter: Delimiter,
+          checklist: {
+            class: Checklist,
+            inlineToolbar: true,
+          },
         },
         async onChange(api) {
           const data = await api.saver.save();
