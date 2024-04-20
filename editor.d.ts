@@ -15,3 +15,9 @@ declare module '@editorjs/quote' {
 
   export = quote;
 }
+
+declare module '@editorjs/warning' {
+  import warning from '@editorjs/warning';
+
+  export = warning;
+}

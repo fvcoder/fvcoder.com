@@ -40,8 +40,8 @@ export default function NewBlogPage() {
           }}
         />
       </div>
-      <div className="prose mx-auto w-full border rounded-md py-4">
-        <EditorRender content={content} />
+      <div className="prose mx-auto w-full py-4 dark:prose-invert">
+        <EditorRender content={cont} />
       </div>
     </Container>
   );
