@@ -44,3 +44,15 @@ declare module '@rxpm/editor-js-code' {
 
   export = code;
 }
+
+declare module '@editorjs/attaches' {
+  import attaches from '@editorjs/attaches';
+
+  export = attaches;
+}
+
+declare module 'editorjs-image-with-link' {
+  import image from 'editorjs-image-with-link';
+
+  export = image;
+}

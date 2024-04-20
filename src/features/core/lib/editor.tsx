@@ -1,4 +1,5 @@
 'use client';
+import AttachesTool from '@editorjs/attaches';
 import Checklist from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
 import EditorJS, { OutputData } from '@editorjs/editorjs';
@@ -8,6 +9,7 @@ import Paragraph from '@editorjs/paragraph';
 import Quote from '@editorjs/quote';
 import Warning from '@editorjs/warning';
 import CodeTool from '@rxpm/editor-js-code';
+import ImageTool from 'editorjs-image-with-link';
 import { useEffect, useRef } from 'react';
 
 interface EditorProps {
@@ -70,6 +72,21 @@ export default function Editor(props: EditorProps) {
                 md: 'Markdown',
               },
               defaultMode: 'go',
+            },
+          },
+          attaches: {
+            class: AttachesTool,
+            config: {
+              endpoint: '/api/file',
+            },
+          },
+          image: {
+            class: ImageTool,
+            config: {
+              endpoints: {
+                byFile: '/api/file', // Your backend file uploader endpoint
+                byUrl: '/api/file', // Your endpoint that provides uploading by Url
+              },
             },
           },
         },

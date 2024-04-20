@@ -2,11 +2,6 @@ import { Footer } from '@/components/footer';
 import { Container } from '@/features/core/components/container';
 import { EditorRender } from '@/features/core/components/editor.render';
 
-const content = {
-  time: 1713540105005,
-  blocks: [],
-};
-
 export default function ProjectDetailPage() {
   return (
     <Container className="prose dark:prose-invert py-10" fullWidth>
@@ -22,7 +17,7 @@ export default function ProjectDetailPage() {
         </div>
       </header>
       <article>
-        <EditorRender content={{}} />
+        <EditorRender content={{ blocks: [] }} />
       </article>
       <Footer />
     </Container>

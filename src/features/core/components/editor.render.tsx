@@ -1,9 +1,10 @@
 'use client';
 /* eslint-disable no-case-declarations */
 import { OutputData } from '@editorjs/editorjs';
-import { Checkbox, Image } from '@nextui-org/react';
+import { Checkbox, Image, Tooltip } from '@nextui-org/react';
 import { Fragment } from 'react';
 
+import { RenderAttaches } from './render/attaches';
 import { CodeRender } from './render/code';
 import { EmbedRender } from './render/embed';
 
@@ -95,6 +96,18 @@ export function EditorRender(props: EditorRenderProps) {
             );
           case 'embed':
             return <EmbedRender key={block.id} {...block.data} />;
+          case 'attaches':
+            return <RenderAttaches key={block.id} {...block.data} />;
+          case 'image':
+            return (
+              <Tooltip key={block.id} content={block.data.caption}>
+                <Image
+                  src={block.data.file.url}
+                  alt={block.data.caption}
+                  className="w-full h-auto"
+                />
+              </Tooltip>
+            );
           default:
             return null;
         }
