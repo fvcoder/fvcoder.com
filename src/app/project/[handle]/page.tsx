@@ -1,5 +1,11 @@
 import { Footer } from '@/components/footer';
 import { Container } from '@/features/core/components/container';
+import { EditorRender } from '@/features/core/components/editor.render';
+
+const content = {
+  time: 1713540105005,
+  blocks: [],
+};
 
 export default function ProjectDetailPage() {
   return (
@@ -16,10 +22,7 @@ export default function ProjectDetailPage() {
         </div>
       </header>
       <article>
-        <p>
-          Programar no es más que dar un montón de instrucciones detalladas a
-          una máquina para que esta realice una función o resuelva un problema.
-        </p>
+        <EditorRender content={{}} />
       </article>
       <Footer />
     </Container>
