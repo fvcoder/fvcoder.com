@@ -21,3 +21,9 @@ declare module '@editorjs/warning' {
 
   export = warning;
 }
+
+declare module '@editorjs/delimiter' {
+  import delimiter from '@editorjs/delimiter';
+
+  export = delimiter;
+}

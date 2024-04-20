@@ -1,4 +1,5 @@
 'use client';
+import Delimiter from '@editorjs/delimiter';
 import EditorJS, { OutputData } from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
@@ -46,6 +47,7 @@ export default function Editor(props: EditorProps) {
               messagePlaceholder: 'Message',
             },
           },
+          delimiter: Delimiter,
         },
         async onChange(api) {
           const data = await api.saver.save();

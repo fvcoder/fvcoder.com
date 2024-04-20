@@ -62,6 +62,8 @@ export function EditorRender(props: EditorRenderProps) {
                 </div>
               </div>
             );
+          case 'delimiter':
+            return <hr key={block.id} />;
           default:
             return null;
         }
