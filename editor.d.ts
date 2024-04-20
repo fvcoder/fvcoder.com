@@ -33,3 +33,9 @@ declare module '@editorjs/checklist' {
 
   export = checklist;
 }
+
+declare module '@editorjs/embed' {
+  import embed from '@editorjs/embed';
+
+  export = embed;
+}

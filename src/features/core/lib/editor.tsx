@@ -2,6 +2,7 @@
 import Checklist from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
 import EditorJS, { OutputData } from '@editorjs/editorjs';
+import Embed from '@editorjs/embed';
 import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
 import Quote from '@editorjs/quote';
@@ -53,6 +54,7 @@ export default function Editor(props: EditorProps) {
             class: Checklist,
             inlineToolbar: true,
           },
+          embed: Embed,
         },
         async onChange(api) {
           const data = await api.saver.save();

@@ -4,6 +4,8 @@ import { OutputData } from '@editorjs/editorjs';
 import { Checkbox, Image } from '@nextui-org/react';
 import { Fragment } from 'react';
 
+import { EmbedRender } from './render/embed';
+
 interface EditorRenderProps {
   content: OutputData;
 }
@@ -82,6 +84,8 @@ export function EditorRender(props: EditorRenderProps) {
                 )}
               </div>
             );
+          case 'embed':
+            return <EmbedRender key={block.id} {...block.data} />;
           default:
             return null;
         }
