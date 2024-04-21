@@ -5,6 +5,7 @@ import Delimiter from '@editorjs/delimiter';
 import EditorJS, { OutputData } from '@editorjs/editorjs';
 import Embed from '@editorjs/embed';
 import Header from '@editorjs/header';
+import List from '@editorjs/list';
 import Paragraph from '@editorjs/paragraph';
 import Quote from '@editorjs/quote';
 import Warning from '@editorjs/warning';
@@ -87,6 +88,13 @@ export default function Editor(props: EditorProps) {
                 byFile: '/api/file', // Your backend file uploader endpoint
                 byUrl: '/api/file', // Your endpoint that provides uploading by Url
               },
+            },
+          },
+          list: {
+            class: List,
+            inlineToolbar: true,
+            config: {
+              defaultStyle: 'unordered',
             },
           },
         },

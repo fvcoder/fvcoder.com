@@ -56,3 +56,9 @@ declare module 'editorjs-image-with-link' {
 
   export = image;
 }
+
+declare module '@editorjs/list' {
+  import list from '@editorjs/list';
+
+  export = list;
+}

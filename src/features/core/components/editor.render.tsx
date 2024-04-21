@@ -70,7 +70,7 @@ export function EditorRender(props: EditorRenderProps) {
             return <hr key={block.id} />;
           case 'checklist':
             return (
-              <div key={block.id}>
+              <div key={block.id} className="py-4">
                 {block.data.items.map(
                   (item: { text: string; checked: boolean }, i: number) => (
                     <div key={`${block.id}-${i}`} className="not-prose">
@@ -107,6 +107,20 @@ export function EditorRender(props: EditorRenderProps) {
                   className="w-full h-auto"
                 />
               </Tooltip>
+            );
+          case 'list':
+            const ComponentList: keyof JSX.IntrinsicElements =
+              block.data.style === 'ordered' ? 'ol' : 'ul';
+
+            return (
+              <ComponentList key={block.id}>
+                {block.data.items.map((item: string, i: number) => (
+                  <li
+                    key={`${block.id}-${i}`}
+                    dangerouslySetInnerHTML={{ __html: item }}
+                  />
+                ))}
+              </ComponentList>
             );
           default:
             return null;
