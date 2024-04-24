@@ -19,6 +19,7 @@ import {
   useDisclosure,
 } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { ArrowLeftIcon } from '@/assets/icons/arrowLeft';
@@ -41,6 +42,7 @@ const EditorDynamic = dynamic(() => import('@/features/core/lib/editor'), {
 export interface ProjectEditProps extends SkillExploreProps {}
 
 export function ProjectEditPage(props: ProjectEditProps) {
+  const router = useRouter();
   const [isPreview, setIsPreview] = useState(true);
   const [content, setContent] = useState<OutputData>({ blocks: [] });
   const [skillList, setSkillList] = useState<SkillExploreProps['skillList']>(
@@ -60,6 +62,7 @@ export function ProjectEditPage(props: ProjectEditProps) {
           <NavbarContent justify="start">
             <NavbarItem>
               <Button
+                onPress={() => router.back()}
                 isIconOnly
                 variant="light"
                 startContent={
