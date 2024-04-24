@@ -13,6 +13,7 @@ export function generateMetadata() {
 export default async function ProjectHomePage() {
   const skills = await prisma.skills.findMany({
     select: {
+      id: true,
       handle: true,
       name: true,
       icon: true,

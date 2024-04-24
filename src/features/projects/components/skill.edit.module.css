@@ -1,0 +1,15 @@
+.preview {
+    background: radial-gradient(circle, #d5d5d5 10%, transparent 11%);
+    background-size: 1em 1em;
+    background-color: #F5F5F5;
+    opacity: 0.6;
+    position: relative;
+    margin-top: .5rem;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: .5rem -1.5rem;
+ 
+}
