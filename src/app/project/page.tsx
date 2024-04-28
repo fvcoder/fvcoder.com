@@ -30,6 +30,7 @@ export default async function ProjectHomePage(props: PageProps) {
       thumbnail: true,
       skills: true,
     },
+    where: { state: 'published' },
     take: 12,
     skip: props.searchParams.page ? +props.searchParams.page * 12 : 0,
     orderBy: { authority: 'desc' },
