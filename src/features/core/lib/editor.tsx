@@ -85,8 +85,8 @@ export default function Editor(props: EditorProps) {
             class: ImageTool,
             config: {
               endpoints: {
-                byFile: '/api/file', // Your backend file uploader endpoint
-                byUrl: '/api/file', // Your endpoint that provides uploading by Url
+                byFile: '/api/file',
+                byUrl: '/api/file',
               },
             },
           },

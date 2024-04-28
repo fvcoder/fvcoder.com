@@ -1,58 +1,50 @@
-import { Icon } from '@iconify-icon/react/dist/iconify.mjs';
-import { Button } from '@nextui-org/react';
-import Link from 'next/link';
+'use client';
+import 'dayjs/locale/es-mx';
+
+import { Icon } from '@iconify-icon/react';
+import { Button, Image, Link } from '@nextui-org/react';
+import { project, skills } from '@prisma/client';
+import dayjs from 'dayjs';
+import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 
 import { Footer } from '@/components/footer';
 import { Container } from '@/features/core/components/container';
 import { EditorRender } from '@/features/core/components/editor.render';
-import { prisma } from '@/features/core/lib/prisma.server';
+import { JsonParse } from '@/features/core/utils/json';
 
-export default async function ProjectDetailPage() {
-  const skills = await prisma.skills.findMany({
-    select: {
-      handle: true,
-      name: true,
-      icon: true,
-      color: true,
-    },
-    take: 5,
-    orderBy: { authority: 'desc' },
-  });
+export interface ProjectViewPageProps extends project {
+  skills: skills[];
+}
+
+export function ProjectViewPage(props: ProjectViewPageProps) {
+  dayjs.extend(LocalizedFormat);
+  const time = dayjs(props.updatedAt).locale('es-mx');
 
   return (
     <Container className="prose dark:prose-invert py-10" fullWidth>
       <header className="text-center pb-4">
         <span className="block mb-4">
-          <time>17 de abril de 2024</time>
+          <time dateTime={time.format('YYYY-MM-DD')}>{time.format('LL')}</time>
         </span>
         <div>
-          <h1>
-            Así es como aprendí a programar, mi plan de estudios + Cursos Gratis
-          </h1>
-          <div className="aspect-video bg-black rounded-md"></div>
+          <h1>{props.name}</h1>
+          <div>
+            <Image
+              src={props.thumbnail}
+              alt={props.name}
+              className="w-full h-full object-cover rounded-md aspect-video"
+            />
+          </div>
         </div>
       </header>
       <article>
-        <EditorRender
-          content={{
-            blocks: [
-              { type: 'paragraph', id: '1', data: { text: 'Primer párrafo' } },
-            ],
-          }}
-        />
-        <EditorRender
-          content={{
-            blocks: [
-              { type: 'paragraph', id: '2', data: { text: 'Primer párrafo' } },
-            ],
-          }}
-        />
-        <div className="">
+        <EditorRender content={JsonParse(props.body)} />
+        <div>
           <p>
             <strong>Construido con:</strong>
           </p>
           <div className="not-prose flex gap-2 flex-wrap pb-4">
-            {skills.map((x, i) => (
+            {props.skills.map((x, i) => (
               <Button
                 as={Link}
                 href={`/skill/${x.handle}`}

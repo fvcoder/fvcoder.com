@@ -39,8 +39,7 @@ model project {
   description String
   thumbnail   String
   body        String
-  color       String
-  colorSelect String
+  state       String
   skills      skills[]
   authority   Int       @default(0)
   createdAt   DateTime @default(now())

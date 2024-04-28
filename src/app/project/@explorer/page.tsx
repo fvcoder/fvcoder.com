@@ -1,21 +1,10 @@
-import { Button } from '@nextui-org/react';
-import Link from 'next/link';
-
-import { Container } from '@/features/core/components/container';
+import { prisma } from '@/features/core/lib/prisma.server';
 import { ProjectListPage } from '@/features/projects/page/project.list';
 
-export default function ProjectExplorerPageServer() {
-  return (
-    <Container>
-      <header className="flex items-center justify-between py-5">
-        <h1 className="text-2xl font-semibold">Proyectos</h1>
-        <div>
-          <Button as={Link} size="sm" color="primary" href="/project/new">
-            Crear Proyecto
-          </Button>
-        </div>
-      </header>
-      <ProjectListPage />
-    </Container>
-  );
+export default async function ProjectExplorerPageServer() {
+  const projects = await prisma.project.findMany({
+    orderBy: { createdAt: 'desc' },
+  });
+
+  return <ProjectListPage projects={projects} />;
 }
