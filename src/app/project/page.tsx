@@ -1,6 +1,7 @@
 import { prisma } from '@/features/core/lib/prisma.server';
 import { getMetadata } from '@/features/core/utils/metadata';
 import ProjectHome from '@/features/projects/page/home';
+import { PageProps } from '@/types/next.page';
 
 export function generateMetadata() {
   return getMetadata({
@@ -10,7 +11,7 @@ export function generateMetadata() {
   });
 }
 
-export default async function ProjectHomePage() {
+export default async function ProjectHomePage(props: PageProps) {
   const skills = await prisma.skills.findMany({
     select: {
       id: true,
@@ -22,5 +23,27 @@ export default async function ProjectHomePage() {
     orderBy: { authority: 'desc' },
   });
 
-  return <ProjectHome skills={skills} />;
+  const projects = await prisma.project.findMany({
+    select: {
+      handle: true,
+      name: true,
+      thumbnail: true,
+      skills: true,
+    },
+    take: 12,
+    skip: props.searchParams.page ? +props.searchParams.page * 12 : 0,
+    orderBy: { authority: 'desc' },
+  });
+
+  const projectsCount = await prisma.project.count();
+
+  const projectsPage = Math.ceil(projectsCount / 12);
+
+  return (
+    <ProjectHome
+      skills={skills}
+      projects={projects}
+      projectsTotalPages={projectsPage}
+    />
+  );
 }
