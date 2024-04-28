@@ -36,7 +36,9 @@ export default async function ProjectHomePage(props: PageProps) {
     orderBy: { authority: 'desc' },
   });
 
-  const projectsCount = await prisma.project.count();
+  const projectsCount = await prisma.project.count({
+    where: { state: 'published' },
+  });
 
   const projectsPage = Math.ceil(projectsCount / 12);
 
