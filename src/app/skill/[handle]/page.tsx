@@ -35,6 +35,20 @@ export default async function SkillExplorePage(props: PageProps) {
       icon: true,
       color: true,
       colorSelect: true,
+      project: {
+        select: {
+          handle: true,
+          thumbnail: true,
+          name: true,
+        },
+        where: {
+          state: 'published',
+        },
+        orderBy: {
+          authority: 'desc',
+        },
+        take: 12,
+      },
     },
   });
   if (!skill) {
