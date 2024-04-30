@@ -10,7 +10,6 @@ import { ContactButtons } from '@/features/core/components/contact.buttons';
 import { Container } from '@/features/core/components/container';
 
 interface ProjectHomeProps {
-  skills: Pick<skills, 'handle' | 'name' | 'icon' | 'color'>[];
   projects: Array<
     Pick<project, 'handle' | 'name' | 'thumbnail'> & { skills: skills[] }
   >;
@@ -37,7 +36,7 @@ export default function ProjectHome(props: ProjectHomeProps) {
           </a>
         </div>
         <h1 className="text-balance font-semibold text-5xl leading-snug">
-          Habilidades de
+          Proyectos de
           <br />
           Fernando Ticona
         </h1>
@@ -48,24 +47,27 @@ export default function ProjectHome(props: ProjectHomeProps) {
       <main>
         <section className="flex items-center gap-2 w-full">
           <div className="relative min-w-0 flex-1 flex gap-2 overflow-x-hidden flex-wrap-reverse	 justify-center">
-            {props.skills.map((x, i) => (
-              <Button
-                as={Link}
-                href={`/skill/${x.handle}`}
-                size="sm"
-                variant="bordered"
-                className="flex rounded-full pl-2"
-                style={{
-                  color: x.color,
-                  borderColor: x.color,
-                  background: 'transparent',
-                }}
-                startContent={<Icon icon={x.icon} width={18} height={18} />}
-                key={`skill-${x.handle}-${i}`}
-              >
-                {x.name}
-              </Button>
-            ))}
+            {props.projects
+              .map((x) => x.skills)
+              .flat()
+              .map((x, i) => (
+                <Button
+                  as={Link}
+                  href={`/skill/${x.handle}`}
+                  size="sm"
+                  variant="bordered"
+                  className="flex rounded-full pl-2"
+                  style={{
+                    color: x.color,
+                    borderColor: x.color,
+                    background: 'transparent',
+                  }}
+                  startContent={<Icon icon={x.icon} width={18} height={18} />}
+                  key={`skill-${x.handle}-${i}`}
+                >
+                  {x.name}
+                </Button>
+              ))}
           </div>
         </section>
         <section className="mt-10 mb-5 grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -18,7 +18,10 @@ import { useCallback, useState } from 'react';
 
 import { Container } from '@/features/core/components/container';
 
-import { createProjectAction } from '../action/project.action';
+import {
+  createProjectAction,
+  deleteProjectAction,
+} from '../action/project.action';
 
 const columns = [
   {
@@ -40,6 +43,7 @@ interface ProjectListPageProps {
 }
 
 export function ProjectListPage(props: ProjectListPageProps) {
+  const [projects, setProjects] = useState(props.projects);
   const [createIsLoading, setCreateIsLoading] = useState(false);
   const router = useRouter();
   const renderCell = useCallback(
@@ -83,15 +87,23 @@ export function ProjectListPage(props: ProjectListPageProps) {
                 </Link>
               </Tooltip>
               <Tooltip content="Eliminar">
-                <Link
-                  href={`/project/delete?id=${item.id}`}
+                <button
+                  onClick={() => {
+                    deleteProjectAction(item.id)
+                      .then(() => {
+                        setProjects(
+                          props.projects.filter((x) => x.id !== item.id),
+                        );
+                      })
+                      .catch(console.error);
+                  }}
                   className="text-danger"
                 >
                   <Icon
                     icon="solar:trash-bin-minimalistic-linear"
                     width={20}
                   ></Icon>
-                </Link>
+                </button>
               </Tooltip>
             </div>
           );
@@ -137,7 +149,7 @@ export function ProjectListPage(props: ProjectListPageProps) {
           <TableHeader columns={columns}>
             {(col) => <TableColumn key={col.key}>{col.label}</TableColumn>}
           </TableHeader>
-          <TableBody items={props.projects}>
+          <TableBody items={projects}>
             {(item) => (
               <TableRow key={item.id}>
                 {(columnKey) => (

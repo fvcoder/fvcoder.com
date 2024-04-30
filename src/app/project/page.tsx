@@ -12,17 +12,6 @@ export function generateMetadata() {
 }
 
 export default async function ProjectHomePage(props: PageProps) {
-  const skills = await prisma.skills.findMany({
-    select: {
-      id: true,
-      handle: true,
-      name: true,
-      icon: true,
-      color: true,
-    },
-    orderBy: { authority: 'desc' },
-  });
-
   const projects = await prisma.project.findMany({
     select: {
       handle: true,
@@ -42,11 +31,5 @@ export default async function ProjectHomePage(props: PageProps) {
 
   const projectsPage = Math.ceil(projectsCount / 12);
 
-  return (
-    <ProjectHome
-      skills={skills}
-      projects={projects}
-      projectsTotalPages={projectsPage}
-    />
-  );
+  return <ProjectHome projects={projects} projectsTotalPages={projectsPage} />;
 }

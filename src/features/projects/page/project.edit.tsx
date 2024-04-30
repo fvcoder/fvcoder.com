@@ -10,7 +10,7 @@ import {
   NavbarItem,
   Spinner,
 } from '@nextui-org/react';
-import { project } from '@prisma/client';
+import { project, skills } from '@prisma/client';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -34,14 +34,18 @@ const EditorDynamic = dynamic(() => import('@/features/core/lib/editor'), {
 });
 
 export interface ProjectEditProps extends SkillExploreProps {
-  project: project;
+  project: project & {
+    skills: Pick<skills, 'id' | 'handle' | 'name' | 'icon' | 'color'>[];
+  };
 }
 
 export function ProjectEditPage(props: ProjectEditProps) {
   const router = useRouter();
   const [isPreview, setIsPreview] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [project, setProject] = useState<project>(props.project);
+  const [project, setProject] = useState<ProjectEditProps['project']>(
+    props.project,
+  );
   const [content, setContent] = useState<OutputData>(() => {
     if (props.project.body) {
       return JsonParse<OutputData>(props.project.body);
@@ -130,7 +134,14 @@ export function ProjectEditPage(props: ProjectEditProps) {
               />
             </NavbarItem>
             <NavbarItem>
-              <SkillExplore skillList={skillList} />
+              <SkillExplore
+                projectId={project.id}
+                selected={project.skills}
+                skillList={skillList}
+                onChange={(data) => {
+                  setProject({ ...project, skills: data });
+                }}
+              />
             </NavbarItem>
             <NavbarItem>
               <Button

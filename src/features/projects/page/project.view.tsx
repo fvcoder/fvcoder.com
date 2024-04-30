@@ -32,7 +32,7 @@ export function ProjectViewPage(props: ProjectViewPageProps) {
             <Image
               src={props.thumbnail}
               alt={props.name}
-              className="w-full h-full object-cover rounded-md aspect-video"
+              className="w-full h-full object-cover rounded-md"
             />
           </div>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 import { faker } from '@faker-js/faker/locale/es_MX';
 import { project } from '@prisma/client';
@@ -23,12 +24,20 @@ export async function createProjectAction(): Promise<project> {
 
 export async function editProjectAction(
   id: string,
-  data: Partial<project>,
+  data: Partial<any>,
 ): Promise<project> {
   return await prisma.project.update({
     where: {
       id,
     },
     data,
+  });
+}
+
+export async function deleteProjectAction(id: string): Promise<project> {
+  return await prisma.project.delete({
+    where: {
+      id,
+    },
   });
 }
