@@ -33,7 +33,7 @@ const EditorDynamic = dynamic(() => import('@/features/core/lib/editor'), {
   ),
 });
 
-export interface ProjectEditProps extends SkillExploreProps {
+export interface ProjectEditProps extends Pick<SkillExploreProps, 'skillList'> {
   project: project & {
     skills: Pick<skills, 'id' | 'handle' | 'name' | 'icon' | 'color'>[];
   };
