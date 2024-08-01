@@ -16,6 +16,7 @@ import {
   TableRow,
   Tooltip,
 } from '@nextui-org/react';
+import hlc from 'highlight.js';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
@@ -358,6 +359,30 @@ export function Render(props: RenderData) {
       <p>
         <RenderRichText richText={props.data} />
       </p>
+    );
+  }
+
+  if (props.data.type === 'code') {
+    const plainHtml = props.data.code.rich_text.map((code: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      const result = hlc.highlight((code.plain_text as string) ?? '', {
+        language: props.data.code.language,
+      });
+
+      return result.value;
+    });
+
+    return (
+      <Fragment>
+        {plainHtml.map((html: any, i: number) => (
+          <pre key={`code-section-${i}`}>
+            <code
+              className={`hljs language-${props.data.code.language} rounded-xl`}
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          </pre>
+        ))}
+      </Fragment>
     );
   }
 
