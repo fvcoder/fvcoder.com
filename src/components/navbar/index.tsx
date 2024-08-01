@@ -9,13 +9,9 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-  Spinner,
 } from '@nextui-org/react';
 import Link from 'next/link';
-import { signIn, useSession } from 'next-auth/react';
 import { useState } from 'react';
-
-import { UserActions } from './user.navbar';
 
 const content = [
   {
@@ -34,7 +30,6 @@ const content = [
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const session = useSession();
 
   return (
     <NavbarUi
@@ -68,23 +63,15 @@ export function Navbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          {session.status === 'loading' ? (
-            <Spinner size="sm" />
-          ) : session.status === 'authenticated' ? (
-            <UserActions session={session.data} />
-          ) : (
-            <Button
-              color="primary"
-              href="#"
-              variant="flat"
-              size="sm"
-              onPress={() => {
-                signIn('github').catch(() => {});
-              }}
-            >
-              Iniciar Sesión
-            </Button>
-          )}
+          <Button
+            as={Link}
+            color="primary"
+            href="/roadmap"
+            variant="flat"
+            size="sm"
+          >
+            RoadMap
+          </Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
