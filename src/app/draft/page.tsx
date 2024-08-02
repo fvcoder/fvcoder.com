@@ -16,7 +16,6 @@ export function generateMetadata() {
 export default async function RoadmapPage() {
   const notion = new Client({
     auth: process.env.NOTION_API_KEY,
-    fetch,
   });
 
   const data = await notion.databases.query({
