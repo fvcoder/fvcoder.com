@@ -66,11 +66,11 @@ export function Navbar() {
           <Button
             as={Link}
             color="primary"
-            href="/roadmap"
+            href="/draft"
             variant="flat"
             size="sm"
           >
-            RoadMap
+            Borrador
           </Button>
         </NavbarItem>
       </NavbarContent>

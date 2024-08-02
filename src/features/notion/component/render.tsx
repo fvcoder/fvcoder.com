@@ -149,7 +149,7 @@ export function Render(props: RenderData) {
         {props.data.relation.map((x: any) => (
           <Button
             as={Link}
-            href={`/roadmap/${x.id}`}
+            href={`/draft/${x.id}`}
             key={x.id}
             size="sm"
             startContent={<Icon icon="fluent:open-16-regular" />}
