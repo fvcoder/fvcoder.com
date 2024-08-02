@@ -366,7 +366,10 @@ export function Render(props: RenderData) {
     const plainHtml = props.data.code.rich_text.map((code: any) => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       const result = hlc.highlight((code.plain_text as string) ?? '', {
-        language: props.data.code.language,
+        language:
+          props.data.code.language !== 'plain text'
+            ? props.data.code.language
+            : 'text',
       });
 
       return result.value;
