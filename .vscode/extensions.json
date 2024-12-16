@@ -4,5 +4,6 @@
         "dbaeumer.vscode-eslint",
         "astro-build.astro-vscode",
         "vivaxy.vscode-conventional-commits",
+        "astro-build.astro-vscode", "unifiedjs.vscode-mdx"
     ]
 }
