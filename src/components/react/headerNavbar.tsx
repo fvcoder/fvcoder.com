@@ -38,8 +38,7 @@ export function HeaderNavbar() {
   return (
       <Navbar onMenuOpenChange={setIsMenuOpen}>
         <NavbarContent>
-          
-          <NavbarBrand>
+          <NavbarBrand as="a" href="/?ref=navbar">
             <p className="font-bold text-inherit">Fernando Ticona</p>
           </NavbarBrand>
         </NavbarContent>
@@ -50,7 +49,7 @@ export function HeaderNavbar() {
               <Link
                 className="w-full"
                 color="foreground"
-                href={item.title}
+                href={item.href}
               >
                 {item.title}
               </Link>
@@ -80,7 +79,7 @@ export function HeaderNavbar() {
               <Link
                 className="w-full"
                 color="foreground"
-                href={item.title}
+                href={item.href}
                 size="lg"
               >
                 {item.title}

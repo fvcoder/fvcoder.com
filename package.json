@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "migrate-prismic": "node scripts/migrate-prismic.cjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.2",
@@ -17,6 +18,8 @@
     "@iconify-json/simple-icons": "^1.2.16",
     "@iconify/react": "^5.1.0",
     "@nextui-org/react": "^2.6.8",
+    "@prismicio/client": "^7.13.1",
+    "@tailwindcss/typography": "^0.5.15",
     "astro": "^5.0.5",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.14.4",

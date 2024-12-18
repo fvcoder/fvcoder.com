@@ -268,6 +268,8 @@ export default {
         "dividerWeight": "1",
         "hoverOpacity": "0.9"
       }
-  })]
+  }),
+  require('@tailwindcss/typography'),
+  ]
 }
 
