@@ -8,34 +8,34 @@ import {
     NavbarMenuItem,
     Link,
     Button,
+    Switch,
   } from "@nextui-org/react";
-import { useState } from "react";
-  
+import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react"  
 
-  
 export function HeaderNavbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setDarkMode] = useState(false);
 
-    const menu = [
-        { title: "Blog", href: "/blog" },
-        { title: "Portfolio", href: "/work" },
-        { title: "Acerca de", href: "/about" },
-    ]
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const menu = [
+    { title: "Blog", href: "/blog" },
+    { title: "Portfolio", href: "/work" },
+    { title: "Acerca de", href: "/about" },
+  ]
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      if (isDarkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    }
+
+  }, [isDarkMode])
   
-    const menuItems = [
-      "Profile",
-      "Dashboard",
-      "Activity",
-      "Analytics",
-      "System",
-      "Deployments",
-      "My Settings",
-      "Team Settings",
-      "Help & Feedback",
-      "Log Out",
-    ];
-  
-    return (
+  return (
       <Navbar onMenuOpenChange={setIsMenuOpen}>
         <NavbarContent>
           
@@ -56,6 +56,17 @@ export function HeaderNavbar() {
               </Link>
             </NavbarItem>
           ))}
+          <NavbarMenuItem>
+            <Switch
+              size="lg"
+              onValueChange={setDarkMode}
+              thumbIcon={({isSelected, className}) => {
+
+                return <Icon icon={!isSelected ? "fluent:weather-sunny-16-filled" : "fluent:weather-moon-16-filled"} className={className} />
+              }
+              }
+            />
+          </NavbarMenuItem>
         </NavbarContent>
         <NavbarContent justify="end" className="md:hidden">
           <NavbarMenuToggle
