@@ -6,7 +6,7 @@ heroImage: 'https://images.prismic.io/thefersh/1b4404f7-3128-49be-a736-f3919424a
 tags: ['fundamentos', 'sistema', 'sistema-operativo', 'concepto', 'historia']
 ---
 # Sistemas Operativos que mas Usamos
-    
+
 Existen muchos sistemas operativos existentes pero los mas populares estos se catalogan en 3 grandes grupos:
 - **Escritorio:** El sistema operativo popular es Windows
 
@@ -56,4 +56,4 @@ Usa la capa de visual X11. Este sistema operativo es la base para distintos disp
 
 - Apple Tv: tvOS
 
-- Mac, Macbook: MacOs (Una version evolucionada)            
+- Mac, Macbook: MacOs (Una version evolucionada)

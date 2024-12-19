@@ -6,7 +6,7 @@ heroImage: 'https://images.prismic.io/thefersh/91a25225-fbc0-45a7-a540-8bd7797d6
 tags: ['proyecto-renacer', 'life', 'experimento']
 ---
 # Proyecto Renacer: Dormir Adecuadamente - D1
-    
+
 Dormir es uno de los recursos vitales que tenemos, lamentablemente no lo tomamos en sedio.
 
 
@@ -30,4 +30,4 @@ http://fvcoder.com/blog/proyecto-renacer
 ```
 blog:next
 http://fvcoder.com/blog/proyecto-renacer-dia-2
-```            
+```

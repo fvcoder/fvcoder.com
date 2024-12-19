@@ -6,7 +6,7 @@ heroImage: 'https://images.prismic.io/thefersh/a2da7604-ff06-43f3-9569-4c5b54f90
 tags: ['storytelling', 'origen', 'historia']
 ---
 # El origen de storytelling
-    
+
 Los primeras muestras de publicidad era la publicidad de boca en boca, en lo cual un vecino, amigo o familiar nos recomiendan un producto con el fin de promocionar su producto.
 Una vez que anunciar un producto ya no era llamativo pasaron a dibujar carteles llamativos que complementaban su anuncio, atrayendo mas la atención
 
@@ -20,4 +20,4 @@ Fue en Egipto en el año 3000 a.C., se creo un papiro. Anunciando la venta de ro
 
 ## En la antigua roma
 
-En Pompeya el grafiti era una forma de expresión, junto a distintas citas escitas por estudiantes, en paredes que evitaban los robos en la ciudad. Antes de ser destruida            
+En Pompeya el grafiti era una forma de expresión, junto a distintas citas escitas por estudiantes, en paredes que evitaban los robos en la ciudad. Antes de ser destruida

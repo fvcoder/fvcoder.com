@@ -6,7 +6,7 @@ heroImage: 'https://images.prismic.io/thefersh/4d2f84c5-f7cc-45a4-a7cb-4bce39055
 tags: ['proyecto-renacer', 'experimento']
 ---
 # Proyecto Renacer: Aburrido- D3
-    
+
 Hoy no fue un día atareado...
 Desperté de la manera mas rapida y agil que me pude imaginar. Como si no tubiera ninguna transición entre estar dormido y caminar.
 
@@ -28,4 +28,4 @@ http://fvcoder.com/blog/proyecto-renacer-dia-2
 ```
 blog:next
 http://fvcoder.com/blog/proyecto-renacer-dia-4
-```            
+```

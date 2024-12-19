@@ -6,8 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "migrate-prismic": "node scripts/migrate-prismic.cjs"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.2",

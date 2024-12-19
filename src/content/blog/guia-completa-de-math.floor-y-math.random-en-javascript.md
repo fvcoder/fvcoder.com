@@ -6,7 +6,7 @@ heroImage: 'https://images.prismic.io/thefersh/73e81671-2921-4538-8a03-c171b0e60
 tags: ['javascript', 'matematica', 'Math']
 ---
 # Guía completa de Math.floor y Math.random en JavaScript
-    
+
 Aprende cómo utilizar las funciones Math.floor y Math.random en JavaScript para redondear números y generar valores aleatorios. Descubre sus usos, ejemplos de código y cómo generar números aleatorios dentro de rangos específicos.
 Vamos por pasos, primero te explicare las herramientas que usaremos
 
@@ -50,4 +50,4 @@ function generateNumber(min = 0, max = 1) {
 generateNumber(1, 3) // 2
 generateNumber(43, 22) // 37
 generateNumber(309, 223) // 229
-```            
+```

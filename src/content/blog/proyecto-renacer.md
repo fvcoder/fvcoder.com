@@ -6,7 +6,7 @@ heroImage: 'https://images.prismic.io/thefersh/1e844289-e1ce-4d7b-9229-44716c898
 tags: ['proyecto-renacer', 'personal', 'serie']
 ---
 # Proyecto Renacer
-    
+
 Hola, mi nombre es Fernando Ticona soy un desarrollador web en Fiverr y sinceramente un desastre.
 No fumo, no bebo ni ando en drogas o algún Vicio, simplemente he notado que mi vida esta vacía y no tiene nada que no sea rutina.
 
@@ -33,4 +33,4 @@ Implementare sus recomendaciones y conocimientos poco a poco, semanalmente.
 ```
 blog:next
 http://fvcoder.com/blog/proyecto-renacer-dormir-adecuadamente-dia-1
-```            
+```
