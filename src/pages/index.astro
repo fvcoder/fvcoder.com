@@ -1,0 +1,185 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { HeaderNavbar } from "../components/react/headerNavbar";
+import { Icon } from "astro-icon/components";
+import { ContributionGraph } from "../components/react/contributionGraph";
+import { getCollection } from "astro:content";
+import { Button } from "@nextui-org/react";
+
+const contactData = [
+  {
+    icon: "simple-icons:github",
+    label: "GitHub",
+    href: "https://github.com/fvcoder",
+  },
+  {
+    icon: "simple-icons:gmail",
+    label: "fvcoder1@gmail.com",
+    href: "malito:fvcoder1@gmailcom",
+  },
+  {
+    icon: "simple-icons:x",
+    label: "X",
+    href: "https://x.com/fvcoder1",
+  },
+  {
+    icon: "simple-icons:linkedin",
+    label: "Linkedin",
+    href: "https://linkedin.com/in/fvcoder",
+  },
+  {
+    icon: "simple-icons:figma",
+    label: "Figma",
+    href: "https://figma.com/@fvcoder",
+  },
+  {
+    icon: "simple-icons:codepen",
+    label: "Codepen",
+    href: "https://codepen.io/fvcoder",
+  },
+  {
+    icon: "simple-icons:instagram",
+    label: "Instagram",
+    href: "https://instagram.com/fvcoder",
+  },
+  {
+    icon: "simple-icons:tiktok",
+    label: "Tiktok",
+    href: "https://gitlab.com/fvcoder",
+  },
+  {
+    icon: "simple-icons:youtube",
+    label: "TouTube",
+    href: "https://x.com/fvcoder1",
+  },
+];
+
+const project = (await getCollection("project")).sort((a, b) => {
+  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+}).slice(0, 4);
+---
+
+<!doctype html>
+<html lang="es" class="transition-colors">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="">
+    <HeaderNavbar client:visible />
+    <header class="max-w-5xl mx-auto px-6 mt-20">
+      <section
+        class="flex flex-col-reverse md:flex-row md:items-center md:justify-center justify-between gap-12 mb-16 overflow-x-hidden md:overflow-x-visible"
+      >
+        <div>
+          <div style="opacity: 1; transform: none;">
+            <h1
+              class="font-semibold tracking-tight text-3xl sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight min-w-full"
+            >
+              Frontend Developer | Next.js & React | Backend con NestJS
+            </h1>
+            <p
+              class="text-base dark:text-zinc-400 text-zinc-600 leading-relaxed"
+            >
+              Mi enfoque está en ofrecer soluciones personalizadas que se
+              adapten a las necesidades de tu negocio, asegurando una
+              experiencia de usuario impecable en todos los dispositivos. Ya sea
+              que necesites desarrollar un sitio web completo, optimizar tu
+              página actual o integrar APIs, estoy aquí para ayudarte a alcanzar
+              tus objetivos digitales.
+            </p>
+            <p
+              class="text-base dark:text-zinc-400 text-zinc-600 leading-relaxed mt-4"
+            >
+              Contáctame hoy para discutir cómo puedo ayudarte a crear un sitio
+              web que cautive a tus usuarios y te impulse al éxito.
+            </p>
+          </div><div style="opacity: 1; transform: none;">
+            <ul class="flex items-center flex-wrap gap-x-5 gap-y-4 my-10">
+              {
+                contactData.map((x) => (
+                  <li>
+                    <a
+                      rel="noopener"
+                      target="_blank"
+                      class="flex items-center border-b dark:border-b-zinc-800 border-zinc-200 group"
+                      href={`${x.href}?ref=https://fvcoder.com`}
+                    >
+                      <Icon
+                        name={x.icon}
+                        class="flex-shrink-0 size-4 text-zinc-500 group-hover:dark:text-white group-hover:text-zinc-800 duration-300"
+                      />
+                      &nbsp;{x.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="w-full pb-10 md:pb-0 md:w-1/3">
+          <svg viewBox="0 0 1273 906" class="w-full md:w-[450px]"
+            ><path
+              class="path"
+              d="M318.587 315.483V510.936L477.544 431.391V236.949M318.587 315.483L159.63 236.949M318.587 315.483L477.544 236.949M318.587 315.483V509.925L159.63 589.469M318.587 315.483L159.63 237.286L0.673828 315.483M318.587 315.483L159.63 394.016M477.544 236.949L318.587 158.753L159.63 236.949M477.544 236.949V432.402M477.544 236.949L318.587 158.416L477.544 80.2192L636.5 158.416L477.544 236.949ZM159.63 236.949V79.5451M159.63 589.469V394.016M159.63 589.469L0.673828 509.925V315.483M0.673828 315.483L159.63 394.016M159.63 79.5451L318.587 1.34863L477.544 79.5451L318.587 158.079L159.63 79.5451ZM795.457 395.701V237.286M795.457 237.286L636.5 159.09L477.544 237.286M795.457 237.286L636.5 315.82M477.544 237.286V431.728L601.139 491.762M477.544 237.286L636.5 315.82M636.5 315.82V472.887M954.414 668.003V473.561M954.414 473.561L795.457 395.364L636.5 473.561L795.457 552.094M954.414 473.561L795.457 552.094M954.414 473.561V669.014M954.414 473.561L795.457 395.027L954.414 316.831L1113.37 395.027L954.414 473.561ZM795.457 552.094L636.5 473.898L477.544 552.094M795.457 552.094L636.5 630.628M477.544 552.094V746.534L636.5 826.078V630.628M477.544 552.094L636.5 630.628M795.457 709.498V904.949M795.457 709.498L636.5 630.965M795.457 709.498L954.414 630.965M795.457 904.949L954.414 825.404V630.965M795.457 904.949L636.5 825.404V630.965M636.5 630.965L795.457 552.768L954.414 630.965M1113.37 552.431V747.882M1113.37 552.431L954.414 473.898M1113.37 552.431L1272.33 473.898M1113.37 747.882L1272.33 668.34V473.898M1113.37 747.882L954.414 668.34V473.898M954.414 473.898L1113.37 395.701L1272.33 473.898"
+              style="stroke-opacity: 0.7; stroke-linecap: round; stroke-width: 3px; stroke: rgb(110, 208, 77); fill-opacity: 0;"
+              id="object-0"></path></svg
+          >
+        </div>
+      </section>
+    </header>
+    <section class="max-w-5xl mx-auto px-6">
+      <div class="mb-8">
+        <h2 class="font-incognito text-3xl font-semibold tracking-tight">
+          Gráfico de Contribuciones de código
+        </h2>
+      </div>
+      <div>
+        <ContributionGraph client:visible />
+      </div>
+    </section>
+    <section class="max-w-5xl mx-auto px-6 mt-20">
+      <div class="mb-8">
+        <h2 class="font-incognito text-3xl font-semibold tracking-tight">
+          Proyectos
+        </h2>
+      </div>
+      <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          project.map((x) => (
+            <article>
+              <a href={`/project/${x.id}`} class="block">
+                <img
+                  src={x.data.heroImage}
+                  alt=""
+                  class="w-full h-auto aspect-video object-cover rounded-xl"
+                />
+              </a>
+              <div class="flex justify-between items-start mt-4">
+                <div>
+                  <a href={`/project/${x.id}`} class="block">
+                    <h3 class="text-xl font-semibold">{x.data.title}</h3>
+                  </a>
+                  <p class="text-neutral-500">{x.data.role}</p>
+                </div>
+                <div>
+                  <Button
+                    as="a"
+                    href={`/project/${x.id}`}
+                    size="sm"
+                    variant="ghost"
+                    client:visible
+                  >
+                    Ver caso de estudio
+                  </Button>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </main>
+    </section>
+    <Footer />
+  </body>
+</html>
