@@ -1,48 +1,58 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import { HeaderNavbar } from '../components/react/headerNavbar';
-import { Button } from '@nextui-org/react';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { HeaderNavbar } from "../components/react/headerNavbar";
+import { Button } from "@nextui-org/react";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = Partial<CollectionEntry<"blog">["data"]> & {
+  isProjectLayout?: boolean;
+};
 
-const { title, description, pubDate, heroImage } = Astro.props;
+const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
 ---
 
 <html lang="es">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body>
-		<HeaderNavbar client:visible />
-		<main class="max-w-5xl mx-auto px-6">
-			<article>
-				<div class="hero-image">
-					{heroImage && <img src={heroImage} alt="" class="w-full h-auto rounded-xl" />}
-				</div>
-				<div class="prose max-w-3xl mx-auto">
-					<header class="text-center pt-10 pb-2">
-						<div class="text-neutral-500">
-							<FormattedDate date={pubDate} />
-						</div>
-						<h1 class="mb-2">{title}</h1>
-						<p class="mt-2">por Fernando Ticona</p>
-					</header>
-					<slot />
-					<footer class="not-prose">
-						<div>
-							<Button variant="light" client:visible>#abaco</Button>
-						</div>
-						<div>
-							<a href="/blog?ref=blog-article" class="text-blue-500 hover:underline mt-4 block w-fit">Ver mas artículos</a>
-						</div>
-					</footer>
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={title ?? ""} description={description ?? ""} />
+  </head>
+  <body>
+    <HeaderNavbar client:visible />
+    <main class="max-w-5xl mx-auto px-6">
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <img src={heroImage} alt="" class="w-full h-auto rounded-xl" />
+            )
+          }
+        </div>
+        <div class="prose max-w-3xl mx-auto">
+          <header class="text-center pt-10 pb-2">
+            <div class="text-neutral-500">
+              <FormattedDate date={pubDate ?? new Date()} />
+            </div>
+            <h1 class="mb-2">{title}</h1>
+            <p class="mt-2">por Fernando Ticona</p>
+          </header>
+          <slot />
+          <footer class="not-prose">
+            <div>
+              <Button variant="light" client:visible>#abaco</Button>
+            </div>
+            <div>
+              <a
+                href={`${isProjectLayout ? "/project" : "/blog"}?ref=blog-article`}
+                class="text-blue-500 hover:underline mt-4 block w-fit"
+                >Ver mas {isProjectLayout ? "Projectos" : "artículos"}</a
+              >
+            </div>
+          </footer>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

@@ -20,8 +20,7 @@ export function HeaderNavbar() {
 
   const menu = [
     { title: "Blog", href: "/blog" },
-    { title: "Portfolio", href: "/work" },
-    { title: "Acerca de", href: "/about" },
+    { title: "Portfolio", href: "/project" },
   ]
 
   useEffect(() => {
