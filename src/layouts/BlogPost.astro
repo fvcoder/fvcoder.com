@@ -25,7 +25,7 @@ const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
         <div class="hero-image">
           {
             heroImage && (
-              <img src={heroImage} alt="" class="w-full h-auto rounded-xl" />
+              <img src={heroImage} alt={title} class="w-full h-auto rounded-xl" />
             )
           }
         </div>
@@ -35,13 +35,22 @@ const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
               <FormattedDate date={pubDate ?? new Date()} />
             </div>
             <h1 class="mb-2">{title}</h1>
-            <p class="mt-2">por Fernando Ticona</p>
+            <p class="mt-2">Por Fernando Ticona</p>
+            {isProjectLayout && (
+              <div>
+                <p class="mt-2">
+                  <strong>Cliente: </strong>
+                  <span>{(Astro.props as any).client}</span>
+                </p>
+                <p class="mt-2">
+                  <strong>Rol/Area: </strong>
+                  <span>{(Astro.props as any).role}</span>
+                </p>
+              </div>
+            )}
           </header>
           <slot />
           <footer class="not-prose">
-            <div>
-              <Button variant="light" client:visible>#abaco</Button>
-            </div>
             <div>
               <a
                 href={`${isProjectLayout ? "/project" : "/blog"}?ref=blog-article`}
