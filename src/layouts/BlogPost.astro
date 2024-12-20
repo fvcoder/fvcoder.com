@@ -29,7 +29,7 @@ const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
             )
           }
         </div>
-        <div class="prose max-w-3xl mx-auto">
+        <div class="prose max-w-3xl mx-auto dark:prose-invert">
           <header class="text-center pt-10 pb-2">
             <div class="text-neutral-500">
               <FormattedDate date={pubDate ?? new Date()} />
