@@ -5,8 +5,6 @@ pubDate: '2023-12-18T21:32:32+0000'
 heroImage: 'https://images.prismic.io/fvcoder/e577dde3-4f9f-4137-b2c3-463c888faabd_blog+portadas.png?auto=compress,format'
 tags: ['fundamentos', 'computacion', 'concepto']
 ---
-# ¿Que es una Compudadora? - Fundamentos de la Programacion
-
 Descubre cómo las computadoras, desde dispositivos cotidianos como celulares y refrigeradores hasta cajas negras confiables, forman parte integral de nuestra vida diaria. Exploraremos cómo la computación se ha infiltrado en diversos aspectos de nuestra rutina, simplificando tareas y transformando la manera en que interactuamos con el mundo
 Las computadoras nos rodean y forman parte de nuestra vida, incluso sin darnos cuenta.
 

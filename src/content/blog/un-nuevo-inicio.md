@@ -5,8 +5,6 @@ pubDate: '2024-04-16T21:30:30+0000'
 heroImage: 'https://images.prismic.io/fvcoder/Zh7tVkaI3ufuUPSQ_Blogfvcoder.png?auto=format,compress'
 tags: ['confesion']
 ---
-# Un nuevo inicio
-
 Lo siento si te ofendí, pero tenia que desahogarme y contar mi situación actual
 Escribe, escribe, escribe… así es como llegarás a ser un gran escritor. Es una frase que me llega a la mente en mi situación, si bien es cierto que no me falta nada aspiro a más, pero viendo lo que es mi situación evidente no se si pueda salir de este hoyo.
 

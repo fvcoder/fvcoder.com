@@ -5,8 +5,6 @@ pubDate: '2024-07-17T14:44:43+0000'
 heroImage: 'https://images.prismic.io/fvcoder/ZpfWKB5LeNNTxPWe_fvcoder-2-.png?auto=format,compress'
 tags: ['aprende', 'habilidad']
 ---
-# Primeras 20 horas para aprender cualquier habilidad
-
 Descubre la mejor manera de aprender cualquier habilidad, sin importar si es una habilidad teórica (como matemática o química) o practica (aprender a nadar o jugar futbol).
 Actualmente se cree que las habilidades se aprenden con un tiempo determinado o promedio, eso no se aplica realmente.
 

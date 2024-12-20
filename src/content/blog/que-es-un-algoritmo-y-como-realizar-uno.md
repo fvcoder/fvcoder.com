@@ -5,8 +5,6 @@ pubDate: '2022-10-20T01:18:18+0000'
 heroImage: 'https://images.prismic.io/thefersh/c9c773b3-b1e3-4bf5-9db9-d1f499709fb8_Protadas+blog+%281%29.png?auto=compress,format'
 tags: ['pensamiento-logico', 'algoritmo', 'concepto', 'basico', 'programacion']
 ---
-# ¿Que es un algoritmo y cómo realizar uno?
-
 Un algoritmo es una serie de pasos que se realizan en un orden específico para cumplir o solucionar una tarea.
 ## ¿Como realizamos un algoritmo?
 

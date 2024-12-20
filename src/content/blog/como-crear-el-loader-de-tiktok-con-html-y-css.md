@@ -5,8 +5,6 @@ pubDate: '2024-08-01T13:22:27+0000'
 heroImage: 'https://images.prismic.io/fvcoder/Zqt-lh5LeNNTxuCc_fvcoder-3-.png?auto=format,compress'
 tags: ['tutorial']
 ---
-# Como crear el loader de TikTok con html y Css
-
 Todos en algun momento vimos el loader de TikTok y probablemente nos quedamos horas viendo esta red social, en este post te enseño a crearlo solo con Html y Css
 Para crear un loader necesitamos un editor de codigo, te recomiento [Visual Studio Code](https://code.visualstudio.com/) con la extencion de [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). Pero si no lo tenemos a mano te recomiendo [Codi.link](https://codi.link/).
 
@@ -16,8 +14,7 @@ Una vez preparados empecemos con el código:
 
 Para una buena estructura, lo realizaremos encima de una etiqueta de div con dos hijos span, en forma de componente, para su reutilización, en caso de que sea necesario.
 
-```
-languaje:xml
+```xml
 <div class="loader">
   <span class="magenta"></span>
   <span class="cyan"></span>
@@ -28,8 +25,7 @@ languaje:xml
 
 Para el el estilo manejaremos Css, por si necesitas el código con urgencia o para saltarte el tutorial, aquí lo tienes:
 
-```
-languaje:css
+```css
 .loader {
   display: flex;
   gap: 0.75rem;

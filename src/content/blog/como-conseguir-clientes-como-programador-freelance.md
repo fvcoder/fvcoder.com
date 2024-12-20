@@ -5,8 +5,6 @@ pubDate: '2024-04-23T19:49:02+0000'
 heroImage: 'https://images.prismic.io/fvcoder/ZigQkPPdc1huKtr0_As%C3%ADescomoaprend%C3%ADaprogramar%2Cmiplandeestudios%2BCursosGratis.png?auto=format,compress'
 tags: ['tecnica', 'guia', 'web', 'team', 'trucos', 'secreto']
 ---
-# Como conseguir clientes como programador freelance
-
 A lo largo de los años, logre estandarizar un método para poder ganar la confianza y conseguir proyectos sin problemas o malos entendidos. Hoy te enseñare con proyecto ficticio de ejemplo.
 Al iniciar un proyecto,  paro completamente y veo la necesidad de mis clientes o en si defecto ¿Qué le duele?
 

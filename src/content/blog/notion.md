@@ -5,8 +5,6 @@ pubDate: '2023-08-15T14:01:25+0000'
 heroImage: 'https://images.prismic.io/fvcoder/c99ad4e9-f949-46d0-81ab-f7ea2f71a5c8_Blog+fvcoder+%281%29.png?auto=compress,format'
 tags: ['notion', 'experiencia']
 ---
-# Notion, el mejor sistema que uso para organizar mis proyectos
-
 Al inicio parece un cuaderno donde anotas una que otra tarea y dibujas por creatividad. La realidad  es muy diferente, Notion tiene un sistema completo para organizar y mostrar cualquiert tipo de contenido.
 Lo descubrí en agosto de 2021, la primera impresión fue de un lienzo en el cual puedo escribir una que otra nota y subir unas cuantas imágenes. Quien diría que esta empresa fuera un Unicornio en varios aspectos.
 

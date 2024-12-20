@@ -5,8 +5,6 @@ pubDate: '2022-10-14T00:52:05+0000'
 heroImage: 'https://images.prismic.io/thefersh/1b4404f7-3128-49be-a736-f3919424a463_Protadas+blog.png?auto=compress,format'
 tags: ['fundamentos', 'sistema', 'sistema-operativo', 'concepto', 'historia']
 ---
-# Sistemas Operativos que mas Usamos
-
 Existen muchos sistemas operativos existentes pero los mas populares estos se catalogan en 3 grandes grupos:
 - **Escritorio:** El sistema operativo popular es Windows
 

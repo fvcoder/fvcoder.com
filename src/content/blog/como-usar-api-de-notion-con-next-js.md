@@ -5,8 +5,6 @@ pubDate: '2024-08-02T13:46:02+0000'
 heroImage: 'https://images.prismic.io/fvcoder/ZqzfQ0aF0TcGIpoA_fvcoder-4-.png?auto=format,compress'
 tags: ['caso-de-uso']
 ---
-# Como usar Api de Notion con Next Js
-
 Use Notion como un CMS para crear un blog para guardar mis notas de borrador, y lo integre a mi pagina web, aquí te enseño como.
 Escuche hace mucho que Notion abrió su API para que los desarrolladores creen integraciones con mas herramientas, así Notion seria aun mas versátil y útil que nunca. Esto me llamo la atención.
 
@@ -58,16 +56,14 @@ Para la obtener el Page ID de la pagina solo presta atención a la url de la pag
 
 Ahora móntalo en variables de entorno:
 
-```
-languaje:text
+```text
 NOTION_PAGE_ID=43ec227ba4b04afbb935ee88f0d801e6
 NOTION_API_KEY=secret_ve&realizaLosPasosAnteriores
 ```
 
 E instala la [librería oficial de Notion](https://www.npmjs.com/package/@notionhq/client) para Node Js, si tienes que hacerlo para otro Framework o librería, igualmente funciona, la librería es agnostica al Framework.
 
-```
-languaje:bash
+```bash
 npm i @notionhq/client
 yarn add @notionhq/client
 pnpm install @notionhq/client
@@ -75,8 +71,7 @@ pnpm install @notionhq/client
 
 Ahora inicia el cliente, y empieza a consultar:
 
-```
-languaje:typescript
+```ts
   const notion = new Client({
     auth: process.env.NOTION_API_KEY,
   });
@@ -95,8 +90,7 @@ languaje:typescript
 
 Me dio como respuesta:
 
-```
-languaje:json
+```json
 {
   "object": "list",
   "results": [
@@ -234,8 +228,7 @@ Solo tuve que iterar y mostrarlo de una manera que un ser humano pueda ver:
 
 Para usar las paginas hijos, solo tuve que usar el id de la pagina:
 
-```
-languaje:typescript
+```ts
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
@@ -272,8 +265,7 @@ const body = await Promise.all(
 
 Lo hice de manera nativa por para ponerme el reto, pero si tienes otra alternativa tambien cuenta.
 
-```
-languaje:typescript
+```ts
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 

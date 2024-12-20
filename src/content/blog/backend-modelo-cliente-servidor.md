@@ -5,8 +5,6 @@ pubDate: '2022-10-11T15:03:01+0000'
 heroImage: 'https://images.prismic.io/thefersh/630fed63-31fc-4b64-9664-637bccddb52d_Protadas+blog+%283%29.png?auto=compress,format'
 tags: ['concepto', 'backend', 'programacion', 'caracteristicas', 'basico']
 ---
-# Modelo Cliente-Servidor
-
 En general el programador, en su vida diaria, trabaja dentro de dos modelos, el servidor y el cliente, ya sea uno u otro, o los dos al mismo tiempo.
 ## El servidor
 
@@ -40,4 +38,4 @@ Sucede cuando un cliente envía una petición al servidor con los datos requerid
 
 **PD:** Las areas que mencione son las que se me ocurrió en el momento, existen muchas mas.
 
-**PD2: **Cada area maneja distintos lenguajes de programación, algunos especialmente diseñados para la tecnología.
+**PD2:** Cada area maneja distintos lenguajes de programación, algunos especialmente diseñados para la tecnología.

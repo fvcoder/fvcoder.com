@@ -5,8 +5,6 @@ pubDate: '2024-04-17T20:05:49+0000'
 heroImage: 'https://images.prismic.io/fvcoder/ZiAqQfPdc1huKlhg_Blogfvcoder.png?auto=format,compress'
 tags: ['roadmap']
 ---
-# Así es como aprendí a programar, mi plan de estudios + Cursos Gratis
-
 El camino de un programador, no tiene un fin, quizá un principio. En esta guía te dire detalladamente que tienes que aprender y el camino que debes de seguir desde 0.
 Programar no es más que dar un montón de instrucciones detalladas a una máquina para que esta realice una función o resuelva un problema.
 
@@ -51,10 +49,6 @@ Aquí estás listo para proyectos más complejos, y ojo no solo debe ser bonito.
 - Git
 
 - Github
-
-
-
-
 
 ## ¿Es todo?
 

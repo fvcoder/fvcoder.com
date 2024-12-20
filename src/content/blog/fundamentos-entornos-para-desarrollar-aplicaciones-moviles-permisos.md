@@ -5,8 +5,6 @@ pubDate: '2022-10-19T14:54:57+0000'
 heroImage: 'https://images.prismic.io/thefersh/86f15dff-4f8e-4f03-ab8e-5b0a339f114f_Protadas+blog+%281%29.png?auto=compress,format'
 tags: ['fundamentos', 'basico', 'sistema-operativo']
 ---
-# Entornos para desarrollar Aplicaciones Móviles - Permisos
-
 Los dispositivos móviles, el control de permisos es estricto y declarativo.
 Esto debido a que el hardware y el software es muy especifico para el dispositivo, en ocasiones se selecciona lo mínimo necesario para que arranquen un par de funciones.
 

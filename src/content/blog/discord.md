@@ -5,9 +5,6 @@ pubDate: '2023-08-15T14:28:33+0000'
 heroImage: 'https://images.prismic.io/fvcoder/4902bb5a-e52d-4bf2-9767-8ac328acf7a1_Blog+fvcoder+%282%29.png?auto=compress,format'
 tags: ['discord']
 ---
-# Discord, el mejor sistema de mensajería
-
-¿Quieres llevar la comunicación y colaboración de tu comunidad o equipo al siguiente nivel? ¡Discord es la solución perfecta para ti!
 ¿Quieres llevar la comunicación y colaboración de tu comunidad o equipo al siguiente nivel? ¡Discord es la solución perfecta para ti!
 
 ## Comunicación en Tiempo Real, ¡Siempre Conectados!
