@@ -7,14 +7,10 @@ import react from '@astrojs/react';
 
 import icon from 'astro-icon';
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://fvcoder.com',
-  integrations: [mdx(), sitemap(), react(), icon()],
-
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  integrations: [mdx(), sitemap(), tailwind(), react(), icon()],
 });
