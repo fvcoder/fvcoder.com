@@ -1,0 +1,87 @@
+---
+import { Button, Chip } from "@heroui/react";
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "@iconify/react";
+import CourseLessonList from "../../components/CourseLessonList.astro";
+export const prerender = false;
+---
+<Layout class="bg-course-smoke">
+    <style is:global>
+        .bg-course-smoke {
+            overflow-x: hidden;
+        }
+        .bg-course-smoke::before {
+            position: absolute;
+            background-size: 220%;
+            height: 100svh;
+            z-index: -1;
+            filter: blur(50px);
+            top: -50px;
+            left: -50px;
+            right: -50px;
+            width: calc(100% + 100px);
+            overflow-x: hidden;
+            content: "";
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: 0px 0px;
+            background-image: radial-gradient(113% 91% at 17% -2%, #6f00eeb8 1%, #FF000000 98%);
+        }
+    </style>
+    <div class="max-w-5xl mx-auto px-6 space-y-6 mb-10">
+        <section class="py-10 flex items-center gap-4">
+            <div>
+                <div>
+                    <img src="https://static.platzi.com/media/achievements/badge_chatgpt-63194262-82e2-43e2-9037-be6474754c94.png" alt="" width="45" height="45">
+                </div>
+                <div class="mt-2">
+                    <h1 class="text-black dark:text-white text-3xl font-bold">Curso Better Auth</h1>
+                    <time class="text-default-500 text-sm">Última actualización el 03 de septiembre de 2024</time>
+                    <div class="flex flex-wrap gap-2 mt-2 mb-1">
+                        <Chip variant="faded" client:visible>
+                            <div class="flex items-center gap-1">
+                                <Icon icon="fluent:video-clip-multiple-16-regular" client:visible />
+                                <span>23 clases</span>
+                            </div>
+                        </Chip>
+                        <Chip variant="faded" client:visible>
+                            <div class="flex items-center gap-1">
+                                <Icon icon="fluent:clock-16-regular" client:visible />
+                                <span>3 horas de contenido</span>
+                            </div>
+                        </Chip>
+                        <Chip variant="faded" client:visible>
+                            <div class="flex items-center gap-1">
+                                <Icon icon="fluent:flash-16-regular" client:visible />
+                                <span>12 horas de práctica</span>
+                            </div>
+                        </Chip>
+                    </div>
+                    <p class="pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem excepturi dolor, recusandae facere alias nostrum laborum fugit perspiciatis earum odio quidem cupiditate harum corporis nisi aspernatur velit doloremque ad natus.</p>
+                    <div class="mt-4">
+                        <Button color="primary" client:visible>Inscribirse</Button>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-[40%] hidden lg:block">
+                <img src="https://static-media.hotmart.com/3FftM3av-3SPFhsvj1Y3GPBRQI0=/fit-in/1280x720/filters:upscale()/hotmart-template-files-production/membership_product/67bee6841b4eff313cb40497:5154546/ae2dcab9-a2f8-4ab6-a7c3-9994bdb01f29" alt="" class="rounded-md">
+            </div>
+        </section>
+        <section>
+            <h2 class="text-2xl text-black dark:text-white font-semibold">Clases del Curso</h2>
+            <div class="pl-4">
+                <CourseLessonList />
+                <CourseLessonList />
+                <CourseLessonList />
+                <CourseLessonList />
+                <CourseLessonList />
+            </div>
+        </section>
+        <section>
+            <h2 class="text-2xl text-black dark:text-white font-semibold">Conoce quién enseña el curso</h2>
+        </section>
+        <section>
+            <h2 class="text-2xl text-black dark:text-white font-semibold">Cursos relacionados</h2>
+        </section>
+    </div>
+</Layout>

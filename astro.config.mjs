@@ -9,8 +9,11 @@ import icon from 'astro-icon';
 
 import tailwind from '@astrojs/tailwind';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://fvcoder.com',
   integrations: [mdx(), sitemap(), tailwind(), react(), icon()],
+  adapter: cloudflare(),
 });

@@ -7,32 +7,25 @@ import {
     NavbarMenu,
     NavbarMenuItem,
     Link,
-    Button,
     Switch,
   } from "@heroui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Icon } from "@iconify/react"  
 
-export function HeaderNavbar() {
-  const [isDarkMode, setDarkMode] = useState(false);
+interface HeaderNavbarProps {
+  hiddenThemeSelector?: boolean;
+  initialDarkMode?: boolean;
+}
 
+export function HeaderNavbar(props: HeaderNavbarProps) {
+  const [isDarkMode, setDarkMode] = useState(props.initialDarkMode ?? false)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menu = [
     { title: "Blog", href: "/blog" },
+    { title: "Cursos", href: "/course" },
     { title: "Portfolio", href: "/project" },
   ]
-
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      if (isDarkMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    }
-
-  }, [isDarkMode])
   
   return (
       <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -54,17 +47,16 @@ export function HeaderNavbar() {
               </Link>
             </NavbarItem>
           ))}
-          <NavbarMenuItem>
-            <Switch
-              size="lg"
-              onValueChange={setDarkMode}
-              thumbIcon={({isSelected, className}) => {
-
-                return <Icon icon={!isSelected ? "fluent:weather-sunny-16-filled" : "fluent:weather-moon-16-filled"} className={className} />
-              }
-              }
-            />
-          </NavbarMenuItem>
+          {!props.hiddenThemeSelector && (
+            <NavbarMenuItem>
+              <Switch
+                size="lg"
+                onValueChange={setDarkMode}
+                defaultChecked={isDarkMode}
+                thumbIcon={({isSelected, className}) => <Icon icon={!isSelected ? "fluent:weather-sunny-16-filled" : "fluent:weather-moon-16-filled"} className={className} />}
+              />
+            </NavbarMenuItem>
+          )}
         </NavbarContent>
         <NavbarContent justify="end" className="md:hidden">
           <NavbarMenuToggle

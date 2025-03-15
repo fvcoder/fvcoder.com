@@ -1,0 +1,62 @@
+---
+import { Button, Input } from "@heroui/react";
+import Layout from "../../layouts/Layout.astro";
+import CourseCard from "../../components/CourseCard.astro";
+
+---
+<Layout class="bg-course-smoke">
+    <style is:global>
+        .bg-course-smoke {
+            overflow-x: hidden;
+        }
+        .bg-course-smoke::before {
+            position: absolute;
+            background-size: 220%;
+            height: 100svh;
+            z-index: -1;
+            filter: blur(50px);
+            top: -50px;
+            left: -50px;
+            right: -50px;
+            width: calc(100% + 100px);
+            overflow-x: hidden;
+            content: "";
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: 0px 0px;
+            background-image: radial-gradient(113% 91% at 17% -2%, #6f00eeb8 1%, #FF000000 98%);
+        }
+    </style>
+    <main class="max-w-5xl mx-auto px-6 mb-10 space-y-6">
+        <header>
+            <header class="text-center py-20 space-y-2">
+                <h1 class="text-5xl font-bold dark:text-white leading-[1.25]">
+                    Cursos avanzados para <br />
+                    <span  class="text-indigo-400">desarrolladores de JavaScript</span>
+                </h1>
+                <p>Ya sabes lo básico, es hora de ir al siguiente nivel</p>
+                <div class="pt-4 w-fit mx-auto flex items-center gap-2">
+                    <Button color="primary" client:visible>Registrarse</Button>
+                </div>
+            </header>
+        </header>
+        <section>
+            <h2 class="text-2xl font-semibold text-white mb-6 md:mb-4">Continua viendo</h2>
+            <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+            </div>
+        </section>
+        <section>
+            <h2 class="text-2xl font-semibold text-white mb-4">Cursos Disponibles</h2>
+            <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+            </div>
+        </section>
+    </main>
+</Layout>
