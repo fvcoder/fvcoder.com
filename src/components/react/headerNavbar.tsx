@@ -9,7 +9,7 @@ import {
     Link,
     Button,
     Switch,
-  } from "@nextui-org/react";
+  } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react"  
 

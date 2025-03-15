@@ -6,7 +6,7 @@ import { HeaderNavbar } from "../components/react/headerNavbar";
 import { Icon } from "astro-icon/components";
 import { ContributionGraph } from "../components/react/contributionGraph";
 import { getCollection } from "astro:content";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 
 const contactData = [
   {
@@ -17,7 +17,7 @@ const contactData = [
   {
     icon: "simple-icons:gmail",
     label: "fvcoder1@gmail.com",
-    href: "malito:fvcoder1@gmailcom",
+    href: "malito:fvcoder1@gmail.com",
   },
   {
     icon: "simple-icons:x",
@@ -92,7 +92,7 @@ const project = (await getCollection("project")).sort((a, b) => {
             <p
               class="text-base dark:text-zinc-400 text-zinc-600 leading-relaxed mt-4"
             >
-              Contáctame hoy para discutir cómo puedo ayudarte a crear un sitio
+              Contácteme hoy para discutir cómo puedo ayudarte a crear un sitio
               web que cautive a tus usuarios y te impulse al éxito.
             </p>
           </div><div style="opacity: 1; transform: none;">
