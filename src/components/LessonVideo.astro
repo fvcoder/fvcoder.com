@@ -1,0 +1,23 @@
+---
+import { createHash } from 'crypto';
+
+function sha256Hex(tokenSecurityKey: string, videoId: string, expiration: string): string {
+  const data = tokenSecurityKey + videoId + expiration;
+  return createHash('sha256').update(data).digest('hex');
+}
+
+// Ejemplo de uso
+const tokenSecurityKey = "2348c1db-aca2-4090-8e11-341f0e25c358";
+const videoId = "748de400-994b-458d-9a4a-0143370b5891";
+let expiration = new Date()
+expiration.setHours(expiration.getHours() + 4)
+
+const token = sha256Hex(tokenSecurityKey, videoId, expiration.toISOString());
+---
+
+<div class="bg-black aspect-video rounded-lg relative">
+    <div style="position:relative;padding-top:56.25%;">
+        <iframe
+            src={`https://iframe.mediadelivery.net/embed/396702/748de400-994b-458d-9a4a-0143370b5891?autoplay=false&loop=false&muted=false&preload=false&responsive=true&token=${token}`} loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true" class="rounded-lg" />
+    </div>
+</div>

@@ -1,0 +1,44 @@
+---
+import { Button } from "@heroui/react";
+import Layout from "../../layouts/Layout.astro";
+import LessonVideoNoAccess from "../../components/LessonVideoNoAccess.astro";
+import LessonVideoLaunch from "../../components/LessonVideoLaunch.astro";
+import LessonVideo from "../../components/LessonVideo.astro";
+
+export const prerender = false;
+
+const state: "no-access" | "access" | "launch" = "access";
+---
+<Layout>
+    <section class="max-w-5xl mx-auto px-6">
+        <header>
+            {state === "no-access" && <LessonVideoNoAccess />}
+            {state === "launch" && <LessonVideoLaunch />}
+            {state === "access" && <LessonVideo />}
+        </header>
+        <main class="mt-4 flex items-start justify-between">
+            <div class="flex items-center gap-2">
+                <div>
+                    <img src="https://static.platzi.com/media/achievements/badge_chatgpt-63194262-82e2-43e2-9037-be6474754c94.png" alt="" width="45" height="45">
+                </div>
+                <div>
+                    <h1 class="text-black font-semibold">lesson Title</h1>
+                    <a href="/course/id" class="hover:underline">
+                        <p class="text-sm text-default-800">course title</p>
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <Button color="primary" variant="bordered" size="sm">Anterior</Button>
+                <Button color="primary" size="sm">Siguiente</Button>
+            </div>
+        </main>
+    </section>
+    <section class="max-w-5xl mx-auto px-6 mt-6 prose dark:prose-invert">
+        <p>Lorem ipsum dolor sit amet consectetur adis inventore quibusdam, aperiam voluptate doloribus ad magnam dolor, at non, alias delectus. Aliquid omnis blanditiis reprehenderit ullam iusto. Doloremque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iste sit inventore quibusdam, aperiam voluptate doloribus ad magnam dolor, at non, alias delectus. Aliquid omnis blanditiis reprehenderit ullam iusto. Doloremque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iste sit inventore quibusdam, aperiam voluptate doloribus ad magnam dolor, at non, alias delectus. Aliquid omnis blanditiis reprehenderit ullam iusto. Doloremque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iste sit inventore quibusdam, aperiam voluptate doloribus ad magnam dolor, at non, alias delectus. Aliquid omnis blanditiis reprehenderit ullam iusto. Doloremque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iste sit inventore quibusdam, aperiam voluptate doloribus ad magnam dolor, at non, alias delectus. Aliquid omnis blanditiis reprehenderit ullam iusto. Doloremque.</p>
+    </section>
+</Layout>
