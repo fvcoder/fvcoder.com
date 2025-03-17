@@ -10,6 +10,7 @@
    },
    "dependencies": {
       "@astrojs/cloudflare": "^12.2.4",
+      "@astrojs/db": "^0.14.8",
       "@astrojs/mdx": "4.2.0",
       "@astrojs/react": "4.2.1",
       "@astrojs/rss": "4.0.11",
@@ -22,20 +23,29 @@
       "@prismicio/client": "^7.13.1",
       "@tailwindcss/typography": "^0.5.16",
       "astro": "5.5.2",
+      "better-auth": "^1.2.4",
+      "better-sqlite3": "^11.9.0",
       "date-fns": "^4.1.0",
+      "dotenv": "^16.4.7",
+      "drizzle-kit": "^0.30.5",
+      "drizzle-orm": "^0.40.0",
       "framer-motion": "^11.14.4",
       "react": "18.3.1",
       "react-activity-calendar": "^2.7.5",
       "react-dom": "18.3.1",
       "react-github-calendar": "^4.5.1",
       "tailwindcss": "3.4.17",
+      "wrangler": "^4.0.0",
       "zustand": "^5.0.3"
    },
    "packageManager": "yarn@4.5.3",
    "devDependencies": {
       "@edwinjoseph/prismic-richtext-markdown": "^1.2.5",
+      "@types/better-sqlite3": "^7.6.12",
       "@types/react": "^18",
       "@types/react-dom": "^18",
-      "astro-icon": "^1.1.4"
+      "astro-icon": "^1.1.4",
+      "eslint": "^9.22.0",
+      "eslint-config-codely": "^4.5.0"
    }
 }
