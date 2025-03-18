@@ -4,6 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import { HeaderNavbar } from "../components/react/headerNavbar";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SignInMagicLink } from "../components/react/siginInMagicLink";
 
 interface Props {
     title?: string;
@@ -24,6 +25,7 @@ const isInitDarkMode = Astro.url.pathname.startsWith('/course');
   </head>
   <body class={cn("relative", Astro.props.class)}>
     <HeaderNavbar hiddenThemeSelector={isInitDarkMode} initialDarkMode={isInitDarkMode} client:visible />
+    <SignInMagicLink client:visible />
     <slot />
     <Footer />
   </body>

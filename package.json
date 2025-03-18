@@ -20,7 +20,9 @@
       "@iconify-json/fluent": "^1.2.15",
       "@iconify-json/simple-icons": "^1.2.16",
       "@iconify/react": "^5.1.0",
+      "@libsql/kysely-libsql": "^0.4.1",
       "@prismicio/client": "^7.13.1",
+      "@react-email/components": "^0.0.34",
       "@tailwindcss/typography": "^0.5.16",
       "astro": "5.5.2",
       "better-auth": "^1.2.4",
@@ -34,6 +36,7 @@
       "react-activity-calendar": "^2.7.5",
       "react-dom": "18.3.1",
       "react-github-calendar": "^4.5.1",
+      "resend": "^4.1.2",
       "tailwindcss": "3.4.17",
       "wrangler": "^4.0.0",
       "zustand": "^5.0.3"
@@ -46,6 +49,7 @@
       "@types/react-dom": "^18",
       "astro-icon": "^1.1.4",
       "eslint": "^9.22.0",
-      "eslint-config-codely": "^4.5.0"
+      "eslint-config-codely": "^4.5.0",
+      "react-email": "^3.0.7"
    }
 }

@@ -5,3 +5,5 @@ import { auth } from "../../../lib/auth";
 export const ALL: APIRoute = async (ctx) => {
   return auth.handler(ctx.request);
 };
+
+export const prerender = false;
