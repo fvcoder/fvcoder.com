@@ -15,4 +15,11 @@ export default defineConfig({
   site: "https://fvcoder.com",
   integrations: [mdx(), sitemap(), tailwind(), react(), icon(), db()],
   adapter: cloudflare(),
+  vite: {
+    build: {
+      rollupOptions: {
+        external: "fsevents",
+      },
+    },
+  },
 });
