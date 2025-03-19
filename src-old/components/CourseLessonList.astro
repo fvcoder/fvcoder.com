@@ -1,0 +1,70 @@
+---
+const data = {
+    id: "id",
+    label: "Introducción a ChatGPT",
+    lessons: [
+        {
+            id: "id1",
+            label: "¿Por qué usar ChatGPT?",
+            image: "https://thumbs.cdn.mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_6674a88e41ed9ca3ab2128b6_6674a88e41ed9ca3ab2128c8_43s.jpg",
+            duration: "07:08",
+            index: "1",
+        },
+        {
+            id: "id1",
+            label: "¿Por qué usar ChatGPT?",
+            image: "https://thumbs.cdn.mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_6674a88e41ed9ca3ab2128b6_6674a88e41ed9ca3ab2128c8_43s.jpg",
+            duration: "07:08",
+            index: "2",
+        },
+        {
+            id: "id1",
+            label: "¿Por qué usar ChatGPT?",
+            image: "https://thumbs.cdn.mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_6674a88e41ed9ca3ab2128b6_6674a88e41ed9ca3ab2128c8_43s.jpg",
+            duration: "07:08",
+            index: "3",
+        },
+        {
+            id: "id1",
+            label: "¿Por qué usar ChatGPT?",
+            image: "https://thumbs.cdn.mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_6674a88e41ed9ca3ab2128b6_6674a88e41ed9ca3ab2128c8_43s.jpg",
+            duration: "07:08",
+            index: "4",
+        },
+        {
+            id: "id1",
+            label: "¿Por qué usar ChatGPT?",
+            image: "https://thumbs.cdn.mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_6674a88e41ed9ca3ab2128b6_6674a88e41ed9ca3ab2128c8_43s.jpg",
+            duration: "07:08",
+            index: "5",
+        },
+    ]
+}
+---
+<article>
+    <div>
+        <div class="relative after:content-[''] after:absolute after:block after:w-2 after:h-2 after:bg-default-500 after:rounded-full after:top-[40%] after:left-0 after:[transform:translate(-50%)] after:z-[1]">
+            <h2 class="py-3 pl-5">
+                <span class="text-black dark:text-white text-lg">{data.label}</span>
+            </h2>
+        </div>
+    </div>
+    <ul>
+        {data.lessons.map((lesson) => (
+            <li>
+                <div class="relative pl-5 before:absolute before:content_[''] before:block before:w-0.5 before:bg-[#2d323a] before:left-[-1px] before:z-0 before:top-[-40%] before:h-[80%]">
+                    <a href="/lesson/id-lesson" class="flex p-2 items-center gap-3 self-stretch rounded-lg relative">
+                        <span class="flex absolute justify-center items-center rounded-full size-6 font-[500] -left-8 text-xs bg-[#404650] text-[#c4c8ce] border z-[1] border-[#2d323a]">{lesson.index}</span>
+                        <div class="relative max-w-[3rem]">
+                            <img src={lesson.image} alt="" class="aspect-video rounded-lg object-cover" />
+                        </div>
+                        <div>
+                            <h3 class="font-normal text-base">{lesson.label}</h3>
+                            <span class="text-default-500 text-xs">{lesson.duration} minutos</span>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        ))}
+    </ul>
+</article>

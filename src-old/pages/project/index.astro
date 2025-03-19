@@ -1,0 +1,49 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { HeaderNavbar } from "../../components/react/headerNavbar";
+
+const posts = (await getCollection("project")).sort(
+  (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead
+      title={`Proyectos realizados por ${SITE_TITLE}`}
+      description={"Soy Fernando Ticona, desarrollador frontend especializado en crear sitios web rápidos, modernos y responsivos. Mi objetivo es transformar tus ideas en experiencias digitales únicas, utilizando tecnologías como HTML, CSS, JavaScript y frameworks como React y Vue.js. Si buscas llevar tu proyecto web al siguiente nivel, aquí encontrarás una selección de mis proyectos, que muestran mi enfoque en diseño, usabilidad y optimización de rendimiento. Explora mi trabajo y descubre cómo puedo ayudarte a crear una solución web a medida que cumpla con tus expectativas."}
+    />
+  </head>
+  <body>
+    <HeaderNavbar client:visible />
+    <main class="max-w-5xl mx-auto px-6">
+      <section>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            posts.map((post: any, i: number) => (
+              <li class={i === 0 ? "md:col-span-2" : ""}>
+                <a href={`/project/${post.id}/`} class="block">
+                  <img
+                    src={post.data.heroImage}
+                    alt=""
+                    class="object-cover w-full h-auto aspect-video rounded-xl"
+                  />
+                  <h4 class="mt-2 text-2xl font-semibold">{post.data.title}</h4>
+                  <p class="text-neutral-500">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

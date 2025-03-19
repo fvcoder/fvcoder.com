@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { HeaderNavbar } from "../components/react/headerNavbar";
+
+type Props = Partial<CollectionEntry<"blog">["data"]> & {
+  isProjectLayout?: boolean;
+};
+
+const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <BaseHead title={title ?? ""} description={description ?? ""} />
+  </head>
+  <body>
+    <HeaderNavbar client:visible />
+    <main class="max-w-5xl mx-auto px-6">
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <img src={heroImage} alt={title} class="w-full h-auto rounded-xl" />
+            )
+          }
+        </div>
+        <div class="prose max-w-3xl mx-auto dark:prose-invert">
+          <header class="text-center pt-10 pb-2">
+            <div class="text-neutral-500">
+              <FormattedDate date={pubDate ?? new Date()} />
+            </div>
+            <h1 class="mb-2">{title}</h1>
+            <p class="mt-2">Por Fernando Ticona</p>
+            {isProjectLayout && (
+              <div>
+                <p class="mt-2">
+                  <strong>Cliente: </strong>
+                  <span>{(Astro.props as any).client}</span>
+                </p>
+                <p class="mt-2">
+                  <strong>Rol/Area: </strong>
+                  <span>{(Astro.props as any).role}</span>
+                </p>
+              </div>
+            )}
+          </header>
+          <slot />
+          <footer class="not-prose">
+            <div>
+              <a
+                href={`${isProjectLayout ? "/project" : "/blog"}?ref=blog-article`}
+                class="text-blue-500 hover:underline mt-4 block w-fit"
+                >Ver mas {isProjectLayout ? "Projectos" : "artículos"}</a
+              >
+            </div>
+          </footer>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

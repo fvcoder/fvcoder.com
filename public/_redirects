@@ -1,0 +1,7 @@
+/skill /project 301
+/skill/* /project 301
+/experience /project 301
+/draft /blog 301
+/roadmap /blog 301
+/roadmap/* /blog 301
+/project/portfolio-de-fernando-ticona-fvcoder /project/portfolio 301

@@ -1,0 +1,32 @@
+---
+import { cn } from "@heroui/react";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import { HeaderNavbar } from "../components/react/headerNavbar";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SignInMagicLink } from "../components/react/siginInMagicLink";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    class?: string;
+}
+
+const title = Astro.props.title ?? SITE_TITLE;
+const description = Astro.props.description ?? SITE_DESCRIPTION;
+
+const isInitDarkMode = Astro.url.pathname.startsWith('/course');
+---
+
+<html lang="es" class:list={isInitDarkMode ? 'dark' : ''}>
+  <head>
+    <BaseHead title={title ?? ""} description={description ?? ""} />
+  </head>
+  <body class={cn("relative", Astro.props.class)}>
+    <HeaderNavbar hiddenThemeSelector={isInitDarkMode} initialDarkMode={isInitDarkMode} client:visible />
+    <SignInMagicLink client:visible />
+    <slot />
+    <Footer />
+  </body>
+</html>
