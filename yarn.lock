@@ -2664,7 +2664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/react@npm:2.7.5":
+"@heroui/react@npm:^2.7.5":
   version: 2.7.5
   resolution: "@heroui/react@npm:2.7.5"
   dependencies:
@@ -3917,6 +3917,16 @@ __metadata:
   version: 0.5.1
   resolution: "@libsql/win32-x64-msvc@npm:0.5.1"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@marsidev/react-turnstile@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@marsidev/react-turnstile@npm:1.1.0"
+  peerDependencies:
+    react: ^17.0.2 || ^18.0.0 || ^19.0
+    react-dom: ^17.0.2 || ^18.0.0 || ^19.0
+  checksum: 10c0/58d599bcc8bb8f01b90c166e13394d2890f0a75eb7cc354fb4187b36a53976c31495a50e87ecd3ae5bcbf5b63a0585f11064dd83bb908faa5b13d5f200ad397a
   languageName: node
   linkType: hard
 
@@ -6415,7 +6425,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:^0.5.16":
+"@tailwindcss/typography@npm:0.5.16":
   version: 0.5.16
   resolution: "@tailwindcss/typography@npm:0.5.16"
   dependencies:
@@ -9589,12 +9599,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.14.4":
-  version: 11.18.2
-  resolution: "framer-motion@npm:11.18.2"
+"framer-motion@npm:12.5.0":
+  version: 12.5.0
+  resolution: "framer-motion@npm:12.5.0"
   dependencies:
-    motion-dom: "npm:^11.18.1"
-    motion-utils: "npm:^11.18.1"
+    motion-dom: "npm:^12.5.0"
+    motion-utils: "npm:^12.5.0"
     tslib: "npm:^2.4.0"
   peerDependencies:
     "@emotion/is-prop-valid": "*"
@@ -9607,7 +9617,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/41b1ef1b4e54ea13adaf01d61812a8783d2352f74641c91b50519775704bc6274db6b6863ff494a1f705fa6c6ed8f4df3497292327c906d53ea0129cef3ec361
+  checksum: 10c0/ac632ea3a452e473abf9adad1d6777522b1dd2ed8cf567078a9997f07a388d7b9e68a3e9c102b1807e1e88af3d83eb2eb0d9476032059f4803a0c32bded9bf74
   languageName: node
   linkType: hard
 
@@ -9685,18 +9695,19 @@ __metadata:
   resolution: "fvcoder@workspace:."
   dependencies:
     "@cloudflare/workers-types": "npm:4.20250317.0"
-    "@heroui/react": "npm:2.7.5"
+    "@heroui/react": "npm:^2.7.5"
     "@iconify-json/fluent": "npm:^1.2.15"
     "@iconify-json/simple-icons": "npm:^1.2.16"
     "@iconify/react": "npm:^5.1.0"
     "@libsql/client": "npm:0.15.0"
     "@libsql/kysely-libsql": "npm:^0.4.1"
+    "@marsidev/react-turnstile": "npm:1.1.0"
     "@react-email/components": "npm:^0.0.34"
     "@remix-run/cloudflare": "npm:2.16.1"
     "@remix-run/cloudflare-pages": "npm:2.16.1"
     "@remix-run/dev": "npm:2.16.1"
     "@remix-run/react": "npm:2.16.1"
-    "@tailwindcss/typography": "npm:^0.5.16"
+    "@tailwindcss/typography": "npm:0.5.16"
     "@types/react": "npm:19.0.11"
     "@types/react-dom": "npm:19.0.4"
     autoprefixer: "npm:10.4.21"
@@ -9707,7 +9718,7 @@ __metadata:
     drizzle-orm: "npm:^0.40.0"
     eslint: "npm:9.22.0"
     eslint-config-codely: "npm:^4.5.0"
-    framer-motion: "npm:^11.14.4"
+    framer-motion: "npm:12.5.0"
     isbot: "npm:5.1.25"
     postcss: "npm:8.5.3"
     react: "npm:19.0.0"
@@ -11714,19 +11725,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion-dom@npm:^11.18.1":
-  version: 11.18.1
-  resolution: "motion-dom@npm:11.18.1"
+"motion-dom@npm:^12.5.0":
+  version: 12.5.0
+  resolution: "motion-dom@npm:12.5.0"
   dependencies:
-    motion-utils: "npm:^11.18.1"
-  checksum: 10c0/98378bdf9d77870829cdf3624c5eff02e48cfa820dfc74450364d7421884700048d60e277bfbf477df33270fbae4c1980e5914586f5b6dff28d4921fdca8ac47
+    motion-utils: "npm:^12.5.0"
+  checksum: 10c0/32e6029a14c23a82392253ecd5349f3d7c603edac6e214357c6657560c90dff42163b40d7a9d93cd31c6eaded39765e115a1abf137496baec27942803f4bc56e
   languageName: node
   linkType: hard
 
-"motion-utils@npm:^11.18.1":
-  version: 11.18.1
-  resolution: "motion-utils@npm:11.18.1"
-  checksum: 10c0/dac083bdeb6e433a277ac4362211b0fdce59ff09d6f7897f0f49d1e3561209c6481f676876daf99a33485054bc7e4b1d1b8d1de16f7b1e5c6f117fe76358ca00
+"motion-utils@npm:^12.5.0":
+  version: 12.5.0
+  resolution: "motion-utils@npm:12.5.0"
+  checksum: 10c0/f556240efda96a4bb86b13bb0e6cad689b2665ca688b2616585a7c7db182e3b8d93377ff1fb3782ca0088a4a8aa6dd5e47e81fda5c19ab334f01812eade639ef
   languageName: node
   linkType: hard
 

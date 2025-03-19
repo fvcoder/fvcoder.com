@@ -23,11 +23,13 @@ export const loader: LoaderFunction = async (c) => {
 
 export const action: ActionFunction = async (c) => {
   const auth = getAuth(c.context.cloudflare.env as getAuthProps);
+  const url = new URL(c.request.url);
 
   const data = await auth.api.signInMagicLink({
     headers: c.request.headers,
     body: {
-      email: "fvcoder@gmail.com",
+      email: "fvcoder1@gmail.com",
+      callbackUrl: url.origin,
     },
   });
 

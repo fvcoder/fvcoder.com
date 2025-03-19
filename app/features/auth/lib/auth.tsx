@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { magicLink, openAPI } from "better-auth/plugins";
+import { captcha, magicLink, openAPI } from "better-auth/plugins";
 import { apikeys, courses, lessons } from "src-old/lib/db.schema";
 
 import { getDrizzleDb, getDrizzleDbReturn } from "~/features/core/lib/db";
@@ -20,6 +20,8 @@ export interface getAuthProps {
   BETTER_AUTH_SECRET: string;
   BETTER_AUTH_URL: string;
   db?: getDrizzleDbReturn;
+
+  TURNSTILE_SECRET_KEY: string;
 }
 
 export function getAuth(props: getAuthProps) {
@@ -38,6 +40,10 @@ export function getAuth(props: getAuthProps) {
       },
     }),
     plugins: [
+      captcha({
+        provider: "cloudflare-turnstile",
+        secretKey: props.BETTER_AUTH_SECRET,
+      }),
       magicLink({
         sendMagicLink: async (data) => {
           const resend = getResend(props.RESEND_API_KEY);
@@ -47,7 +53,7 @@ export function getAuth(props: getAuthProps) {
             to: data.email,
             react: (
               <MagicLinkEmail
-                link={`https://fvcoder.com/api/auth-magic-link/${data.token}`}
+                link={`https://fvcoder.com/api/auth/magic-link/verify?token=${data.token}&callbackURL=${data.url}`}
                 email={data.email}
               />
             ),
