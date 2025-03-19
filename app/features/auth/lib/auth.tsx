@@ -22,27 +22,6 @@ export interface getAuthProps {
   db?: getDrizzleDbReturn;
 }
 
-export const auth = betterAuth({
-  database: drizzleAdapter(
-    getDrizzleDb({
-      TURSO_URL: "file:./db.sqlite",
-      TURSO_SECRET: "",
-    }),
-    {
-      provider: "sqlite",
-      usePlural: true,
-    },
-  ),
-  plugins: [
-    magicLink({
-      sendMagicLink: async () => {
-        return;
-      },
-    }),
-    openAPI(),
-  ],
-});
-
 export function getAuth(props: getAuthProps) {
   return betterAuth({
     database: drizzleAdapter(props.db ?? getDrizzleDb(props), {
