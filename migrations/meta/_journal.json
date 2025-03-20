@@ -1,12 +1,19 @@
 {
   "version": "7",
-  "dialect": "turso",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "6",
-      "when": 1742304033255,
-      "tag": "0000_illegal_nomad",
+      "when": 1742476664994,
+      "tag": "0000_groovy_wendigo",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1742476931478,
+      "tag": "0001_high_wendell_vaughn",
       "breakpoints": true
     }
   ]
