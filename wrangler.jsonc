@@ -1,0 +1,6 @@
+{
+    "name": "fvcoder-com",
+    "build": {
+        "command": "yarn build"
+    }
+}
