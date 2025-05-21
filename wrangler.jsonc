@@ -1,7 +1,6 @@
 {
     "$schema": "https://unpkg.com/wrangler@4.16.0/config-schema.json",
     "name": "fvcoder-com",
-    "base_dir": "./",
     "build": {
         "watch_dir": "./src",
         "command": "yarn build"
