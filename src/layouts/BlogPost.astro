@@ -14,7 +14,7 @@ const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
 
 <html lang="es">
   <head>
-    <BaseHead title={title ?? ""} description={description ?? ""} />
+    <BaseHead title={title ?? ""} description={description ?? ""} image={heroImage} type={heroImage ? "article" : "website"} />
   </head>
   <body>
     <HeaderNavbar client:visible />
