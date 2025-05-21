@@ -1,5 +1,5 @@
 {
     "$schema": "https://unpkg.com/wrangler@4.16.0/config-schema.json",
     "name": "fvcoder-com",
-    "pages_build_output_dir": "/dist"
+    "pages_build_output_dir": "./dist"
 }
