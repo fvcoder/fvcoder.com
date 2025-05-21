@@ -4,7 +4,7 @@
     "base_dir": "./",
     "build": {
         "watch_dir": "./src",
-        "command": "yarn build",
+        "command": "yarn build"
     },
     "pages_build_output_dir": "/dist"
 }
