@@ -116,7 +116,7 @@ function GraphGrid(props: { year: number, activity: Activity[] }) {
                 key={`graph-grid-${i}-${iw}`}
                 data-count={y?.count}
                 className={cn("size-3 mb-1 rounded-sm", {
-                  "bg-green-500/20": y?.level === 0,
+                  "bg-green-500/10": y?.level === 0,
                   "bg-green-500/40": y?.level === 1,
                   "bg-green-500/60": y?.level === 2,
                   "bg-green-500/80": y?.level === 3,
