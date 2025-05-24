@@ -6,20 +6,21 @@
       "dev": "astro dev",
       "build": "astro build",
       "preview": "astro preview",
-      "astro": "astro"
+      "astro": "astro",
+      "newBlog": "node scripts/newBlog.mjs"
    },
    "dependencies": {
-      "@astrojs/mdx": "^4.0.2",
-      "@astrojs/react": "^4.1.0",
-      "@astrojs/rss": "^4.0.10",
-      "@astrojs/sitemap": "^3.2.1",
-      "@astrojs/tailwind": "^5.1.3",
+      "@astrojs/mdx": "4.3.0",
+      "@astrojs/react": "4.3.0",
+      "@astrojs/rss": "4.0.11",
+      "@astrojs/sitemap": "3.4.0",
+      "@astrojs/tailwind": "6.0.2",
       "@heroui/react": "2.7.5",
       "@iconify-json/simple-icons": "^1.2.16",
       "@iconify/react": "^5.1.0",
       "@prismicio/client": "^7.13.1",
       "@tailwindcss/typography": "^0.5.15",
-      "astro": "^5.0.5",
+      "astro": "5.8.0",
       "date-fns": "^4.1.0",
       "framer-motion": "^11.14.4",
       "react": "18.3.1",
@@ -33,6 +34,7 @@
       "@edwinjoseph/prismic-richtext-markdown": "^1.2.5",
       "@types/react": "^18",
       "@types/react-dom": "^18",
-      "astro-icon": "^1.1.4"
+      "astro-icon": "^1.1.4",
+      "inquirer": "^12.6.2"
    }
 }
