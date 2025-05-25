@@ -3,19 +3,50 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { render } from 'astro:content';
 
+interface getRelatedArticlesProps {
+	current: CollectionEntry<"blog">,
+	articles: CollectionEntry<"blog">[]
+}
+
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
+
+	function getRelatedArticles(props: getRelatedArticlesProps) {
+		const currentTags = new Set(props.current.data.tags);
+
+		return props.articles
+			.filter((post) => post.id !== props.current.id)
+			.map((post) => {
+				const sharedTags = post.data.tags.filter((tags) => currentTags.has(tags))
+
+			
+				return {
+					post,
+					score: sharedTags.length
+				}
+			})
+			.sort((a, b) => b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf())
+			.sort((a, b) => a.score - b.score)
+			.slice(0, 2)
+			.map((data) => data.post)
+	}
+
 	return posts.map((post) => ({
 		params: { slug: post.id },
-		props: post,
+		props: {
+			...post,
+			related: getRelatedArticles({ current: post, articles: posts })
+		},
 	}));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'blog'> & {
+	related: CollectionEntry<'blog'>[]
+};
 
 const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} related={post.related}>
 	<Content />
 </BlogPost>

@@ -7,9 +7,10 @@ import { HeaderNavbar } from "../components/react/headerNavbar";
 
 type Props = Partial<CollectionEntry<"blog">["data"]> & {
   isProjectLayout?: boolean;
+  related?: CollectionEntry<"blog">[]
 };
 
-const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
+const { title, description, pubDate, heroImage, isProjectLayout, related } = Astro.props;
 ---
 
 <html lang="es">
@@ -49,6 +50,30 @@ const { title, description, pubDate, heroImage, isProjectLayout } = Astro.props;
           </header>
           <slot />
           <footer class="not-prose">
+            {related && (
+              <div>
+                <h2 class="text-2xl font-bold text-[var(--tw-prose-headings)] mb-4">Artículos relacionados</h2>  
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {
+                    related.map((post: any, i: number) => (
+                      <li class={``}>
+                        <a href={`/blog/${post.id}/`} class="block">
+                          <img
+                            src={post.data.heroImage}
+                            alt=""
+                            class="object-cover w-full h-auto rounded-xl"
+                          />
+                          <h4 class="mt-2 text-2xl font-semibold line-clamp-2">{post.data.title}</h4>
+                          <p class="text-neutral-500">
+                            <FormattedDate date={post.data.pubDate} />
+                          </p>
+                        </a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )}
             <div>
               <a
                 href={`${isProjectLayout ? "/project" : "/blog"}?ref=blog-article`}

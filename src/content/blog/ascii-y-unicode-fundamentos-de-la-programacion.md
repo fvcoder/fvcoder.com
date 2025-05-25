@@ -3,7 +3,7 @@ title: 'Ascii y Unicode - Fundamentos de la Programacion'
 description: 'Explora la evolución de la computación desde la creación del estándar ASCII hasta el surgimiento de Unicode. Descubre cómo ASCII, inicialmente diseñado para representar información en binario, evolucionó para abordar las limitaciones en la representación de caracteres en diferentes idiomas. Unicode, con su amplio diccionario, se convirtió en la solución global, permitiendo la representación de números, letras, emojis y más. Sumérgete en la historia de estos estándares y comprende cómo Unicode superó las limitaciones para abarcar más de 4 millones de caracteres, transformando la comunicación digital.'
 pubDate: '2023-12-18T22:12:14+0000'
 heroImage: 'https://images.prismic.io/fvcoder/bb5b6502-6f09-468f-8872-6e2ec5a4a3f6_blog+portadas+%282%29.png?auto=compress,format'
-tags: ['fundamentos', 'computacion', 'concepto']
+tags: ['fundamentos', 'computacion']
 ---
 Explora la evolución de la computación desde la creación del estándar ASCII hasta el surgimiento de Unicode. Descubre cómo ASCII, inicialmente diseñado para representar información en binario, evolucionó para abordar las limitaciones en la representación de caracteres en diferentes idiomas. Unicode, con su amplio diccionario, se convirtió en la solución global, permitiendo la representación de números, letras, emojis y más. Sumérgete en la historia de estos estándares y comprende cómo Unicode superó las limitaciones para abarcar más de 4 millones de caracteres, transformando la comunicación digital.
 Cuando se estaban inventando los estándares para adaptar y orientar la computación tal y como lo conocemos hoy en día, la computación tenía un problema crítico.
