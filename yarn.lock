@@ -140,7 +140,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:3.4.0":
+"@astrojs/sitemap@npm:^3.4.0":
   version: 3.4.0
   resolution: "@astrojs/sitemap@npm:3.4.0"
   dependencies:
@@ -6527,7 +6527,7 @@ __metadata:
     "@astrojs/mdx": "npm:4.3.0"
     "@astrojs/react": "npm:4.3.0"
     "@astrojs/rss": "npm:4.0.11"
-    "@astrojs/sitemap": "npm:3.4.0"
+    "@astrojs/sitemap": "npm:^3.4.0"
     "@astrojs/tailwind": "npm:6.0.2"
     "@edwinjoseph/prismic-richtext-markdown": "npm:^1.2.5"
     "@heroui/react": "npm:2.7.5"
