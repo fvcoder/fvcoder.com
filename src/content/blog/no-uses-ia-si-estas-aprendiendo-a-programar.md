@@ -2,7 +2,7 @@
 title: 'No uses IA, si estas aprendiendo a programar'
 description: 'La IA avanza en el desarrollo web y la programación, pero ¿están los nuevos programadores perdiendo fundamentos clave? Analizamos su impacto real.'
 pubDate: '2025-05-26T13:13:42.589Z'
-heroImage: 'https://images.prismic.io/fvcoder/bb5b6502-6f09-468f-8872-6e2ec5a4a3f6_blog+portadas+%282%29.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/no-ia.png'
 tags: ["ai", "programación", "aprender"]
 ---
 La Inteligencia artificial es una revolución que 
