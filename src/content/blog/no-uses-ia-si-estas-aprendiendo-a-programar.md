@@ -49,7 +49,7 @@ abalado por x institución, lo que realmente establece que
 tiene un conocimiento valido en la materia son los proyectos
 que participo.
 
-Con la IA esto es mas sencillo que nuca:
+Con la IA esto es mas sencillo que nunca:
 - ¿Quieres hacer una pagina web o aplicación? V0
 - ¿Necesitas el esquema de la base de datos? Workik
 - ¿Necesitas asistencia en tu código? Windsurf
