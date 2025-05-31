@@ -2,7 +2,7 @@
 title: 'Discord, el mejor sistema de mensajería'
 description: '¿Quieres llevar la comunicación y colaboración de tu comunidad o equipo al siguiente nivel? ¡Discord es la solución perfecta para ti!'
 pubDate: '2023-08-15T14:28:33+0000'
-heroImage: 'https://images.prismic.io/fvcoder/4902bb5a-e52d-4bf2-9767-8ac328acf7a1_Blog+fvcoder+%282%29.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/2135032ba0e142a1976116de4404d77d.3x.webp'
 tags: ['discord']
 ---
 ¿Quieres llevar la comunicación y colaboración de tu comunidad o equipo al siguiente nivel? ¡Discord es la solución perfecta para ti!

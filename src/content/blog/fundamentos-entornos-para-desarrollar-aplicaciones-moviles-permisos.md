@@ -2,7 +2,7 @@
 title: 'Entornos para desarrollar Aplicaciones Móviles - Permisos'
 description: 'Los dispositivos móviles, el control de permisos es estricto y declarativo.'
 pubDate: '2022-10-19T14:54:57+0000'
-heroImage: 'https://images.prismic.io/thefersh/86f15dff-4f8e-4f03-ab8e-5b0a339f114f_Protadas+blog+%281%29.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/1972b4c9720d46f4ab7d8709fe9e4fe6.3x.webp'
 tags: ['fundamentos', 'basico', 'sistema-operativo']
 ---
 Los dispositivos móviles, el control de permisos es estricto y declarativo.

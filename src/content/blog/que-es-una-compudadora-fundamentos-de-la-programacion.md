@@ -2,7 +2,7 @@
 title: '¿Que es una Compudadora? - Fundamentos de la Programacion'
 description: 'Descubre cómo las computadoras, desde dispositivos cotidianos como celulares y refrigeradores hasta cajas negras confiables, forman parte integral de nuestra vida diaria. Exploraremos cómo la computación se ha infiltrado en diversos aspectos de nuestra rutina, simplificando tareas y transformando la manera en que interactuamos con el mundo'
 pubDate: '2023-12-18T21:32:32+0000'
-heroImage: 'https://images.prismic.io/fvcoder/e577dde3-4f9f-4137-b2c3-463c888faabd_blog+portadas.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/dc4159f73d4e4468845ab4799de2d431.3x.webp'
 tags: ['fundamentos', 'computacion', 'concepto']
 ---
 Descubre cómo las computadoras, desde dispositivos cotidianos como celulares y refrigeradores hasta cajas negras confiables, forman parte integral de nuestra vida diaria. Exploraremos cómo la computación se ha infiltrado en diversos aspectos de nuestra rutina, simplificando tareas y transformando la manera en que interactuamos con el mundo

@@ -2,7 +2,7 @@
 title: 'Proyecto Renacer: Aburrido- D3'
 description: 'Hoy no fue un día atareado...'
 pubDate: '2023-01-21T11:00:04+0000'
-heroImage: 'https://images.prismic.io/thefersh/4d2f84c5-f7cc-45a4-a7cb-4bce3905538b_wes-hicks-4-EeTnaC1S4-unsplash.jpg?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/b383af6d2c804a03a36e770ac5259b4f.3x.webp'
 tags: ['proyecto-renacer', 'experimento']
 ---
 Hoy no fue un día atareado...

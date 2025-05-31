@@ -2,7 +2,7 @@
 title: 'Como conseguir clientes como programador freelance'
 description: 'A lo largo de los años, logre estandarizar un método para poder ganar la confianza y conseguir proyectos sin problemas o malos entendidos. Hoy te enseñare con proyecto ficticio de ejemplo.'
 pubDate: '2024-04-23T19:49:02+0000'
-heroImage: 'https://images.prismic.io/fvcoder/ZigQkPPdc1huKtr0_As%C3%ADescomoaprend%C3%ADaprogramar%2Cmiplandeestudios%2BCursosGratis.png?auto=format,compress'
+heroImage: 'https://cdn.fvcoder.com/blog/e28e6e0af6c24cdd99c450ee6fe481c4.3x.webp'
 tags: ['tecnica', 'guia', 'web', 'team', 'trucos', 'secreto']
 ---
 A lo largo de los años, logre estandarizar un método para poder ganar la confianza y conseguir proyectos sin problemas o malos entendidos. Hoy te enseñare con proyecto ficticio de ejemplo.

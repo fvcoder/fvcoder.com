@@ -2,7 +2,7 @@
 title: '¿Cómo consigo más tiempo?'
 description: 'Hoy en día estoy muy ocupado, se debe a que estoy en un montón de proyectos y tengo que hacer una especial mención a que todos requieren atención. Aquí te doy un poco mas de contexto'
 pubDate: '2025-05-21T22:12:14+0000'
-heroImage: 'https://cdn.fvcoder.com/blog/como%20consigo%20mas%20tiempo.webp'
+heroImage: 'https://cdn.fvcoder.com/blog/47524695b6b64685bcf6e45b41320ab2.3x.webp'
 tags: ['tiempo', 'gestión']
 ---
 Hoy en día estoy muy ocupado, se debe a que estoy en un montón de proyectos

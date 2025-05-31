@@ -2,7 +2,7 @@
 title: 'Notion, el mejor sistema que uso para organizar mis proyectos'
 description: 'Al inicio parece un cuaderno donde anotas una que otra tarea y dibujas por creatividad. La realidad  es muy diferente, Notion tiene un sistema completo para organizar y mostrar cualquiert tipo de contenido.'
 pubDate: '2023-08-15T14:01:25+0000'
-heroImage: 'https://images.prismic.io/fvcoder/c99ad4e9-f949-46d0-81ab-f7ea2f71a5c8_Blog+fvcoder+%281%29.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/e24dbca44cda47419ea5cd8e90294549.3x.webp'
 tags: ['notion', 'experiencia']
 ---
 Al inicio parece un cuaderno donde anotas una que otra tarea y dibujas por creatividad. La realidad  es muy diferente, Notion tiene un sistema completo para organizar y mostrar cualquiert tipo de contenido.

@@ -2,7 +2,7 @@
 title: 'Primeras 20 horas para aprender cualquier habilidad'
 description: 'Descubre la mejor manera de aprender cualquier habilidad, sin importar si es una habilidad teórica (como matemática o química) o practica (aprender a nadar o jugar futbol).'
 pubDate: '2024-07-17T14:44:43+0000'
-heroImage: 'https://images.prismic.io/fvcoder/ZpfWKB5LeNNTxPWe_fvcoder-2-.png?auto=format,compress'
+heroImage: 'https://cdn.fvcoder.com/blog/7bf9ee4ed44d43dbbd6fa43cdd5004cb.3x.webp'
 tags: ['aprende', 'habilidad']
 ---
 Descubre la mejor manera de aprender cualquier habilidad, sin importar si es una habilidad teórica (como matemática o química) o practica (aprender a nadar o jugar futbol).

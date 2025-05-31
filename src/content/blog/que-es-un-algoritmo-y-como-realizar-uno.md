@@ -2,7 +2,7 @@
 title: '¿Que es un algoritmo y cómo realizar uno?'
 description: 'Un algoritmo es una serie de pasos que se realizan en un orden específico para cumplir o solucionar una tarea.'
 pubDate: '2022-10-20T01:18:18+0000'
-heroImage: 'https://images.prismic.io/thefersh/c9c773b3-b1e3-4bf5-9db9-d1f499709fb8_Protadas+blog+%281%29.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/70d728fd7cc74badbe708bfda88e1db8.3x.webp'
 tags: ['pensamiento-logico', 'algoritmo', 'concepto', 'basico', 'programacion']
 ---
 Un algoritmo es una serie de pasos que se realizan en un orden específico para cumplir o solucionar una tarea.

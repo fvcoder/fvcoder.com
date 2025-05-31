@@ -2,7 +2,7 @@
 title: 'Scrum, el cancer de los developers'
 description: 'Un titulo picante, ¿No lo crees?, te digo mi opinion como desarrollador de software con 2 años de experiencia en 2025. Opinion honesta ...'
 pubDate: '2025-05-30T13:54:32.708Z'
-heroImage: 'https://cdn.fvcoder.com/blog/scrum.webp'
+heroImage: 'https://cdn.fvcoder.com/blog/687879f7f2b94afcaa2880325d679c0b.3x.webp'
 tags: [
   "sincero",
   "desinformacion",

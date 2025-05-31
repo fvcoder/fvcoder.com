@@ -2,7 +2,7 @@
 title: '¿Que puedes hacer con JavaScript?'
 description: 'JavaScript es uno de los lenguajes de programación más versátiles y populares del mundo. Aunque nació para crear animaciones en páginas web, hoy en día se utiliza en una amplia gama de áreas dentro del desarrollo de software. En este artículo exploramos cómo JavaScript ha evolucionado y se ha convertido en una herramienta fundamental para crear aplicaciones web, móviles, de escritorio, APIs, videojuegos, animaciones avanzadas, presentaciones interactivas e incluso controlar hardware.'
 pubDate: '2025-05-26T02:51:23.414Z'
-heroImage: 'https://cdn.fvcoder.com/blog/js.webp'
+heroImage: 'https://cdn.fvcoder.com/blog/852029bacbc946e5a49015734a4a12d4.3x.webp'
 tags: ["hardware", "apps", "mobile", "cli", "desktop", "backend", "javascript", "web", "react", "angular", "vue"]
 ---
 JavaScript es un lenguaje de programación que originalmente nació

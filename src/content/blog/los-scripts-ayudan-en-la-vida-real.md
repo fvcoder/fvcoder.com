@@ -2,7 +2,7 @@
 title: '¿Los scripts ayudan en la vida real?'
 description: 'Como desarrollador de software, me tope con distintos escenarios y atravesé dificultades lo que me llevo a crear scripts.'
 pubDate: '2025-05-24T11:18:06.220Z'
-heroImage: 'https://cdn.fvcoder.com/blog/los-scripts-ayudan-en-la-vida-real.webp'
+heroImage: 'https://cdn.fvcoder.com/blog/b630665d9df448fea23fbd65c3878037.3x.webp'
 tags: []
 ---
 Como desarrollador de software, me tope con distintos 

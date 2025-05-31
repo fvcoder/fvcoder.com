@@ -2,7 +2,7 @@
 title: 'Operadores lógicos'
 description: 'Los operadores lógicos es la interpretación de las tablas de verdad dentro de un lenguaje de programación.'
 pubDate: '2022-10-13T12:22:22+0000'
-heroImage: 'https://images.prismic.io/thefersh/c476b1ec-4ce9-4b71-b0f4-a1f7763e3733_Protadas+blog.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/a7dec0b9cfa646ccb69a4f91617ddb9f.3x.webp'
 tags: ['pensamiento-logico', 'operaciones', 'sistema']
 ---
 Los operadores lógicos es la interpretación de las tablas de verdad dentro de un lenguaje de programación.

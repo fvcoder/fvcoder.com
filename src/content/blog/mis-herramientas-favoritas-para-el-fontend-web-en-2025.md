@@ -2,7 +2,7 @@
 title: 'Mis herramientas favoritas para el fontend web en 2025 - Agnósticas al Framework'
 description: 'Voy 2 años como desarrollador frontend y constantemente voy explorando distintas herramientas para poder realizar una web ligera y funcional para mis clientes.'
 pubDate: '2025-05-22T22:12:14+0000'
-heroImage: 'https://cdn.fvcoder.com/blog/mui.webp'
+heroImage: 'https://cdn.fvcoder.com/blog/90db7af2edf34379ae66aca4a1978bd0.3x.webp'
 tags: ['ui', 'frontend', 'recurso']
 ---
 Voy 2 años como desarrollador frontend y constantemente voy

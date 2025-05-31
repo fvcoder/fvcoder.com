@@ -2,7 +2,7 @@
 title: 'El origen de storytelling'
 description: 'Los primeras muestras de publicidad era la publicidad de boca en boca, en lo cual un vecino, amigo o familiar nos recomiendan un producto con el fin de promocionar su producto.'
 pubDate: '2022-10-18T14:57:17+0000'
-heroImage: 'https://images.prismic.io/thefersh/a2da7604-ff06-43f3-9569-4c5b54f90f12_Protadas+blog.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/b14c94f332d94ad3ab023eebcb2e9c91.3x.webp'
 tags: ['storytelling', 'origen', 'historia']
 ---
 Los primeras muestras de publicidad era la publicidad de boca en boca, en lo cual un vecino, amigo o familiar nos recomiendan un producto con el fin de promocionar su producto.

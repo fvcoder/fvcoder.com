@@ -2,7 +2,7 @@
 title: 'Guía completa de Math.floor y Math.random en JavaScript'
 description: 'Aprende cómo utilizar las funciones Math.floor y Math.random en JavaScript para redondear números y generar valores aleatorios. Descubre sus usos, ejemplos de código y cómo generar números aleatorios dentro de rangos específicos.'
 pubDate: '2023-05-17T22:07:37+0000'
-heroImage: 'https://images.prismic.io/thefersh/73e81671-2921-4538-8a03-c171b0e60ac0_Numeros+aleatorios.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/0b1e565be8bf4190bc1913fca1a95064.3x.webp'
 tags: ['javascript', 'matematica', 'Math']
 ---
 Aprende cómo utilizar las funciones Math.floor y Math.random en JavaScript para redondear números y generar valores aleatorios. Descubre sus usos, ejemplos de código y cómo generar números aleatorios dentro de rangos específicos.

@@ -2,7 +2,7 @@
 title: 'Modelo Cliente-Servidor'
 description: 'En general el programador, en su vida diaria, trabaja dentro de dos modelos, el servidor y el cliente, ya sea uno u otro, o los dos al mismo tiempo.'
 pubDate: '2022-10-11T15:03:01+0000'
-heroImage: 'https://images.prismic.io/thefersh/630fed63-31fc-4b64-9664-637bccddb52d_Protadas+blog+%283%29.png?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/1426504a72b7495297c603aadf00cc9b.3x.webp'
 tags: ['concepto', 'backend', 'programacion', 'caracteristicas', 'basico']
 ---
 En general el programador, en su vida diaria, trabaja dentro de dos modelos, el servidor y el cliente, ya sea uno u otro, o los dos al mismo tiempo.

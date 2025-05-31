@@ -2,7 +2,7 @@
 title: 'Proyecto Renacer'
 description: 'Hola, mi nombre es Fernando Ticona soy un desarrollador web en Fiverr y sinceramente un desastre.'
 pubDate: '2023-01-18T14:21:40+0000'
-heroImage: 'https://images.prismic.io/thefersh/1e844289-e1ce-4d7b-9229-44716c898d17_kristopher-roller-PC_lbSSxCZE-unsplash.jpg?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/03badb97d5154743a5af82d497127f0b.3x.webp'
 tags: ['proyecto-renacer', 'personal', 'serie']
 ---
 Hola, mi nombre es Fernando Ticona soy un desarrollador web en Fiverr y sinceramente un desastre.

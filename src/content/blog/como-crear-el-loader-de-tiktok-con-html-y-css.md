@@ -2,7 +2,7 @@
 title: 'Como crear el loader de TikTok con html y Css'
 description: 'Todos en algun momento vimos el loader de TikTok y probablemente nos quedamos horas viendo esta red social, en este post te enseño a crearlo solo con Html y Css'
 pubDate: '2024-08-01T13:22:27+0000'
-heroImage: 'https://images.prismic.io/fvcoder/Zqt-lh5LeNNTxuCc_fvcoder-3-.png?auto=format,compress'
+heroImage: 'https://cdn.fvcoder.com/blog/9a66fe1164e8452393375b696a57b63a.3x.webp'
 tags: ['tutorial']
 ---
 Todos en algun momento vimos el loader de TikTok y probablemente nos quedamos horas viendo esta red social, en este post te enseño a crearlo solo con Html y Css

@@ -2,7 +2,7 @@
 title: 'Un nuevo inicio'
 description: 'Lo siento si te ofendí, pero tenia que desahogarme y contar mi situación actual'
 pubDate: '2024-04-16T21:30:30+0000'
-heroImage: 'https://images.prismic.io/fvcoder/Zh7tVkaI3ufuUPSQ_Blogfvcoder.png?auto=format,compress'
+heroImage: 'https://cdn.fvcoder.com/blog/ac548af4a70d4f2abfd9744cbebe877b.3x.webp'
 tags: ['confesion']
 ---
 Lo siento si te ofendí, pero tenia que desahogarme y contar mi situación actual

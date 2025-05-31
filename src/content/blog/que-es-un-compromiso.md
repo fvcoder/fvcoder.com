@@ -2,7 +2,7 @@
 title: '¿Que significa un compromiso?'
 description: 'En un mundo que percibimos como caótico e incontrolable gracias al constante bombardeo tecnológico y su vertiginoso avance, la sensación de no poder mantenerse al día o incluso simplemente sobrevivir puede ser abrumadora. Este texto reconoce esa realidad pero argumenta que en lugar de afundarnos en el sentimiento del caos ("me dispare en el pie"), podemos transformar nuestra relación con él a través de un firme compromiso consigo mismo. El ejemplo central es la rutina diaria; se toma como marino sin brújula, necesitamos establecer hábitos sostenidos y llevar meticulosamente un registro de nuestras acciones para navegar el océano de tareas e exigencias que nos rodea.'
 pubDate: '2025-05-30T00:31:07.540Z'
-heroImage: 'https://cdn.fvcoder.com/blog/comp.webp'
+heroImage: 'https://cdn.fvcoder.com/blog/e79d7ceaa5a145c5beb30024cd3beffa.3x.webp'
 tags: [
     "caos", 
     "tecnologia", 

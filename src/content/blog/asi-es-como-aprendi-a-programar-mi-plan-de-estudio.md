@@ -2,7 +2,7 @@
 title: 'Así es como aprendí a programar, mi plan de estudios + Cursos Gratis'
 description: 'El camino de un programador, no tiene un fin, quizá un principio. En esta guía te dire detalladamente que tienes que aprender y el camino que debes de seguir desde 0.'
 pubDate: '2024-04-17T20:05:49+0000'
-heroImage: 'https://images.prismic.io/fvcoder/ZiAqQfPdc1huKlhg_Blogfvcoder.png?auto=format,compress'
+heroImage: 'https://cdn.fvcoder.com/blog/2572ff3269de4eb0b2b4e3bc45598577.3x.webp'
 tags: ['roadmap']
 ---
 El camino de un programador, no tiene un fin, quizá un principio. En esta guía te dire detalladamente que tienes que aprender y el camino que debes de seguir desde 0.

@@ -2,7 +2,7 @@
 title: 'Proyecto Renacer: Dormir Adecuadamente - D1'
 description: 'Dormir es uno de los recursos vitales que tenemos, lamentablemente no lo tomamos en sedio.'
 pubDate: '2023-01-19T10:00:01+0000'
-heroImage: 'https://images.prismic.io/thefersh/91a25225-fbc0-45a7-a540-8bd7797d65c9_matthew-henry-2Ts5HnA67k8-unsplash.jpg?auto=compress,format'
+heroImage: 'https://cdn.fvcoder.com/blog/668df49fab254debb05eb4574f2ef329.3x.webp'
 tags: ['proyecto-renacer', 'life', 'experimento']
 ---
 Dormir es uno de los recursos vitales que tenemos, lamentablemente no lo tomamos en sedio.

@@ -2,7 +2,7 @@
 title: 'Como usar Api de Notion con Next Js'
 description: 'Use Notion como un CMS para crear un blog para guardar mis notas de borrador, y lo integre a mi pagina web, aquí te enseño como.'
 pubDate: '2024-08-02T13:46:02+0000'
-heroImage: 'https://images.prismic.io/fvcoder/ZqzfQ0aF0TcGIpoA_fvcoder-4-.png?auto=format,compress'
+heroImage: 'https://cdn.fvcoder.com/blog/01ed137f02b84332a6162dc9fcef994c.3x.webp'
 tags: ['caso-de-uso']
 ---
 Use Notion como un CMS para crear un blog para guardar mis notas de borrador, y lo integre a mi pagina web, aquí te enseño como.
