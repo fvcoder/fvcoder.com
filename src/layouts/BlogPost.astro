@@ -11,6 +11,10 @@ type Props = Partial<CollectionEntry<"blog">["data"]> & {
 };
 
 const { title, description, pubDate, heroImage, isProjectLayout, related } = Astro.props;
+const heroImageSet = (heroImage ? Array.from({ length: 3 }).map((_, i) => {
+  const basename = heroImage.replace(/.[0-9]x.webp/, "")
+  return `${basename}.${i + 1}x.webp ${i === 0 ? 460 : i === 1 ? 850 : 1500}w`;
+}) : []).join(",")
 ---
 
 <html lang="es">
@@ -24,7 +28,7 @@ const { title, description, pubDate, heroImage, isProjectLayout, related } = Ast
         <div class="hero-image">
           {
             heroImage && (
-              <img src={heroImage} alt={title} class="w-full h-auto rounded-xl" />
+              <img src={heroImage} srcset={heroImageSet} alt={title} class="w-full h-auto rounded-xl" />
             )
           }
         </div>
@@ -59,9 +63,10 @@ const { title, description, pubDate, heroImage, isProjectLayout, related } = Ast
                       <li class={``}>
                         <a href={`/blog/${post.id}/`} class="block">
                           <img
-                            src={post.data.heroImage}
-                            alt=""
+                            src={post.data.heroImage.replace(/.[0-9]x.webp/, ".2x.webp")}
+                            alt={`Imagen del articulo ${post.data.title} | Blog de fvcoder`}
                             class="object-cover w-full h-auto rounded-xl"
+                            loading="lazy"
                           />
                           <h4 class="mt-2 text-2xl font-semibold line-clamp-2">{post.data.title}</h4>
                           <p class="text-neutral-500">

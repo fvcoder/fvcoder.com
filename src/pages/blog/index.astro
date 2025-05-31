@@ -30,7 +30,8 @@ const posts = (await getCollection("blog")).sort(
                 <a href={`/blog/${post.id}/`} class="block">
                   <img
                     src={post.data.heroImage}
-                    alt=""
+                    alt={`Imagen del articulo ${post.data.title} | Blog de fvcoder`}
+                    loading="lazy"
                     class="object-cover w-full h-auto rounded-xl"
                   />
                   <h4 class="mt-2 text-2xl font-semibold">{post.data.title}</h4>
