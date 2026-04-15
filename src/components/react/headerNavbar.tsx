@@ -1,15 +1,4 @@
-import {
-    Navbar,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    NavbarMenuToggle,
-    NavbarMenu,
-    NavbarMenuItem,
-    Link,
-    Button,
-    Switch,
-  } from "@heroui/react";
+import { Button, Link, Label, Switch } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react"  
 
@@ -35,57 +24,91 @@ export function HeaderNavbar() {
   }, [isDarkMode])
   
   return (
-      <Navbar onMenuOpenChange={setIsMenuOpen}>
-        <NavbarContent>
-          <NavbarBrand as="a" href="/?ref=navbar">
-            <p className="font-bold text-inherit">Fernando Ticona</p>
-          </NavbarBrand>
-        </NavbarContent>
-  
-        <NavbarContent className="hidden sm:flex gap-4" justify="end">
-          {menu.map((item, index) => (
-            <NavbarItem key={`root-nv-${item.title}-${index}`}>
-              <Link
-                className="w-full"
-                color="foreground"
-                href={item.href}
-              >
-                {item.title}
-              </Link>
-            </NavbarItem>
-          ))}
-          <NavbarMenuItem>
-            <Switch
-              size="lg"
-              onValueChange={setDarkMode}
-              thumbIcon={({isSelected, className}) => {
+    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/80 backdrop-blur-lg">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <Link className="font-bold text-inherit" href="/?ref=navbar">
+          Fernando Ticona
+        </Link>
 
-                return <Icon icon={!isSelected ? "fluent:weather-sunny-16-filled" : "fluent:weather-moon-16-filled"} className={className} />
-              }
-              }
-            />
-          </NavbarMenuItem>
-        </NavbarContent>
-        <NavbarContent justify="end" className="md:hidden">
-          <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        <div className="hidden items-center gap-6 sm:flex">
+          <ul className="flex items-center gap-4">
+            {menu.map((item) => (
+              <li key={item.title}>
+                <Link className="w-full" color="foreground" href={item.href}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <Switch isSelected={isDarkMode} onChange={setDarkMode} size="lg">
+            <Switch.Control>
+              <Switch.Thumb>
+                <Switch.Icon>
+                  <Icon
+                    className="size-4 text-inherit"
+                    icon={
+                      isDarkMode
+                        ? "fluent:weather-moon-16-filled"
+                        : "fluent:weather-sunny-16-filled"
+                    }
+                  />
+                </Switch.Icon>
+              </Switch.Thumb>
+            </Switch.Control>
+            <Switch.Content>
+              <Label className="sr-only">Cambiar tema</Label>
+            </Switch.Content>
+          </Switch>
+        </div>
+
+        <div className="flex items-center gap-3 sm:hidden">
+          <Switch isSelected={isDarkMode} onChange={setDarkMode} size="sm" aria-label="Cambiar tema">
+            <Switch.Control>
+              <Switch.Thumb>
+                <Switch.Icon>
+                  <Icon
+                    className="size-4 text-inherit"
+                    icon={
+                      isDarkMode
+                        ? "fluent:weather-moon-16-filled"
+                        : "fluent:weather-sunny-16-filled"
+                    }
+                  />
+                </Switch.Icon>
+              </Switch.Thumb>
+            </Switch.Control>
+          </Switch>
+
+          <Button
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
             className="sm:hidden"
-          />
-        </NavbarContent>
-        <NavbarMenu>
-          {menu.map((item, index) => (
-            <NavbarMenuItem key={`root-nv-sm-${item.title}-${index}`}>
-              <Link
-                className="w-full"
-                color="foreground"
-                href={item.href}
-                size="lg"
-              >
-                {item.title}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </NavbarMenu>
-      </Navbar>
+            isIconOnly
+            variant="ghost"
+            onPress={() => setIsMenuOpen((value) => !value)}
+          >
+            <Icon
+              className="size-5"
+              icon={isMenuOpen ? "lucide:x" : "lucide:menu"}
+            />
+          </Button>
+        </div>
+      </div>
+
+      {isMenuOpen ? (
+        <div className="border-t border-separator px-6 py-4 sm:hidden">
+          <ul className="flex flex-col gap-3">
+            {menu.map((item) => (
+              <li key={item.title}>
+                <Link className="block w-full py-2" color="foreground" href={item.href}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </nav>
     );
   }
