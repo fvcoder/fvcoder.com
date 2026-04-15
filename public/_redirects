@@ -5,4 +5,3 @@
 /roadmap /blog 301
 /roadmap/* /blog 301
 /project/portfolio-de-fernando-ticona-fvcoder /project/portfolio 301
-https://www.fvcoder.com/* https://fvcoder.com/:splat 301!
