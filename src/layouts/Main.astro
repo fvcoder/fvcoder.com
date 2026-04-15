@@ -1,7 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
-import { HeaderNavbar } from "../components/react/headerNavbar";
+import Navbar from "../components/Navbar.astro";
 
 interface Props {
     title: string
@@ -18,8 +18,8 @@ const type = Astro.props.type ?? "website"
   <head>
     <BaseHead title={title} description={description ?? ""} image={image} type={type} />
   </head>
-  <body>
-    <HeaderNavbar client:visible />
+  <body class="bg-background text-foreground">
+    <Navbar />
     <slot />
     <Footer />
   </body>

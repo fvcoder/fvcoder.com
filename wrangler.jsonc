@@ -1,5 +1,16 @@
 {
-    "$schema": "https://unpkg.com/wrangler@4.16.0/config-schema.json",
-    "name": "fvcoder-com",
-    "pages_build_output_dir": "./dist"
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "com-fvcoder",
+  "compatibility_date": "2026-04-15",
+  "pages_build_output_dir": "./dist",
+  "routes": [
+    {
+        "custom_domain": true,
+        "pattern": "fvcoder.com"
+    },
+    {
+        "custom_domain": true,
+        "pattern": "www.fvcoder.com"
+    }
+  ]
 }

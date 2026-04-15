@@ -15,10 +15,15 @@
       "@astrojs/rss": "4.0.18",
       "@astrojs/sitemap": "3.7.2",
       "@astrojs/tailwind": "6.0.2",
+      "@fontsource-variable/inter": "^5.2.8",
+      "@fontsource/inter": "^5.2.8",
       "@heroui/react": "3.0.2",
       "@heroui/styles": "^3.0.2",
+      "@iconify-json/devicon": "^1.2.62",
+      "@iconify-json/fluent": "^1.2.45",
       "@iconify-json/simple-icons": "1.2.78",
       "@iconify/react": "6.0.2",
+      "@iconify/tailwind4": "^1.2.3",
       "@prismicio/client": "7.21.8",
       "@tailwindcss/typography": "0.5.19",
       "@tailwindcss/vite": "4.2.2",
@@ -31,6 +36,7 @@
       "react-activity-calendar": "3.1.2",
       "react-dom": "19.2.5",
       "react-github-calendar": "5.0.6",
+      "tailwind-animations": "^1.0.1",
       "tailwindcss": "4.2.2"
    },
    "devDependencies": {
@@ -38,7 +44,8 @@
       "axios": "1.15.0",
       "inquirer": "13.4.1",
       "parse-md": "3.0.3",
-      "sharp": "0.34.5"
+      "sharp": "0.34.5",
+      "wrangler": "^4.83.0"
    },
    "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
 }
