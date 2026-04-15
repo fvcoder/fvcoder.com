@@ -115,7 +115,7 @@ function GraphGrid(props: { year: number, activity: Activity[] }) {
                 <div
                 key={`graph-grid-${i}-${iw}`}
                 data-count={y?.count}
-                className={cn("size-3 mb-1 rounded-sm", {
+                className={cn("size-3 mb-1 rounded-xs", {
                   "bg-green-500/10": y?.level === 0,
                   "bg-green-500/40": y?.level === 1,
                   "bg-green-500/60": y?.level === 2,
@@ -146,11 +146,11 @@ function Graph({ data, yearSelected }: { data: ContributionData['contributions']
         <div>{data.length} contribuciones en {currentYear}</div>
         <div className="flex items-center gap-1">
           <span className="block mr-1">Menos</span>
-          <div className="size-3 bg-green-500/20 rounded" />
-          <div className="size-3 bg-green-500/40 rounded" />
-          <div className="size-3 bg-green-500/60 rounded" />
-          <div className="size-3 bg-green-500/80 rounded" />
-          <div className="size-3 bg-green-500 rounded" />
+          <div className="size-3 bg-green-500/20 rounded-sm" />
+          <div className="size-3 bg-green-500/40 rounded-sm" />
+          <div className="size-3 bg-green-500/60 rounded-sm" />
+          <div className="size-3 bg-green-500/80 rounded-sm" />
+          <div className="size-3 bg-green-500 rounded-sm" />
           <span className="block ml-1">Mas</span>
         </div>
       </footer>
