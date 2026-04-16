@@ -6,10 +6,6 @@
     {
         "custom_domain": true,
         "pattern": "fvcoder.com"
-    },
-    {
-        "custom_domain": true,
-        "pattern": "www.fvcoder.com"
     }
   ]
 }
