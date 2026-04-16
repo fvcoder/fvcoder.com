@@ -183,7 +183,7 @@ export function ContributionGraph() {
                 {Array.from({ length: 4 }).map((_, i) => (
                     <Button
                         key={`ContributionGraph-select-year-${i}`}
-                        color={year === (currentYear - i) ? "primary" : "default"}
+                        variant={year === (currentYear - i) ? "primary" : "secondary"}
                         onPress={() => setYear(currentYear - i)}
                         fullWidth
                     >

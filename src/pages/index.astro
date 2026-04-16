@@ -53,24 +53,24 @@ const blog = (await getCollection("blog")).sort((a, b) => {
 ---
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <div class="bg-background text-foreground">
-    <section class="mx-auto max-w-6xl px-4 md:px-6 pb-16">
-      <div class="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
+    <section class="mx-auto max-w-5xl px-4 pb-8">
+      <div class="grid gap-4 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
         <div class="rounded-[2rem] border border-white/60 bg-white/70 p-6 shadow-[0_30px_80px_rgba(88,60,33,0.10)] backdrop-blur md:p-10">
           <div class="flex flex-wrap items-center gap-3">
             <Chip variant="soft" color="accent" size="lg">
               <span class="icon-[fluent--sparkle-20-filled] mr-1"></span>
               Disponible para nuevos retos
             </Chip>
-            <Chip variant="secondary" color="default" size="md">Código útil</Chip>
+            <Chip variant="secondary" color="default" size="md">Escalamiento</Chip>
             <Chip variant="secondary" color="default" size="md">Automatización</Chip>
           </div>
 
           <div class="mt-6 max-w-3xl">
             <p class="text-sm uppercase tracking-[0.35em] text-neutral-500">Fernando Ticona</p>
-            <h1 class="mt-4 text-5xl font-semibold leading-[0.95] tracking-tight text-balance md:text-7xl">
+            <h1 class="mt-4 text-5xl font-semibold leading-[0.95] tracking-tight text-balance md:text-6xl">
               Creo soluciones que ahorran tiempo y dinero.
             </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-700 md:text-xl">
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-700 md:text-lg">
               Construyo experiencias digitales, automatizaciones y herramientas que simplifican procesos reales. Si algo puede hacerse más claro, más rápido o con menos fricción, lo diseño así.
             </p>
           </div>
@@ -88,7 +88,7 @@ const blog = (await getCollection("blog")).sort((a, b) => {
             </a>
           </div>
 
-          <div class="mt-10 grid gap-4 md:grid-cols-3">
+          <div class="mt-10 hidden md:grid gap-4 md:grid-cols-3">
             <div class="rounded-2xl border border-neutral-200 bg-white/80 p-4">
               <p class="text-sm text-neutral-500">Enfoque</p>
               <p class="mt-2 text-lg font-medium text-neutral-900">Procesos, producto y ejecución</p>
@@ -130,14 +130,13 @@ const blog = (await getCollection("blog")).sort((a, b) => {
       </div>
     </section>
 
-    <section class="mx-auto max-w-6xl px-4 md:px-6">
+    <section class="mx-auto max-w-5xl px-4">
       <div class="rounded-[2rem] border border-white/60 bg-white/75 p-6 shadow-[0_24px_70px_rgba(88,60,33,0.08)] backdrop-blur md:p-8">
-        <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
-            <p class="text-sm uppercase tracking-[0.35em] text-neutral-500">Señales de trabajo</p>
-            <h2 class="mt-2 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">Gráfico de contribuciones de código</h2>
+            <h2 class="mt-2 text-3xl font-semibold tracking-tight text-balance text-neutral-900 md:text-4xl">Gráfico de contribuciones de código</h2>
           </div>
-          <p class="max-w-xl text-sm leading-7 text-neutral-600">
+          <p class="max-w-xl text-sm leading-7 text-pretty text-neutral-600">
             Una vista rápida de consistencia, ritmo y disciplina técnica. Lo uso como referencia del tipo de trabajo que me gusta sostener: constante, visible y ordenado.
           </p>
         </div>
@@ -145,8 +144,8 @@ const blog = (await getCollection("blog")).sort((a, b) => {
       </div>
     </section>
 
-    <section id="proyectos" class="mx-auto max-w-6xl px-4 pt-16 md:px-6 md:pt-24">
-      <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <section id="proyectos" class="mx-auto max-w-5xl px-4 pt-16 md:px-4 md:pt-8">
+      <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <p class="text-sm uppercase tracking-[0.35em] text-neutral-500">Proyectos</p>
           <h2 class="mt-2 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">Casos recientes, sin distracciones visuales</h2>
@@ -158,7 +157,7 @@ const blog = (await getCollection("blog")).sort((a, b) => {
 
       <div class="grid gap-6 md:grid-cols-2">
         {project.map((item, index) => (
-          <article class="group rounded-[2rem] border border-neutral-200 bg-white/80 p-6 shadow-[0_20px_45px_rgba(88,60,33,0.06)] transition hover:-translate-y-1 hover:shadow-[0_26px_60px_rgba(88,60,33,0.10)]" style={`animation-delay:${index * 120}ms`}>
+          <article class="group flex flex-col rounded-[2rem] border border-neutral-200 bg-white/80 p-6 shadow-[0_20px_45px_rgba(88,60,33,0.06)] transition hover:-translate-y-1 hover:shadow-[0_26px_60px_rgba(88,60,33,0.10)]" style={`animation-delay:${index * 120}ms`}>
             <div class="flex items-start justify-between gap-4">
               <div>
                 <Chip variant="soft" color="accent">Proyecto</Chip>
@@ -170,9 +169,8 @@ const blog = (await getCollection("blog")).sort((a, b) => {
               <p class="text-right text-xs uppercase tracking-[0.3em] text-neutral-400">0{index + 1}</p>
             </div>
 
-            <div class="mt-6 grid gap-3 text-sm leading-7 text-neutral-600">
-              <p>Un caso centrado en resolver una necesidad concreta con una interfaz limpia y una ejecución pragmática.</p>
-              <p>La página del proyecto prioriza claridad, proceso y decisiones de producto antes que ornamentos visuales.</p>
+            <div class="mt-6 grid gap-3 text-sm leading-7 text-neutral-600 flex-1">
+              {item.body?.slice(0, 125)} ...
             </div>
 
             <div class="mt-6 flex flex-wrap items-center gap-3">
@@ -186,15 +184,14 @@ const blog = (await getCollection("blog")).sort((a, b) => {
               >
                 Ver caso de estudio
               </Button>
-              <span class="text-sm text-neutral-500">Disponible para revisión detallada</span>
             </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="mx-auto max-w-6xl px-4 pt-16 md:px-6 md:pt-24">
-      <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <section class="mx-auto max-w-5xl px-4 pt-16 md:px-6 md:pt-8">
+      <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <p class="text-sm uppercase tracking-[0.35em] text-neutral-500">Blog</p>
           <h2 class="mt-2 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">Ideas, aprendizajes y criterio técnico</h2>
@@ -207,13 +204,15 @@ const blog = (await getCollection("blog")).sort((a, b) => {
       <div class="grid gap-4 md:grid-cols-2">
         {blog.map((post, index) => (
           <article class="rounded-[2rem] border border-neutral-200 bg-white/80 p-6 shadow-[0_18px_40px_rgba(88,60,33,0.05)] transition hover:-translate-y-1 hover:shadow-[0_24px_55px_rgba(88,60,33,0.09)]" style={`animation-delay:${index * 100}ms`}>
-            <a href={`/blog/${post.id}/`} class="block">
+            <a href={`/blog/${post.id}/`} class="flex flex-col h-full">
               <div class="flex items-center justify-between gap-4">
                 <Chip variant="soft" color="default">Artículo</Chip>
                 <span class="text-xs uppercase tracking-[0.3em] text-neutral-400">0{index + 1}</span>
               </div>
-              <h3 class="mt-4 text-2xl font-semibold tracking-tight text-neutral-900">{post.data.title}</h3>
-              <p class="mt-3 text-sm leading-7 text-neutral-600">{post.data.description}</p>
+              <div class="flex-1">
+                <h3 class="mt-4 text-2xl font-semibold tracking-tight text-neutral-900">{post.data.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-neutral-600 line-clamp-3">{post.data.description}</p>
+              </div>
               <div class="mt-6 flex items-center justify-between border-t border-neutral-200 pt-4 text-sm text-neutral-500">
                 <span><FormattedDate date={post.data.pubDate} /></span>
                 <span>Leer artículo</span>
@@ -224,7 +223,7 @@ const blog = (await getCollection("blog")).sort((a, b) => {
       </div>
     </section>
 
-    <section class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+    <section class="mx-auto max-w-5xl px-4 py-16 md:px-4 md:py-12">
       <div class="rounded-[2rem] border border-[#d9c2b1] bg-[#3a261c] p-8 text-white shadow-[0_30px_70px_rgba(58,38,28,0.22)] md:p-10">
         <div class="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
           <div>
@@ -235,14 +234,14 @@ const blog = (await getCollection("blog")).sort((a, b) => {
             <p class="mt-4 max-w-2xl text-base leading-8 text-white/75 md:text-lg">
               Trabajo mejor cuando el problema está claro y el objetivo es tangible: automatizar, simplificar, ordenar o construir una experiencia que realmente se use.
             </p>
-          </div>
-          <div class="flex flex-col gap-3">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdy0BHpgKt0iBZq6a9dsHXJ0Suy-4p1HDFm2gEUOsaEnfpqFw/viewform?usp=publish-editor">
-              <Button size="lg" variant="secondary" className="w-full" client:visible>
-                Empezar una conversación
-              </Button>
-            </a>
-            <p class="text-sm text-white/60">Respuesta directa, sin rodeos innecesarios.</p>
+            <div class="flex flex-col gap-4 mt-4">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdy0BHpgKt0iBZq6a9dsHXJ0Suy-4p1HDFm2gEUOsaEnfpqFw/viewform?usp=publish-editor">
+                <Button size="lg" variant="secondary" client:visible>
+                  Empezar una conversación
+                </Button>
+              </a>
+              <p class="text-sm text-white/60">Respuesta directa, sin rodeos innecesarios.</p>
+            </div>
           </div>
         </div>
       </div>
