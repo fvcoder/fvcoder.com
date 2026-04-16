@@ -11,11 +11,26 @@ type Props = Partial<CollectionEntry<"blog">["data"]> & {
 };
 
 const { title, description, pubDate, heroImage, isProjectLayout, related } = Astro.props;
+const pageType = isProjectLayout ? "Project" : "BlogPosting";
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": pageType,
+  "headline": title,
+  "description": description,
+  "datePublished": pubDate ? new Date(pubDate).toISOString() : undefined,
+  "author": {
+    "@type": "Person",
+    "name": "Fernando Ticona"
+  },
+  "mainEntityOfPage": Astro.url.toString(),
+  "image": heroImage ? [new URL(heroImage, Astro.url).toString()] : undefined
+};
 ---
 
 <html lang="es">
   <head>
     <BaseHead title={title ?? ""} description={description ?? ""} image={heroImage} type={heroImage ? "article" : "website"} />
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
   </head>
   <body class="bg-background text-foreground">
     <Navbar client:visible />
@@ -24,7 +39,7 @@ const { title, description, pubDate, heroImage, isProjectLayout, related } = Ast
         <header class="border-b border-neutral-200 pb-6">
           <div class="flex flex-wrap items-center gap-3 text-sm text-neutral-500">
             <FormattedDate date={pubDate ?? new Date()} />
-            {isProjectLayout && <span>Proyecto</span>}
+            {isProjectLayout ? <span>Proyecto</span> : <span>Artículo</span>}
           </div>
           <h1 class="mt-4 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">{title}</h1>
           <p class="mt-4 max-w-3xl text-base leading-8 text-neutral-600">Por Fernando Ticona</p>

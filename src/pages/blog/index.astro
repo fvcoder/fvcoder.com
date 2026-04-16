@@ -3,9 +3,8 @@ import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE } from "../../consts";
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-import { HeaderNavbar } from "../../components/react/headerNavbar";
 import Navbar from "../../components/Navbar.astro";
+import ContentCard from "../../components/ContentCard.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,7 +16,7 @@ const posts = (await getCollection("blog")).sort(
   <head>
     <BaseHead
       title={`Blog de ${SITE_TITLE}`}
-      description={"Fernando Ticona: Tu aliado en el desarrollo frontend. Convierte tus ideas en realidad digital. Experto en HTML, CSS, JavaScript, React y Vue.js. Diseño web moderno, rápido y responsivo. ¡Llevemos tu proyecto al siguiente nivel!"}
+      description={"Artículos sobre desarrollo frontend, automatización y criterio técnico para construir software útil y bien resuelto."}
     />
   </head>
   <body class="bg-background text-foreground">
@@ -36,17 +35,14 @@ const posts = (await getCollection("blog")).sort(
           {
             posts.map((post: any) => (
               <li>
-                <a href={`/blog/${post.id}/`} class="group flex h-full flex-col rounded-[1.75rem] border border-neutral-200 bg-neutral-50 p-6 transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
-                  <div class="flex items-center justify-between gap-4">
-                    <span class="text-xs uppercase tracking-[0.3em] text-neutral-400">Artículo</span>
-                    <span class="text-xs uppercase tracking-[0.3em] text-neutral-400">Leer</span>
-                  </div>
-                  <h2 class="mt-4 text-2xl font-semibold tracking-tight text-neutral-900 group-hover:text-neutral-700">{post.data.title}</h2>
-                  <p class="mt-3 line-clamp-4 text-sm leading-7 text-neutral-600">{post.data.description}</p>
-                  <div class="mt-6 border-t border-neutral-200 pt-4 text-sm text-neutral-500">
-                    <FormattedDate date={post.data.pubDate} />
-                  </div>
-                </a>
+                <ContentCard
+                  href={`/blog/${post.id}/`}
+                  label="Artículo"
+                  topRightLabel="Leer"
+                  title={post.data.title}
+                  description={post.data.description}
+                  date={post.data.pubDate}
+                />
               </li>
             ))
           }

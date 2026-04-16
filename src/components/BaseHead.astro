@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import "@fontsource-variable/inter";
 
 interface Props {
 	title: string;
@@ -10,10 +9,13 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, "https://fvcoder.com");
+const siteURL = "https://fvcoder.com";
 
 const { description, image } = Astro.props;
 const type = Astro.props.type ?? "website"
-const title = type === "article" ? `${Astro.props.title} | Blog de Fernando Ticona` : Astro.props.title
+const title = type === "article" ? `${Astro.props.title} | Fernando Ticona` : Astro.props.title
+const socialImage = image ? new URL(image, Astro.url).toString() : `${siteURL}/brand/bn/fvcoder-2025.webp`;
+const robots = "index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1";
 ---
 
 <!-- Global Metadata -->
@@ -27,25 +29,41 @@ const title = type === "article" ? `${Astro.props.title} | Blog de Fernando Tico
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+<meta name="robots" content={robots} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="theme-color" content="#3a261c" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-{image && <meta property="og:image" content={new URL(image, Astro.url)} />}
+<meta property="og:image" content={socialImage} />
+<meta property="og:site_name" content="Fernando Ticona" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content={image ? "summary_large_image" : "summary"} />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-{image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
+<meta property="twitter:image" content={socialImage} />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Fernando Ticona",
+	"url": siteURL,
+	"jobTitle": "Desarrollador frontend",
+	"sameAs": [
+		"https://github.com/fvcoder",
+		"https://linkedin.com/in/fvcoder",
+		"https://figma.com/@fvcoder"
+	]
+})} />
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="https://cdn.fvcoder.com/icon/2024-12/favicon-96x96.png" sizes="96x96" />
