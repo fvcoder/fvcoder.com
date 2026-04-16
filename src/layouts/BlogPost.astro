@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import { HeaderNavbar } from "../components/react/headerNavbar";
+import Navbar from "../components/Navbar.astro";
 
 type Props = Partial<CollectionEntry<"blog">["data"]> & {
   isProjectLayout?: boolean;
@@ -11,83 +11,65 @@ type Props = Partial<CollectionEntry<"blog">["data"]> & {
 };
 
 const { title, description, pubDate, heroImage, isProjectLayout, related } = Astro.props;
-const heroImageSet = (heroImage ? Array.from({ length: 3 }).map((_, i) => {
-  const basename = heroImage.replace(/.[0-9]x.webp/, "")
-  return `${basename}.${i + 1}x.webp ${i === 0 ? 460 : i === 1 ? 850 : 1500}w`;
-}) : []).join(",")
 ---
 
 <html lang="es">
   <head>
     <BaseHead title={title ?? ""} description={description ?? ""} image={heroImage} type={heroImage ? "article" : "website"} />
   </head>
-  <body>
-    <HeaderNavbar client:visible />
-    <main class="max-w-5xl mx-auto px-6">
-      <article>
-        <div class="hero-image">
-          {
-            heroImage && (
-              <img src={heroImage} srcset={heroImageSet} alt={title} class="w-full h-auto rounded-xl" />
-            )
-          }
-        </div>
-        <div class="prose max-w-3xl mx-auto dark:prose-invert">
-          <header class="text-center pt-10 pb-2">
-            <div class="text-neutral-500">
-              <FormattedDate date={pubDate ?? new Date()} />
-            </div>
-            <h1 class="mb-2">{title}</h1>
-            <p class="mt-2">Por Fernando Ticona</p>
-            {isProjectLayout && (
-              <div>
-                <p class="mt-2">
-                  <strong>Cliente: </strong>
-                  <span>{(Astro.props as any).client}</span>
-                </p>
-                <p class="mt-2">
-                  <strong>Rol/Area: </strong>
-                  <span>{(Astro.props as any).role}</span>
-                </p>
+  <body class="bg-background text-foreground">
+    <Navbar client:visible />
+    <main class="mx-auto max-w-5xl px-4 py-4 md:px-6">
+      <article class="rounded-[2rem] bg-white p-6 md:p-8 lg:p-10">
+        <header class="border-b border-neutral-200 pb-6">
+          <div class="flex flex-wrap items-center gap-3 text-sm text-neutral-500">
+            <FormattedDate date={pubDate ?? new Date()} />
+            {isProjectLayout && <span>Proyecto</span>}
+          </div>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">{title}</h1>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-neutral-600">Por Fernando Ticona</p>
+          {isProjectLayout && (
+            <div class="mt-6 grid gap-3 md:grid-cols-2">
+              <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+                <p class="text-xs uppercase tracking-[0.3em] text-neutral-400">Cliente</p>
+                <p class="mt-2 text-sm text-neutral-900">{(Astro.props as any).client}</p>
               </div>
-            )}
-          </header>
+              <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+                <p class="text-xs uppercase tracking-[0.3em] text-neutral-400">Rol / Area</p>
+                <p class="mt-2 text-sm text-neutral-900">{(Astro.props as any).role}</p>
+              </div>
+            </div>
+          )}
+        </header>
+
+        <div class="prose prose-neutral max-w-none py-8 dark:prose-invert prose-headings:tracking-tight prose-img:hidden">
           <slot />
-          <footer class="not-prose">
-            {related && (
-              <div>
-                <h2 class="text-2xl font-bold text-(--tw-prose-headings) mb-4">Artículos relacionados</h2>  
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {
-                    related.map((post: any, i: number) => (
-                      <li class={``}>
-                        <a href={`/blog/${post.id}/`} class="block">
-                          <img
-                            src={post.data.heroImage.replace(/.[0-9]x.webp/, ".2x.webp")}
-                            alt={`Imagen del articulo ${post.data.title} | Blog de fvcoder`}
-                            class="object-cover w-full h-auto rounded-xl"
-                            loading="lazy"
-                          />
-                          <h4 class="mt-2 text-2xl font-semibold line-clamp-2">{post.data.title}</h4>
-                          <p class="text-neutral-500">
-                            <FormattedDate date={post.data.pubDate} />
-                          </p>
-                        </a>
-                      </li>
-                    ))
-                  }
-                </ul>
-              </div>
-            )}
-            <div>
-              <a
-                href={`${isProjectLayout ? "/project" : "/blog"}?ref=blog-article`}
-                class="text-blue-500 hover:underline mt-4 block w-fit"
-                >Ver mas {isProjectLayout ? "Projectos" : "artículos"}</a
-              >
-            </div>
-          </footer>
         </div>
+
+        <footer class="border-t border-neutral-200 pt-6">
+          {related && (
+            <div>
+              <h2 class="text-2xl font-semibold tracking-tight text-neutral-900">Artículos relacionados</h2>
+              <ul class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {related.map((post: any) => (
+                  <li>
+                    <a href={`/blog/${post.id}/`} class="group flex h-full flex-col rounded-[1.5rem] border border-neutral-200 bg-neutral-50 p-5 transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]">
+                      <span class="text-xs uppercase tracking-[0.3em] text-neutral-400">Relacionado</span>
+                      <h3 class="mt-3 text-xl font-semibold tracking-tight text-neutral-900 group-hover:text-neutral-700">{post.data.title}</h3>
+                      <p class="mt-3 line-clamp-3 text-sm leading-7 text-neutral-600 flex-1">{post.data.description}</p>
+                      <div class="mt-5 text-sm text-neutral-500"><FormattedDate date={post.data.pubDate} /></div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <div class="mt-6">
+            <a href={`${isProjectLayout ? "/project" : "/blog"}?ref=blog-article`} class="inline-flex rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-neutral-400 hover:text-neutral-900">
+              Ver más {isProjectLayout ? "proyectos" : "artículos"}
+            </a>
+          </div>
+        </footer>
       </article>
     </main>
     <Footer />

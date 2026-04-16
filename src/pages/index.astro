@@ -174,16 +174,9 @@ const blog = (await getCollection("blog")).sort((a, b) => {
             </div>
 
             <div class="mt-6 flex flex-wrap items-center gap-3">
-              <Button
-                size="sm"
-                variant="primary"
-                client:visible
-                onPress={() => {
-                  window.location.href = `/project/${item.id}`;
-                }}
-              >
+              <a href={`/project/${item.id}`} class="button button--primary button--sm">
                 Ver caso de estudio
-              </Button>
+              </a>
             </div>
           </article>
         ))}
