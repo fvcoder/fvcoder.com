@@ -7,16 +7,21 @@ interface Props {
     title: string
     description?: string
     image?: string
-    type?: string
+  type?: string
+  canonical?: string
+  robots?: string
+    siteName?: string
+    locale?: string
+    jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 };
 
-const { title, description, image } = Astro.props;
+const { title, description, image, canonical, robots, siteName, locale, jsonLd } = Astro.props;
 const type = Astro.props.type ?? "website"
 ---
 
 <html lang="es">
   <head>
-    <BaseHead title={title} description={description ?? ""} image={image} type={type} />
+    <BaseHead title={title} description={description ?? ""} image={image} type={type} canonical={canonical} robots={robots} siteName={siteName} locale={locale} jsonLd={jsonLd} />
   </head>
   <body class="bg-background text-foreground">
     <Navbar />

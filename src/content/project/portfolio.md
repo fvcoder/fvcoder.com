@@ -1,43 +1,33 @@
 ---
 title: "Porfolio de Fernando Ticona"
 description: "Como desarrollador Front-end, uno de mis primeros proyectos fue mi portfolio, aunque sea simple, renovarlo es un reto creativo."
+excerpt: "Evolución del portfolio personal con foco en aprendizaje, iteración y criterio visual."
 client: "fvcoder.com"
 role: "Frontend Developer"
 pubDate: "2024-12-19"
 heroImage: "https://cdn.fvcoder.com/blog/fvcoder-2025.webp"
 ---
-Como desarrollador Front-end, uno de mis primeros proyectos fue mi portfolio,
-aunque sea simple, renovarlo es un reto creativo y técnico.
+Como desarrollador Front-end, uno de mis primeros proyectos fue mi portfolio. Aunque sea simple, renovarlo siempre ha sido un reto creativo y técnico.
 
-Aquí te dejo la historia de cada una de las versiones de [fvcoder.com](https://fvcoder.com)
+Aquí te dejo la historia de cada una de las versiones de [fvcoder.com](https://fvcoder.com).
 
 ## Version 1 (2022)
-![Portfolio de Fernando Ticona en 2022](https://cdn.fvcoder.com/blog/fvcoder-v-2022.webp)
-La primera version fue creada a finales de 2022 como practica para entender conceptos
-básicos como: dominios, dns, hosting, etc. Fue un reto y me costo casi 2 meses comprender todo.
+La primera versión fue creada a finales de 2022 como práctica para entender conceptos básicos como dominios, DNS y hosting. Fue un reto y me costó casi 2 meses comprender todo.
 
-Fue en una época donde empece a conseguir mis primeros clientes, me pedían pruebas
-de mi experiencia como desarrollador, asi que me invente lo que sea y lo puse.
+Fue una época en la que empecé a conseguir mis primeros clientes. Me pedían pruebas de mi experiencia como desarrollador, así que reuní todo lo que tenía a mano para mostrar trabajo real.
 
-Conseguí algunos testimonios de mi trabajo y los puse como mi mayor logo y el orgullo.
-
-![Testimonios en 2022](https://cdn.fvcoder.com/blog/fvcoder-testimonios.webp)
+Conseguí algunos testimonios de mi trabajo y los usé como uno de mis primeros respaldos visibles.
 
 ## Version 2 (2023)
-![Portfolio de Fernando Ticona en 2023](https://cdn.fvcoder.com/blog/fvcoder-2023.webp)
-Para mi segunda version, empece a tener mas clientes y al mismo tiempo, tube que aprender
-mas tecnologías en un periodo corto de tiempo.
+En mi segunda versión empecé a tener más clientes y, al mismo tiempo, tuve que aprender más tecnologías en un periodo corto de tiempo.
 
-Sobre todo por que prometía el cielo y la tierra a mis clientes, se emocionaban, pero
-luego llegaba la carga de realizar lo que prometí, ubo tropiezos, me tube que disculpar
-y sobre todo, comprendí que tengo que aprender constantemente y estar informado acerca
-de la trayectoria de las tecnologías, no solo optar por la novedad.
+Sobre todo porque prometía más de lo que podía sostener. Hubo tropiezos, me tocó disculparme y, sobre todo, comprendí que tengo que aprender constantemente y estar informado sobre la trayectoria de las tecnologías, no solo optar por la novedad.
 
 ## Version 3 (2024)
-![Portfolio de Fernando Ticona en 2024](https://cdn.fvcoder.com/blog/fvcoder-2024.webp)
-Llegamos a 2024, fue un año donde entre a trabajar en proyectos mas grandes y complejos,
-igualmente me costo, ademas que fue un año lleno de curiosidad, donde pude cambiar de
-area.
+Llegamos a 2024: fue un año en el que entré a trabajar en proyectos más grandes y complejos. También fue un año lleno de curiosidad, donde pude cambiar de área.
+
+## Version 4 (2025)
+La cuarta versión consolidó todo lo aprendido: más claridad visual, menos ruido y una estructura más enfocada en comunicar mejor el trabajo.
 
 Pase por frontend, backend y desarrollo mobile. Tube la oportunidad de enseñar, lo 
 disfrute, me uni a comunidades y empece a tener amigos del mundo dev.

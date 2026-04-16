@@ -4,68 +4,79 @@ import '../styles/global.css';
 interface Props {
 	title: string;
 	description: string;
+	canonical?: string;
 	image?: string;
 	type?: string
+	siteName?: string;
+	locale?: string;
+	robots?: string;
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const canonicalURL = new URL(Astro.url.pathname, "https://fvcoder.com");
 const siteURL = "https://fvcoder.com";
+const {
+	title,
+	description,
+	canonical = Astro.url.pathname,
+	image,
+	type = "website",
+	siteName = "Fernando Ticona",
+	locale = "es_ES",
+	robots = "index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1",
+	jsonLd,
+} = Astro.props;
 
-const { description, image } = Astro.props;
-const type = Astro.props.type ?? "website"
-const title = type === "article" ? `${Astro.props.title} | Fernando Ticona` : Astro.props.title
-const socialImage = image ? new URL(image, Astro.url).toString() : `${siteURL}/brand/bn/fvcoder-2025.webp`;
-const robots = "index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1";
+const canonicalURL = new URL(canonical, siteURL).toString();
+const resolvedTitle = type === "article" ? `${title} | ${siteName}` : title;
+const socialImage = image ? new URL(image, siteURL).toString() : `${siteURL}/brand/bn/fvcoder-2025.webp`;
+const structuredData = jsonLd
+  ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd])
+  : [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": siteName,
+        "url": siteURL,
+        "jobTitle": "Desarrollador frontend",
+        "sameAs": [
+          "https://github.com/fvcoder",
+          "https://linkedin.com/in/fvcoder",
+          "https://figma.com/@fvcoder",
+        ],
+      },
+    ];
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="generator" content={Astro.generator} />
-
-<!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
 
-<!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 <meta name="robots" content={robots} />
+<meta name="language" content={locale} />
 
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{resolvedTitle}</title>
+<meta name="title" content={resolvedTitle} />
 <meta name="description" content={description} />
 <meta name="theme-color" content="#3a261c" />
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={resolvedTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialImage} />
-<meta property="og:site_name" content="Fernando Ticona" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content={locale} />
 
-<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={resolvedTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialImage} />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-	"@context": "https://schema.org",
-	"@type": "Person",
-	"name": "Fernando Ticona",
-	"url": siteURL,
-	"jobTitle": "Desarrollador frontend",
-	"sameAs": [
-		"https://github.com/fvcoder",
-		"https://linkedin.com/in/fvcoder",
-		"https://figma.com/@fvcoder"
-	]
-})} />
+<script type="application/ld+json" set:html={JSON.stringify(structuredData.length === 1 ? structuredData[0] : structuredData)} />
 
-<!-- Favicon -->
 <link rel="icon" type="image/png" href="https://cdn.fvcoder.com/icon/2024-12/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="https://cdn.fvcoder.com/icon/2024-12/favicon.svg" />
 <link rel="shortcut icon" href="https://cdn.fvcoder.com/icon/2024-12/favicon.ico" />

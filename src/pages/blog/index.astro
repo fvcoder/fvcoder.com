@@ -17,6 +17,18 @@ const posts = (await getCollection("blog")).sort(
     <BaseHead
       title={`Blog de ${SITE_TITLE}`}
       description={"Artículos sobre desarrollo frontend, automatización y criterio técnico para construir software útil y bien resuelto."}
+      canonical="/blog/"
+      type="website"
+      robots="index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1"
+      siteName="Fernando Ticona"
+      locale="es_ES"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": `Blog de ${SITE_TITLE}`,
+        "url": "https://fvcoder.com/blog/",
+        "description": "Artículos sobre desarrollo frontend, automatización y criterio técnico para construir software útil y bien resuelto.",
+      }}
     />
   </head>
   <body class="bg-background text-foreground">
@@ -40,7 +52,7 @@ const posts = (await getCollection("blog")).sort(
                   label="Artículo"
                   topRightLabel="Leer"
                   title={post.data.title}
-                  description={post.data.description}
+                  description={post.data.excerpt ?? post.data.description}
                   date={post.data.pubDate}
                 />
               </li>

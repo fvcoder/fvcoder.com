@@ -17,6 +17,18 @@ const posts = (await getCollection("project")).sort(
     <BaseHead
       title={`Proyectos realizados por ${SITE_TITLE}`}
       description={"Casos de estudio y proyectos frontend enfocados en resolver problemas reales con interfaces claras, escalables y útiles."}
+      canonical="/project/"
+      type="website"
+      robots="index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1"
+      siteName="Fernando Ticona"
+      locale="es_ES"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": `Proyectos realizados por ${SITE_TITLE}`,
+        "url": "https://fvcoder.com/project/",
+        "description": "Casos de estudio y proyectos frontend enfocados en resolver problemas reales con interfaces claras, escalables y útiles.",
+      }}
     />
   </head>
   <body class="bg-background text-foreground">
@@ -40,7 +52,7 @@ const posts = (await getCollection("project")).sort(
                   label="Proyecto"
                   topRightLabel="Ver"
                   title={post.data.title}
-                  description={post.data.description ?? post.data.role}
+                  description={post.data.excerpt ?? post.data.description ?? post.data.role}
                   date={post.data.pubDate}
                 />
               </li>

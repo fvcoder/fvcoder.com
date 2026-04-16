@@ -1,56 +1,57 @@
 ---
 title: 'Como usar Api de Notion con Next Js'
 description: 'Use Notion como un CMS para crear un blog para guardar mis notas de borrador, y lo integre a mi pagina web, aquí te enseño como.'
+excerpt: 'Cómo integrar Notion como CMS para guardar borradores y publicar contenido en una web con Next.js.'
 pubDate: '2024-08-02T13:46:02+0000'
 heroImage: 'https://cdn.fvcoder.com/blog/01ed137f02b84332a6162dc9fcef994c.3x.webp'
 tags: ['caso-de-uso']
 ---
-Use Notion como un CMS para crear un blog para guardar mis notas de borrador, y lo integre a mi pagina web, aquí te enseño como.
-Escuche hace mucho que Notion abrió su API para que los desarrolladores creen integraciones con mas herramientas, así Notion seria aun mas versátil y útil que nunca. Esto me llamo la atención.
+Use Notion como un CMS para crear un blog donde guardar mis notas de borrador e integrarlo a mi pagina web. Aquí te enseño cómo lo hice.
+Escuché hace tiempo que Notion abrió su API para que los desarrolladores creen integraciones con más herramientas, así que la plataforma se volvió todavía más versátil y útil. Eso me llamó la atención.
 
-Aunque estoy ocupado con proyectos privados, me tome la molestia de crear una integración, no sabia con que, así que realice lo mas simple que pude. Cree un borrador..
+Aunque estoy ocupado con proyectos privados, me tomé la molestia de crear una integración. No sabía con qué empezar, así que hice lo más simple posible: un borrador.
 
-Con el fin de mostrar en lo que estoy trabajando que pueda ver un publico general, entonces cree una tabla En Notion con propiedades que necesito para crear un borrador mental y lo oriente para alimentar a mi blog.
+Con el fin de mostrar en lo que estoy trabajando a un público general, creé una tabla en Notion con las propiedades necesarias para estructurar los borradores y alimentar mi blog.
 
-## ¿Por que uso Next js?
+## ¿Por qué uso Next.js?
 
-En cuanto a [Next Js](https://nextjs.org/) lo uso para mi pagina ([fvcoder.com](https://fvcoder.com)), honestamente es mucho para una landing page, pero tiene otros sistemas por dentro, proyectos privados principalmente, necesito su robustez. Si no tienes algo asi te invito a usar [React con Vite](https://vitejs.dev/guide/) u otra herramienta.
+En cuanto a [Next.js](https://nextjs.org/), lo uso para mi pagina ([fvcoder.com](https://fvcoder.com)). Honestamente es más de lo que necesita una landing page, pero el sitio también contiene otros sistemas internos y proyectos privados, así que necesito esa robustez. Si no tienes algo así, te invito a usar [React con Vite](https://vitejs.dev/guide/) u otra herramienta más ligera.
 
-## ¿Como empezar a usar Notion Api?
+## ¿Cómo empezar a usar Notion API?
 
-Primero debes dirigirte a la Web de [Notion para Desarrolladores](https://developers.notion.com/):
+Primero debes dirigirte a la web de [Notion para Desarrolladores](https://developers.notion.com/):
 
 ![Captura de pantalla de Notion Developers](https://images.prismic.io/fvcoder/Zqzf9EaF0TcGIpoz_Untitled.png?auto=format,compress)
 
-Aquí encontraras la documentación oficial y las guías necesarias para comprender el uso de Notion Api en tus proyectos.
+Aquí encontrarás la documentación oficial y las guías necesarias para comprender el uso de Notion API en tus proyectos.
 
-Por ahora nos interesa generar las credenciales de acceso a la Api
+Por ahora nos interesa generar las credenciales de acceso a la API.
 
-## ¿Cómo obtengo el Api key para Notion Api?
+## ¿Cómo obtengo el API key para Notion API?
 
-Dirígete a [Notion integraciones](https://www.notion.so/profile/integrations) y haz clic en Nueva Integración, y rellena el formulario, al finalizar te dará el Api Key para usar la api de Notion.
+Dirígete a [Notion integraciones](https://www.notion.so/profile/integrations), haz clic en Nueva integración y rellena el formulario. Al finalizar te dará el API key para usar la API de Notion.
 
 ![Formulario para crear una Api key de Notion](https://images.prismic.io/fvcoder/ZqzgGUaF0TcGIpo-_Untitled-1-.png?auto=format,compress)
 
 Notas importantes:
 
-El tipo de integración publico, es orientado para que uses autenticación, te permitan ingresar a espacios de trabajos de diferentes usuarios, si la consienten, etc. Para este proyecto, nos interesa la integración interna.
+El tipo de integración público está orientado a autenticación, acceso a espacios de trabajo de diferentes usuarios y otros casos más amplios. Para este proyecto, nos interesa la integración interna.
 
-Una vez teniendo la integración creada, ve a tu tabla o pagina y crea una conexión con tu integración:
+Una vez creada la integración, ve a tu tabla o página y crea una conexión con tu integración:
 
 ![Conectar con integracion](https://images.prismic.io/fvcoder/ZqzgNUaF0TcGIppD_Untitled-2-.png?auto=format,compress)
 
-Este paso es manual, en mi caso ya esta conectado, y es importante que lo realices ya que aunque tu espacio de trabajo esta relacionada ninguna pagina esta habilitada para mostrarse ante la api.
+Este paso es manual. En mi caso ya está conectado, y es importante que lo realices porque, aunque tu espacio de trabajo esté relacionado, ninguna página estará habilitada para mostrarse ante la API.
 
-## ¿Cómo interactuó con la Api de Notion?
+## ¿Cómo interactúo con la API de Notion?
 
-Ahora presta atencion, nesesitas 2 variables para interactuar con la api de Notion
+Ahora presta atención: necesitas 2 variables para interactuar con la API de Notion.
 
-- Api key (Ya la obtuviste en este punto)
+- API key (ya la obtuviste en este punto)
 
 - Page ID
 
-Para la obtener el Page ID de la pagina solo presta atención a la url de la pagina.
+Para obtener el Page ID de la página, solo presta atención a la URL.
 
 ![Como Obtener el Page ID](https://images.prismic.io/fvcoder/ZqzgVEaF0TcGIppH_Untitled-3-.png?auto=format,compress)
 
@@ -61,7 +62,7 @@ NOTION_PAGE_ID=43ec227ba4b04afbb935ee88f0d801e6
 NOTION_API_KEY=secret_ve&realizaLosPasosAnteriores
 ```
 
-E instala la [librería oficial de Notion](https://www.npmjs.com/package/@notionhq/client) para Node Js, si tienes que hacerlo para otro Framework o librería, igualmente funciona, la librería es agnostica al Framework.
+E instala la [librería oficial de Notion](https://www.npmjs.com/package/@notionhq/client) para Node.js. Si tienes que hacerlo para otro framework o librería, igualmente funciona: la librería es agnóstica al framework.
 
 ```bash
 npm i @notionhq/client

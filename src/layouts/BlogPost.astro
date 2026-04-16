@@ -29,8 +29,17 @@ const pageSchema = {
 
 <html lang="es">
   <head>
-    <BaseHead title={title ?? ""} description={description ?? ""} image={heroImage} type={heroImage ? "article" : "website"} />
-    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+    <BaseHead
+      title={title ?? ""}
+      description={description ?? ""}
+      image={heroImage}
+      type="article"
+      canonical={Astro.url.pathname}
+      siteName="Fernando Ticona"
+      locale="es_ES"
+      robots="index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1"
+      jsonLd={pageSchema}
+    />
   </head>
   <body class="bg-background text-foreground">
     <Navbar client:visible />

@@ -49,8 +49,20 @@ const project = (await getCollection("project")).sort((a, b) => {
 const blog = (await getCollection("blog")).sort((a, b) => {
   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 }).slice(0, 4);
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": SITE_TITLE,
+  "url": "https://fvcoder.com",
+  "description": SITE_DESCRIPTION,
+  "author": {
+    "@type": "Person",
+    "name": "Fernando Ticona"
+  }
+};
 ---
-<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION} canonical="/" robots="index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1" jsonLd={homeSchema}>
   <div class="bg-background text-foreground">
     <section class="mx-auto max-w-5xl px-4 pb-8">
       <div class="grid gap-4 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
