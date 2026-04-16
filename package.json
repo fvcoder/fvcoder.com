@@ -15,8 +15,6 @@
       "@astrojs/rss": "4.0.18",
       "@astrojs/sitemap": "3.7.2",
       "@astrojs/tailwind": "6.0.2",
-      "@fontsource-variable/inter": "^5.2.8",
-      "@fontsource/inter": "^5.2.8",
       "@heroui/react": "3.0.2",
       "@heroui/styles": "^3.0.2",
       "@iconify-json/devicon": "^1.2.62",

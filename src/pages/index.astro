@@ -1,5 +1,4 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { ContributionGraph } from "../components/react/contributionGraph";
@@ -8,15 +7,6 @@ import { Button } from "@heroui/react";
 import MainLayout from "../layouts/Main.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import { Chip } from "@heroui/react";
-
-const brands = [
-  { label: "Cypla", img: "/brand/bn/c1.png" },
-  { label: "ChildFund", img: "/brand/bn/cf1.png" },
-  { label: "Chateau", img: "/brand/bn/c.png" },
-  { label: "Save the Children", img: "/brand/bn/sc1.png" },
-  { label: "Trujillo", img: "/brand/bn/t1.png" },
-  { label: "Xiara Studios", img: "/brand/bn/xa1.png" },
-]
 
 const socialData = [
   {
