@@ -47,6 +47,6 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data} related={post.related}>
+<BlogPost {...post.data} heroImage={`/og/blog/${post.id}.png`} related={post.related}>
 	<Content />
 </BlogPost>
