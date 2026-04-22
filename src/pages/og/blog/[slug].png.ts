@@ -32,12 +32,12 @@ export const GET: APIRoute = async ({ props }) => {
     style="background-image: linear-gradient(to top, #eac8ff, #be9fd8, #9378b3, #6a538f, #41316c, #2f235d, #1b154f, #040641, #040641, #040641, #040641, #040641);"
     >
       <div tw="flex flex-1 flex-col px-12 pt-28">
-        <div tw="flex text-white/50 mx-auto text-2xl">Blog de Fernando Ticona</div>
-        <div tw="flex flex-1 flex-col items-start">
-          <h1 tw="relative text-5xl font-bold leading-tight text-white text-center w-3/4 mx-auto">
+        <div tw="flex text-white/50 mx-auto text-3xl">Blog de Fernando Ticona</div>
+        <div tw="flex flex-1 flex-col items-start w-3/4 mx-auto">
+          <h1 tw="relative text-6xl font-bold leading-tight text-white text-center mx-auto">
             ${props.title}
           </h1>    
-          <div tw="flex text-white/50 mx-auto text-xl">${props.dateText}</div>
+          <div tw="flex text-white/50 mx-auto text-2xl">${props.dateText}</div>
         </div>
       </div>
       <div tw="flex items-center justify-center">
