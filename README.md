@@ -1,68 +1,96 @@
-# Astro Starter Kit: Blog
+# Fernando Ticona | fvcoder.com
+Portafolio personal y blog de **Fernando Ticona** (@fvcoder), desarrollador frontend especializado en crear soluciones que ahorran tiempo y dinero.
 
-```sh
-npm create astro@latest -- --template blog
-```
+🌐 **Sitio web**: [fvcoder.com](https://fvcoder.com)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+## 🚀 Tecnologías
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Framework**: [Astro 6.1](https://astro.build/) - Generador de sitios estáticos ultrarrápido
+- **UI**: React 19 + [HeroUI v3](https://heroui.com/) + Tailwind CSS 4
+- **Lenguaje**: TypeScript
+- **Despliegue**: Cloudflare Workers (Wrangler)
+- **Contenido**: Markdown, MDX con Astro Content Collections
+- **Animaciones**: Framer Motion
+- **Otros**: React GitHub Calendar, @vercel/og (Open Graph images)
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## ✨ Características
 
-Features:
+- ✅ **100/100 Lighthouse** - Rendimiento óptimo
+- ✅ **SEO optimizado** - Sitemap, RSS Feed, OpenGraph, canonical URLs
+- ✅ **Diseño responsive** y moderno con Tailwind CSS
+- ✅ **Blog técnico** - 30+ artículos sobre programación y desarrollo
+- ✅ **Gráfico de contribuciones** estilo GitHub
+- ✅ **Imágenes optimizadas** - WebP automático
+- ✅ **Componentes interactivos** con React islands
+- ✅ **Modo oscuro/claro** integrado
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Estructura del Proyecto
 
 ```text
-├── public/
+├── public/               # Archivos estáticos (imágenes, fuentes, robots.txt)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── assets/          # Recursos (fuentes)
+│   ├── components/      # Componentes Astro y React
+│   │   ├── react/      # Componentes interactivos (contributionGraph, headerNavbar)
+│   │   └── ...        # Componentes Astro (Header, Footer, BlogPost, etc.)
+│   ├── content/        # Colecciones de contenido (Blog y Proyectos)
+│   │   ├── blog/      # 30+ artículos técnicos
+│   │   └── project/   # Proyectos destacados
+│   ├── layouts/        # Layouts reutilizables (Main, BlogPost)
+│   ├── pages/          # Rutas del sitio (index, blog, proyectos, og)
+│   ├── styles/         # Estilos globales (CSS + Tailwind)
+│   └── data/           # Datos estructurados (experiencia)
+├── scripts/             # Scripts de utilidad (crear blog, migrar, subir imágenes)
+├── astro.config.mjs     # Configuración de Astro
+├── wrangler.jsonc       # Configuración de Cloudflare Workers
+├── package.json         # Dependencias del proyecto
+└── tsconfig.json        # Configuración de TypeScript
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📝 Sobre el Blog
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+El blog cubre temas como:
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+- **Fundamentos**: Algoritmos, pensamiento lógico, ASCII/Unicode
+- **Desarrollo Frontend**: JavaScript, React, Next.js, APIs
+- **Aprendizaje**: Cómo aprender a programar, gestión del tiempo
+- **Carrera**: Consejos freelance, herramientas, reflexiones
+- **Proyectos**: Documentación de evolución del portafolio
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🎯 Enfoque
 
-## 🧞 Commands
+> *"Creo soluciones que ahorran tiempo y dinero. Construyo experiencias digitales, automatizaciones y herramientas que simplifican procesos reales."*
 
-All commands are run from the root of the project, from a terminal:
+**Especialidades**: Escalamiento, Automatización, Procesos y Ejecución
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🧞 Comandos
 
-## 👀 Want to learn more?
+Todos los comandos se ejecutan desde la raíz del proyecto:
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Comando             | Acción                                                      |
+| :------------------ | :---------------------------------------------------------- |
+| `pnpm install`      | Instala las dependencias                                     |
+| `pnpm dev`          | Inicia el servidor de desarrollo en `localhost:4321`         |
+| `pnpm build`        | Construye el sitio para producción en `./dist/`             |
+| `pnpm preview`      | Previsualiza el build localmente antes de desplegar         |
+| `pnpm newBlog`      | Crea un nuevo post de blog usando un script interactivo     |
+| `pnpm astro ...`    | Ejecuta comandos CLI de Astro (`astro add`, `astro check`)  |
 
-## Credit
+## 🚀 Despliegue
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+El sitio está configurado para desplegarse en **Cloudflare Workers** usando Wrangler:
+
+```bash
+pnpm wrangler deploy
+```
+
+## 📬 Contacto
+
+- **GitHub**: [@fvcoder](https://github.com/fvcoder)
+- **LinkedIn**: [fvcoder](https://linkedin.com/in/fvcoder)
+- **TikTok**: [@fvcoder](https://tiktok.com/@fvcoder)
+- **Figma**: [@fvcoder](https://figma.com/@fvcoder)
+
+---
+
+© 2024-2026 Fernando Ticona. Hecho con ❤️ usando Astro + React + Tailwind CSS
